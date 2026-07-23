@@ -1,0 +1,270 @@
+generator client {
+  provider = "prisma-client-js"
+  output   = "../src/generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+model Brand {
+  id            String   @id
+  name          String
+  logoUrl       String?  @map("logo_url")
+  color         String?  @db.VarChar(7)
+  category      String   @default("Other")
+  subCategories String[] @map("sub_categories")
+  createdAt     DateTime @default(now()) @map("created_at")
+
+  products Product[]
+
+  @@map("brands")
+}
+
+model Category {
+  id       Int        @id @default(autoincrement())
+  slug     String     @unique
+  name     String
+  icon     String?
+  parentId Int?       @map("parent_id")
+  parent   Category?  @relation("CategoryHierarchy", fields: [parentId], references: [id])
+  children Category[] @relation("CategoryHierarchy")
+
+  products Product[]
+
+  @@map("categories")
+}
+
+model Product {
+  id          String    @id
+  brandId     String    @map("brand_id")
+  brand       Brand     @relation(fields: [brandId], references: [id])
+  categoryId  Int?      @map("category_id")
+  category    Category? @relation(fields: [categoryId], references: [id])
+  name        String
+  slug        String    @unique
+  imageUrl    String?   @map("image_url")
+  fallbackImg String?   @map("fallback_img")
+  releaseDate String?   @map("release_date")
+  releaseYear Int?      @map("release_year")
+  basePrice   Int       @default(0) @map("base_price")
+  popularity  Int       @default(60)
+  rating      Decimal   @default(4.0) @db.Decimal(2, 1)
+  reviewCount Int       @default(0) @map("review_count")
+  reviewText  String?   @map("review_text")
+  pros        String[]  @default([])
+  cons        String[]  @default([])
+  quickSpecs  Json      @default("{}") @map("quick_specs")
+  createdAt   DateTime  @default(now()) @map("created_at")
+  updatedAt   DateTime  @updatedAt @map("updated_at")
+
+  specs         ProductSpec?
+  prices        Price[]
+  priceHistory  PriceHistory[]
+  reviews       Review[]
+  priceAlerts   PriceAlert[]
+  watchlistedBy WatchlistEntry[]
+
+  @@index([categoryId, popularity(sort: Desc)], map: "idx_products_category_popularity")
+  @@index([brandId], map: "idx_products_brand")
+  @@index([popularity(sort: Desc)], map: "idx_products_popularity")
+  @@index([rating(sort: Desc)], map: "idx_products_rating")
+  @@index([releaseYear(sort: Desc)], map: "idx_products_release_year")
+  @@index([basePrice], map: "idx_products_base_price")
+  @@map("products")
+}
+
+model ProductSpec {
+  productId    String  @id @map("product_id")
+  product      Product @relation(fields: [productId], references: [id], onDelete: Cascade)
+  network      Json    @default("{}")
+  launch       Json    @default("{}")
+  body         Json    @default("{}")
+  display      Json    @default("{}")
+  platform     Json    @default("{}")
+  memory       Json    @default("{}")
+  mainCamera   Json    @default("{}") @map("main_camera")
+  selfieCamera Json    @default("{}") @map("selfie_camera")
+  sound        Json    @default("{}")
+  comms        Json    @default("{}")
+  features     Json    @default("{}")
+  battery      Json    @default("{}")
+  misc         Json    @default("{}")
+
+  @@map("product_specs")
+}
+
+model Store {
+  id           Int     @id @default(autoincrement())
+  name         String  @unique
+  slug         String  @unique
+  affiliateTag String? @map("affiliate_tag")
+  affiliateId  String? @map("affiliate_id")
+  marketplace  String?
+  isActive     Boolean @default(true) @map("is_active")
+
+  prices       Price[]
+  priceHistory PriceHistory[]
+
+  @@map("stores")
+}
+
+model Price {
+  id        Int      @id @default(autoincrement())
+  productId String   @map("product_id")
+  product   Product  @relation(fields: [productId], references: [id], onDelete: Cascade)
+  storeId   Int      @map("store_id")
+  store     Store    @relation(fields: [storeId], references: [id])
+  price     Int?
+  currency  String   @default("USD") @db.VarChar(3)
+  url       String
+  fetchedAt DateTime @default(now()) @map("fetched_at")
+
+  @@unique([productId, storeId])
+  @@index([productId], map: "idx_prices_product")
+  @@index([storeId], map: "idx_prices_store")
+  @@map("prices")
+}
+
+model PriceHistory {
+  id         BigInt   @id @default(autoincrement())
+  productId  String   @map("product_id")
+  product    Product  @relation(fields: [productId], references: [id], onDelete: Cascade)
+  storeId    Int      @map("store_id")
+  store      Store    @relation(fields: [storeId], references: [id])
+  price      Int
+  currency   String   @default("USD") @db.VarChar(3)
+  recordedAt DateTime @default(now()) @map("recorded_at")
+
+  @@index([productId, recordedAt(sort: Desc)], map: "idx_price_history_product")
+  @@index([productId, storeId, recordedAt(sort: Desc)], map: "idx_price_history_product_store")
+  @@map("price_history")
+}
+
+model UserProfile {
+  id          String   @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  username    String?  @unique
+  displayName String?  @map("display_name")
+  avatarUrl   String?  @map("avatar_url")
+  createdAt   DateTime @default(now()) @map("created_at")
+
+  reviews          Review[]
+  priceAlerts      PriceAlert[]
+  watchlist        WatchlistEntry[]
+  savedComparisons SavedComparison[]
+  discussions      Discussion[]
+  replies          Reply[]
+
+  @@map("user_profiles")
+}
+
+model Review {
+  id         BigInt      @id @default(autoincrement())
+  productId  String      @map("product_id")
+  product    Product     @relation(fields: [productId], references: [id], onDelete: Cascade)
+  userId     String      @map("user_id") @db.Uuid
+  user       UserProfile @relation(fields: [userId], references: [id], onDelete: Cascade)
+  rating     Int
+  title      String?     @db.VarChar(200)
+  body       String?
+  isVerified Boolean     @default(false) @map("is_verified")
+  createdAt  DateTime    @default(now()) @map("created_at")
+  updatedAt  DateTime    @updatedAt @map("updated_at")
+
+  @@unique([productId, userId], map: "idx_reviews_unique")
+  @@index([productId, createdAt(sort: Desc)], map: "idx_reviews_product")
+  @@index([userId], map: "idx_reviews_user")
+  @@map("reviews")
+}
+
+model PriceAlert {
+  id             BigInt      @id @default(autoincrement())
+  userId         String      @map("user_id") @db.Uuid
+  user           UserProfile @relation(fields: [userId], references: [id], onDelete: Cascade)
+  productId      String      @map("product_id")
+  product        Product     @relation(fields: [productId], references: [id], onDelete: Cascade)
+  targetPrice    Int?        @map("target_price")
+  isActive       Boolean     @default(true) @map("is_active")
+  lastNotifiedAt DateTime?   @map("last_notified_at")
+  createdAt      DateTime    @default(now()) @map("created_at")
+
+  @@unique([userId, productId], map: "idx_alerts_unique")
+  @@index([userId, isActive], map: "idx_alerts_user")
+  @@index([productId, isActive], map: "idx_alerts_product")
+  @@map("price_alerts")
+}
+
+model WatchlistEntry {
+  userId    String      @map("user_id") @db.Uuid
+  user      UserProfile @relation(fields: [userId], references: [id], onDelete: Cascade)
+  productId String      @map("product_id")
+  product   Product     @relation(fields: [productId], references: [id], onDelete: Cascade)
+  addedAt   DateTime    @default(now()) @map("added_at")
+
+  @@id([userId, productId])
+  @@map("watchlist")
+}
+
+model SavedComparison {
+  id         Int         @id @default(autoincrement())
+  userId     String      @map("user_id") @db.Uuid
+  user       UserProfile @relation(fields: [userId], references: [id], onDelete: Cascade)
+  name       String?
+  productIds String[]    @map("product_ids")
+  createdAt  DateTime    @default(now()) @map("created_at")
+
+  @@index([userId], map: "idx_comparisons_user")
+  @@map("saved_comparisons")
+}
+
+model Discussion {
+  id        Int         @id @default(autoincrement())
+  userId    String      @map("user_id") @db.Uuid
+  user      UserProfile @relation(fields: [userId], references: [id], onDelete: Cascade)
+  title     String
+  body      String
+  category  String      @default("general")
+  createdAt DateTime    @default(now()) @map("created_at")
+  updatedAt DateTime    @updatedAt @map("updated_at")
+
+  replies Reply[]
+
+  @@index([category], map: "idx_discussions_category")
+  @@index([createdAt(sort: Desc)], map: "idx_discussions_date")
+  @@map("discussions")
+}
+
+model Reply {
+  id           Int         @id @default(autoincrement())
+  discussionId Int         @map("discussion_id")
+  discussion   Discussion  @relation(fields: [discussionId], references: [id], onDelete: Cascade)
+  userId       String      @map("user_id") @db.Uuid
+  user         UserProfile @relation(fields: [userId], references: [id], onDelete: Cascade)
+  body         String
+  parentId     Int?        @map("parent_id")
+  parent       Reply?      @relation("ReplyThread", fields: [parentId], references: [id])
+  children     Reply[]     @relation("ReplyThread")
+  createdAt    DateTime    @default(now()) @map("created_at")
+
+  @@index([discussionId], map: "idx_replies_discussion")
+  @@map("replies")
+}
+
+model News {
+  id            String    @id
+  title         String
+  excerpt       String?
+  url           String
+  source        String?
+  tag           String    @default("tech")
+  imageUrl      String?   @map("image_url")
+  publishedDate DateTime? @map("published_date") @db.Date
+  dateLabel     String?   @map("date_label")
+  fetchedAt     DateTime  @default(now()) @map("fetched_at")
+  createdAt     DateTime  @default(now()) @map("created_at")
+
+  @@index([tag], map: "idx_news_tag")
+  @@index([publishedDate(sort: Desc)], map: "idx_news_date")
+  @@index([tag, publishedDate(sort: Desc)], map: "idx_news_tag_date")
+  @@map("news")
+}
