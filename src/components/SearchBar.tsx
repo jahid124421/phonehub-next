@@ -53,7 +53,7 @@ export default function SearchBar({ variant = "header" }: SearchBarProps) {
       />
       <button
         type="submit"
-        className="absolute right-1 top-1/2 -translate-y-1/2 btn btn-primary btn-xs btn-square"
+        className="absolute right-1 top-1/2 -translate-y-1/2 btn btn-primary btn-sm btn-square"
         aria-label="Search"
       >
         <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">

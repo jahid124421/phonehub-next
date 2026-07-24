@@ -7,7 +7,6 @@ import CurrencyPicker from "./CurrencyPicker";
 
 const navLinks = [
   { label: "Home", href: "/" },
-  { label: "All Phones", href: "/search?cat=phone" },
   { label: "Brands", href: "/brands" },
   { label: "Compare", href: "/compare" },
   { label: "News", href: "/news" },

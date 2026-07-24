@@ -11,6 +11,7 @@ import PhoneCard from "@/components/PhoneCard";
 import NewsCard from "@/components/NewsCard";
 import SearchBar from "@/components/SearchBar";
 import CookieConsent from "@/components/CookieConsent";
+import CategoryStrip from "@/components/CategoryStrip";
 
 /* ------------------------------------------------------------------ */
 /*  SEO metadata                                                       */
@@ -38,20 +39,6 @@ const jsonLd = {
 /* ------------------------------------------------------------------ */
 /*  Constants                                                          */
 /* ------------------------------------------------------------------ */
-const CATEGORIES = [
-  { label: "📱 Phones", slug: "phone" },
-  { label: "📲 Tablets", slug: "tablet" },
-  { label: "💻 Laptops", slug: "laptop" },
-  { label: "⌚ Watches", slug: "smartwatch" },
-  { label: "📺 TVs", slug: "tv" },
-  { label: "📷 Cameras", slug: "camera" },
-  { label: "🎧 Audio", slug: "audio" },
-  { label: "🎮 Consoles", slug: "console" },
-  { label: "🔌 Appliances", slug: "appliance" },
-  { label: "🚗 Auto", slug: "auto" },
-  { label: "🗂️ All", slug: "all" },
-] as const;
-
 const BRAND_CATEGORY_ORDER = [
   "Mobile",
   "Laptop",
@@ -209,22 +196,8 @@ export default function Home() {
       </section>
 
       <div className="max-w-7xl mx-auto px-4 space-y-16 pb-16">
-        {/* ========================================================== */}
-        {/*  2. Category Strip                                          */}
-        {/* ========================================================== */}
-        <section className="pt-6">
-          <div className="flex gap-2 overflow-x-auto pb-2 scrollbar-none">
-            {CATEGORIES.map((cat) => (
-              <Link
-                key={cat.slug}
-                href={cat.slug === "all" ? "/search" : `/search?cat=${cat.slug}`}
-                className="badge badge-lg badge-outline whitespace-nowrap shrink-0 hover:badge-primary transition-colors"
-              >
-                {cat.label}
-              </Link>
-            ))}
-          </div>
-        </section>
+        {/* Category Strip — uses the full component with Lucide icons + hover dropdowns */}
+        <CategoryStrip />
 
         {/* ========================================================== */}
         {/*  3. Trending Now                                            */}
@@ -345,10 +318,10 @@ export default function Home() {
                               {b.name.charAt(0)}
                             </div>
                           )}
-                          <span className="text-xs font-medium text-center line-clamp-1">
+                          <span className="text-sm font-medium text-center line-clamp-1">
                             {b.name}
                           </span>
-                          <span className="text-xs text-base-content/50">
+                          <span className="text-sm text-base-content/50">
                             {count} {count === 1 ? "product" : "products"}
                           </span>
                         </Link>
@@ -414,7 +387,7 @@ export default function Home() {
                             <div className="text-sm font-medium truncate">
                               {p.name}
                             </div>
-                            <div className="text-xs text-base-content/50">
+                            <div className="text-sm text-base-content/50">
                               ★ {p.rating.toFixed(1)}
                               {p.basePrice > 0
                                 ? ` · $${p.basePrice.toLocaleString()}`
@@ -432,7 +405,66 @@ export default function Home() {
         </section>
 
         {/* ========================================================== */}
-        {/*  8. Latest News                                             */}
+        {/*  8.5 Top 10 Section                                         */}
+        {/* ========================================================== */}
+        <section>
+          <div className="flex items-center justify-between mb-6">
+            <h2 className="text-2xl font-bold">Top 10</h2>
+          </div>
+
+          <div className="grid md:grid-cols-2 gap-6">
+            {/* Left column — Best by Category */}
+            <div className="bg-base-200 border border-base-300 rounded-xl p-5 space-y-3">
+              <h3 className="text-lg font-bold mb-2" style={{ color: "var(--text)" }}>
+                Best by Category
+              </h3>
+              {[
+                { label: "Best Mobiles", href: "/search?cat=phone&sort=rating", icon: "📱" },
+                { label: "Best Tablets", href: "/search?cat=tablet&sort=rating", icon: "📲" },
+                { label: "Best Laptops", href: "/search?cat=laptop&sort=rating", icon: "💻" },
+                { label: "Best TVs", href: "/search?cat=tv&sort=rating", icon: "📺" },
+              ].map((item) => (
+                <Link
+                  key={item.label}
+                  href={item.href}
+                  className="flex items-center justify-between p-3 rounded-lg hover:bg-base-300 transition-colors group"
+                >
+                  <span className="flex items-center gap-3 text-sm font-semibold">
+                    <span>{item.icon}</span>
+                    {item.label}
+                  </span>
+                  <span className="text-primary group-hover:translate-x-1 transition-transform">→</span>
+                </Link>
+              ))}
+            </div>
+
+            {/* Right column — Best by Price */}
+            <div className="bg-base-200 border border-base-300 rounded-xl p-5 space-y-3">
+              <h3 className="text-lg font-bold mb-2" style={{ color: "var(--text)" }}>
+                Best Phones by Price
+              </h3>
+              {[
+                { label: "Under $100", href: "/search?cat=phone&maxPrice=100&sort=rating" },
+                { label: "Under $150", href: "/search?cat=phone&maxPrice=150&sort=rating" },
+                { label: "Under $200", href: "/search?cat=phone&maxPrice=200&sort=rating" },
+                { label: "Under $250", href: "/search?cat=phone&maxPrice=250&sort=rating" },
+                { label: "Under $300", href: "/search?cat=phone&maxPrice=300&sort=rating" },
+              ].map((item) => (
+                <Link
+                  key={item.label}
+                  href={item.href}
+                  className="flex items-center justify-between p-3 rounded-lg hover:bg-base-300 transition-colors group"
+                >
+                  <span className="text-sm font-semibold">{item.label}</span>
+                  <span className="text-primary group-hover:translate-x-1 transition-transform">→</span>
+                </Link>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* ========================================================== */}
+        {/*  9. Latest News                                             */}
         {/* ========================================================== */}
         <section>
           <div className="flex items-center justify-between mb-4">

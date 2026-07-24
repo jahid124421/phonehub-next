@@ -274,6 +274,23 @@ section { padding: 34px 0; }
   background: var(--surface); font-weight: 600; font-size: 14px; transition: .15s;
 }
 .cat-strip a:hover { border-color: var(--primary); background: var(--surface-2); transform: translateY(-2px); }
+.cat-strip-link {
+  display: inline-flex; align-items: center; padding: 10px 16px; border-radius: 999px; border: 1px solid var(--border);
+  background: var(--surface); font-weight: 600; font-size: 14px; transition: .15s; color: var(--text); white-space: nowrap;
+}
+.cat-strip-link:hover { border-color: var(--primary); background: var(--surface-2); transform: translateY(-2px); }
+.cat-dropdown {
+  position: absolute; top: 100%; left: 0; z-index: 40; min-width: 160px;
+  background: var(--surface); border: 1px solid var(--border); border-radius: 12px;
+  box-shadow: var(--shadow); padding: 6px; margin-top: 4px;
+  animation: catDrop .2s ease;
+}
+@keyframes catDrop { from { opacity: 0; transform: translateY(-6px); } to { opacity: 1; transform: translateY(0); } }
+.cat-dropdown-item {
+  display: block; padding: 8px 14px; border-radius: 8px; font-size: 14px; font-weight: 500;
+  color: var(--muted); transition: .12s;
+}
+.cat-dropdown-item:hover { background: var(--surface-2); color: var(--text); }
 
 /* ---------- card ---------- */
 .card {
@@ -549,12 +566,14 @@ section { padding: 34px 0; }
 /* ---------- light mode component overrides ---------- */
 
 /* Cards: visible border in light mode */
-:root[data-theme="light"] .card {
+:root[data-theme="light"] .card,
+:root[data-theme="light"] .card-compact {
   background: #ffffff;
-  border-color: #d0d5dd;
+  border: 1.5px solid #d0d5dd;
   box-shadow: 0 1px 3px rgba(0,0,0,0.06);
 }
-:root[data-theme="light"] .card:hover {
+:root[data-theme="light"] .card:hover,
+:root[data-theme="light"] .card-compact:hover {
   border-color: var(--primary);
   box-shadow: 0 4px 12px rgba(59,108,246,0.12);
 }
@@ -562,12 +581,21 @@ section { padding: 34px 0; }
 /* Header bottom border */
 :root[data-theme="light"] .site-header,
 :root[data-theme="light"] header {
-  border-bottom-color: #d0d5dd !important;
+  border-bottom: 1.5px solid #d0d5dd !important;
 }
 
 /* Filter panel */
 :root[data-theme="light"] .filters {
   background: #ffffff;
+  border: 1.5px solid #d0d5dd;
+}
+
+/* DaisyUI sidebar filter panel */
+:root[data-theme="light"] aside .bg-base-200 {
+  background: #ffffff;
+  border: 1.5px solid #d0d5dd;
+}
+:root[data-theme="light"] aside .bg-base-200 .border-base-300 {
   border-color: #d0d5dd;
 }
 
@@ -586,12 +614,6 @@ section { padding: 34px 0; }
 }
 :root[data-theme="light"] .overflow-x-auto .table tr th {
   background: #f1f4fa;
-}
-
-/* Search filter sidebar */
-:root[data-theme="light"] aside .bg-base-200 {
-  background: #ffffff;
-  border-color: #d0d5dd;
 }
 
 /* Brand tiles */
@@ -629,7 +651,16 @@ section { padding: 34px 0; }
 /* Section separators */
 :root[data-theme="light"] .cat-strip-outer {
   background: #ffffff;
-  border-bottom-color: #d0d5dd;
+  border-bottom: 1.5px solid #d0d5dd;
+}
+:root[data-theme="light"] section {
+  border-color: #d0d5dd;
+}
+:root[data-theme="light"] .bg-base-200 {
+  background: #ffffff;
+}
+:root[data-theme="light"] .border-base-300 {
+  border-color: #d0d5dd;
 }
 
 /* Guide cards */

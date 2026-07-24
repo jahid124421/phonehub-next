@@ -284,7 +284,7 @@ export default async function PhoneDetailPage({
                 >
                   <QsIcon label={key} />
                   <div className="min-w-0">
-                    <div className="text-xs font-semibold uppercase tracking-wide text-base-content/50 mb-0.5">
+                    <div className="text-sm font-semibold uppercase tracking-wide text-base-content/50 mb-0.5">
                       {key}
                     </div>
                     <div className="text-sm text-base-content/80 leading-snug line-clamp-2">

@@ -54,7 +54,7 @@ export default function NewsCard({ news }: { news: NewsItem }) {
       <div className="card-body p-4 gap-2">
         <h3 className="text-base font-semibold line-clamp-2 leading-snug">{news.title}</h3>
         <p className="text-sm text-base-content/60 line-clamp-3">{news.excerpt}</p>
-        <div className="flex items-center justify-between mt-2 text-xs text-base-content/50">
+        <div className="flex items-center justify-between mt-2 text-sm text-base-content/50">
           <span className="font-medium">{news.source}</span>
           <time dateTime={news.date}>{getRelativeDate(news.date)}</time>
         </div>

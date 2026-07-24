@@ -53,7 +53,7 @@ export default function CompareButton({ productId }: { productId: string }) {
   return (
     <button
       onClick={handleToggle}
-      className={`btn btn-xs ${checked ? "btn-primary" : "btn-ghost"} gap-1`}
+      className={`btn btn-sm ${checked ? "btn-primary" : "btn-ghost"} gap-1`}
       title={checked ? "Remove from compare" : "Add to compare"}
       aria-label={checked ? "Remove from compare" : "Add to compare"}
     >

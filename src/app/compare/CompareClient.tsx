@@ -203,7 +203,7 @@ export default function CompareClient({ allProducts, allSpecs }: CompareClientPr
                     {p.name}
                   </Link>
                   <button
-                    className="btn btn-ghost btn-xs mt-2 text-error"
+                    className="btn btn-ghost btn-sm mt-2 text-error"
                     onClick={() => removeProduct(p.id)}
                   >
                     Remove ✕
@@ -235,7 +235,7 @@ export default function CompareClient({ allProducts, allSpecs }: CompareClientPr
               {selectedProducts.map((p) => (
                 <td key={p.id} className="text-center">
                   <span className="text-warning">★</span> {p.rating}
-                  <span className="text-base-content/50 text-xs ml-1">({p.reviewCount})</span>
+                  <span className="text-base-content/50 text-sm ml-1">({p.reviewCount})</span>
                 </td>
               ))}
             </tr>
@@ -294,7 +294,7 @@ export default function CompareClient({ allProducts, allSpecs }: CompareClientPr
         </table>
       </div>
 
-      <p className="text-base-content/50 text-xs mt-3">
+      <p className="text-base-content/50 text-sm mt-3">
         Highlighted cells indicate where the devices differ.
       </p>
     </div>

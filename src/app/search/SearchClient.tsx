@@ -255,14 +255,14 @@ function SearchClientInner({ initialProducts, initialBrands }: Props) {
               </p>
               <input
                 type="range"
-                className="range range-xs range-primary"
+                className="range range-sm range-primary"
                 min={0}
                 max={MAX_PRICE_LIMIT}
                 step={5000}
                 value={maxPriceParam}
                 onChange={(e) => handleMaxPriceChange(Number(e.target.value))}
               />
-              <div className="flex justify-between text-xs text-base-content/40 mt-1">
+              <div className="flex justify-between text-sm text-base-content/50 mt-1">
                 <span>$0</span>
                 <span>${MAX_PRICE_LIMIT.toLocaleString()}</span>
               </div>
@@ -295,37 +295,61 @@ function SearchClientInner({ initialProducts, initialBrands }: Props) {
               </div>
             </div>
 
+            {/* Featured Searches */}
+            <div>
+              <p className="font-medium text-sm mb-2">Featured Searches</p>
+              <div className="space-y-1.5">
+                {[
+                  { label: "8GB RAM", param: "q", value: "8GB RAM" },
+                  { label: "256GB Storage", param: "q", value: "256GB" },
+                  { label: "5000mAh Battery", param: "q", value: "5000mAh" },
+                  { label: "64MP Camera", param: "q", value: "64MP" },
+                ].map((feat) => (
+                  <label
+                    key={feat.label}
+                    className="flex items-center gap-2 text-sm cursor-pointer hover:text-primary transition-colors"
+                  >
+                    <input
+                      type="checkbox"
+                      className="checkbox checkbox-xs checkbox-primary"
+                      onChange={(e) => {
+                        if (e.target.checked) {
+                          updateParams({ [feat.param]: feat.value });
+                        } else {
+                          updateParams({ [feat.param]: null });
+                        }
+                      }}
+                    />
+                    {feat.label}
+                  </label>
+                ))}
+              </div>
+            </div>
+
             {/* Reset */}
-            <button className="btn btn-ghost btn-sm w-full" onClick={handleReset}>
-              Reset filters
+            <button className="btn btn-warning btn-sm w-full font-semibold" onClick={handleReset}>
+              Reset All
             </button>
           </div>
         </aside>
 
         {/* Main content */}
         <div className="flex-1 min-w-0">
-          {/* Category chips */}
-          <div className="flex flex-wrap gap-2 mb-4">
-            {["all", ...categories].map((c) => (
-              <button
-                key={c}
-                onClick={() => handleCategoryChange(c)}
-                className={`btn btn-xs ${
-                  cat === c ? "btn-primary" : "btn-ghost"
-                }`}
-              >
-                {c === "all" ? "All" : CAT_LABELS[c] || c}
-              </button>
-            ))}
-          </div>
-
-          {/* Results header */}
+          {/* Category chips + Sort on same line */}
           <div className="flex flex-wrap items-center justify-between gap-3 mb-4">
-            <p className="text-sm text-base-content/70">
-              {filtered.length === 0
-                ? "0 products"
-                : `Showing ${startIdx + 1}–${Math.min(startIdx + PER_PAGE, filtered.length)} of ${filtered.length} ${filtered.length !== 1 ? "products" : "product"}`}
-            </p>
+            <div className="flex flex-wrap gap-2">
+              {["all", ...categories].map((c) => (
+                <button
+                  key={c}
+                  onClick={() => handleCategoryChange(c)}
+                  className={`btn btn-sm ${
+                    cat === c ? "btn-primary" : "btn-ghost"
+                  }`}
+                >
+                  {c === "all" ? "All" : CAT_LABELS[c] || c}
+                </button>
+              ))}
+            </div>
             <select
               className="select select-sm select-bordered w-auto"
               value={sort}

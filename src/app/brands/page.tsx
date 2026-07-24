@@ -80,7 +80,7 @@ function BrandTile({ brand, count }: { brand: Brand; count: number }) {
         )}
       </div>
       <div className="text-sm font-medium leading-tight">{brand.name}</div>
-      <div className="text-xs text-base-content/60">{label}</div>
+      <div className="text-sm text-base-content/60">{label}</div>
     </Link>
   );
 }
@@ -109,7 +109,9 @@ export default function BrandsPage() {
 
           return (
             <div key={category}>
-              <h3 className="text-xl font-semibold mb-4">{category}</h3>
+              <h3 className="text-2xl font-bold mb-4 pb-2 border-b-2 border-primary/40" style={{ color: "var(--text)" }}>
+                {category}
+              </h3>
               <div
                 className="grid gap-3"
                 style={{ gridTemplateColumns: "repeat(auto-fill, minmax(120px, 1fr))" }}

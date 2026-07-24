@@ -54,7 +54,7 @@ export default function CookieConsent() {
         <div className="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
           <p className="text-sm text-base-content/70 flex-1">
             We use cookies to enhance your experience. By continuing to visit this site you agree to our use of cookies.{" "}
-            <a href="/privacy" className="link link-primary text-xs">Privacy Policy</a>
+            <a href="/privacy" className="link link-primary text-sm">Privacy Policy</a>
           </p>
           <div className="flex items-center gap-2 shrink-0">
             <button onClick={() => setShowModal(true)} className="btn btn-ghost btn-sm">
@@ -84,7 +84,7 @@ export default function CookieConsent() {
               <div className="flex items-center justify-between">
                 <div>
                   <p className="font-medium text-sm">Functional</p>
-                  <p className="text-xs text-base-content/50">Required for the website to function properly</p>
+                  <p className="text-sm text-base-content/50">Required for the website to function properly</p>
                 </div>
                 <input type="checkbox" className="toggle toggle-primary" checked disabled readOnly />
               </div>
@@ -93,7 +93,7 @@ export default function CookieConsent() {
               <div className="flex items-center justify-between">
                 <div>
                   <p className="font-medium text-sm">Analytics</p>
-                  <p className="text-xs text-base-content/50">Help us understand how visitors use our site</p>
+                  <p className="text-sm text-base-content/50">Help us understand how visitors use our site</p>
                 </div>
                 <input
                   type="checkbox"
@@ -107,7 +107,7 @@ export default function CookieConsent() {
               <div className="flex items-center justify-between">
                 <div>
                   <p className="font-medium text-sm">Advertising</p>
-                  <p className="text-xs text-base-content/50">Used to show you relevant ads on other sites</p>
+                  <p className="text-sm text-base-content/50">Used to show you relevant ads on other sites</p>
                 </div>
                 <input
                   type="checkbox"

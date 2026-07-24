@@ -82,7 +82,7 @@ export default function RecentlyViewed({ currentProductId }: { currentProductId?
     <section>
       <div className="flex items-center justify-between mb-4">
         <h2 className="text-xl font-bold">Recently Viewed</h2>
-        <button onClick={handleClear} className="btn btn-ghost btn-xs gap-1 text-base-content/60">
+        <button onClick={handleClear} className="btn btn-ghost btn-sm gap-1 text-base-content/60">
           <Trash2 className="w-3.5 h-3.5" />
           Clear History
         </button>
@@ -104,7 +104,7 @@ export default function RecentlyViewed({ currentProductId }: { currentProductId?
                 loading="lazy"
               />
             </div>
-            <span className="text-xs text-center line-clamp-2 leading-snug text-base-content/80 group-hover:text-primary transition-colors">
+            <span className="text-sm text-center line-clamp-2 leading-snug text-base-content/80 group-hover:text-primary transition-colors">
               {item.name}
             </span>
           </Link>

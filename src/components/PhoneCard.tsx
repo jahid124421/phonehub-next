@@ -42,7 +42,7 @@ function StarRating({ rating, reviewCount }: { rating: number; reviewCount: numb
   return (
     <div className="flex items-center gap-1">
       <div className="flex">{stars}</div>
-      <span className="text-xs text-base-content/60">
+      <span className="text-sm text-base-content/60">
         {rating.toFixed(1)} ({reviewCount})
       </span>
     </div>
@@ -58,14 +58,10 @@ export default function PhoneCard({ product }: { product: Product }) {
         {/* Image area */}
         <figure className="relative aspect-square bg-base-300 overflow-hidden">
           <ProductImage src={product.image} alt={product.name} fallback={fallback} />
-          {/* Brand badge */}
-          <span className="absolute top-2 left-2 badge badge-sm badge-primary font-semibold">
-            {product.brand.charAt(0).toUpperCase()}
-          </span>
         </figure>
 
         {/* Card body */}
-        <div className="card-body p-3 gap-1.5">
+        <div className="card-body p-4 gap-2">
           <h3 className="text-sm font-semibold line-clamp-2 leading-snug">{product.name}</h3>
           <StarRating rating={product.rating} reviewCount={product.reviewCount} />
           <div className="mt-1">
