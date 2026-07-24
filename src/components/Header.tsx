@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { useState } from "react";
 import ThemeToggle from "./ThemeToggle";
 import CurrencyPicker from "./CurrencyPicker";
@@ -14,6 +15,12 @@ const navLinks = [
 
 export default function Header() {
   const [mobileOpen, setMobileOpen] = useState(false);
+  const pathname = usePathname();
+
+  const isActive = (href: string) => {
+    if (href === "/") return pathname === "/";
+    return pathname.startsWith(href);
+  };
 
   return (
     <header
@@ -65,15 +72,19 @@ export default function Header() {
             <Link
               key={link.href}
               href={link.href}
-              className="nav-link"
+              className={`nav-link flex items-center justify-center ${
+                isActive(link.href) ? "nav-link--active" : ""
+              }`}
               style={{
                 padding: "8px 12px",
                 borderRadius: 8,
-                color: "var(--muted)",
+                color: isActive(link.href) ? "var(--primary)" : "var(--muted)",
                 fontWeight: 500,
                 fontSize: 14,
                 textDecoration: "none",
                 transition: "0.15s",
+                background: isActive(link.href) ? "var(--nav-hover-bg)" : "transparent",
+                borderBottom: isActive(link.href) ? "2px solid var(--primary)" : "2px solid transparent",
               }}
             >
               {link.label}
@@ -170,10 +181,11 @@ export default function Header() {
               style={{
                 padding: "10px 14px",
                 borderRadius: 8,
-                color: "var(--muted)",
+                color: isActive(link.href) ? "var(--primary)" : "var(--muted)",
                 fontWeight: 500,
                 fontSize: 14,
                 textDecoration: "none",
+                background: isActive(link.href) ? "var(--nav-hover-bg)" : "transparent",
               }}
             >
               {link.label}
@@ -219,6 +231,11 @@ export default function Header() {
         .nav-link:hover {
           color: var(--text) !important;
           background: var(--nav-hover-bg) !important;
+        }
+        .nav-link--active {
+          color: var(--primary) !important;
+          background: var(--nav-hover-bg) !important;
+          border-bottom: 2px solid var(--primary) !important;
         }
         .nav-links-desktop {
           display: flex !important;

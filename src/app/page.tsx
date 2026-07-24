@@ -1,5 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
+import { Suspense } from "react";
 import {
   getAllProducts,
   getAllBrands,
@@ -197,7 +198,9 @@ export default function Home() {
 
       <div className="max-w-7xl mx-auto px-4 space-y-16 pb-16">
         {/* Category Strip — uses the full component with Lucide icons + hover dropdowns */}
-        <CategoryStrip />
+        <Suspense fallback={<div className="cat-strip-outer"><div className="cat-strip">Loading categories…</div></div>}>
+          <CategoryStrip />
+        </Suspense>
 
         {/* ========================================================== */}
         {/*  3. Trending Now                                            */}

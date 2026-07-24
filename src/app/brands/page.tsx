@@ -1,6 +1,8 @@
 import Link from "next/link";
+import { Suspense } from "react";
 import { getAllBrands, getAllProducts, type Brand } from "@/lib/data";
 import Breadcrumb from "@/components/Breadcrumb";
+import CategoryStrip from "@/components/CategoryStrip";
 
 export const metadata = {
   title: "Brands",
@@ -98,9 +100,13 @@ export default function BrandsPage() {
   });
 
   return (
-    <main className="container mx-auto px-4 py-6">
-      <Breadcrumb items={[{ label: "Home", href: "/" }, { label: "Brands" }]} />
-      <h1 className="text-3xl font-bold mt-4 mb-6">All Brands</h1>
+    <>
+      <Suspense fallback={<div className="cat-strip-outer"><div className="cat-strip">Loading categories…</div></div>}>
+        <CategoryStrip />
+      </Suspense>
+      <main className="container mx-auto px-4 py-6">
+        <Breadcrumb items={[{ label: "Home", href: "/" }, { label: "Brands" }]} />
+        <h1 className="text-3xl font-bold mt-4 mb-6">All Brands</h1>
 
       <div className="flex flex-col gap-10">
         {categoryOrder.map((category) => {
@@ -132,7 +138,8 @@ export default function BrandsPage() {
             </div>
           );
         })}
-      </div>
-    </main>
+        </div>
+      </main>
+    </>
   );
 }

@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import { useSearchParams } from "next/navigation";
 import {
   Smartphone,
   Tablet,
@@ -117,11 +118,15 @@ const CATEGORIES: CatItem[] = [
 ];
 
 export default function CategoryStrip() {
+  const searchParams = useSearchParams();
+  const activeCat = searchParams.get("cat") || "all";
+
   return (
     <div className="cat-strip-outer relative">
       <div className="cat-strip">
         {CATEGORIES.map((cat) => {
           const Icon = cat.icon;
+          const isActive = activeCat === cat.slug;
           return (
             <div
               key={cat.slug}
@@ -129,14 +134,16 @@ export default function CategoryStrip() {
             >
               <Link
                 href={cat.slug === "all" ? "/search" : `/search?cat=${cat.slug}`}
-                className="cat-strip-link"
+                className={`cat-strip-link flex items-center justify-center gap-1.5 ${
+                  isActive ? "cat-strip-link--active" : ""
+                }`}
               >
-                <Icon size={16} style={{ marginRight: 6, verticalAlign: "middle" }} />
-                {cat.label}
+                <Icon size={16} />
+                <span>{cat.label}</span>
                 {cat.subs && (
                   <ChevronDown
                     size={12}
-                    className="ml-1 opacity-50 transition-transform duration-200 group-hover:rotate-180"
+                    className="opacity-50 transition-transform duration-200 group-hover:rotate-180"
                   />
                 )}
               </Link>

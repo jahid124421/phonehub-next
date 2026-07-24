@@ -279,6 +279,7 @@ section { padding: 34px 0; }
   background: var(--surface); font-weight: 600; font-size: 14px; transition: .15s; color: var(--text); white-space: nowrap;
 }
 .cat-strip-link:hover { border-color: var(--primary); background: var(--surface-2); transform: translateY(-2px); }
+.cat-strip-link--active { border-color: var(--primary); background: var(--primary); color: #fff !important; }
 .cat-dropdown {
   position: absolute; top: 100%; left: 0; z-index: 40; min-width: 160px;
   background: var(--surface); border: 1px solid var(--border); border-radius: 12px;
