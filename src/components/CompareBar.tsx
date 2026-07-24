@@ -47,7 +47,7 @@ export default function CompareBar() {
               <button
                 key={id}
                 onClick={() => handleRemove(id)}
-                className="badge badge-outline badge-sm gap-1 hover:badge-error transition-colors"
+                className="badge badge-outline badge-md gap-1 hover:badge-error transition-colors"
                 title="Remove from compare"
               >
                 {id.length > 12 ? id.slice(0, 12) + "..." : id}
