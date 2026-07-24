@@ -54,7 +54,7 @@
   --bg-2: #eef1f8;
   --surface: #ffffff;
   --surface-2: #f1f4fa;
-  --border: #e3e8f0;
+  --border: #d0d5dd;
   --text: #141821;
   --muted: #5c6675;
   --primary: #3b6cf6;
@@ -62,11 +62,11 @@
   --accent: #17a34a;
   --star: #e6a100;
   --header-bg: rgba(255, 255, 255, 0.92);
-  --header-border: var(--border);
+  --header-border: #d0d5dd;
   --nav-text: var(--muted);
   --nav-hover-bg: #f0f2f5;
   --search-bg: var(--surface);
-  --search-border: var(--border);
+  --search-border: #d0d5dd;
   --card-img-bg: #f7f9fc;
   --hero-glow: rgba(59, 108, 246, 0.16);
   --shadow: 0 10px 30px rgba(30, 50, 90, 0.12);
@@ -74,6 +74,13 @@
 
   --background: var(--bg);
   --foreground: var(--text);
+
+  /* Override DaisyUI base colors for light mode */
+  --color-base-100: #f5f7fc;
+  --color-base-200: #ffffff;
+  --color-base-300: #d0d5dd;
+  --color-base-content: #141821;
+  --color-neutral: #e8ecf2;
 }
 
 /* DaisyUI theme overrides for PhoneHub dark theme */
@@ -538,6 +545,119 @@ section { padding: 34px 0; }
   width: 8px; height: 8px; border-radius: 50%; display: inline-block;
 }
 .price-table tr:hover { background: var(--surface-2); }
+
+/* ---------- light mode component overrides ---------- */
+
+/* Cards: visible border in light mode */
+:root[data-theme="light"] .card {
+  background: #ffffff;
+  border-color: #d0d5dd;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.06);
+}
+:root[data-theme="light"] .card:hover {
+  border-color: var(--primary);
+  box-shadow: 0 4px 12px rgba(59,108,246,0.12);
+}
+
+/* Header bottom border */
+:root[data-theme="light"] .site-header,
+:root[data-theme="light"] header {
+  border-bottom-color: #d0d5dd !important;
+}
+
+/* Filter panel */
+:root[data-theme="light"] .filters {
+  background: #ffffff;
+  border-color: #d0d5dd;
+}
+
+/* Compare table */
+:root[data-theme="light"] .compare-table td,
+:root[data-theme="light"] .compare-table th {
+  border-color: #d0d5dd;
+}
+:root[data-theme="light"] .compare-table th {
+  background: #f1f4fa;
+}
+/* DaisyUI table in compare */
+:root[data-theme="light"] .overflow-x-auto .table td,
+:root[data-theme="light"] .overflow-x-auto .table th {
+  border-color: #d0d5dd;
+}
+:root[data-theme="light"] .overflow-x-auto .table tr th {
+  background: #f1f4fa;
+}
+
+/* Search filter sidebar */
+:root[data-theme="light"] aside .bg-base-200 {
+  background: #ffffff;
+  border-color: #d0d5dd;
+}
+
+/* Brand tiles */
+:root[data-theme="light"] .brand-tile {
+  background: #ffffff;
+  border-color: #d0d5dd;
+}
+
+/* News cards */
+:root[data-theme="light"] .news-card {
+  background: #ffffff;
+  border-color: #d0d5dd;
+}
+
+/* Footer */
+:root[data-theme="light"] .site-footer {
+  background: #ffffff;
+  border-top-color: #d0d5dd;
+}
+
+/* Tables (price tables, spec tables) */
+:root[data-theme="light"] .price-table,
+:root[data-theme="light"] .spec-table {
+  border-color: #d0d5dd;
+}
+:root[data-theme="light"] .price-table th,
+:root[data-theme="light"] .price-table td,
+:root[data-theme="light"] .spec-table td {
+  border-bottom-color: #d0d5dd;
+}
+:root[data-theme="light"] .spec-block h3 {
+  background: #f1f4fa;
+}
+
+/* Section separators */
+:root[data-theme="light"] .cat-strip-outer {
+  background: #ffffff;
+  border-bottom-color: #d0d5dd;
+}
+
+/* Guide cards */
+:root[data-theme="light"] .guide-card {
+  background: #ffffff;
+  border-color: #d0d5dd;
+}
+:root[data-theme="light"] .guide-header {
+  background: linear-gradient(135deg, #f1f4fa, #ffffff);
+  border-bottom-color: #d0d5dd;
+}
+
+/* Quick-spec boxes */
+:root[data-theme="light"] .qs {
+  background: #ffffff;
+  border-color: #d0d5dd;
+}
+
+/* Scrollbar light mode */
+:root[data-theme="light"] ::-webkit-scrollbar-track {
+  background: #f1f4fa;
+}
+:root[data-theme="light"] ::-webkit-scrollbar-thumb {
+  background: #c0c8d4;
+}
+:root[data-theme="light"] ::-webkit-scrollbar-thumb:hover {
+  background: #3b6cf6;
+}
 
 /* ---------- responsive ---------- */
 @media (max-width: 860px) {

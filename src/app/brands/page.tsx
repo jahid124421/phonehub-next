@@ -20,23 +20,33 @@ const categoryOrder = [
 const CATEGORY_LABELS: Record<string, { singular: string; plural: string }> = {
   Mobile: { singular: "phone", plural: "phones" },
   Laptop: { singular: "laptop", plural: "laptops" },
-  Electronics: { singular: "product", plural: "products" },
-  Computers: { singular: "product", plural: "products" },
+  Electronics: { singular: "device", plural: "devices" },
+  Computers: { singular: "device", plural: "devices" },
   TVs: { singular: "TV", plural: "TVs" },
   Auto: { singular: "vehicle", plural: "vehicles" },
   Other: { singular: "product", plural: "products" },
 };
 
-/** Maps brand category → product categories that belong to it */
-const CATEGORY_PRODUCT_TYPES: Record<string, string[]> = {
-  Mobile: ["phone", "tablet", "smartwatch"],
-  Laptop: ["laptop"],
-  Electronics: ["camera", "audio", "console", "appliance", "smartwatch"],
-  Computers: ["laptop"],
-  TVs: ["tv"],
-  Auto: ["auto"],
-  Other: ["phone", "tablet", "smartwatch", "laptop", "tv", "camera", "audio", "console", "appliance"],
-};
+/** Filter function: does this product belong to the brand's category? */
+function productMatchesCategory(productCat: string, brandCategory: string): boolean {
+  switch (brandCategory) {
+    case "Mobile":
+      return ["phone", "tablet", "smartwatch"].includes(productCat);
+    case "Laptop":
+      return productCat === "laptop";
+    case "Electronics":
+      return productCat !== "auto" && productCat !== "phone";
+    case "Computers":
+      return productCat === "laptop";
+    case "TVs":
+      return productCat === "tv";
+    case "Auto":
+      return productCat === "auto";
+    case "Other":
+    default:
+      return true; // catch-all: count all products
+  }
+}
 
 function BrandTile({ brand, count }: { brand: Brand; count: number }) {
   const isAuto = brand.category === "Auto";
@@ -105,9 +115,8 @@ export default function BrandsPage() {
                 style={{ gridTemplateColumns: "repeat(auto-fill, minmax(120px, 1fr))" }}
               >
                 {catBrands.map((brand) => {
-                  const productTypes = CATEGORY_PRODUCT_TYPES[brand.category] || CATEGORY_PRODUCT_TYPES.Other;
                   const count = products.filter((p) =>
-                    p.brand === brand.id && productTypes.includes(p.category)
+                    p.brand === brand.id && productMatchesCategory(p.category, brand.category)
                   ).length;
                   return (
                     <BrandTile
