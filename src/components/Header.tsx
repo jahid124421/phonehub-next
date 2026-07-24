@@ -1,13 +1,9 @@
-import Link from "next/link";
-import ThemeToggle from "./ThemeToggle";
+"use client";
 
-const categories = [
-  { label: "Phones", value: "phone", icon: "📱" },
-  { label: "Laptops", value: "laptop", icon: "💻" },
-  { label: "TVs", value: "tv", icon: "📺" },
-  { label: "Cars", value: "auto", icon: "🚗" },
-  { label: "Watches", value: "smartwatch", icon: "⌚" },
-];
+import Link from "next/link";
+import { useState } from "react";
+import ThemeToggle from "./ThemeToggle";
+import CurrencyPicker from "./CurrencyPicker";
 
 const navLinks = [
   { label: "Home", href: "/" },
@@ -18,121 +14,234 @@ const navLinks = [
 ];
 
 export default function Header() {
-  return (
-    <header className="sticky top-0 z-50 bg-navy-900/80 backdrop-blur-xl border-b border-white/5">
-      <div className="navbar max-w-7xl mx-auto px-4 h-16">
-        {/* Left: Logo */}
-        <div className="navbar-start">
-          <Link href="/" className="flex items-center gap-2 group">
-            <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-accent-blue to-accent-purple flex items-center justify-center text-white font-bold text-sm">
-              P
-            </div>
-            <span className="text-lg font-bold bg-gradient-to-r from-accent-blue to-accent-purple bg-clip-text text-transparent hidden sm:inline">
-              PhoneHub
-            </span>
-          </Link>
-        </div>
+  const [mobileOpen, setMobileOpen] = useState(false);
 
-        {/* Center: Nav links + Search */}
-        <div className="navbar-center hidden md:flex">
-          <nav className="flex items-center gap-1">
-            {navLinks.map((link) => (
-              <Link
-                key={link.href}
-                href={link.href}
-                className="px-3 py-1.5 rounded-full text-xs font-medium text-gray-400 hover:text-white hover:bg-white/10 transition-all"
-              >
-                {link.label}
-              </Link>
-            ))}
-          </nav>
-          <form action="/search" method="get" className="relative ml-4 w-full max-w-xs">
+  return (
+    <header
+      style={{
+        position: "sticky",
+        top: 0,
+        zIndex: 50,
+        background: "var(--header-bg)",
+        backdropFilter: "saturate(140%) blur(12px)",
+        borderBottom: "1px solid var(--header-border)",
+      }}
+    >
+      <div
+        style={{
+          maxWidth: "var(--max)",
+          margin: "0 auto",
+          padding: "0 18px",
+          display: "flex",
+          alignItems: "center",
+          gap: 18,
+          height: 64,
+        }}
+      >
+        {/* Logo */}
+        <Link
+          href="/"
+          style={{
+            fontWeight: 800,
+            fontSize: 20,
+            letterSpacing: "-0.5px",
+            whiteSpace: "nowrap",
+            color: "var(--text)",
+            textDecoration: "none",
+          }}
+        >
+          Phone<span style={{ color: "var(--primary)" }}>Hub</span>
+        </Link>
+
+        {/* Nav links — desktop */}
+        <nav
+          style={{
+            display: "flex",
+            gap: 4,
+            marginLeft: 8,
+          }}
+          className="nav-links-desktop"
+        >
+          {navLinks.map((link) => (
+            <Link
+              key={link.href}
+              href={link.href}
+              className="nav-link"
+              style={{
+                padding: "8px 12px",
+                borderRadius: 8,
+                color: "var(--muted)",
+                fontWeight: 500,
+                fontSize: 14,
+                textDecoration: "none",
+                transition: "0.15s",
+              }}
+            >
+              {link.label}
+            </Link>
+          ))}
+        </nav>
+
+        {/* Search form */}
+        <form
+          action="/search"
+          method="get"
+          style={{
+            marginLeft: "auto",
+            flex: 1,
+            maxWidth: 420,
+            display: "flex",
+          }}
+          className="header-search-form"
+        >
+          <input
+            type="text"
+            name="q"
+            placeholder="Search phones, laptops, cars..."
+            style={{
+              flex: 1,
+              padding: "10px 14px",
+              borderRadius: "10px 0 0 10px",
+              border: "1px solid var(--search-border)",
+              borderRight: "none",
+              background: "var(--search-bg)",
+              color: "var(--text)",
+              outline: "none",
+              fontSize: 14,
+            }}
+          />
+          <button
+            type="submit"
+            style={{
+              padding: "0 16px",
+              border: "none",
+              borderRadius: "0 10px 10px 0",
+              background: "var(--primary)",
+              color: "#fff",
+              cursor: "pointer",
+              fontWeight: 600,
+              fontSize: 14,
+            }}
+          >
+            Search
+          </button>
+        </form>
+
+        {/* Currency picker */}
+        <CurrencyPicker />
+
+        {/* Theme toggle */}
+        <ThemeToggle />
+
+        {/* Mobile hamburger */}
+        <button
+          onClick={() => setMobileOpen(!mobileOpen)}
+          style={{
+            display: "none",
+            background: "none",
+            border: "none",
+            color: "var(--text)",
+            fontSize: 24,
+            cursor: "pointer",
+          }}
+          className="nav-toggle-btn"
+          aria-label="Menu"
+        >
+          ☰
+        </button>
+      </div>
+
+      {/* Mobile nav drawer */}
+      {mobileOpen && (
+        <nav
+          style={{
+            background: "var(--surface)",
+            borderTop: "1px solid var(--border)",
+            padding: 10,
+            display: "flex",
+            flexDirection: "column",
+            gap: 4,
+          }}
+        >
+          {navLinks.map((link) => (
+            <Link
+              key={link.href}
+              href={link.href}
+              onClick={() => setMobileOpen(false)}
+              style={{
+                padding: "10px 14px",
+                borderRadius: 8,
+                color: "var(--muted)",
+                fontWeight: 500,
+                fontSize: 14,
+                textDecoration: "none",
+              }}
+            >
+              {link.label}
+            </Link>
+          ))}
+          <form action="/search" method="get" style={{ display: "flex", padding: "8px 14px" }}>
             <input
               type="text"
               name="q"
-              placeholder="Search phones, laptops, cars..."
-              className="w-full h-10 pl-10 pr-4 rounded-full bg-navy-700/60 border border-white/10 text-sm text-gray-200 placeholder-gray-500 focus:outline-none focus:border-accent-blue/50 focus:bg-navy-700/80 transition-all"
+              placeholder="Search..."
+              style={{
+                flex: 1,
+                padding: "10px 14px",
+                borderRadius: "10px 0 0 10px",
+                border: "1px solid var(--search-border)",
+                borderRight: "none",
+                background: "var(--search-bg)",
+                color: "var(--text)",
+                outline: "none",
+                fontSize: 14,
+              }}
             />
-            <svg
-              className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-500"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
+            <button
+              type="submit"
+              style={{
+                padding: "0 16px",
+                border: "none",
+                borderRadius: "0 10px 10px 0",
+                background: "var(--primary)",
+                color: "#fff",
+                cursor: "pointer",
+                fontWeight: 600,
+              }}
             >
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
-            </svg>
+              Search
+            </button>
           </form>
-        </div>
+        </nav>
+      )}
 
-        {/* Right: Theme toggle + Mobile menu */}
-        <div className="navbar-end gap-2">
-          {/* Desktop category pills */}
-          <nav className="hidden lg:flex items-center gap-1">
-            {categories.map((cat) => (
-              <Link
-                key={cat.value}
-                href={`/search?cat=${cat.value}`}
-                className="px-3 py-1.5 rounded-full text-xs font-medium text-gray-400 hover:text-white hover:bg-white/10 transition-all"
-              >
-                <span className="mr-1">{cat.icon}</span>
-                {cat.label}
-              </Link>
-            ))}
-          </nav>
-
-          <ThemeToggle />
-
-          {/* Mobile hamburger */}
-          <div className="dropdown dropdown-end lg:hidden">
-            <label tabIndex={0} className="btn btn-ghost btn-sm text-gray-400">
-              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
-              </svg>
-            </label>
-            <ul
-              tabIndex={0}
-              className="dropdown-content mt-3 p-3 shadow-2xl bg-navy-800/95 backdrop-blur-xl rounded-2xl w-64 border border-white/10"
-            >
-              <li className="mb-2">
-                <form action="/search" method="get" className="md:hidden">
-                  <input
-                    type="text"
-                    name="q"
-                    placeholder="Search..."
-                    className="w-full h-9 px-3 rounded-lg bg-navy-700/60 border border-white/10 text-sm text-gray-200 placeholder-gray-500 focus:outline-none focus:border-accent-blue/50"
-                  />
-                </form>
-              </li>
-              {navLinks.map((link) => (
-                <li key={link.href}>
-                  <Link
-                    href={link.href}
-                    className="flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm text-gray-300 hover:text-white hover:bg-white/10 transition-all"
-                  >
-                    {link.label}
-                  </Link>
-                </li>
-              ))}
-              <li className="mt-2 pt-2 border-t border-white/10">
-                <Link
-                  href="/compare"
-                  className="flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm text-gray-300 hover:text-white hover:bg-white/10"
-                >
-                  <span>⚖️</span> Compare
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/news"
-                  className="flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm text-gray-300 hover:text-white hover:bg-white/10"
-                >
-                  <span>📰</span> News
-                </Link>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </div>
+      {/* Scoped responsive styles */}
+      <style jsx>{`
+        .nav-link:hover {
+          color: var(--text) !important;
+          background: var(--nav-hover-bg) !important;
+        }
+        .nav-links-desktop {
+          display: flex !important;
+        }
+        .nav-toggle-btn {
+          display: none !important;
+        }
+        .header-search-form {
+          max-width: 420px;
+        }
+        @media (max-width: 860px) {
+          .nav-links-desktop {
+            display: none !important;
+          }
+          .nav-toggle-btn {
+            display: block !important;
+          }
+          .header-search-form {
+            display: none !important;
+          }
+        }
+      `}</style>
     </header>
   );
 }

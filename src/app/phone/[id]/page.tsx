@@ -10,6 +10,9 @@ import {
 } from "@/lib/data";
 import Breadcrumb from "@/components/Breadcrumb";
 import CompareButton from "@/components/CompareButton";
+import WatchlistButton from "@/components/WatchlistButton";
+import PriceAlertButton from "@/components/PriceAlertButton";
+import RecentlyViewed from "@/components/RecentlyViewed";
 import ProductImage from "@/components/ProductImage";
 import GiscusDiscussion from "@/components/GiscusDiscussion";
 import PhoneCard from "@/components/PhoneCard";
@@ -268,6 +271,7 @@ export default async function PhoneDetailPage({
 
           <div className="flex items-center gap-3">
             <CompareButton productId={product.id} />
+            <WatchlistButton productId={product.id} />
           </div>
 
           {/* Quick Specs */}
@@ -337,6 +341,11 @@ export default async function PhoneDetailPage({
           </div>
         ) : (
           <p className="text-base-content/50 italic">Prices coming soon.</p>
+        )}
+        {product.basePrice > 0 && (
+          <div className="mt-4">
+            <PriceAlertButton productId={product.id} currentPrice={product.basePrice} />
+          </div>
         )}
       </section>
 
@@ -423,7 +432,10 @@ export default async function PhoneDetailPage({
         </section>
       )}
 
-      {/* 6. Similar Products */}
+      {/* 6. Recently Viewed */}
+      <RecentlyViewed currentProductId={product.id} />
+
+      {/* 7. Similar Products */}
       {similar.length > 0 && (
         <section>
           <h2 className="text-xl font-bold mb-4">Similar Products</h2>
@@ -435,7 +447,7 @@ export default async function PhoneDetailPage({
         </section>
       )}
 
-      {/* 7. Discussion */}
+      {/* 8. Discussion */}
       <section>
         <h2 className="text-xl font-bold mb-2">💬 Discussion</h2>
         <p className="text-base-content/60 text-sm mb-4">

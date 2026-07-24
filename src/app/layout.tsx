@@ -1,7 +1,11 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import Header from "@/components/Header";
+import CategoryStrip from "@/components/CategoryStrip";
 import Footer from "@/components/Footer";
+import ScrollToTop from "@/components/ScrollToTop";
+import ScrollRestoration from "@/components/ScrollRestoration";
+import CompareBar from "@/components/CompareBar";
 import "./globals.css";
 
 const inter = Inter({
@@ -89,8 +93,12 @@ export default function RootLayout({
       </head>
       <body className="min-h-screen flex flex-col">
         <Header />
+        <CategoryStrip />
         <main className="flex-1">{children}</main>
         <Footer />
+        <ScrollToTop />
+        <ScrollRestoration />
+        <CompareBar />
       </body>
     </html>
   );

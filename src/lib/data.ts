@@ -59,7 +59,14 @@ export function getAllBrands(): Brand[] {
 }
 
 export function getAllNews(): NewsItem[] {
-  return news as NewsItem[];
+  const allNews = news as NewsItem[];
+  const thirtyDaysAgo = new Date();
+  thirtyDaysAgo.setDate(thirtyDaysAgo.getDate() - 30);
+
+  return allNews.filter(item => {
+    const itemDate = new Date(item.date);
+    return itemDate >= thirtyDaysAgo;
+  });
 }
 
 export function getStores(): string[] {

@@ -8,8 +8,8 @@ export const metadata = {
 };
 
 const categoryOrder = [
-  "Mobiles",
-  "Laptops",
+  "Mobile",
+  "Laptop",
   "Electronics",
   "Computers",
   "TVs",
@@ -17,11 +17,34 @@ const categoryOrder = [
   "Other",
 ];
 
-function BrandTile({ brand, count, isAuto }: { brand: Brand; count: number; isAuto: boolean }) {
+const CATEGORY_LABELS: Record<string, { singular: string; plural: string }> = {
+  Mobile: { singular: "phone", plural: "phones" },
+  Laptop: { singular: "laptop", plural: "laptops" },
+  Electronics: { singular: "product", plural: "products" },
+  Computers: { singular: "product", plural: "products" },
+  TVs: { singular: "TV", plural: "TVs" },
+  Auto: { singular: "vehicle", plural: "vehicles" },
+  Other: { singular: "product", plural: "products" },
+};
+
+/** Maps brand category → product categories that belong to it */
+const CATEGORY_PRODUCT_TYPES: Record<string, string[]> = {
+  Mobile: ["phone", "tablet", "smartwatch"],
+  Laptop: ["laptop"],
+  Electronics: ["camera", "audio", "console", "appliance", "smartwatch"],
+  Computers: ["laptop"],
+  TVs: ["tv"],
+  Auto: ["auto"],
+  Other: ["phone", "tablet", "smartwatch", "laptop", "tv", "camera", "audio", "console", "appliance"],
+};
+
+function BrandTile({ brand, count }: { brand: Brand; count: number }) {
+  const isAuto = brand.category === "Auto";
   const href = isAuto
     ? `/search?brand=${brand.id}&cat=auto`
     : `/search?brand=${brand.id}`;
-  const label = isAuto ? `${count} vehicles` : `${count} phones`;
+  const labels = CATEGORY_LABELS[brand.category] || CATEGORY_LABELS.Other;
+  const label = `${count} ${count === 1 ? labels.singular : labels.plural}`;
   const isEmojiLogo = brand.logo && (brand.logo.startsWith("📱") || brand.logo.length <= 4);
 
   return (
@@ -82,17 +105,15 @@ export default function BrandsPage() {
                 style={{ gridTemplateColumns: "repeat(auto-fill, minmax(120px, 1fr))" }}
               >
                 {catBrands.map((brand) => {
-                  const isAuto = brand.category === "Auto";
-                  const count = products.filter((p) => {
-                    if (isAuto) return p.brand === brand.id && p.category === "auto";
-                    return p.brand === brand.id && p.category !== "auto";
-                  }).length;
+                  const productTypes = CATEGORY_PRODUCT_TYPES[brand.category] || CATEGORY_PRODUCT_TYPES.Other;
+                  const count = products.filter((p) =>
+                    p.brand === brand.id && productTypes.includes(p.category)
+                  ).length;
                   return (
                     <BrandTile
                       key={brand.id}
                       brand={brand}
                       count={count}
-                      isAuto={isAuto}
                     />
                   );
                 })}

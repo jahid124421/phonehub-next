@@ -10,8 +10,6 @@ import {
 import PhoneCard from "@/components/PhoneCard";
 import NewsCard from "@/components/NewsCard";
 import SearchBar from "@/components/SearchBar";
-import CompareBar from "@/components/CompareBar";
-import ScrollToTop from "@/components/ScrollToTop";
 import CookieConsent from "@/components/CookieConsent";
 
 /* ------------------------------------------------------------------ */
@@ -55,11 +53,11 @@ const CATEGORIES = [
 ] as const;
 
 const BRAND_CATEGORY_ORDER = [
-  "Premium",
-  "Gaming",
-  "Mid-Range",
-  "Value",
-  "Budget",
+  "Mobile",
+  "Laptop",
+  "Electronics",
+  "Computers",
+  "TVs",
   "Auto",
   "Other",
 ];
@@ -321,6 +319,7 @@ export default function Home() {
                       const href = isAuto
                         ? `/search?brand=${b.id}&cat=auto`
                         : `/search?brand=${b.id}`;
+                      const isEmojiLogo = b.logo && (b.logo.startsWith("📱") || b.logo.length <= 4);
 
                       return (
                         <Link
@@ -329,7 +328,7 @@ export default function Home() {
                           className="flex flex-col items-center gap-2 p-3 rounded-xl bg-base-200 border border-base-300 hover:border-primary hover:-translate-y-0.5 transition-all"
                         >
                           {/* Logo or monogram */}
-                          {b.logo ? (
+                          {!isEmojiLogo && b.logo ? (
                             <div className="w-10 h-10 rounded-full overflow-hidden bg-base-300 flex items-center justify-center">
                               <img
                                 src={b.logo}
@@ -458,8 +457,6 @@ export default function Home() {
       {/* ============================================================ */}
       {/*  9. Client Components                                         */}
       {/* ============================================================ */}
-      <CompareBar />
-      <ScrollToTop />
       <CookieConsent />
     </>
   );

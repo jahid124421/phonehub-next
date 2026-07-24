@@ -133,9 +133,21 @@ export default function CurrencyPicker() {
     <select
       value={currency}
       onChange={handleChange}
-      className="select select-bordered select-sm"
       disabled={!detected}
       aria-label="Select currency"
+      style={{
+        background: "var(--surface-2)",
+        border: "1px solid var(--border)",
+        color: "var(--text)",
+        height: 40,
+        borderRadius: 10,
+        padding: "0 8px",
+        cursor: "pointer",
+        fontWeight: 600,
+        fontSize: 13,
+        flex: "none",
+        outline: "none",
+      }}
     >
       {CURRENCIES.map((c) => (
         <option key={c.code} value={c.code}>

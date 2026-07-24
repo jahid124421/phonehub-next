@@ -29,3 +29,4 @@ Thumbs.db
 # Prisma
 # Keep schema but ignore generated client
 # src/generated/prisma/ is committed for type safety
+.vercel
