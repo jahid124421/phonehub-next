@@ -1,0 +1,1666 @@
+{
+  "iphone-17e": {
+    "geekbench": {
+      "single": 2308,
+      "multi": 6185
+    },
+    "antutu": {
+      "total": 1554692,
+      "cpu": 347760,
+      "gpu": 590255,
+      "mem": 310431,
+      "ux": 306243
+    }
+  },
+  "iphone-17-pro-max": {
+    "geekbench": {
+      "single": 2049,
+      "multi": 6320
+    },
+    "antutu": {
+      "total": 1369165,
+      "cpu": 311089,
+      "gpu": 488912,
+      "mem": 294614,
+      "ux": 274548
+    }
+  },
+  "iphone-17-pro": {
+    "geekbench": {
+      "single": 2117,
+      "multi": 7250
+    },
+    "antutu": {
+      "total": 1430843,
+      "cpu": 355032,
+      "gpu": 529097,
+      "mem": 260780,
+      "ux": 285932
+    }
+  },
+  "iphone-air": {
+    "geekbench": {
+      "single": 1139,
+      "multi": 3137
+    },
+    "antutu": {
+      "total": 421392,
+      "cpu": 108747,
+      "gpu": 156482,
+      "mem": 90311,
+      "ux": 65850
+    }
+  },
+  "iphone-17": {
+    "geekbench": {
+      "single": 1972,
+      "multi": 7357
+    },
+    "antutu": {
+      "total": 1626604,
+      "cpu": 420145,
+      "gpu": 645769,
+      "mem": 349829,
+      "ux": 210859
+    }
+  },
+  "iphone-16e": {
+    "geekbench": {
+      "single": 1983,
+      "multi": 6876
+    },
+    "antutu": {
+      "total": 1461990,
+      "cpu": 367689,
+      "gpu": 499529,
+      "mem": 312565,
+      "ux": 282205
+    }
+  },
+  "iphone-16-pro-max": {
+    "geekbench": {
+      "single": 2320,
+      "multi": 6915
+    },
+    "antutu": {
+      "total": 1692022,
+      "cpu": 386940,
+      "gpu": 652486,
+      "mem": 356945,
+      "ux": 295649
+    }
+  },
+  "iphone-16-pro": {
+    "geekbench": {
+      "single": 2332,
+      "multi": 7311
+    },
+    "antutu": {
+      "total": 1587954,
+      "cpu": 376747,
+      "gpu": 591267,
+      "mem": 286929,
+      "ux": 333009
+    }
+  },
+  "iphone-16-plus": {
+    "geekbench": {
+      "single": 2242,
+      "multi": 7349
+    },
+    "antutu": {
+      "total": 1390063,
+      "cpu": 309787,
+      "gpu": 517130,
+      "mem": 304221,
+      "ux": 258923
+    }
+  },
+  "iphone-16": {
+    "geekbench": {
+      "single": 1967,
+      "multi": 6844
+    },
+    "antutu": {
+      "total": 1433203,
+      "cpu": 317454,
+      "gpu": 571350,
+      "mem": 270682,
+      "ux": 273715
+    }
+  },
+  "galaxy-m47": {
+    "geekbench": {
+      "single": 1683,
+      "multi": 5632
+    },
+    "antutu": {
+      "total": 1001836,
+      "cpu": 226592,
+      "gpu": 359389,
+      "mem": 201472,
+      "ux": 214381
+    }
+  },
+  "galaxy-a27": {
+    "geekbench": {
+      "single": 1124,
+      "multi": 4605
+    },
+    "antutu": {
+      "total": 907617,
+      "cpu": 217545,
+      "gpu": 313476,
+      "mem": 167681,
+      "ux": 208913
+    }
+  },
+  "galaxy-a57": {
+    "geekbench": {
+      "single": 1933,
+      "multi": 5995
+    },
+    "antutu": {
+      "total": 1132224,
+      "cpu": 251626,
+      "gpu": 419331,
+      "mem": 218622,
+      "ux": 242643
+    }
+  },
+  "galaxy-a37": {
+    "geekbench": {
+      "single": 944,
+      "multi": 3966
+    },
+    "antutu": {
+      "total": 887305,
+      "cpu": 206043,
+      "gpu": 325092,
+      "mem": 163792,
+      "ux": 192376
+    }
+  },
+  "galaxy-m17e": {
+    "geekbench": {
+      "single": 610,
+      "multi": 3035
+    },
+    "antutu": {
+      "total": 501864,
+      "cpu": 121950,
+      "gpu": 191751,
+      "mem": 104384,
+      "ux": 83777
+    }
+  },
+  "galaxy-s26-ultra": {
+    "geekbench": {
+      "single": 2004,
+      "multi": 7004
+    },
+    "antutu": {
+      "total": 1682585,
+      "cpu": 393051,
+      "gpu": 616792,
+      "mem": 340260,
+      "ux": 332481
+    }
+  },
+  "galaxy-s26": {
+    "geekbench": {
+      "single": 1966,
+      "multi": 7051
+    },
+    "antutu": {
+      "total": 1486826,
+      "cpu": 346508,
+      "gpu": 590787,
+      "mem": 283134,
+      "ux": 266394
+    }
+  },
+  "galaxy-f70e": {
+    "geekbench": {
+      "single": 1047,
+      "multi": 3165
+    },
+    "antutu": {
+      "total": 600954,
+      "cpu": 151596,
+      "gpu": 237005,
+      "mem": 120702,
+      "ux": 91649
+    }
+  },
+  "galaxy-a07": {
+    "geekbench": {
+      "single": 541,
+      "multi": 3647
+    },
+    "antutu": {
+      "total": 323192,
+      "cpu": 79810,
+      "gpu": 124457,
+      "mem": 69275,
+      "ux": 49648
+    }
+  },
+  "pixel-10a": {
+    "geekbench": {
+      "single": 1901,
+      "multi": 4967
+    },
+    "antutu": {
+      "total": 1217834,
+      "cpu": 269401,
+      "gpu": 483602,
+      "mem": 238361,
+      "ux": 226468
+    }
+  },
+  "pixel-10-pro-fold": {
+    "geekbench": {
+      "single": 2267,
+      "multi": 7380
+    },
+    "antutu": {
+      "total": 1469073,
+      "cpu": 364150,
+      "gpu": 576223,
+      "mem": 283556,
+      "ux": 245142
+    }
+  },
+  "pixel-10-pro-xl": {
+    "geekbench": {
+      "single": 2189,
+      "multi": 6891
+    },
+    "antutu": {
+      "total": 1446908,
+      "cpu": 348102,
+      "gpu": 561639,
+      "mem": 297451,
+      "ux": 239714
+    }
+  },
+  "pixel-10-pro": {
+    "geekbench": {
+      "single": 2307,
+      "multi": 6697
+    },
+    "antutu": {
+      "total": 1570219,
+      "cpu": 406646,
+      "gpu": 612293,
+      "mem": 308056,
+      "ux": 243222
+    }
+  },
+  "pixel-10": {
+    "geekbench": {
+      "single": 1564,
+      "multi": 6143
+    },
+    "antutu": {
+      "total": 1299394,
+      "cpu": 307313,
+      "gpu": 476226,
+      "mem": 275500,
+      "ux": 240353
+    }
+  },
+  "pixel-9a": {
+    "geekbench": {
+      "single": 1477,
+      "multi": 6078
+    },
+    "antutu": {
+      "total": 994369,
+      "cpu": 228842,
+      "gpu": 389087,
+      "mem": 199792,
+      "ux": 176646
+    }
+  },
+  "pixel-9-pro-xl": {
+    "geekbench": {
+      "single": 2382,
+      "multi": 6510
+    },
+    "antutu": {
+      "total": 1552161,
+      "cpu": 365422,
+      "gpu": 542236,
+      "mem": 314821,
+      "ux": 329679
+    }
+  },
+  "pixel-9-pro": {
+    "geekbench": {
+      "single": 2299,
+      "multi": 7009
+    },
+    "antutu": {
+      "total": 1425558,
+      "cpu": 361422,
+      "gpu": 553620,
+      "mem": 300874,
+      "ux": 209639
+    }
+  },
+  "pixel-9": {
+    "geekbench": {
+      "single": 1912,
+      "multi": 5034
+    },
+    "antutu": {
+      "total": 1315914,
+      "cpu": 331346,
+      "gpu": 515948,
+      "mem": 238452,
+      "ux": 230166
+    }
+  },
+  "pixel-9-pro-fold": {
+    "geekbench": {
+      "single": 1946,
+      "multi": 6714
+    },
+    "antutu": {
+      "total": 1553740,
+      "cpu": 387112,
+      "gpu": 557846,
+      "mem": 295237,
+      "ux": 313543
+    }
+  },
+  "redmi-k90-ultra": {
+    "geekbench": {
+      "single": 1932,
+      "multi": 7353
+    },
+    "antutu": {
+      "total": 1556603,
+      "cpu": 371239,
+      "gpu": 567648,
+      "mem": 319862,
+      "ux": 297853
+    }
+  },
+  "redmi-17c": {
+    "geekbench": {
+      "single": 663,
+      "multi": 2376
+    },
+    "antutu": {
+      "total": 432202,
+      "cpu": 100764,
+      "gpu": 147945,
+      "mem": 83252,
+      "ux": 100239
+    }
+  },
+  "17t-pro": {
+    "geekbench": {
+      "single": 2018,
+      "multi": 6435
+    },
+    "antutu": {
+      "total": 1674607,
+      "cpu": 411576,
+      "gpu": 625646,
+      "mem": 351782,
+      "ux": 285601
+    }
+  },
+  "17t": {
+    "geekbench": {
+      "single": 1882,
+      "multi": 5342
+    },
+    "antutu": {
+      "total": 1002063,
+      "cpu": 258035,
+      "gpu": 372802,
+      "mem": 199299,
+      "ux": 171924
+    }
+  },
+  "17-max": {
+    "geekbench": {
+      "single": 632,
+      "multi": 2407
+    },
+    "antutu": {
+      "total": 306430,
+      "cpu": 76671,
+      "gpu": 109589,
+      "mem": 64389,
+      "ux": 55778
+    }
+  },
+  "poco-c81-pro": {
+    "geekbench": {
+      "single": 2188,
+      "multi": 6309
+    },
+    "antutu": {
+      "total": 1699610,
+      "cpu": 394161,
+      "gpu": 606137,
+      "mem": 344645,
+      "ux": 354664
+    }
+  },
+  "poco-c81": {
+    "geekbench": {
+      "single": 1379,
+      "multi": 4275
+    },
+    "antutu": {
+      "total": 742239,
+      "cpu": 163655,
+      "gpu": 267007,
+      "mem": 145747,
+      "ux": 165828
+    }
+  },
+  "poco-c81x": {
+    "geekbench": {
+      "single": 1365,
+      "multi": 3512
+    },
+    "antutu": {
+      "total": 771084,
+      "cpu": 195538,
+      "gpu": 294351,
+      "mem": 139611,
+      "ux": 141582
+    }
+  },
+  "redmi-k90-max": {
+    "geekbench": {
+      "single": 2012,
+      "multi": 7115
+    },
+    "antutu": {
+      "total": 1628610,
+      "cpu": 405659,
+      "gpu": 620065,
+      "mem": 334524,
+      "ux": 268360
+    }
+  },
+  "redmi-a7-pro": {
+    "geekbench": {
+      "single": 2178,
+      "multi": 6341
+    },
+    "antutu": {
+      "total": 1375304,
+      "cpu": 343024,
+      "gpu": 540789,
+      "mem": 296357,
+      "ux": 195133
+    }
+  },
+  "n6": {
+    "geekbench": {
+      "single": 609,
+      "multi": 3219
+    },
+    "antutu": {
+      "total": 545321,
+      "cpu": 127173,
+      "gpu": 208264,
+      "mem": 103433,
+      "ux": 106448
+    }
+  },
+  "turbo-6x-pro": {
+    "geekbench": {
+      "single": 2305,
+      "multi": 6762
+    },
+    "antutu": {
+      "total": 1440795,
+      "cpu": 354024,
+      "gpu": 565224,
+      "mem": 295425,
+      "ux": 226120
+    }
+  },
+  "turbo-6x": {
+    "geekbench": {
+      "single": 947,
+      "multi": 4067
+    },
+    "antutu": {
+      "total": 782832,
+      "cpu": 203232,
+      "gpu": 291255,
+      "mem": 171128,
+      "ux": 117216
+    }
+  },
+  "nord-ce6": {
+    "geekbench": {
+      "single": 1379,
+      "multi": 3519
+    },
+    "antutu": {
+      "total": 785362,
+      "cpu": 177284,
+      "gpu": 269875,
+      "mem": 160655,
+      "ux": 177546
+    }
+  },
+  "nord-ce6-lite": {
+    "geekbench": {
+      "single": 865,
+      "multi": 4283
+    },
+    "antutu": {
+      "total": 877953,
+      "cpu": 222044,
+      "gpu": 349350,
+      "mem": 189816,
+      "ux": 116741
+    }
+  },
+  "ace-6-ultra": {
+    "geekbench": {
+      "single": 2328,
+      "multi": 6343
+    },
+    "antutu": {
+      "total": 1685339,
+      "cpu": 375887,
+      "gpu": 589616,
+      "mem": 351035,
+      "ux": 368800
+    }
+  },
+  "nord-6": {
+    "geekbench": {
+      "single": 1430,
+      "multi": 5235
+    },
+    "antutu": {
+      "total": 1287746,
+      "cpu": 288862,
+      "gpu": 485073,
+      "mem": 236898,
+      "ux": 276911
+    }
+  },
+  "15t": {
+    "geekbench": {
+      "single": 758,
+      "multi": 1853
+    },
+    "antutu": {
+      "total": 318668,
+      "cpu": 76772,
+      "gpu": 117246,
+      "mem": 66342,
+      "ux": 58305
+    }
+  },
+  "turbo-6": {
+    "geekbench": {
+      "single": 1123,
+      "multi": 4445
+    },
+    "antutu": {
+      "total": 617594,
+      "cpu": 140845,
+      "gpu": 235745,
+      "mem": 131475,
+      "ux": 109526
+    }
+  },
+  "turbo-6v": {
+    "geekbench": {
+      "single": 1420,
+      "multi": 4576
+    },
+    "antutu": {
+      "total": 643615,
+      "cpu": 150863,
+      "gpu": 228200,
+      "mem": 124720,
+      "ux": 139830
+    }
+  },
+  "phone--4b": {
+    "geekbench": {
+      "single": 1528,
+      "multi": 4837
+    },
+    "antutu": {
+      "total": 1124892,
+      "cpu": 274081,
+      "gpu": 395826,
+      "mem": 235380,
+      "ux": 219603
+    }
+  },
+  "phone--4a--pro": {
+    "geekbench": {
+      "single": 2074,
+      "multi": 6212
+    },
+    "antutu": {
+      "total": 1482725,
+      "cpu": 377434,
+      "gpu": 518510,
+      "mem": 287554,
+      "ux": 299224
+    }
+  },
+  "phone--4a": {
+    "geekbench": {
+      "single": 1645,
+      "multi": 5140
+    },
+    "antutu": {
+      "total": 1189561,
+      "cpu": 301550,
+      "gpu": 411242,
+      "mem": 255846,
+      "ux": 220921
+    }
+  },
+  "phone--3a--lite": {
+    "geekbench": {
+      "single": 1407,
+      "multi": 4287
+    },
+    "antutu": {
+      "total": 712162,
+      "cpu": 168059,
+      "gpu": 262841,
+      "mem": 150364,
+      "ux": 130896
+    }
+  },
+  "phone--3": {
+    "geekbench": {
+      "single": 1091,
+      "multi": 4545
+    },
+    "antutu": {
+      "total": 823709,
+      "cpu": 188296,
+      "gpu": 305894,
+      "mem": 163821,
+      "ux": 165695
+    }
+  },
+  "cmf-phone-2-pro": {
+    "geekbench": {
+      "single": 2016,
+      "multi": 7239
+    },
+    "antutu": {
+      "total": 1440053,
+      "cpu": 340970,
+      "gpu": 564434,
+      "mem": 264356,
+      "ux": 270291
+    }
+  },
+  "phone--3a--pro": {
+    "geekbench": {
+      "single": 2230,
+      "multi": 6490
+    },
+    "antutu": {
+      "total": 1556372,
+      "cpu": 382849,
+      "gpu": 567981,
+      "mem": 311398,
+      "ux": 294142
+    }
+  },
+  "phone--3a": {
+    "geekbench": {
+      "single": 1086,
+      "multi": 4723
+    },
+    "antutu": {
+      "total": 832902,
+      "cpu": 186024,
+      "gpu": 322302,
+      "mem": 160656,
+      "ux": 163918
+    }
+  },
+  "phone--2a--plus": {
+    "geekbench": {
+      "single": 1006,
+      "multi": 3463
+    },
+    "antutu": {
+      "total": 617789,
+      "cpu": 149463,
+      "gpu": 226522,
+      "mem": 119310,
+      "ux": 122493
+    }
+  },
+  "cmf-phone-1": {
+    "geekbench": {
+      "single": 977,
+      "multi": 3560
+    },
+    "antutu": {
+      "total": 618479,
+      "cpu": 146850,
+      "gpu": 237100,
+      "mem": 127864,
+      "ux": 106663
+    }
+  },
+  "y500": {
+    "geekbench": {
+      "single": 1100,
+      "multi": 3862
+    },
+    "antutu": {
+      "total": 733591,
+      "cpu": 178807,
+      "gpu": 280305,
+      "mem": 146973,
+      "ux": 127504
+    }
+  },
+  "iqoo-z11i": {
+    "geekbench": {
+      "single": 1077,
+      "multi": 4705
+    },
+    "antutu": {
+      "total": 795641,
+      "cpu": 187556,
+      "gpu": 294293,
+      "mem": 154372,
+      "ux": 159418
+    }
+  },
+  "x-fold6": {
+    "geekbench": {
+      "single": 1992,
+      "multi": 7253
+    },
+    "antutu": {
+      "total": 1584123,
+      "cpu": 353646,
+      "gpu": 572690,
+      "mem": 320124,
+      "ux": 337662
+    }
+  },
+  "v70-lite": {
+    "geekbench": {
+      "single": 753,
+      "multi": 3049
+    },
+    "antutu": {
+      "total": 677158,
+      "cpu": 159775,
+      "gpu": 247413,
+      "mem": 133223,
+      "ux": 136744
+    }
+  },
+  "s60": {
+    "geekbench": {
+      "single": 1211,
+      "multi": 4358
+    },
+    "antutu": {
+      "total": 664417,
+      "cpu": 172667,
+      "gpu": 251896,
+      "mem": 132690,
+      "ux": 107161
+    }
+  },
+  "s60e": {
+    "geekbench": {
+      "single": 1187,
+      "multi": 3345
+    },
+    "antutu": {
+      "total": 679650,
+      "cpu": 161165,
+      "gpu": 260622,
+      "mem": 130603,
+      "ux": 127258
+    }
+  },
+  "t5": {
+    "geekbench": {
+      "single": 1009,
+      "multi": 2677
+    },
+    "antutu": {
+      "total": 624228,
+      "cpu": 160587,
+      "gpu": 246513,
+      "mem": 132271,
+      "ux": 84855
+    }
+  },
+  "y600-turbo": {
+    "geekbench": {
+      "single": 491,
+      "multi": 3493
+    },
+    "antutu": {
+      "total": 361016,
+      "cpu": 90572,
+      "gpu": 128884,
+      "mem": 68549,
+      "ux": 73009
+    }
+  },
+  "iqoo-15t": {
+    "geekbench": {
+      "single": 1595,
+      "multi": 5617
+    },
+    "antutu": {
+      "total": 1285993,
+      "cpu": 291136,
+      "gpu": 474467,
+      "mem": 264461,
+      "ux": 255927
+    }
+  },
+  "p4x-4g": {
+    "geekbench": {
+      "single": 544,
+      "multi": 2219
+    },
+    "antutu": {
+      "total": 661665,
+      "cpu": 148094,
+      "gpu": 226596,
+      "mem": 137773,
+      "ux": 149200
+    }
+  },
+  "p4r": {
+    "geekbench": {
+      "single": 750,
+      "multi": 3708
+    },
+    "antutu": {
+      "total": 639190,
+      "cpu": 148333,
+      "gpu": 225103,
+      "mem": 132129,
+      "ux": 133623
+    }
+  },
+  "16t": {
+    "geekbench": {
+      "single": 801,
+      "multi": 3391
+    },
+    "antutu": {
+      "total": 454665,
+      "cpu": 116003,
+      "gpu": 156582,
+      "mem": 96334,
+      "ux": 85744
+    }
+  },
+  "c100x": {
+    "geekbench": {
+      "single": 969,
+      "multi": 3726
+    },
+    "antutu": {
+      "total": 682064,
+      "cpu": 158615,
+      "gpu": 244512,
+      "mem": 123609,
+      "ux": 155326
+    }
+  },
+  "c100i": {
+    "geekbench": {
+      "single": 595,
+      "multi": 2715
+    },
+    "antutu": {
+      "total": 300856,
+      "cpu": 67114,
+      "gpu": 114889,
+      "mem": 63133,
+      "ux": 55718
+    }
+  },
+  "narzo-100-lite": {
+    "geekbench": {
+      "single": 578,
+      "multi": 3304
+    },
+    "antutu": {
+      "total": 628530,
+      "cpu": 145271,
+      "gpu": 231242,
+      "mem": 115615,
+      "ux": 136400
+    }
+  },
+  "c100-4g": {
+    "geekbench": {
+      "single": 611,
+      "multi": 3655
+    },
+    "antutu": {
+      "total": 652989,
+      "cpu": 157130,
+      "gpu": 233000,
+      "mem": 142342,
+      "ux": 120515
+    }
+  },
+  "c100": {
+    "geekbench": {
+      "single": 520,
+      "multi": 3167
+    },
+    "antutu": {
+      "total": 461531,
+      "cpu": 106595,
+      "gpu": 176141,
+      "mem": 93541,
+      "ux": 85252
+    }
+  },
+  "p4-lite": {
+    "geekbench": {
+      "single": 775,
+      "multi": 3671
+    },
+    "antutu": {
+      "total": 602407,
+      "cpu": 150894,
+      "gpu": 225330,
+      "mem": 120776,
+      "ux": 105406
+    }
+  },
+  "note-80": {
+    "geekbench": {
+      "single": 1307,
+      "multi": 3971
+    },
+    "antutu": {
+      "total": 641433,
+      "cpu": 153878,
+      "gpu": 234189,
+      "mem": 123038,
+      "ux": 130325
+    }
+  },
+  "reno16c": {
+    "geekbench": {
+      "single": 1168,
+      "multi": 4003
+    },
+    "antutu": {
+      "total": 941839,
+      "cpu": 222300,
+      "gpu": 349135,
+      "mem": 197861,
+      "ux": 172541
+    }
+  },
+  "reno16-pro": {
+    "geekbench": {
+      "single": 2345,
+      "multi": 7200
+    },
+    "antutu": {
+      "total": 1535835,
+      "cpu": 396260,
+      "gpu": 611181,
+      "mem": 328088,
+      "ux": 200303
+    }
+  },
+  "reno16": {
+    "geekbench": {
+      "single": 890,
+      "multi": 3328
+    },
+    "antutu": {
+      "total": 609614,
+      "cpu": 138646,
+      "gpu": 211381,
+      "mem": 128552,
+      "ux": 131032
+    }
+  },
+  "reno16-fs": {
+    "geekbench": {
+      "single": 1389,
+      "multi": 4356
+    },
+    "antutu": {
+      "total": 676355,
+      "cpu": 164981,
+      "gpu": 250571,
+      "mem": 134611,
+      "ux": 126190
+    }
+  },
+  "reno16-f": {
+    "geekbench": {
+      "single": 1375,
+      "multi": 4701
+    },
+    "antutu": {
+      "total": 635104,
+      "cpu": 164667,
+      "gpu": 239225,
+      "mem": 133794,
+      "ux": 97417
+    }
+  },
+  "find-x9-ultra": {
+    "geekbench": {
+      "single": 1951,
+      "multi": 7458
+    },
+    "antutu": {
+      "total": 1378129,
+      "cpu": 343177,
+      "gpu": 495646,
+      "mem": 256698,
+      "ux": 282606
+    }
+  },
+  "find-x9s-pro": {
+    "geekbench": {
+      "single": 2066,
+      "multi": 6914
+    },
+    "antutu": {
+      "total": 1627884,
+      "cpu": 405116,
+      "gpu": 623340,
+      "mem": 328136,
+      "ux": 271290
+    }
+  },
+  "find-x9s": {
+    "geekbench": {
+      "single": 2292,
+      "multi": 6946
+    },
+    "antutu": {
+      "total": 1447903,
+      "cpu": 319918,
+      "gpu": 578226,
+      "mem": 273887,
+      "ux": 275870
+    }
+  },
+  "moto-g77-power": {
+    "geekbench": {
+      "single": 1050,
+      "multi": 4147
+    },
+    "antutu": {
+      "total": 884108,
+      "cpu": 214647,
+      "gpu": 300960,
+      "mem": 180648,
+      "ux": 187851
+    }
+  },
+  "moto-g-max": {
+    "geekbench": {
+      "single": 1548,
+      "multi": 5221
+    },
+    "antutu": {
+      "total": 1164828,
+      "cpu": 297934,
+      "gpu": 433729,
+      "mem": 249088,
+      "ux": 184075
+    }
+  },
+  "edge--2026": {
+    "geekbench": {
+      "single": 1660,
+      "multi": 5469
+    },
+    "antutu": {
+      "total": 928766,
+      "cpu": 219115,
+      "gpu": 325839,
+      "mem": 193619,
+      "ux": 190192
+    }
+  },
+  "edge-70-pro": {
+    "geekbench": {
+      "single": 2222,
+      "multi": 6684
+    },
+    "antutu": {
+      "total": 1475180,
+      "cpu": 325427,
+      "gpu": 502878,
+      "mem": 321778,
+      "ux": 325095
+    }
+  },
+  "moto-g87": {
+    "geekbench": {
+      "single": 1303,
+      "multi": 4061
+    },
+    "antutu": {
+      "total": 717437,
+      "cpu": 168098,
+      "gpu": 260728,
+      "mem": 132982,
+      "ux": 155626
+    }
+  },
+  "moto-g47": {
+    "geekbench": {
+      "single": 562,
+      "multi": 3204
+    },
+    "antutu": {
+      "total": 303060,
+      "cpu": 69914,
+      "gpu": 120894,
+      "mem": 58074,
+      "ux": 54176
+    }
+  },
+  "moto-g37-power": {
+    "geekbench": {
+      "single": 961,
+      "multi": 1847
+    },
+    "antutu": {
+      "total": 614445,
+      "cpu": 153010,
+      "gpu": 220816,
+      "mem": 124026,
+      "ux": 116591
+    }
+  },
+  "moto-g37": {
+    "geekbench": {
+      "single": 943,
+      "multi": 3544
+    },
+    "antutu": {
+      "total": 614288,
+      "cpu": 138124,
+      "gpu": 239380,
+      "mem": 132221,
+      "ux": 104562
+    }
+  },
+  "razr-ultra-2026": {
+    "geekbench": {
+      "single": 2175,
+      "multi": 7256
+    },
+    "antutu": {
+      "total": 1657784,
+      "cpu": 374420,
+      "gpu": 616502,
+      "mem": 317365,
+      "ux": 349495
+    }
+  },
+  "razr-70-ultra": {
+    "geekbench": {
+      "single": 2164,
+      "multi": 6801
+    },
+    "antutu": {
+      "total": 1533938,
+      "cpu": 396737,
+      "gpu": 523269,
+      "mem": 304298,
+      "ux": 309632
+    }
+  },
+  "xperia-1-viii": {
+    "geekbench": {
+      "single": 2086,
+      "multi": 6414
+    },
+    "antutu": {
+      "total": 1469940,
+      "cpu": 349624,
+      "gpu": 586720,
+      "mem": 284884,
+      "ux": 248709
+    }
+  },
+  "xperia-10-vii": {
+    "geekbench": {
+      "single": 666,
+      "multi": 2941
+    },
+    "antutu": {
+      "total": 440293,
+      "cpu": 112530,
+      "gpu": 159551,
+      "mem": 83513,
+      "ux": 84697
+    }
+  },
+  "xperia-1-vii": {
+    "geekbench": {
+      "single": 2263,
+      "multi": 7516
+    },
+    "antutu": {
+      "total": 1580131,
+      "cpu": 379208,
+      "gpu": 584968,
+      "mem": 324703,
+      "ux": 291250
+    }
+  },
+  "xperia-1-vi": {
+    "geekbench": {
+      "single": 837,
+      "multi": 2418
+    },
+    "antutu": {
+      "total": 321271,
+      "cpu": 76201,
+      "gpu": 111570,
+      "mem": 58511,
+      "ux": 74987
+    }
+  },
+  "xperia-10-vi": {
+    "geekbench": {
+      "single": 789,
+      "multi": 2583
+    },
+    "antutu": {
+      "total": 655995,
+      "cpu": 167394,
+      "gpu": 244495,
+      "mem": 125080,
+      "ux": 119023
+    }
+  },
+  "xperia-5-v": {
+    "geekbench": {
+      "single": 511,
+      "multi": 2593
+    },
+    "antutu": {
+      "total": 416343,
+      "cpu": 93278,
+      "gpu": 155121,
+      "mem": 81524,
+      "ux": 86418
+    }
+  },
+  "xperia-1-v": {
+    "geekbench": {
+      "single": 986,
+      "multi": 2459
+    },
+    "antutu": {
+      "total": 438536,
+      "cpu": 106802,
+      "gpu": 156336,
+      "mem": 83483,
+      "ux": 91913
+    }
+  },
+  "xperia-10-v": {
+    "geekbench": {
+      "single": 509,
+      "multi": 3512
+    },
+    "antutu": {
+      "total": 370545,
+      "cpu": 82731,
+      "gpu": 143656,
+      "mem": 68327,
+      "ux": 75829
+    }
+  },
+  "xperia-5-iv": {
+    "geekbench": {
+      "single": 1040,
+      "multi": 2223
+    },
+    "antutu": {
+      "total": 475836,
+      "cpu": 107047,
+      "gpu": 171855,
+      "mem": 98984,
+      "ux": 97949
+    }
+  },
+  "xperia-1-iv": {
+    "geekbench": {
+      "single": 609,
+      "multi": 2977
+    },
+    "antutu": {
+      "total": 624896,
+      "cpu": 160791,
+      "gpu": 242091,
+      "mem": 119482,
+      "ux": 102530
+    }
+  },
+  "235-4g--2026": {
+    "geekbench": {
+      "single": 880,
+      "multi": 1899
+    },
+    "antutu": {
+      "total": 357575,
+      "cpu": 88150,
+      "gpu": 137202,
+      "mem": 67739,
+      "ux": 64482
+    }
+  },
+  "215-4g--2026": {
+    "geekbench": {
+      "single": 612,
+      "multi": 3564
+    },
+    "antutu": {
+      "total": 416876,
+      "cpu": 107822,
+      "gpu": 161090,
+      "mem": 86420,
+      "ux": 61542
+    }
+  },
+  "210-4g": {
+    "geekbench": {
+      "single": 758,
+      "multi": 3384
+    },
+    "antutu": {
+      "total": 469046,
+      "cpu": 116603,
+      "gpu": 164522,
+      "mem": 93365,
+      "ux": 94554
+    }
+  },
+  "200-4g": {
+    "geekbench": {
+      "single": 575,
+      "multi": 3191
+    },
+    "antutu": {
+      "total": 697863,
+      "cpu": 180993,
+      "gpu": 251511,
+      "mem": 133398,
+      "ux": 131958
+    }
+  },
+  "110-power": {
+    "geekbench": {
+      "single": 1039,
+      "multi": 3495
+    },
+    "antutu": {
+      "total": 538558,
+      "cpu": 120323,
+      "gpu": 192871,
+      "mem": 107696,
+      "ux": 117666
+    }
+  },
+  "x80-pro-max": {
+    "geekbench": {
+      "single": 2180,
+      "multi": 6508
+    },
+    "antutu": {
+      "total": 1661015,
+      "cpu": 423761,
+      "gpu": 594021,
+      "mem": 325538,
+      "ux": 317693
+    }
+  },
+  "x70-pro-max": {
+    "geekbench": {
+      "single": 1979,
+      "multi": 6685
+    },
+    "antutu": {
+      "total": 1616746,
+      "cpu": 407880,
+      "gpu": 598608,
+      "mem": 295708,
+      "ux": 314548
+    }
+  },
+  "play10": {
+    "geekbench": {
+      "single": 555,
+      "multi": 1978
+    },
+    "antutu": {
+      "total": 650480,
+      "cpu": 164951,
+      "gpu": 257480,
+      "mem": 119679,
+      "ux": 108369
+    }
+  },
+  "win-turbo": {
+    "geekbench": {
+      "single": 863,
+      "multi": 2185
+    },
+    "antutu": {
+      "total": 436071,
+      "cpu": 109212,
+      "gpu": 171710,
+      "mem": 85208,
+      "ux": 69940
+    }
+  },
+  "500-smart": {
+    "geekbench": {
+      "single": 947,
+      "multi": 2506
+    },
+    "antutu": {
+      "total": 466304,
+      "cpu": 103079,
+      "gpu": 166533,
+      "mem": 89241,
+      "ux": 107449
+    }
+  },
+  "zenfone-12-ultra": {
+    "geekbench": {
+      "single": 2171,
+      "multi": 7393
+    },
+    "antutu": {
+      "total": 1437786,
+      "cpu": 345788,
+      "gpu": 540905,
+      "mem": 285094,
+      "ux": 265997
+    }
+  },
+  "rog-phone-9-pro": {
+    "geekbench": {
+      "single": 2103,
+      "multi": 7207
+    },
+    "antutu": {
+      "total": 1494362,
+      "cpu": 353843,
+      "gpu": 549902,
+      "mem": 302064,
+      "ux": 288550
+    }
+  },
+  "rog-phone-9": {
+    "geekbench": {
+      "single": 2219,
+      "multi": 6653
+    },
+    "antutu": {
+      "total": 1441373,
+      "cpu": 326789,
+      "gpu": 512273,
+      "mem": 316309,
+      "ux": 286000
+    }
+  },
+  "zenfone-11-ultra": {
+    "geekbench": {
+      "single": 2310,
+      "multi": 6433
+    },
+    "antutu": {
+      "total": 1354995,
+      "cpu": 331779,
+      "gpu": 536057,
+      "mem": 278639,
+      "ux": 208518
+    }
+  },
+  "rog-phone-8-pro": {
+    "geekbench": {
+      "single": 2272,
+      "multi": 6445
+    },
+    "antutu": {
+      "total": 1358899,
+      "cpu": 321529,
+      "gpu": 472440,
+      "mem": 257086,
+      "ux": 307843
+    }
+  },
+  "rog-phone-8": {
+    "geekbench": {
+      "single": 2031,
+      "multi": 6552
+    },
+    "antutu": {
+      "total": 1380854,
+      "cpu": 307672,
+      "gpu": 502583,
+      "mem": 282547,
+      "ux": 288051
+    }
+  },
+  "zenfone-10": {
+    "geekbench": {
+      "single": 526,
+      "multi": 3722
+    },
+    "antutu": {
+      "total": 453373,
+      "cpu": 116841,
+      "gpu": 154449,
+      "mem": 87090,
+      "ux": 94991
+    }
+  },
+  "rog-phone-7-ultimate": {
+    "geekbench": {
+      "single": 2184,
+      "multi": 6381
+    },
+    "antutu": {
+      "total": 1584327,
+      "cpu": 372128,
+      "gpu": 542293,
+      "mem": 287125,
+      "ux": 382778
+    }
+  },
+  "rog-phone-7": {
+    "geekbench": {
+      "single": 2185,
+      "multi": 6995
+    },
+    "antutu": {
+      "total": 1651017,
+      "cpu": 428606,
+      "gpu": 644810,
+      "mem": 328763,
+      "ux": 248835
+    }
+  },
+  "huawei-mate-80": {
+    "geekbench": {
+      "single": 2133,
+      "multi": 6335
+    },
+    "antutu": {
+      "total": 1659895,
+      "cpu": 411351,
+      "gpu": 650702,
+      "mem": 346906,
+      "ux": 250935
+    }
+  },
+  "huawei-mate-70": {
+    "geekbench": {
+      "single": 1989,
+      "multi": 6765
+    },
+    "antutu": {
+      "total": 1615257,
+      "cpu": 380742,
+      "gpu": 643732,
+      "mem": 342755,
+      "ux": 248025
+    }
+  },
+  "huawei-mate-60": {
+    "geekbench": {
+      "single": 1956,
+      "multi": 6225
+    },
+    "antutu": {
+      "total": 1439836,
+      "cpu": 352924,
+      "gpu": 572334,
+      "mem": 284858,
+      "ux": 229718
+    }
+  }
+}

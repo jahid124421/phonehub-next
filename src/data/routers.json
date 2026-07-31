@@ -1,0 +1,1077 @@
+[
+  {
+    "id": "tp-link-archer-be95",
+    "brand": "tp-link",
+    "name": "TP-Link Archer BE95",
+    "category": "router",
+    "image": "https://picsum.photos/seed/tp-link-archer-be95/400/400",
+    "fallbackImg": "",
+    "releaseDate": "Released 2024, March",
+    "basePrice": 499,
+    "popularity": 88,
+    "rating": 4.6,
+    "reviewCount": 1230,
+    "review": "TP-Link's flagship Wi-Fi 7 router with quad-band technology and 320MHz channels. Delivers exceptional speeds for modern homes with many devices.",
+    "quickSpecs": {
+      "wifiStandard": "Wi-Fi 7 (802.11be)",
+      "maxSpeed": "25.8 Gbps combined",
+      "bands": "Quad-Band (6GHz x2, 5GHz x2)",
+      "ports": "1x 10G WAN, 4x 2.5G LAN, 1x 2.5G LAN"
+    },
+    "prices": [
+      {
+        "store": "Amazon",
+        "price": 449,
+        "url": "https://www.amazon.com/s?k=TP-Link+Archer+BE95"
+      },
+      {
+        "store": "Best Buy",
+        "price": 499,
+        "url": "https://www.bestbuy.com/site/searchpage.jsp?st=Archer+BE95"
+      }
+    ],
+    "pros": [
+      "Wi-Fi 7 with 320MHz channels",
+      "10G WAN port",
+      "Excellent coverage",
+      "Easy setup via app"
+    ],
+    "cons": [
+      "Expensive",
+      "Large physical size",
+      "Few clients support Wi-Fi 7 yet"
+    ]
+  },
+  {
+    "id": "asus-rt-be88u",
+    "brand": "asus",
+    "name": "ASUS RT-BE88U",
+    "category": "router",
+    "image": "https://picsum.photos/seed/asus-rt-be88u/400/400",
+    "fallbackImg": "",
+    "releaseDate": "Released 2024, May",
+    "basePrice": 399,
+    "popularity": 85,
+    "rating": 4.5,
+    "reviewCount": 890,
+    "review": "A premium Wi-Fi 7 router with dual 10G ports and ASUS AiMesh support. Great for power users who need wired and wireless performance.",
+    "quickSpecs": {
+      "wifiStandard": "Wi-Fi 7 (802.11be)",
+      "maxSpeed": "19 Gbps combined",
+      "bands": "Dual-Band (6GHz, 5GHz)",
+      "ports": "1x 10G WAN, 1x 10G LAN, 4x 2.5G LAN"
+    },
+    "prices": [
+      {
+        "store": "Amazon",
+        "price": 349,
+        "url": "https://www.amazon.com/s?k=ASUS+RT-BE88U"
+      },
+      {
+        "store": "B&H Photo",
+        "price": 399,
+        "url": "https://www.bhphotovideo.com/"
+      }
+    ],
+    "pros": [
+      "Dual 10G ports",
+      "Wi-Fi 7 performance",
+      "AiMesh compatible",
+      "Advanced QoS"
+    ],
+    "cons": [
+      "Dual-band only (no second 5GHz)",
+      "Expensive",
+      "Complex interface"
+    ]
+  },
+  {
+    "id": "netgear-nighthawk-rs700s",
+    "brand": "netgear",
+    "name": "Netgear Nighthawk RS700S",
+    "category": "router",
+    "image": "https://picsum.photos/seed/netgear-nighthawk-rs700s/400/400",
+    "fallbackImg": "",
+    "releaseDate": "Released 2024, January",
+    "basePrice": 549,
+    "popularity": 80,
+    "rating": 4.4,
+    "reviewCount": 670,
+    "review": "Netgear's Wi-Fi 7 flagship with 3D antenna design for superior coverage. The 10G port and robust parental controls make it a complete home networking solution.",
+    "quickSpecs": {
+      "wifiStandard": "Wi-Fi 7 (802.11be)",
+      "maxSpeed": "21 Gbps combined",
+      "bands": "Tri-Band (6GHz, 5GHz x2)",
+      "ports": "1x 10G WAN, 4x 1G LAN, 1x 2.5G LAN"
+    },
+    "prices": [
+      {
+        "store": "Amazon",
+        "price": 449,
+        "url": "https://www.amazon.com/s?k=Netgear+RS700S"
+      },
+      {
+        "store": "Netgear",
+        "price": 549,
+        "url": "https://www.netgear.com/"
+      }
+    ],
+    "pros": [
+      "Excellent coverage with 3D antennas",
+      "10G WAN port",
+      "Robust parental controls",
+      "Tri-band performance"
+    ],
+    "cons": [
+      "Expensive",
+      "Requires subscription for advanced features",
+      "Large size"
+    ]
+  },
+  {
+    "id": "tp-link-archer-ax73",
+    "brand": "tp-link",
+    "name": "TP-Link Archer AX73",
+    "category": "router",
+    "image": "https://picsum.photos/seed/tp-link-archer-ax73/400/400",
+    "fallbackImg": "",
+    "releaseDate": "Released 2021, August",
+    "basePrice": 179,
+    "popularity": 92,
+    "rating": 4.5,
+    "reviewCount": 8900,
+    "review": "The best-selling Wi-Fi 6 router offering excellent performance for the price. Dual-band with 5400 Mbps combined speed covers most households.",
+    "quickSpecs": {
+      "wifiStandard": "Wi-Fi 6 (802.11ax)",
+      "maxSpeed": "5.4 Gbps combined",
+      "bands": "Dual-Band (5GHz, 2.4GHz)",
+      "ports": "1x 1G WAN, 4x 1G LAN, 1x USB 3.0"
+    },
+    "prices": [
+      {
+        "store": "Amazon",
+        "price": 129,
+        "url": "https://www.amazon.com/s?k=TP-Link+Archer+AX73"
+      },
+      {
+        "store": "Best Buy",
+        "price": 179,
+        "url": "https://www.bestbuy.com/site/searchpage.jsp?st=Archer+AX73"
+      }
+    ],
+    "pros": [
+      "Excellent value",
+      "Strong Wi-Fi 6 performance",
+      "Easy setup",
+      "USB 3.0 for storage"
+    ],
+    "cons": [
+      "No 2.5G ports",
+      "No Wi-Fi 6E",
+      "Average range for large homes"
+    ]
+  },
+  {
+    "id": "google-nest-wifi-pro",
+    "brand": "google",
+    "name": "Google Nest WiFi Pro (Wi-Fi 6E)",
+    "category": "router",
+    "image": "https://picsum.photos/seed/google-nest-wifi-pro/400/400",
+    "fallbackImg": "",
+    "releaseDate": "Released 2022, October",
+    "basePrice": 199,
+    "popularity": 83,
+    "rating": 4.3,
+    "reviewCount": 4560,
+    "review": "Google's mesh router with Wi-Fi 6E support. Simple setup and integration with Google Home ecosystem makes it ideal for smart homes.",
+    "quickSpecs": {
+      "wifiStandard": "Wi-Fi 6E (802.11ax)",
+      "maxSpeed": "5.4 Gbps combined",
+      "bands": "Tri-Band (6GHz, 5GHz, 2.4GHz)",
+      "ports": "2x 1G Ethernet (auto WAN/LAN)"
+    },
+    "prices": [
+      {
+        "store": "Amazon",
+        "price": 149,
+        "url": "https://www.amazon.com/s?k=Google+Nest+WiFi+Pro"
+      },
+      {
+        "store": "Google Store",
+        "price": 199,
+        "url": "https://store.google.com/"
+      }
+    ],
+    "pros": [
+      "Simple setup",
+      "Google Home integration",
+      "Wi-Fi 6E tri-band",
+      "Compact design"
+    ],
+    "cons": [
+      "Only 2 Ethernet ports",
+      "No USB",
+      "Limited advanced settings"
+    ]
+  },
+  {
+    "id": "eero-pro-6e",
+    "brand": "eero",
+    "name": "Eero Pro 6E",
+    "category": "router",
+    "image": "https://picsum.photos/seed/eero-pro-6e/400/400",
+    "fallbackImg": "",
+    "releaseDate": "Released 2022, March",
+    "basePrice": 199,
+    "popularity": 81,
+    "rating": 4.4,
+    "reviewCount": 5670,
+    "review": "A compact yet powerful mesh router with Wi-Fi 6E. Thread and Zigbee support make it an excellent smart home hub alongside its networking duties.",
+    "quickSpecs": {
+      "wifiStandard": "Wi-Fi 6E (802.11ax)",
+      "maxSpeed": "4.3 Gbps combined",
+      "bands": "Tri-Band (6GHz, 5GHz, 2.4GHz)",
+      "ports": "2x 1G Ethernet (auto WAN/LAN)"
+    },
+    "prices": [
+      {
+        "store": "Amazon",
+        "price": 149,
+        "url": "https://www.amazon.com/s?k=Eero+Pro+6E"
+      },
+      {
+        "store": "eero",
+        "price": 199,
+        "url": "https://eero.com/"
+      }
+    ],
+    "pros": [
+      "Thread and Zigbee built-in",
+      "Compact design",
+      "Tri-band Wi-Fi 6E",
+      "Alexa integration"
+    ],
+    "cons": [
+      "Subscription for advanced features",
+      "Only 2 Ethernet ports",
+      "No USB"
+    ]
+  },
+  {
+    "id": "asus-rt-ax86u-pro",
+    "brand": "asus",
+    "name": "ASUS RT-AX86U Pro",
+    "category": "router",
+    "image": "https://picsum.photos/seed/asus-rt-ax86u-pro/400/400",
+    "fallbackImg": "",
+    "releaseDate": "Released 2022, September",
+    "basePrice": 279,
+    "popularity": 87,
+    "rating": 4.7,
+    "reviewCount": 6780,
+    "review": "A gaming-focused Wi-Fi 6 router with a powerful quad-core processor. Excellent low latency for gaming and streaming with robust QoS controls.",
+    "quickSpecs": {
+      "wifiStandard": "Wi-Fi 6 (802.11ax)",
+      "maxSpeed": "5.7 Gbps combined",
+      "bands": "Dual-Band (5GHz, 2.4GHz)",
+      "ports": "1x 2.5G WAN/LAN, 1x 1G WAN, 4x 1G LAN, 2x USB 3.0"
+    },
+    "prices": [
+      {
+        "store": "Amazon",
+        "price": 229,
+        "url": "https://www.amazon.com/s?k=ASUS+RT-AX86U+Pro"
+      },
+      {
+        "store": "B&H Photo",
+        "price": 279,
+        "url": "https://www.bhphotovideo.com/"
+      }
+    ],
+    "pros": [
+      "Excellent gaming performance",
+      "2.5G port",
+      "Powerful quad-core CPU",
+      "Free lifetime security"
+    ],
+    "cons": [
+      "No Wi-Fi 6E",
+      "Dual-band only",
+      "Firmware can be complex"
+    ]
+  },
+  {
+    "id": "linksys-hydration-pro-7",
+    "brand": "linksys",
+    "name": "Linksys Hydra Pro 7",
+    "category": "router",
+    "image": "https://picsum.photos/seed/linksys-hydration-pro-7/400/400",
+    "fallbackImg": "",
+    "releaseDate": "Released 2024, June",
+    "basePrice": 349,
+    "popularity": 72,
+    "rating": 4.3,
+    "reviewCount": 340,
+    "review": "Linksys enters Wi-Fi 7 with a tri-band router offering strong performance. Easy setup and mesh compatibility make it versatile for growing networks.",
+    "quickSpecs": {
+      "wifiStandard": "Wi-Fi 7 (802.11be)",
+      "maxSpeed": "15 Gbps combined",
+      "bands": "Tri-Band (6GHz, 5GHz, 2.4GHz)",
+      "ports": "1x 5G WAN, 4x 1G LAN"
+    },
+    "prices": [
+      {
+        "store": "Amazon",
+        "price": 299,
+        "url": "https://www.amazon.com/s?k=Linksys+Hydra+Pro+7"
+      },
+      {
+        "store": "Linksys",
+        "price": 349,
+        "url": "https://www.linksys.com/"
+      }
+    ],
+    "pros": [
+      "Wi-Fi 7 at reasonable price",
+      "Tri-band",
+      "Mesh compatible",
+      "Simple setup"
+    ],
+    "cons": [
+      "No 10G ports",
+      "Limited advanced features",
+      "New product, few reviews"
+    ]
+  },
+  {
+    "id": "tp-link-deco-xe75",
+    "brand": "tp-link",
+    "name": "TP-Link Deco XE75",
+    "category": "router",
+    "image": "https://picsum.photos/seed/tp-link-deco-xe75/400/400",
+    "fallbackImg": "",
+    "releaseDate": "Released 2022, June",
+    "basePrice": 299,
+    "popularity": 84,
+    "rating": 4.5,
+    "reviewCount": 3450,
+    "review": "A Wi-Fi 6E mesh system with dedicated 6GHz backhaul. Excellent coverage and performance for larger homes needing seamless roaming.",
+    "quickSpecs": {
+      "wifiStandard": "Wi-Fi 6E (802.11ax)",
+      "maxSpeed": "5.4 Gbps combined",
+      "bands": "Tri-Band (6GHz, 5GHz, 2.4GHz)",
+      "ports": "3x 1G Ethernet per unit"
+    },
+    "prices": [
+      {
+        "store": "Amazon",
+        "price": 249,
+        "url": "https://www.amazon.com/s?k=TP-Link+Deco+XE75"
+      },
+      {
+        "store": "Best Buy",
+        "price": 299,
+        "url": "https://www.bestbuy.com/site/searchpage.jsp?st=Deco+XE75"
+      }
+    ],
+    "pros": [
+      "6GHz dedicated backhaul",
+      "Seamless roaming",
+      "Easy setup",
+      "Good coverage per node"
+    ],
+    "cons": [
+      "No 2.5G ports",
+      "Subscription for security",
+      "Limited advanced settings"
+    ]
+  },
+  {
+    "id": "netgear-orbi-rbk852",
+    "brand": "netgear",
+    "name": "Netgear Orbi RBK852",
+    "category": "router",
+    "image": "https://picsum.photos/seed/netgear-orbi-rbk852/400/400",
+    "fallbackImg": "",
+    "releaseDate": "Released 2020, June",
+    "basePrice": 599,
+    "popularity": 75,
+    "rating": 4.4,
+    "reviewCount": 4320,
+    "review": "A premium Wi-Fi 6 mesh system with dedicated backhaul delivering excellent whole-home coverage. Still competitive despite newer Wi-Fi 7 options.",
+    "quickSpecs": {
+      "wifiStandard": "Wi-Fi 6 (802.11ax)",
+      "maxSpeed": "6 Gbps combined",
+      "bands": "Tri-Band (5GHz x2, 2.4GHz)",
+      "ports": "1x 2.5G WAN, 4x 1G LAN (router), 4x 1G LAN (satellite)"
+    },
+    "prices": [
+      {
+        "store": "Amazon",
+        "price": 449,
+        "url": "https://www.amazon.com/s?k=Netgear+Orbi+RBK852"
+      },
+      {
+        "store": "Netgear",
+        "price": 599,
+        "url": "https://www.netgear.com/"
+      }
+    ],
+    "pros": [
+      "Dedicated backhaul",
+      "2.5G WAN port",
+      "Excellent coverage",
+      "Premium build"
+    ],
+    "cons": [
+      "Expensive",
+      "Wi-Fi 6 (not 6E/7)",
+      "Large size"
+    ]
+  },
+  {
+    "id": "amazon-eero-max-7",
+    "brand": "amazon",
+    "name": "Amazon eero Max 7",
+    "category": "router",
+    "image": "https://picsum.photos/seed/amazon-eero-max-7/400/400",
+    "fallbackImg": "",
+    "releaseDate": "Released 2023, November",
+    "basePrice": 299,
+    "popularity": 78,
+    "rating": 4.4,
+    "reviewCount": 2340,
+    "review": "Amazon's most powerful router with Wi-Fi 7 tri-band and 10G Ethernet. A serious upgrade for eero users wanting next-gen performance.",
+    "quickSpecs": {
+      "wifiStandard": "Wi-Fi 7 (802.11be)",
+      "maxSpeed": "21 Gbps combined",
+      "bands": "Tri-Band (6GHz, 5GHz, 2.4GHz)",
+      "ports": "2x 10G Ethernet, 1x 2.5G Ethernet"
+    },
+    "prices": [
+      {
+        "store": "Amazon",
+        "price": 249,
+        "url": "https://www.amazon.com/s?k=eero+Max+7"
+      },
+      {
+        "store": "eero",
+        "price": 299,
+        "url": "https://eero.com/"
+      }
+    ],
+    "pros": [
+      "Wi-Fi 7 performance",
+      "Dual 10G ports",
+      "Thread and Zigbee",
+      "Easy mesh expansion"
+    ],
+    "cons": [
+      "Subscription required for advanced features",
+      "Expensive",
+      "Limited LAN ports"
+    ]
+  },
+  {
+    "id": "d-link-aquila-pro-ai",
+    "brand": "d-link",
+    "name": "D-Link AQUILA PRO AI M60",
+    "category": "router",
+    "image": "https://picsum.photos/seed/d-link-aquila-pro-ai/400/400",
+    "fallbackImg": "",
+    "releaseDate": "Released 2024, February",
+    "basePrice": 249,
+    "popularity": 65,
+    "rating": 4.2,
+    "reviewCount": 560,
+    "review": "D-Link's AI-powered Wi-Fi 6 router with smart mesh capabilities. The AI optimization adjusts settings automatically for best performance.",
+    "quickSpecs": {
+      "wifiStandard": "Wi-Fi 6 (802.11ax)",
+      "maxSpeed": "6 Gbps combined",
+      "bands": "Dual-Band (5GHz, 2.4GHz)",
+      "ports": "1x 2.5G WAN, 4x 1G LAN"
+    },
+    "prices": [
+      {
+        "store": "Amazon",
+        "price": 199,
+        "url": "https://www.amazon.com/s?k=D-Link+AQUILA+PRO"
+      },
+      {
+        "store": "D-Link",
+        "price": 249,
+        "url": "https://www.dlink.com/"
+      }
+    ],
+    "pros": [
+      "AI optimization",
+      "2.5G WAN port",
+      "Good performance",
+      "Competitive price"
+    ],
+    "cons": [
+      "No Wi-Fi 6E",
+      "Limited reviews",
+      "App could be better"
+    ]
+  },
+  {
+    "id": "tp-link-archer-axe75",
+    "brand": "tp-link",
+    "name": "TP-Link Archer AXE75",
+    "category": "router",
+    "image": "https://picsum.photos/seed/tp-link-archer-axe75/400/400",
+    "fallbackImg": "",
+    "releaseDate": "Released 2022, April",
+    "basePrice": 199,
+    "popularity": 86,
+    "rating": 4.5,
+    "reviewCount": 5670,
+    "review": "An affordable Wi-Fi 6E tri-band router that brings 6GHz performance to the mainstream. Excellent value for the features offered.",
+    "quickSpecs": {
+      "wifiStandard": "Wi-Fi 6E (802.11ax)",
+      "maxSpeed": "5.4 Gbps combined",
+      "bands": "Tri-Band (6GHz, 5GHz, 2.4GHz)",
+      "ports": "1x 1G WAN, 4x 1G LAN, 1x USB 3.0"
+    },
+    "prices": [
+      {
+        "store": "Amazon",
+        "price": 149,
+        "url": "https://www.amazon.com/s?k=TP-Link+Archer+AXE75"
+      },
+      {
+        "store": "Best Buy",
+        "price": 199,
+        "url": "https://www.bestbuy.com/site/searchpage.jsp?st=Archer+AXE75"
+      }
+    ],
+    "pros": [
+      "Affordable Wi-Fi 6E",
+      "Tri-band",
+      "USB 3.0",
+      "Easy setup"
+    ],
+    "cons": [
+      "No 2.5G ports",
+      "Limited 6GHz range",
+      "Average parental controls"
+    ]
+  },
+  {
+    "id": "asus-zenwifi-xt9",
+    "brand": "asus",
+    "name": "ASUS ZenWiFi XT9",
+    "category": "router",
+    "image": "https://picsum.photos/seed/asus-zenwifi-xt9/400/400",
+    "fallbackImg": "",
+    "releaseDate": "Released 2022, July",
+    "basePrice": 449,
+    "popularity": 73,
+    "rating": 4.5,
+    "reviewCount": 1890,
+    "review": "A premium Wi-Fi 6E mesh system with elegant design. Tri-band with dedicated backhaul provides excellent whole-home coverage with strong performance.",
+    "quickSpecs": {
+      "wifiStandard": "Wi-Fi 6E (802.11ax)",
+      "maxSpeed": "7.8 Gbps combined",
+      "bands": "Tri-Band (6GHz, 5GHz, 2.4GHz)",
+      "ports": "1x 2.5G WAN/LAN, 3x 1G LAN, 1x USB 3.0"
+    },
+    "prices": [
+      {
+        "store": "Amazon",
+        "price": 349,
+        "url": "https://www.amazon.com/s?k=ASUS+ZenWiFi+XT9"
+      },
+      {
+        "store": "B&H Photo",
+        "price": 449,
+        "url": "https://www.bhphotovideo.com/"
+      }
+    ],
+    "pros": [
+      "Wi-Fi 6E tri-band",
+      "2.5G port",
+      "Elegant design",
+      "AiMesh compatible"
+    ],
+    "cons": [
+      "Expensive",
+      "Setup can be complex",
+      "Large nodes"
+    ]
+  },
+  {
+    "id": "netgear-nighthawk-raxe500",
+    "brand": "netgear",
+    "name": "Netgear Nighthawk RAXE500",
+    "category": "router",
+    "image": "https://picsum.photos/seed/netgear-nighthawk-raxe500/400/400",
+    "fallbackImg": "",
+    "releaseDate": "Released 2021, June",
+    "basePrice": 499,
+    "popularity": 70,
+    "rating": 4.3,
+    "reviewCount": 2340,
+    "review": "Netgear's striking wing-shaped Wi-Fi 6E router with tri-band performance. The unique design aids antenna performance for strong coverage.",
+    "quickSpecs": {
+      "wifiStandard": "Wi-Fi 6E (802.11ax)",
+      "maxSpeed": "10.8 Gbps combined",
+      "bands": "Tri-Band (6GHz, 5GHz, 2.4GHz)",
+      "ports": "1x 2.5G WAN/LAN, 4x 1G LAN, 2x USB 3.0"
+    },
+    "prices": [
+      {
+        "store": "Amazon",
+        "price": 349,
+        "url": "https://www.amazon.com/s?k=Netgear+RAXE500"
+      },
+      {
+        "store": "Netgear",
+        "price": 499,
+        "url": "https://www.netgear.com/"
+      }
+    ],
+    "pros": [
+      "Striking wing design",
+      "Wi-Fi 6E tri-band",
+      "2.5G port",
+      "Dual USB 3.0"
+    ],
+    "cons": [
+      "Expensive",
+      "Large physical size",
+      "Subscription for security"
+    ]
+  },
+  {
+    "id": "linksys-atlas-pro-6e",
+    "brand": "linksys",
+    "name": "Linksys Atlas Pro 6E",
+    "category": "router",
+    "image": "https://picsum.photos/seed/linksys-atlas-pro-6e/400/400",
+    "fallbackImg": "",
+    "releaseDate": "Released 2022, October",
+    "basePrice": 399,
+    "popularity": 68,
+    "rating": 4.3,
+    "reviewCount": 1230,
+    "review": "A Wi-Fi 6E mesh system with intelligent mesh technology. Good coverage and easy management through the Linksys app.",
+    "quickSpecs": {
+      "wifiStandard": "Wi-Fi 6E (802.11ax)",
+      "maxSpeed": "5.4 Gbps combined",
+      "bands": "Tri-Band (6GHz, 5GHz, 2.4GHz)",
+      "ports": "3x 1G Ethernet per unit"
+    },
+    "prices": [
+      {
+        "store": "Amazon",
+        "price": 299,
+        "url": "https://www.amazon.com/s?k=Linksys+Atlas+Pro+6E"
+      },
+      {
+        "store": "Linksys",
+        "price": 399,
+        "url": "https://www.linksys.com/"
+      }
+    ],
+    "pros": [
+      "Wi-Fi 6E mesh",
+      "Good coverage",
+      "Easy app management",
+      "Compact design"
+    ],
+    "cons": [
+      "No 2.5G ports",
+      "Limited advanced settings",
+      "Subscription for some features"
+    ]
+  },
+  {
+    "id": "tp-link-archer-ax55",
+    "brand": "tp-link",
+    "name": "TP-Link Archer AX55",
+    "category": "router",
+    "image": "https://picsum.photos/seed/tp-link-archer-ax55/400/400",
+    "fallbackImg": "",
+    "releaseDate": "Released 2021, March",
+    "basePrice": 129,
+    "popularity": 90,
+    "rating": 4.4,
+    "reviewCount": 12450,
+    "review": "The best-selling budget Wi-Fi 6 router. Delivers solid performance for most homes at an unbeatable price point.",
+    "quickSpecs": {
+      "wifiStandard": "Wi-Fi 6 (802.11ax)",
+      "maxSpeed": "3 Gbps combined",
+      "bands": "Dual-Band (5GHz, 2.4GHz)",
+      "ports": "1x 1G WAN, 4x 1G LAN, 1x USB 2.0"
+    },
+    "prices": [
+      {
+        "store": "Amazon",
+        "price": 79,
+        "url": "https://www.amazon.com/s?k=TP-Link+Archer+AX55"
+      },
+      {
+        "store": "Best Buy",
+        "price": 129,
+        "url": "https://www.bestbuy.com/site/searchpage.jsp?st=Archer+AX55"
+      }
+    ],
+    "pros": [
+      "Very affordable",
+      "Solid Wi-Fi 6 performance",
+      "Easy setup",
+      "Good for apartments"
+    ],
+    "cons": [
+      "Only USB 2.0",
+      "No 2.5G ports",
+      "Dual-band only"
+    ]
+  },
+  {
+    "id": "asus-rt-be86u",
+    "brand": "asus",
+    "name": "ASUS RT-BE86U",
+    "category": "router",
+    "image": "https://picsum.photos/seed/asus-rt-be86u/400/400",
+    "fallbackImg": "",
+    "releaseDate": "Released 2024, August",
+    "basePrice": 299,
+    "popularity": 82,
+    "rating": 4.6,
+    "reviewCount": 450,
+    "review": "A mid-range Wi-Fi 7 router with dual 2.5G ports. ASUS delivers strong performance with its proven firmware and security features.",
+    "quickSpecs": {
+      "wifiStandard": "Wi-Fi 7 (802.11be)",
+      "maxSpeed": "10.7 Gbps combined",
+      "bands": "Dual-Band (5GHz, 2.4GHz)",
+      "ports": "1x 2.5G WAN, 1x 2.5G LAN, 3x 1G LAN, 1x USB 3.0"
+    },
+    "prices": [
+      {
+        "store": "Amazon",
+        "price": 249,
+        "url": "https://www.amazon.com/s?k=ASUS+RT-BE86U"
+      },
+      {
+        "store": "B&H Photo",
+        "price": 299,
+        "url": "https://www.bhphotovideo.com/"
+      }
+    ],
+    "pros": [
+      "Affordable Wi-Fi 7",
+      "Dual 2.5G ports",
+      "AiMesh compatible",
+      "Free security"
+    ],
+    "cons": [
+      "Dual-band only",
+      "No 6GHz band",
+      "Large size"
+    ]
+  },
+  {
+    "id": "google-nest-wifi",
+    "brand": "google",
+    "name": "Google Nest WiFi",
+    "category": "router",
+    "image": "https://picsum.photos/seed/google-nest-wifi/400/400",
+    "fallbackImg": "",
+    "releaseDate": "Released 2019, November",
+    "basePrice": 169,
+    "popularity": 76,
+    "rating": 4.3,
+    "reviewCount": 8900,
+    "review": "Google's original mesh system that popularized simple home networking. Still a solid choice for basic needs with Google Assistant integration.",
+    "quickSpecs": {
+      "wifiStandard": "Wi-Fi 5 (802.11ac)",
+      "maxSpeed": "2.2 Gbps combined",
+      "bands": "Dual-Band (5GHz, 2.4GHz)",
+      "ports": "2x 1G Ethernet per unit"
+    },
+    "prices": [
+      {
+        "store": "Amazon",
+        "price": 99,
+        "url": "https://www.amazon.com/s?k=Google+Nest+WiFi"
+      },
+      {
+        "store": "Google Store",
+        "price": 169,
+        "url": "https://store.google.com/"
+      }
+    ],
+    "pros": [
+      "Simple setup",
+      "Google Assistant built-in",
+      "Compact design",
+      "Good mesh coverage"
+    ],
+    "cons": [
+      "Wi-Fi 5 is outdated",
+      "Limited ports",
+      "No advanced features"
+    ]
+  },
+  {
+    "id": "eero-6-plus",
+    "brand": "eero",
+    "name": "Eero 6+",
+    "category": "router",
+    "image": "https://picsum.photos/seed/eero-6-plus/400/400",
+    "fallbackImg": "",
+    "releaseDate": "Released 2022, March",
+    "basePrice": 149,
+    "popularity": 80,
+    "rating": 4.4,
+    "reviewCount": 7890,
+    "review": "A mainstream mesh router with Thread support and Zigbee hub. Excellent for smart homes with easy setup and reliable performance.",
+    "quickSpecs": {
+      "wifiStandard": "Wi-Fi 6 (802.11ax)",
+      "maxSpeed": "3 Gbps combined",
+      "bands": "Dual-Band (5GHz, 2.4GHz)",
+      "ports": "2x 1G Ethernet per unit"
+    },
+    "prices": [
+      {
+        "store": "Amazon",
+        "price": 99,
+        "url": "https://www.amazon.com/s?k=Eero+6+Plus"
+      },
+      {
+        "store": "eero",
+        "price": 149,
+        "url": "https://eero.com/"
+      }
+    ],
+    "pros": [
+      "Thread and Zigbee",
+      "Easy setup",
+      "Compact design",
+      "Alexa compatible"
+    ],
+    "cons": [
+      "Dual-band only",
+      "Subscription for advanced features",
+      "No USB"
+    ]
+  },
+  {
+    "id": "netgear-nighthawk-rs300",
+    "brand": "netgear",
+    "name": "Netgear Nighthawk RS300",
+    "category": "router",
+    "image": "https://picsum.photos/seed/netgear-nighthawk-rs300/400/400",
+    "fallbackImg": "",
+    "releaseDate": "Released 2024, April",
+    "basePrice": 249,
+    "popularity": 71,
+    "rating": 4.3,
+    "reviewCount": 560,
+    "review": "A more affordable entry into Wi-Fi 7 from Netgear. Good performance for the price with solid coverage for medium to large homes.",
+    "quickSpecs": {
+      "wifiStandard": "Wi-Fi 7 (802.11be)",
+      "maxSpeed": "9.3 Gbps combined",
+      "bands": "Tri-Band (6GHz, 5GHz, 2.4GHz)",
+      "ports": "1x 2.5G WAN, 4x 1G LAN"
+    },
+    "prices": [
+      {
+        "store": "Amazon",
+        "price": 199,
+        "url": "https://www.amazon.com/s?k=Netgear+RS300"
+      },
+      {
+        "store": "Netgear",
+        "price": 249,
+        "url": "https://www.netgear.com/"
+      }
+    ],
+    "pros": [
+      "Affordable Wi-Fi 7",
+      "Tri-band",
+      "2.5G WAN",
+      "Good coverage"
+    ],
+    "cons": [
+      "Limited advanced features",
+      "No 10G ports",
+      "New product"
+    ]
+  },
+  {
+    "id": "tp-link-deco-be65",
+    "brand": "tp-link",
+    "name": "TP-Link Deco BE65",
+    "category": "router",
+    "image": "https://picsum.photos/seed/tp-link-deco-be65/400/400",
+    "fallbackImg": "",
+    "releaseDate": "Released 2024, May",
+    "basePrice": 399,
+    "popularity": 79,
+    "rating": 4.5,
+    "reviewCount": 670,
+    "review": "TP-Link's Wi-Fi 7 mesh system with 2.5G Ethernet ports on each node. Excellent whole-home coverage with next-gen speeds.",
+    "quickSpecs": {
+      "wifiStandard": "Wi-Fi 7 (802.11be)",
+      "maxSpeed": "11 Gbps combined",
+      "bands": "Tri-Band (6GHz, 5GHz, 2.4GHz)",
+      "ports": "3x 2.5G Ethernet per unit"
+    },
+    "prices": [
+      {
+        "store": "Amazon",
+        "price": 349,
+        "url": "https://www.amazon.com/s?k=TP-Link+Deco+BE65"
+      },
+      {
+        "store": "Best Buy",
+        "price": 399,
+        "url": "https://www.bestbuy.com/site/searchpage.jsp?st=Deco+BE65"
+      }
+    ],
+    "pros": [
+      "Wi-Fi 7 mesh",
+      "2.5G ports on each node",
+      "Excellent coverage",
+      "Easy setup"
+    ],
+    "cons": [
+      "Expensive",
+      "Subscription for security",
+      "Limited advanced settings"
+    ]
+  },
+  {
+    "id": "asus-rt-axe7800",
+    "brand": "asus",
+    "name": "ASUS RT-AXE7800",
+    "category": "router",
+    "image": "https://picsum.photos/seed/asus-rt-axe7800/400/400",
+    "fallbackImg": "",
+    "releaseDate": "Released 2022, May",
+    "basePrice": 199,
+    "popularity": 77,
+    "rating": 4.4,
+    "reviewCount": 3450,
+    "review": "A mainstream Wi-Fi 6E tri-band router with strong performance. ASUS AiMesh support allows easy expansion as your network grows.",
+    "quickSpecs": {
+      "wifiStandard": "Wi-Fi 6E (802.11ax)",
+      "maxSpeed": "7.8 Gbps combined",
+      "bands": "Tri-Band (6GHz, 5GHz, 2.4GHz)",
+      "ports": "1x 1G WAN, 4x 1G LAN, 1x USB 3.0"
+    },
+    "prices": [
+      {
+        "store": "Amazon",
+        "price": 159,
+        "url": "https://www.amazon.com/s?k=ASUS+RT-AXE7800"
+      },
+      {
+        "store": "B&H Photo",
+        "price": 199,
+        "url": "https://www.bhphotovideo.com/"
+      }
+    ],
+    "pros": [
+      "Affordable Wi-Fi 6E",
+      "Tri-band",
+      "AiMesh compatible",
+      "Free lifetime security"
+    ],
+    "cons": [
+      "No 2.5G ports",
+      "Average parental controls",
+      "Bulky design"
+    ]
+  },
+  {
+    "id": "d-link-eagle-pro-ai",
+    "brand": "d-link",
+    "name": "D-Link EAGLE PRO AI AX3200",
+    "category": "router",
+    "image": "https://picsum.photos/seed/d-link-eagle-pro-ai/400/400",
+    "fallbackImg": "",
+    "releaseDate": "Released 2021, October",
+    "basePrice": 179,
+    "popularity": 63,
+    "rating": 4.1,
+    "reviewCount": 1230,
+    "review": "D-Link's AI-powered Wi-Fi 6 router with mesh capability. The AI engine optimizes performance automatically but the router is best for medium homes.",
+    "quickSpecs": {
+      "wifiStandard": "Wi-Fi 6 (802.11ax)",
+      "maxSpeed": "3.2 Gbps combined",
+      "bands": "Dual-Band (5GHz, 2.4GHz)",
+      "ports": "1x 1G WAN, 4x 1G LAN, 1x USB 3.0"
+    },
+    "prices": [
+      {
+        "store": "Amazon",
+        "price": 129,
+        "url": "https://www.amazon.com/s?k=D-Link+EAGLE+PRO+AI"
+      },
+      {
+        "store": "D-Link",
+        "price": 179,
+        "url": "https://www.dlink.com/"
+      }
+    ],
+    "pros": [
+      "AI optimization",
+      "Good value",
+      "USB 3.0",
+      "Mesh compatible"
+    ],
+    "cons": [
+      "Dual-band only",
+      "Average range",
+      "App needs improvement"
+    ]
+  },
+  {
+    "id": "amazon-eero-7",
+    "brand": "amazon",
+    "name": "Amazon eero Pro 7",
+    "category": "router",
+    "image": "https://picsum.photos/seed/amazon-eero-7/400/400",
+    "fallbackImg": "",
+    "releaseDate": "Released 2024, September",
+    "basePrice": 399,
+    "popularity": 75,
+    "rating": 4.5,
+    "reviewCount": 340,
+    "review": "Amazon's latest eero with Wi-Fi 7 and dual 2.5G ports. A strong mesh system for users wanting next-gen performance with eero's simplicity.",
+    "quickSpecs": {
+      "wifiStandard": "Wi-Fi 7 (802.11be)",
+      "maxSpeed": "13.5 Gbps combined",
+      "bands": "Tri-Band (6GHz, 5GHz, 2.4GHz)",
+      "ports": "2x 2.5G Ethernet per unit"
+    },
+    "prices": [
+      {
+        "store": "Amazon",
+        "price": 349,
+        "url": "https://www.amazon.com/s?k=eero+Pro+7"
+      },
+      {
+        "store": "eero",
+        "price": 399,
+        "url": "https://eero.com/"
+      }
+    ],
+    "pros": [
+      "Wi-Fi 7 tri-band",
+      "2.5G ports",
+      "Thread and Zigbee",
+      "Easy mesh expansion"
+    ],
+    "cons": [
+      "Subscription for advanced features",
+      "Limited LAN ports",
+      "Expensive per node"
+    ]
+  }
+]

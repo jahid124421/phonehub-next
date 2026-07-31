@@ -8,33 +8,25 @@ import {
   type Product,
   type Brand,
 } from "@/lib/data";
+import {
+  trendingProducts,
+  popularProducts,
+  latestProducts,
+  brandProductCount,
+} from "@/lib/homepage-data";
 import PhoneCard from "@/components/PhoneCard";
 import NewsCard from "@/components/NewsCard";
 import SearchBar from "@/components/SearchBar";
 import CookieConsent from "@/components/CookieConsent";
 import CategoryStrip from "@/components/CategoryStrip";
+import { websiteSchema, itemListSchema } from "@/lib/schema";
+import { SITE_URL } from "@/lib/config";
 
 /* ------------------------------------------------------------------ */
 /*  SEO metadata                                                       */
 /* ------------------------------------------------------------------ */
 export const metadata = {
   title: "PhoneHub — Phone, Laptop, Tablet Specs, Prices & Reviews",
-};
-
-/* ------------------------------------------------------------------ */
-/*  JSON-LD                                                            */
-/* ------------------------------------------------------------------ */
-const jsonLd = {
-  "@context": "https://schema.org",
-  "@type": "WebSite",
-  name: "PhoneHub",
-  url: "https://jahid124421.github.io/phonehub/",
-  potentialAction: {
-    "@type": "SearchAction",
-    target:
-      "https://jahid124421.github.io/phonehub/search.html?q={search_term_string}",
-    "query-input": "required name=search_term_string",
-  },
 };
 
 /* ------------------------------------------------------------------ */
@@ -67,32 +59,19 @@ function lowestPrice(p: Product): number {
 /*  Page                                                               */
 /* ------------------------------------------------------------------ */
 export default function Home() {
-  const products = getAllProducts();
   const brands = getAllBrands();
   const news = getAllNews();
 
-  const onlyPhones = products.filter(
+  /* ---- Phones only (for guides) ---- */
+  const allProducts = getAllProducts();
+  const onlyPhones = allProducts.filter(
     (p) => p.category === "phone" || !p.category
   );
 
-  /* ---- Trending: top 8 phones by rating*popularity ---- */
-  const trending = [...onlyPhones]
-    .sort((a, b) => b.rating * b.popularity - a.rating * a.popularity)
-    .slice(0, 8);
-
-  /* ---- Popular: top 8 products by popularity ---- */
-  const popular = [...products]
-    .sort((a, b) => b.popularity - a.popularity)
-    .slice(0, 8);
-
-  /* ---- Latest: top 8 by release date (dated first) ---- */
-  const latest = [...products]
-    .filter((p) => p.releaseDate)
-    .sort(
-      (a, b) =>
-        new Date(b.releaseDate).getTime() - new Date(a.releaseDate).getTime()
-    )
-    .slice(0, 8);
+  /* ---- Use pre-computed arrays from homepage-data ---- */
+  const trending = trendingProducts;
+  const popular = popularProducts;
+  const latest = latestProducts;
 
   /* ---- Brands grouped by category ---- */
   const brandsByCategory: Record<string, Brand[]> = {};
@@ -162,18 +141,29 @@ export default function Home() {
     }))
     .filter((g) => g.items.length > 0);
 
-  /* ---- Product count per brand ---- */
-  const brandProductCount: Record<string, number> = {};
-  products.forEach((p) => {
-    brandProductCount[p.brand] = (brandProductCount[p.brand] || 0) + 1;
-  });
-
   return (
     <>
-      {/* JSON-LD */}
+      {/* JSON-LD: WebSite */}
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteSchema()) }}
+      />
+
+      {/* JSON-LD: Trending Products ItemList */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(
+            itemListSchema(
+              'Trending Products',
+              trending.map((p, i) => ({
+                name: p.name,
+                url: `${SITE_URL}/phone/${p.id}`,
+                position: i + 1,
+              }))
+            )
+          ),
+        }}
       />
 
       {/* ============================================================ */}
@@ -190,7 +180,7 @@ export default function Home() {
             Find, compare &amp; decide.
           </h1>
           <p className="text-lg md:text-xl text-base-content/70 max-w-2xl mx-auto">
-            The smartest way to research phones, laptops, cars &amp; more
+            The smartest way to research phones, laptops, monitors, cars &amp; more
           </p>
           <SearchBar variant="hero" />
         </div>
@@ -201,6 +191,68 @@ export default function Home() {
         <Suspense fallback={<div className="cat-strip-outer"><div className="cat-strip">Loading categories…</div></div>}>
           <CategoryStrip />
         </Suspense>
+
+        {/* ========================================================== */}
+        {/*  2. News & Guides (moved to top)                           */}
+        {/* ========================================================== */}
+        {news.length > 0 && (() => {
+          const featured = news[0];
+          const rest = news.slice(1, 9);
+          return (
+            <section>
+              <div className="flex items-center justify-between mb-4">
+                <h2 className="text-2xl font-bold">
+                  📰 Latest News &amp; Guides
+                </h2>
+                <Link
+                  href="/news"
+                  className="text-sm text-primary hover:underline"
+                >
+                  More →
+                </Link>
+              </div>
+
+              {/* Featured article hero card */}
+              <a
+                href={featured.url}
+                target="_blank"
+                rel="noopener nofollow"
+                className="block mb-6 card bg-base-200 border border-base-300 hover:border-primary transition-all hover:-translate-y-0.5 duration-200 md:flex md:items-stretch md:overflow-hidden"
+              >
+                <figure className="relative aspect-video md:aspect-auto md:w-80 md:shrink-0 overflow-hidden bg-base-300">
+                  <img
+                    src={featured.image || `data:image/svg+xml,${encodeURIComponent('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450" fill="none"><rect width="800" height="450" fill="#1a1a2e"/><text x="400" y="225" text-anchor="middle" dominant-baseline="middle" font-family="sans-serif" font-size="24" fill="#4a4a6a">No Image</text></svg>')}`}
+                    alt={featured.title}
+                    className="w-full h-full object-cover"
+                  />
+                  {featured.tag && (
+                    <span className="absolute top-2 left-2 badge badge-md badge-primary">
+                      {featured.tag}
+                    </span>
+                  )}
+                </figure>
+                <div className="card-body p-5 gap-2 flex-1">
+                  <span className="badge badge-outline badge-sm self-start">Featured</span>
+                  <h3 className="text-xl font-bold leading-tight">{featured.title}</h3>
+                  <p className="text-sm text-base-content/60 line-clamp-3">{featured.excerpt}</p>
+                  <div className="flex items-center gap-3 mt-auto text-sm text-base-content/50">
+                    <span className="font-medium">{featured.source}</span>
+                    <time dateTime={featured.date}>
+                      {new Date(featured.date).toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric" })}
+                    </time>
+                  </div>
+                </div>
+              </a>
+
+              {/* Remaining news cards */}
+              <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                {rest.map((n) => (
+                  <NewsCard key={n.id} news={n} />
+                ))}
+              </div>
+            </section>
+          );
+        })()}
 
         {/* ========================================================== */}
         {/*  3. Trending Now                                            */}
@@ -466,27 +518,7 @@ export default function Home() {
           </div>
         </section>
 
-        {/* ========================================================== */}
-        {/*  9. Latest News                                             */}
-        {/* ========================================================== */}
-        <section>
-          <div className="flex items-center justify-between mb-4">
-            <h2 className="text-2xl font-bold">
-              📰 Latest News &amp; Guides
-            </h2>
-            <Link
-              href="/news"
-              className="text-sm text-primary hover:underline"
-            >
-              More →
-            </Link>
-          </div>
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            {news.slice(0, 6).map((n) => (
-              <NewsCard key={n.id} news={n} />
-            ))}
-          </div>
-        </section>
+
       </div>
 
       {/* ============================================================ */}

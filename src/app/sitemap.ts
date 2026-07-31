@@ -1,7 +1,9 @@
 import { MetadataRoute } from 'next'
 import { getAllProducts } from '@/lib/data'
+import { SITE_URL } from '@/lib/config'
+import { ALL_CATEGORY_SLUGS } from '@/lib/categories'
 
-const BASE_URL = 'https://phonehub.com'
+const BASE_URL = SITE_URL
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const products = getAllProducts()
@@ -12,6 +14,9 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${BASE_URL}/brands`, lastModified: new Date(), changeFrequency: 'weekly', priority: 0.8 },
     { url: `${BASE_URL}/news`, lastModified: new Date(), changeFrequency: 'daily', priority: 0.7 },
     { url: `${BASE_URL}/compare`, lastModified: new Date(), changeFrequency: 'weekly', priority: 0.6 },
+    { url: `${BASE_URL}/ai-finder`, lastModified: new Date(), changeFrequency: 'weekly', priority: 0.7 },
+    { url: `${BASE_URL}/benchmarks`, lastModified: new Date(), changeFrequency: 'weekly', priority: 0.7 },
+    { url: `${BASE_URL}/tools`, lastModified: new Date(), changeFrequency: 'weekly', priority: 0.6 },
     { url: `${BASE_URL}/about`, lastModified: new Date(), changeFrequency: 'monthly', priority: 0.3 },
     { url: `${BASE_URL}/contact`, lastModified: new Date(), changeFrequency: 'monthly', priority: 0.3 },
     { url: `${BASE_URL}/privacy`, lastModified: new Date(), changeFrequency: 'yearly', priority: 0.1 },
@@ -20,7 +25,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   ]
 
   // Category pages
-  const categories = ['phone', 'tablet', 'laptop', 'tv', 'smartwatch', 'camera', 'auto']
+  const categories = ALL_CATEGORY_SLUGS
   const categoryRoutes: MetadataRoute.Sitemap = categories.map(cat => ({
     url: `${BASE_URL}/search?cat=${cat}`,
     lastModified: new Date(),

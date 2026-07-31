@@ -14,7 +14,6 @@ import Breadcrumb from '@/components/Breadcrumb';
 type SpecsMap = Record<string, Record<string, Record<string, string>>>;
 
 interface CompareClientProps {
-  allProducts: Product[];
   allSpecs: SpecsMap;
 }
 
@@ -68,10 +67,12 @@ function sortSections(sections: string[]): string[] {
 /*  Component                                                          */
 /* ------------------------------------------------------------------ */
 
-export default function CompareClient({ allProducts, allSpecs }: CompareClientProps) {
+export default function CompareClient({ allSpecs }: CompareClientProps) {
   const searchParams = useSearchParams();
   const router = useRouter();
   const [mounted, setMounted] = useState(false);
+  const [selectedProducts, setSelectedProducts] = useState<Product[]>([]);
+  const [isLoadingProducts, setIsLoadingProducts] = useState(false);
 
   // Derive selected IDs from URL or localStorage
   const [selectedIds, setSelectedIds] = useState<string[]>([]);
@@ -93,11 +94,37 @@ export default function CompareClient({ allProducts, allSpecs }: CompareClientPr
     }
   }, [searchParams]);
 
-  // Resolve products
-  const selectedProducts = useMemo(
-    () => selectedIds.map((id) => allProducts.find((p) => p.id === id)).filter(Boolean) as Product[],
-    [selectedIds, allProducts],
-  );
+  // Fetch product details for selected IDs from API
+  useEffect(() => {
+    if (selectedIds.length === 0) {
+      setSelectedProducts([]);
+      return;
+    }
+
+    let cancelled = false;
+    setIsLoadingProducts(true);
+
+    fetch(`/api/search?ids=${selectedIds.join(',')}`)
+      .then((r) => r.json())
+      .then((data) => {
+        if (cancelled) return;
+        const products = (data.results || []) as Product[];
+        // Maintain order matching selectedIds
+        const ordered = selectedIds
+          .map((id) => products.find((p) => p.id === id))
+          .filter(Boolean) as Product[];
+        setSelectedProducts(ordered);
+        setIsLoadingProducts(false);
+      })
+      .catch(() => {
+        if (cancelled) return;
+        setIsLoadingProducts(false);
+      });
+
+    return () => {
+      cancelled = true;
+    };
+  }, [selectedIds]);
 
   // Update URL + localStorage
   const persistIds = useCallback(
@@ -146,7 +173,7 @@ export default function CompareClient({ allProducts, allSpecs }: CompareClientPr
   }
 
   /* ---- Empty state ---- */
-  if (selectedProducts.length < 2) {
+  if (selectedProducts.length < 2 && !isLoadingProducts) {
     return (
       <div className="container mx-auto px-4 py-8">
         <Breadcrumb items={[{ label: 'Home', href: '/' }, { label: 'Compare' }]} />
@@ -159,6 +186,17 @@ export default function CompareClient({ allProducts, allSpecs }: CompareClientPr
             Browse Devices
           </Link>
         </div>
+      </div>
+    );
+  }
+
+  /* ---- Loading state ---- */
+  if (isLoadingProducts || selectedProducts.length < 2) {
+    return (
+      <div className="container mx-auto px-4 py-8">
+        <Breadcrumb items={[{ label: 'Home', href: '/' }, { label: 'Compare' }]} />
+        <h1 className="text-3xl font-bold mt-4 mb-2">Compare Devices</h1>
+        <div className="loading loading-spinner loading-lg mt-12 mx-auto block" />
       </div>
     );
   }

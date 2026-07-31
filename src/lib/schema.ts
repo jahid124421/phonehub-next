@@ -1,3 +1,5 @@
+import { SITE_URL } from '@/lib/config';
+
 export function productSchema(product: any): object {
   const schema: any = {
     '@context': 'https://schema.org',
@@ -67,10 +69,10 @@ export function websiteSchema(): object {
     '@context': 'https://schema.org',
     '@type': 'WebSite',
     name: 'PhoneHub',
-    url: 'https://jahid124421.github.io/phonehub/',
+    url: SITE_URL,
     potentialAction: {
       '@type': 'SearchAction',
-      target: 'https://jahid124421.github.io/phonehub/search?q={search_term_string}',
+      target: `${SITE_URL}/search?q={search_term_string}`,
       'query-input': 'required name=search_term_string',
     },
   };
@@ -81,7 +83,7 @@ export function brandSchema(brand: any): object {
     '@context': 'https://schema.org',
     '@type': 'Brand',
     name: brand.name,
-    url: `https://jahid124421.github.io/phonehub/search?brand=${brand.id}`,
+    url: `${SITE_URL}/search?brand=${brand.id}`,
     image: brand.logo,
   };
 }
@@ -91,10 +93,52 @@ export function organizationSchema(): object {
     '@context': 'https://schema.org',
     '@type': 'Organization',
     name: 'PhoneHub',
-    url: 'https://jahid124421.github.io/phonehub/',
-    logo: 'https://jahid124421.github.io/phonehub/favicon.svg',
+    url: SITE_URL,
+    logo: `${SITE_URL}/favicon.svg`,
     sameAs: [],
     description:
       'PhoneHub is a free product comparison platform helping users find, compare, and decide on phones, laptops, cars, and more.',
+  };
+}
+
+export function articleSchema(article: any): object {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'Article',
+    headline: article.title,
+    description: article.description || article.excerpt || '',
+    image: article.image || '',
+    datePublished: article.date || article.publishedAt || '',
+    author: {
+      '@type': 'Organization',
+      name: 'PhoneHub',
+    },
+    publisher: {
+      '@type': 'Organization',
+      name: 'PhoneHub',
+      logo: {
+        '@type': 'ImageObject',
+        url: `${SITE_URL}/favicon.svg`,
+      },
+    },
+    mainEntityOfPage: {
+      '@type': 'WebPage',
+      '@id': `${SITE_URL}/news/${article.slug || article.id}`,
+    },
+  };
+}
+
+export function itemListSchema(name: string, items: any[]): object {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'ItemList',
+    name,
+    numberOfItems: items.length,
+    itemListElement: items.map((item, index) => ({
+      '@type': 'ListItem',
+      position: index + 1,
+      name: item.name || item.title,
+      url: item.url || `${SITE_URL}/phone/${item.id}`,
+    })),
   };
 }

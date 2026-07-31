@@ -11,6 +11,9 @@ const navLinks = [
   { label: "Brands", href: "/brands" },
   { label: "Compare", href: "/compare" },
   { label: "News", href: "/news" },
+  { label: "AI Finder", href: "/ai-finder" },
+  { label: "Benchmarks", href: "/benchmarks" },
+  { label: "Tools", href: "/tools" },
 ];
 
 export default function Header() {

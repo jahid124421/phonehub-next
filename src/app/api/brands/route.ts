@@ -66,12 +66,20 @@ export async function GET(request: NextRequest) {
       productCount: b._count.products,
     }));
 
-    return NextResponse.json(result);
+    return NextResponse.json(result, {
+      headers: {
+        'Cache-Control': 'public, s-maxage=3600, stale-while-revalidate=86400',
+      },
+    });
   } catch (error) {
     console.error('[API /api/brands] Prisma error, falling back to JSON:', error);
 
     const category = request.nextUrl.searchParams.get('category');
     const data = jsonFallback(category);
-    return NextResponse.json(data);
+    return NextResponse.json(data, {
+      headers: {
+        'Cache-Control': 'public, s-maxage=3600, stale-while-revalidate=86400',
+      },
+    });
   }
 }

@@ -5,6 +5,8 @@ import Footer from "@/components/Footer";
 import ScrollToTop from "@/components/ScrollToTop";
 import ScrollRestoration from "@/components/ScrollRestoration";
 import CompareBar from "@/components/CompareBar";
+import { SITE_URL } from "@/lib/config";
+import { organizationSchema } from "@/lib/schema";
 import "./globals.css";
 
 const inter = Inter({
@@ -13,10 +15,8 @@ const inter = Inter({
   variable: "--font-sans",
 });
 
-const GA_MEASUREMENT_ID = process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID || "G-XXXXXXXXXX";
-
 export const metadata: Metadata = {
-  metadataBase: new URL('https://phonehub.com'),
+  metadataBase: new URL(SITE_URL),
   title: {
     default: "PhoneHub — Find, Compare & Decide",
     template: "%s | PhoneHub",
@@ -54,41 +54,18 @@ export default function RootLayout({
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
-            __html: JSON.stringify({
-              "@context": "https://schema.org",
-              "@type": "Organization",
-              name: "PhoneHub",
-              url: "https://phonehub.com",
-              logo: "https://phonehub.com/favicon.svg",
-              sameAs: [],
-            }),
+            __html: JSON.stringify(organizationSchema()),
           }}
         />
 
-        {/* Google Analytics 4 — consent-aware (ported from Astro) */}
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `(function(){
-  var GA_ID="${GA_MEASUREMENT_ID}";
-  var COOKIE_KEY="phonehub_cookie_consent";
-  window.dataLayer=window.dataLayer||[];
-  function gtag(){dataLayer.push(arguments);}
-  window.gtag=gtag;
-  gtag("consent","default",{analytics_storage:"denied"});
-  var consent=null;
-  try{consent=localStorage.getItem(COOKIE_KEY);}catch(e){}
-  if(consent==="accepted"){
-    gtag("consent","update",{analytics_storage:"granted"});
-    var s=document.createElement("script");
-    s.async=true;s.id="ga4-script";
-    s.src="https://www.googletagmanager.com/gtag/js?id="+GA_ID;
-    document.head.appendChild(s);
-    gtag("js",new Date());
-    gtag("config",GA_ID);
-  }
-})();`,
-          }}
-        />
+        {/* Umami Analytics — privacy-first */}
+        {process.env.NEXT_PUBLIC_UMAMI_WEBSITE_ID && (
+          <script
+            defer
+            src="https://cloud.umami.is/script.js"
+            data-website-id={process.env.NEXT_PUBLIC_UMAMI_WEBSITE_ID}
+          />
+        )}
       </head>
       <body className="min-h-screen flex flex-col">
         <Header />

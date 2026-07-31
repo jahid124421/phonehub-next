@@ -6,6 +6,7 @@ import {
   getProductsByBrand,
   getProductsByCategory,
   getSpecsForProduct,
+  getBenchmarksForProduct,
   type Product,
 } from "@/lib/data";
 import Breadcrumb from "@/components/Breadcrumb";
@@ -16,6 +17,8 @@ import RecentlyViewed from "@/components/RecentlyViewed";
 import ProductImage from "@/components/ProductImage";
 import GiscusDiscussion from "@/components/GiscusDiscussion";
 import PhoneCard from "@/components/PhoneCard";
+import { SITE_URL } from "@/lib/config";
+import { productSchema, breadcrumbSchema } from "@/lib/schema";
 
 // ─── SSG + ISR config ────────────────────────────────────────────────────────
 export const dynamic = "force-static";
@@ -23,7 +26,12 @@ export const revalidate = 86400; // daily
 
 // ─── generateStaticParams ─────────────────────────────────────────────────────
 export function generateStaticParams() {
-  return getAllProducts().map((p) => ({ id: p.id }));
+  const allProducts = getAllProducts();
+  // Sort by popularity (review count) and limit to top 200 for ISR
+  const topProducts = allProducts
+    .sort((a, b) => (b.reviewCount || 0) - (a.reviewCount || 0))
+    .slice(0, 200);
+  return topProducts.map((p) => ({ id: p.id }));
 }
 
 // ─── generateMetadata ─────────────────────────────────────────────────────────
@@ -156,46 +164,13 @@ export default async function PhoneDetailPage({
 
   const fallback = product.fallbackImg ? `/${product.fallbackImg}` : "/img/no-image.svg";
 
-  // JSON-LD objects
-  const productLd = {
-    "@context": "https://schema.org",
-    "@type": "Product",
-    name: product.name,
-    image: product.image,
-    brand: { "@type": "Brand", name: product.brand },
-    description: product.review || "",
-    aggregateRating: {
-      "@type": "AggregateRating",
-      ratingValue: String(product.rating),
-      reviewCount: String(product.reviewCount),
-      bestRating: "5",
-      worstRating: "1",
-    },
-    ...(product.basePrice > 0
-      ? {
-          offers: {
-            "@type": "Offer",
-            price: String(product.basePrice),
-            priceCurrency: "USD",
-            availability: "https://schema.org/InStock",
-          },
-        }
-      : {}),
-  };
-  const breadcrumbLd = {
-    "@context": "https://schema.org",
-    "@type": "BreadcrumbList",
-    itemListElement: [
-      { "@type": "ListItem", position: 1, name: "Home", item: "https://phonehub.site/" },
-      {
-        "@type": "ListItem",
-        position: 2,
-        name: product.brand,
-        item: `https://phonehub.site/search?brand=${product.brand.toLowerCase()}`,
-      },
-      { "@type": "ListItem", position: 3, name: product.name },
-    ],
-  };
+  // JSON-LD using schema helpers
+  const productLd = productSchema(product);
+  const breadcrumbLd = breadcrumbSchema([
+    { name: "Home", url: SITE_URL },
+    { name: product.brand, url: `${SITE_URL}/search?brand=${product.brand.toLowerCase()}` },
+    { name: product.name, url: `${SITE_URL}/phone/${product.id}` },
+  ]);
 
   // Spec section display order
   const specOrder = [
@@ -391,7 +366,95 @@ export default async function PhoneDetailPage({
         )}
       </section>
 
-      {/* 5. Full Specifications */}
+      {/* 5. Benchmarks */}
+      {(() => {
+        const bm = getBenchmarksForProduct(id);
+        if (!bm) return null;
+        const maxAntutu = 2000000;  // Updated for latest flagships
+        const maxGbSingle = 3000;   // Updated for latest chips
+        const maxGbMulti = 8000;    // Updated for latest chips
+        return (
+          <section>
+            <div className="flex items-center justify-between mb-4">
+              <h2 className="text-xl font-bold">📊 Benchmarks</h2>
+              <a href="/benchmarks" className="btn btn-ghost btn-sm">
+                View All Benchmarks →
+              </a>
+            </div>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              {/* Geekbench */}
+              <div className="rounded-xl bg-base-200 border border-base-300 p-5 space-y-4">
+                <h3 className="font-semibold text-lg">Geekbench 6</h3>
+                <div className="space-y-3">
+                  <div>
+                    <div className="flex justify-between text-sm mb-1">
+                      <span className="text-base-content/70">Single-Core</span>
+                      <span className="font-mono font-semibold">{bm.geekbench?.single?.toLocaleString() ?? '—'}</span>
+                    </div>
+                    <div className="w-full bg-base-300 rounded-full h-2.5">
+                      <div
+                        className="h-full rounded-full bg-gradient-to-r from-blue-500 to-cyan-400"
+                        style={{ width: `${Math.min(100, ((bm.geekbench?.single ?? 0) / maxGbSingle) * 100)}%` }}
+                      />
+                    </div>
+                  </div>
+                  <div>
+                    <div className="flex justify-between text-sm mb-1">
+                      <span className="text-base-content/70">Multi-Core</span>
+                      <span className="font-mono font-semibold">{bm.geekbench?.multi?.toLocaleString() ?? '—'}</span>
+                    </div>
+                    <div className="w-full bg-base-300 rounded-full h-2.5">
+                      <div
+                        className="h-full rounded-full bg-gradient-to-r from-blue-500 to-cyan-400"
+                        style={{ width: `${Math.min(100, ((bm.geekbench?.multi ?? 0) / maxGbMulti) * 100)}%` }}
+                      />
+                    </div>
+                  </div>
+                </div>
+              </div>
+              {/* AnTuTu */}
+              <div className="rounded-xl bg-base-200 border border-base-300 p-5 space-y-4">
+                <h3 className="font-semibold text-lg">AnTuTu v10</h3>
+                <div>
+                  <div className="flex justify-between text-sm mb-1">
+                    <span className="text-base-content/70">Total Score</span>
+                    <span className="font-mono font-semibold text-primary">{bm.antutu?.total?.toLocaleString() ?? '—'}</span>
+                  </div>
+                  <div className="w-full bg-base-300 rounded-full h-2.5">
+                    <div
+                      className="h-full rounded-full bg-gradient-to-r from-primary to-secondary"
+                      style={{ width: `${Math.min(100, ((bm.antutu?.total ?? 0) / maxAntutu) * 100)}%` }}
+                    />
+                  </div>
+                </div>
+                <div className="grid grid-cols-2 gap-2 text-sm">
+                  {[
+                    { label: "CPU", val: bm.antutu?.cpu, color: "from-orange-500 to-red-400" },
+                    { label: "GPU", val: bm.antutu?.gpu, color: "from-green-500 to-emerald-400" },
+                    { label: "Memory", val: bm.antutu?.mem, color: "from-purple-500 to-violet-400" },
+                    { label: "UX", val: bm.antutu?.ux, color: "from-pink-500 to-rose-400" },
+                  ].map((item) => (
+                    <div key={item.label}>
+                      <div className="flex justify-between text-xs mb-0.5">
+                        <span className="text-base-content/50">{item.label}</span>
+                        <span className="font-mono">{item.val?.toLocaleString() ?? '—'}</span>
+                      </div>
+                      <div className="w-full bg-base-300 rounded-full h-1.5">
+                        <div
+                          className={`h-full rounded-full bg-gradient-to-r ${item.color}`}
+                          style={{ width: `${Math.min(100, ((item.val ?? 0) / (maxAntutu * 0.4)) * 100)}%` }}
+                        />
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </section>
+        );
+      })()}
+
+      {/* 6. Full Specifications */}
       {orderedSpecKeys.length > 0 && (
         <section>
           <h2 className="text-xl font-bold mb-4">Full Specifications</h2>

@@ -272,10 +272,11 @@ section { padding: 34px 0; }
 .cat-strip a {
   padding: 10px 16px; border-radius: 999px; border: 1px solid var(--border);
   background: var(--surface); font-weight: 600; font-size: 14px; transition: .15s;
+  display: inline-flex; align-items: center; justify-content: center;
 }
 .cat-strip a:hover { border-color: var(--primary); background: var(--surface-2); transform: translateY(-2px); }
 .cat-strip-link {
-  display: inline-flex; align-items: center; padding: 10px 16px; border-radius: 999px; border: 1px solid var(--border);
+  display: inline-flex; align-items: center; justify-content: center; padding: 10px 16px; border-radius: 999px; border: 1px solid var(--border);
   background: var(--surface); font-weight: 600; font-size: 14px; transition: .15s; color: var(--text); white-space: nowrap;
 }
 .cat-strip-link:hover { border-color: var(--primary); background: var(--surface-2); transform: translateY(-2px); }
@@ -705,4 +706,13 @@ section { padding: 34px 0; }
   .proscons { grid-template-columns: 1fr; }
   .guides-grid { grid-template-columns: 1fr; }
   .trending-scroll .card { min-width: 180px; max-width: 180px; }
+}
+
+/* AI Finder fade-in animation */
+@keyframes fade-in {
+  from { opacity: 0; transform: translateY(8px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.animate-fade-in {
+  animation: fade-in 0.3s ease-out both;
 }

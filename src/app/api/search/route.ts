@@ -48,9 +48,18 @@ function jsonFallback(
   brand: string | null,
   sort: string,
   page: number,
-  limit: number
+  limit: number,
+  ids: string | null
 ) {
   let products = getAllProducts();
+
+  // If specific IDs requested, filter to those
+  if (ids) {
+    const idSet = new Set(ids.split(',').map((id) => id.trim()));
+    products = products.filter((p) => idSet.has(p.id));
+    // Return directly with matching order
+    return { results: products, total: products.length, page: 1, totalPages: 1 };
+  }
 
   if (q) {
     const query = q.toLowerCase();
@@ -94,6 +103,7 @@ export async function GET(request: NextRequest) {
     const sort = params.get('sort') || 'popularity';
     const page = Math.max(1, parseInt(params.get('page') || '1', 10));
     const limit = Math.min(100, Math.max(1, parseInt(params.get('limit') || '20', 10)));
+    const ids = params.get('ids');
     const offset = (page - 1) * limit;
 
     // Build sort SQL fragment
@@ -183,7 +193,11 @@ export async function GET(request: NextRequest) {
       offset
     );
 
-    return NextResponse.json({ results, total, page, totalPages });
+    return NextResponse.json({ results, total, page, totalPages }, {
+      headers: {
+        'Cache-Control': 'public, s-maxage=3600, stale-while-revalidate=86400',
+      },
+    });
   } catch (error) {
     console.error('[API /api/search] Prisma error, falling back to JSON:', error);
 
@@ -194,8 +208,13 @@ export async function GET(request: NextRequest) {
     const sort = params.get('sort') || 'popularity';
     const page = Math.max(1, parseInt(params.get('page') || '1', 10));
     const limit = Math.min(100, Math.max(1, parseInt(params.get('limit') || '20', 10)));
+    const ids = params.get('ids');
 
-    const data = jsonFallback(q, cat, brand, sort, page, limit);
-    return NextResponse.json(data);
+    const data = jsonFallback(q, cat, brand, sort, page, limit, ids);
+    return NextResponse.json(data, {
+      headers: {
+        'Cache-Control': 'public, s-maxage=3600, stale-while-revalidate=86400',
+      },
+    });
   }
 }

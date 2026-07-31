@@ -9,6 +9,7 @@ out/
 build/
 
 # env
+.env
 .env.local
 .env*.local
 
@@ -30,3 +31,4 @@ Thumbs.db
 # Keep schema but ignore generated client
 # src/generated/prisma/ is committed for type safety
 .vercel
+.env*

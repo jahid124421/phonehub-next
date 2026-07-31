@@ -13,6 +13,11 @@ const links = {
     { label: "Compare", href: "/compare" },
     { label: "News", href: "/news" },
     { label: "Brands", href: "/brands" },
+    { label: "AI Finder", href: "/ai-finder" },
+    { label: "Benchmarks", href: "/benchmarks" },
+    { label: "Tools", href: "/tools" },
+    { label: "Monitors", href: "/search?cat=monitor" },
+    { label: "Routers", href: "/search?cat=router" },
   ],
   company: [
     { label: "Home", href: "/" },

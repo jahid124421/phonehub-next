@@ -48,7 +48,11 @@ export async function GET(request: NextRequest) {
     const total = totalResult;
     const totalPages = Math.ceil(total / limit);
 
-    return NextResponse.json({ items, total, page, totalPages });
+    return NextResponse.json({ items, total, page, totalPages }, {
+      headers: {
+        'Cache-Control': 'public, s-maxage=3600, stale-while-revalidate=86400',
+      },
+    });
   } catch (error) {
     console.error('[API /api/news] Prisma error, falling back to JSON:', error);
 
@@ -58,6 +62,10 @@ export async function GET(request: NextRequest) {
     const limit = Math.min(100, Math.max(1, parseInt(params.get('limit') || '20', 10)));
 
     const data = jsonFallback(tag, page, limit);
-    return NextResponse.json(data);
+    return NextResponse.json(data, {
+      headers: {
+        'Cache-Control': 'public, s-maxage=3600, stale-while-revalidate=86400',
+      },
+    });
   }
 }

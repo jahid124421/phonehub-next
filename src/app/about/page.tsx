@@ -1,9 +1,13 @@
 import Link from "next/link";
+import { SITE_URL } from "@/lib/config";
 import Breadcrumb from "@/components/Breadcrumb";
 
 export const metadata = {
   title: "About",
   description: "What PhoneHub is and how we help you choose a phone.",
+  openGraph: {
+    images: [{ url: `${SITE_URL}/og-image.png`, width: 1200, height: 630, alt: 'PhoneHub' }],
+  },
 };
 
 export default function AboutPage() {

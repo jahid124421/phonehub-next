@@ -1,12 +1,4 @@
-const categoryMap: Record<string, string> = {
-  phone: 'Phones',
-  laptop: 'Laptops',
-  smartwatch: 'Watches',
-  tablet: 'Tablets',
-  tv: 'TVs',
-  camera: 'Cameras',
-  auto: 'Cars',
-};
+import { getCategoryLabel as _getCategoryLabel } from '@/lib/categories';
 
 const categoryIcons: Record<string, string> = {
   phone: '📱',
@@ -18,6 +10,8 @@ const categoryIcons: Record<string, string> = {
   auto: '🚗',
   audio: '🎧',
   gaming: '🎮',
+  monitor: '🖥️',
+  router: '📡',
 };
 
 export function formatPrice(price: number): string {
@@ -58,7 +52,7 @@ export function formatDate(date: string): string {
 }
 
 export function getCategoryLabel(cat: string): string {
-  return categoryMap[cat] || cat;
+  return _getCategoryLabel(cat);
 }
 
 export function getCategoryIcon(cat: string): string {

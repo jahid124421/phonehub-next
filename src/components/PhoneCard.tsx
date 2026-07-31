@@ -64,20 +64,22 @@ export default function PhoneCard({ product }: { product: Product }) {
         <div className="card-body p-4 gap-2">
           <h3 className="text-sm font-semibold line-clamp-2 leading-snug">{product.name}</h3>
           <StarRating rating={product.rating} reviewCount={product.reviewCount} />
-          <div className="mt-1">
-            {product.basePrice > 0 ? (
-              <span className="text-base font-bold text-primary">
-                ${product.basePrice.toLocaleString()}
-              </span>
-            ) : (
-              <span className="text-sm text-base-content/60 italic">Check price</span>
-            )}
+          <div className="flex items-center justify-between mt-1">
+            <div>
+              {product.basePrice > 0 ? (
+                <span className="text-base font-bold text-primary">
+                  ${product.basePrice.toLocaleString()}
+                </span>
+              ) : (
+                <span className="text-sm text-base-content/60 italic">Check price</span>
+              )}
+            </div>
           </div>
         </div>
       </Link>
 
-      {/* Compare button - bottom right */}
-      <div className="px-3 pb-3 flex justify-end">
+      {/* Compare button - inside card, outside link */}
+      <div className="px-4 pb-4 flex justify-end -mt-1">
         <CompareButton productId={product.id} />
       </div>
     </div>

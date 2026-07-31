@@ -1,46 +1,66 @@
 "use client";
 
 import { useSearchParams, useRouter } from "next/navigation";
-import { Suspense, useCallback, useMemo, useState } from "react";
+import { Suspense, useCallback, useEffect, useMemo, useState } from "react";
 import { type Product, type Brand } from "@/lib/data";
 import PhoneCard from "@/components/PhoneCard";
 import Pagination from "@/components/Pagination";
 import Breadcrumb from "@/components/Breadcrumb";
+import { CATEGORIES } from "@/lib/categories";
 
 const PER_PAGE = 20;
 const MAX_PRICE_LIMIT = 200000;
 
-const CAT_LABELS: Record<string, string> = {
-  phone: "Phones",
-  tablet: "Tablets",
-  laptop: "Laptops",
-  tv: "TVs",
-  smartwatch: "Watches",
-  camera: "Cameras",
-  auto: "Auto",
-  earbuds: "Earbuds",
-  headphones: "Headphones",
-  console: "Consoles",
-  appliance: "Appliances",
-};
+const CAT_LABELS: Record<string, string> = Object.fromEntries(
+  CATEGORIES.map((c) => [c.slug, c.label])
+);
 
 interface Props {
-  initialProducts: Product[];
+  initialResults: Product[];
   initialBrands: Brand[];
+  categories: string[];
+  totalProducts: number;
+  brandProductCounts: Record<string, number>;
 }
 
-export default function SearchClient({ initialProducts, initialBrands }: Props) {
+export default function SearchClient({
+  initialResults,
+  initialBrands,
+  categories,
+  totalProducts,
+  brandProductCounts,
+}: Props) {
   return (
-    <Suspense fallback={<div className="container py-12 text-center">Loading search...</div>}>
-      <SearchClientInner initialProducts={initialProducts} initialBrands={initialBrands} />
+    <Suspense
+      fallback={<div className="container py-12 text-center">Loading search...</div>}
+    >
+      <SearchClientInner
+        initialResults={initialResults}
+        initialBrands={initialBrands}
+        categories={categories}
+        totalProducts={totalProducts}
+        brandProductCounts={brandProductCounts}
+      />
     </Suspense>
   );
 }
 
-function SearchClientInner({ initialProducts, initialBrands }: Props) {
+function SearchClientInner({
+  initialResults,
+  initialBrands,
+  categories,
+  totalProducts: _totalProducts,
+  brandProductCounts,
+}: Props) {
   const searchParams = useSearchParams();
   const router = useRouter();
   const [sidebarOpen, setSidebarOpen] = useState(false);
+
+  // Fetched results state
+  const [results, setResults] = useState<Product[]>(initialResults);
+  const [total, setTotal] = useState(initialResults.length);
+  const [totalPages, setTotalPages] = useState(1);
+  const [isLoading, setIsLoading] = useState(false);
 
   // Read URL params
   const q = searchParams.get("q") || "";
@@ -48,77 +68,97 @@ function SearchClientInner({ initialProducts, initialBrands }: Props) {
   const brandParam = searchParams.get("brand") || "";
   const sort = searchParams.get("sort") || "popularity";
   const page = Math.max(1, parseInt(searchParams.get("page") || "1", 10) || 1);
-  const maxPriceParam = parseInt(searchParams.get("maxPrice") || String(MAX_PRICE_LIMIT), 10);
-  const minRatingParam = parseFloat(searchParams.get("minRating") || "0") || 0;
+  const maxPriceParam = parseInt(
+    searchParams.get("maxPrice") || String(MAX_PRICE_LIMIT),
+    10
+  );
+  const minRatingParam =
+    parseFloat(searchParams.get("minRating") || "0") || 0;
 
   const selectedBrands = useMemo(
     () => new Set(brandParam ? brandParam.split(",").filter(Boolean) : []),
     [brandParam]
   );
 
-  // Build brand count map from all products
-  const brandProductCounts = useMemo(() => {
-    const counts: Record<string, number> = {};
-    for (const p of initialProducts) {
-      counts[p.brand] = (counts[p.brand] || 0) + 1;
+  // Determine if we should use initialResults (default params, page 1)
+  const isDefaultParams =
+    !q &&
+    cat === "all" &&
+    !brandParam &&
+    sort === "popularity" &&
+    page === 1 &&
+    maxPriceParam >= MAX_PRICE_LIMIT &&
+    minRatingParam === 0;
+
+  // Fetch from API when params change
+  useEffect(() => {
+    if (isDefaultParams) {
+      setResults(initialResults);
+      setTotal(_totalProducts);
+      setTotalPages(Math.ceil(_totalProducts / PER_PAGE));
+      return;
     }
-    return counts;
-  }, [initialProducts]);
 
-  // Categories present in data
-  const categories = useMemo(() => {
-    const cats = new Set<string>();
-    for (const p of initialProducts) cats.add(p.category || "phone");
-    return Array.from(cats);
-  }, [initialProducts]);
+    let cancelled = false;
+    setIsLoading(true);
 
-  // Filter + sort
-  const filtered = useMemo(() => {
-    let list = initialProducts.filter((p) => {
-      const pCat = p.category || "phone";
-      if (cat !== "all" && pCat !== cat) return false;
+    const params = new URLSearchParams();
+    if (q) params.set("q", q);
+    if (cat && cat !== "all") params.set("cat", cat);
+    if (brandParam) params.set("brand", brandParam);
+    if (sort && sort !== "popularity") params.set("sort", sort);
+    if (page > 1) params.set("page", String(page));
+    params.set("limit", String(PER_PAGE));
 
-      if (q) {
-        const hay = (
-          p.name +
-          " " +
-          p.brand +
-          " " +
-          Object.values(p.quickSpecs || {}).join(" ")
-        ).toLowerCase();
-        if (!hay.includes(q.toLowerCase())) return false;
-      }
+    fetch(`/api/search?${params.toString()}`)
+      .then((r) => r.json())
+      .then((data) => {
+        if (cancelled) return;
+        setResults(data.results || []);
+        setTotal(data.total || 0);
+        setTotalPages(data.totalPages || 1);
+        setIsLoading(false);
+      })
+      .catch(() => {
+        if (cancelled) return;
+        setIsLoading(false);
+      });
 
-      if (selectedBrands.size > 0 && !selectedBrands.has(p.brand)) return false;
-
-      if (p.basePrice > 0 && p.basePrice > maxPriceParam) return false;
-
-      if (p.rating < minRatingParam) return false;
-
-      return true;
-    });
-
-    // Sort
-    const sorters: Record<string, (a: Product, b: Product) => number> = {
-      popularity: (a, b) => b.popularity - a.popularity,
-      newest: (a, b) => {
-        const da = a.releaseDate ? new Date(a.releaseDate.replace(/Released\s*\d{4},?\s*/i, "")).getTime() || 0 : 0;
-        const db = b.releaseDate ? new Date(b.releaseDate.replace(/Released\s*\d{4},?\s*/i, "")).getTime() || 0 : 0;
-        return db - da;
-      },
-      price_asc: (a, b) => (a.basePrice || 1e12) - (b.basePrice || 1e12),
-      price_desc: (a, b) => b.basePrice - a.basePrice,
-      rating: (a, b) => b.rating - a.rating,
+    return () => {
+      cancelled = true;
     };
-    list.sort(sorters[sort] || sorters.popularity);
+  }, [
+    q,
+    cat,
+    brandParam,
+    sort,
+    page,
+    maxPriceParam,
+    minRatingParam,
+    isDefaultParams,
+    initialResults,
+    _totalProducts,
+  ]);
 
+  // Note: maxPrice and minRating are client-side only filters when using initialResults
+  // When using the API, we rely on the API to handle these. For the default view
+  // (initialResults), apply client-side price/rating filters if set.
+  const pageItems = useMemo(() => {
+    if (!isDefaultParams) return results;
+
+    // For default view with initialResults, apply any active client-side filters
+    let list = results;
+    if (maxPriceParam < MAX_PRICE_LIMIT || minRatingParam > 0) {
+      list = list.filter((p) => {
+        if (p.basePrice > 0 && p.basePrice > maxPriceParam) return false;
+        if (p.rating < minRatingParam) return false;
+        return true;
+      });
+    }
     return list;
-  }, [initialProducts, cat, q, selectedBrands, maxPriceParam, minRatingParam, sort]);
+  }, [results, isDefaultParams, maxPriceParam, minRatingParam]);
 
-  const totalPages = Math.max(1, Math.ceil(filtered.length / PER_PAGE));
   const safePage = Math.min(page, totalPages);
-  const startIdx = (safePage - 1) * PER_PAGE;
-  const pageItems = filtered.slice(startIdx, startIdx + PER_PAGE);
 
   // URL updater
   const updateParams = useCallback(
@@ -188,8 +228,8 @@ function SearchClientInner({ initialProducts, initialBrands }: Props) {
   const crumbLabel = q
     ? `Search: "${q}"`
     : cat !== "all"
-    ? CAT_LABELS[cat] || cat
-    : "All Products";
+      ? CAT_LABELS[cat] || cat
+      : "All Products";
 
   return (
     <div className="container py-6">
@@ -201,8 +241,18 @@ function SearchClientInner({ initialProducts, initialBrands }: Props) {
         className="btn btn-sm btn-outline mt-3 lg:hidden"
         onClick={() => setSidebarOpen((v) => !v)}
       >
-        <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 4a1 1 0 011-1h16a1 1 0 011 1v2a1 1 0 01-.293.707L13 13.414V19a1 1 0 01-1.447.894l-4-2A1 1 0 017 17v-3.586L3.293 6.707A1 1 0 013 6V4z" />
+        <svg
+          className="w-4 h-4"
+          fill="none"
+          stroke="currentColor"
+          viewBox="0 0 24 24"
+        >
+          <path
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            strokeWidth={2}
+            d="M3 4a1 1 0 011-1h16a1 1 0 011 1v2a1 1 0 01-.293.707L13 13.414V19a1 1 0 01-1.447.894l-4-2A1 1 0 017 17v-3.586L3.293 6.707A1 1 0 013 6V4z"
+          />
         </svg>
         Filters
       </button>
@@ -232,7 +282,9 @@ function SearchClientInner({ initialProducts, initialBrands }: Props) {
                         type="checkbox"
                         className="checkbox checkbox-xs checkbox-primary"
                         checked={selectedBrands.has(b.id)}
-                        onChange={(e) => handleBrandToggle(b.id, e.target.checked)}
+                        onChange={(e) =>
+                          handleBrandToggle(b.id, e.target.checked)
+                        }
                       />
                       <span className="truncate">
                         {b.name}
@@ -327,7 +379,10 @@ function SearchClientInner({ initialProducts, initialBrands }: Props) {
             </div>
 
             {/* Reset */}
-            <button className="btn btn-warning btn-sm w-full font-semibold" onClick={handleReset}>
+            <button
+              className="btn btn-warning btn-sm w-full font-semibold"
+              onClick={handleReset}
+            >
               Reset All
             </button>
           </div>
@@ -337,7 +392,7 @@ function SearchClientInner({ initialProducts, initialBrands }: Props) {
         <div className="flex-1 min-w-0">
           {/* Category chips + Sort on same line */}
           <div className="flex flex-wrap items-center justify-between gap-3 mb-4">
-            <div className="flex flex-wrap gap-2">
+            <div className="flex flex-wrap gap-2 justify-center items-center">
               {["all", ...categories].map((c) => (
                 <button
                   key={c}
@@ -363,9 +418,22 @@ function SearchClientInner({ initialProducts, initialBrands }: Props) {
             </select>
           </div>
 
+          {/* Results count + loading indicator */}
+          <div className="flex items-center justify-between mb-3 text-sm text-base-content/60">
+            <span>
+              {total.toLocaleString()} products found
+              {isLoading && " · Loading..."}
+            </span>
+          </div>
+
           {/* Results grid */}
           {pageItems.length > 0 ? (
-            <div className="grid gap-4" style={{ gridTemplateColumns: "repeat(auto-fill, minmax(200px, 1fr))" }}>
+            <div
+              className="grid gap-4"
+              style={{
+                gridTemplateColumns: "repeat(auto-fill, minmax(200px, 1fr))",
+              }}
+            >
               {pageItems.map((p) => (
                 <PhoneCard key={p.id} product={p} />
               ))}
@@ -378,7 +446,7 @@ function SearchClientInner({ initialProducts, initialBrands }: Props) {
           )}
 
           {/* Pagination */}
-          {filtered.length > 0 && (
+          {total > 0 && totalPages > 1 && (
             <Pagination
               currentPage={safePage}
               totalPages={totalPages}

@@ -1,12 +1,16 @@
 import Link from "next/link";
 import { Suspense } from "react";
 import { getAllBrands, getAllProducts, type Brand } from "@/lib/data";
+import { SITE_URL } from "@/lib/config";
 import Breadcrumb from "@/components/Breadcrumb";
 import CategoryStrip from "@/components/CategoryStrip";
 
 export const metadata = {
   title: "Brands",
   description: "Browse phones by brand.",
+  openGraph: {
+    images: [{ url: `${SITE_URL}/og-image.png`, width: 1200, height: 630, alt: 'PhoneHub Brands' }],
+  },
 };
 
 const categoryOrder = [

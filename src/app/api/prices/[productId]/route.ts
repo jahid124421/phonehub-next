@@ -67,12 +67,16 @@ export async function GET(
       id: h.id.toString(),
     }));
 
-    return NextResponse.json({ current, history });
+    return NextResponse.json({ current, history }, {
+      headers: {
+        'Cache-Control': 'public, s-maxage=3600, stale-while-revalidate=86400',
+      },
+    });
   } catch (error) {
     console.error('[API /api/prices] Error:', error);
     return NextResponse.json(
-      { current: [], history: [] },
-      { status: 200 }
+      { error: 'Failed to fetch prices', current: [], history: [] },
+      { status: 500 }
     );
   }
 }

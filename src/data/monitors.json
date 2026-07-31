@@ -1,0 +1,1894 @@
+[
+  {
+    "id": "dell-u2723qe",
+    "brand": "dell",
+    "name": "Dell UltraSharp U2723QE",
+    "category": "monitor",
+    "image": "https://picsum.photos/seed/dell-u2723qe/400/400",
+    "fallbackImg": "",
+    "releaseDate": "Released 2022, March",
+    "basePrice": 599,
+    "popularity": 85,
+    "rating": 4.7,
+    "reviewCount": 2340,
+    "review": "An outstanding 4K productivity monitor with IPS Black technology delivering deep blacks and vibrant colors. Perfect for creative professionals who demand accurate color reproduction.",
+    "quickSpecs": {
+      "display": "27-inch IPS, 3840x2160 (4K UHD)",
+      "refreshRate": "60Hz",
+      "panelType": "IPS Black",
+      "responseTime": "5ms",
+      "connectivity": "USB-C 90W, HDMI, DP"
+    },
+    "prices": [
+      {
+        "store": "Amazon",
+        "price": 549,
+        "url": "https://www.amazon.com/s?k=Dell+U2723QE"
+      },
+      {
+        "store": "Best Buy",
+        "price": 599,
+        "url": "https://www.bestbuy.com/site/searchpage.jsp?st=Dell+U2723QE"
+      }
+    ],
+    "pros": [
+      "Excellent color accuracy with factory calibration",
+      "USB-C hub with 90W power delivery",
+      "IPS Black technology for deeper contrast",
+      "Ergonomic stand with full adjustments"
+    ],
+    "cons": [
+      "60Hz refresh rate not suitable for gaming",
+      "No built-in speakers",
+      "Premium price point"
+    ]
+  },
+  {
+    "id": "lg-27gp850-b",
+    "brand": "lg",
+    "name": "LG UltraGear 27GP850-B",
+    "category": "monitor",
+    "image": "https://picsum.photos/seed/lg-27gp850-b/400/400",
+    "fallbackImg": "",
+    "releaseDate": "Released 2021, August",
+    "basePrice": 399,
+    "popularity": 90,
+    "rating": 4.6,
+    "reviewCount": 5120,
+    "review": "A top-tier gaming monitor that balances speed and visual quality. The Nano IPS panel with 180Hz refresh rate and 1ms response time makes it ideal for competitive gaming.",
+    "quickSpecs": {
+      "display": "27-inch Nano IPS, 2560x1440 (QHD)",
+      "refreshRate": "180Hz (OC)",
+      "panelType": "Nano IPS",
+      "responseTime": "1ms GTG",
+      "connectivity": "HDMI 2.0 x2, DP 1.4"
+    },
+    "prices": [
+      {
+        "store": "Amazon",
+        "price": 349,
+        "url": "https://www.amazon.com/s?k=LG+27GP850"
+      },
+      {
+        "store": "Best Buy",
+        "price": 399,
+        "url": "https://www.bestbuy.com/site/searchpage.jsp?st=LG+27GP850"
+      }
+    ],
+    "pros": [
+      "Blazing fast 180Hz refresh rate",
+      "Excellent color coverage (98% DCI-P3)",
+      "NVIDIA G-Sync compatible",
+      "1ms response time"
+    ],
+    "cons": [
+      "HDR400 is underwhelming",
+      "Contrast ratio is average",
+      "No USB-C input"
+    ]
+  },
+  {
+    "id": "samsung-odyssey-g9",
+    "brand": "samsung",
+    "name": "Samsung Odyssey G9 G95C",
+    "category": "monitor",
+    "image": "https://picsum.photos/seed/samsung-odyssey-g9/400/400",
+    "fallbackImg": "",
+    "releaseDate": "Released 2023, July",
+    "basePrice": 1299,
+    "popularity": 88,
+    "rating": 4.5,
+    "reviewCount": 3450,
+    "review": "The ultimate ultrawide gaming monitor with its massive 49-inch curved display replacing a dual-monitor setup. The 240Hz refresh rate and QD-OLED panel deliver an immersive experience.",
+    "quickSpecs": {
+      "display": "49-inch VA Curved (1000R), 5120x1440",
+      "refreshRate": "240Hz",
+      "panelType": "VA",
+      "responseTime": "1ms GTG",
+      "connectivity": "HDMI 2.1 x2, DP 1.4 x2"
+    },
+    "prices": [
+      {
+        "store": "Amazon",
+        "price": 1099,
+        "url": "https://www.amazon.com/s?k=Samsung+Odyssey+G9"
+      },
+      {
+        "store": "Samsung",
+        "price": 1299,
+        "url": "https://www.samsung.com/us/monitors/"
+      }
+    ],
+    "pros": [
+      "Immersive 49-inch ultrawide experience",
+      "240Hz refresh rate for smooth gaming",
+      "Deep blacks with VA panel",
+      "Dual QHD resolution"
+    ],
+    "cons": [
+      "Requires powerful GPU to drive 5120x1440",
+      "Takes up significant desk space",
+      "Heavy at 20+ lbs"
+    ]
+  },
+  {
+    "id": "asus-rog-swift-pg27aqdm",
+    "brand": "asus",
+    "name": "ASUS ROG Swift PG27AQDM",
+    "category": "monitor",
+    "image": "https://picsum.photos/seed/asus-rog-swift-pg27aqdm/400/400",
+    "fallbackImg": "",
+    "releaseDate": "Released 2023, November",
+    "basePrice": 899,
+    "popularity": 82,
+    "rating": 4.7,
+    "reviewCount": 1890,
+    "review": "The first OLED gaming monitor from ASUS with stunning color accuracy and near-instant response times. The 240Hz OLED panel sets a new standard for gaming displays.",
+    "quickSpecs": {
+      "display": "27-inch OLED, 2560x1440 (QHD)",
+      "refreshRate": "240Hz",
+      "panelType": "OLED",
+      "responseTime": "0.03ms GTG",
+      "connectivity": "HDMI 2.0 x2, DP 1.4 x2"
+    },
+    "prices": [
+      {
+        "store": "Amazon",
+        "price": 799,
+        "url": "https://www.amazon.com/s?k=ASUS+ROG+PG27AQDM"
+      },
+      {
+        "store": "B&H Photo",
+        "price": 899,
+        "url": "https://www.bhphotovideo.com/"
+      }
+    ],
+    "pros": [
+      "True OLED colors and contrast",
+      "0.03ms response time",
+      "240Hz refresh rate",
+      "Excellent HDR performance"
+    ],
+    "cons": [
+      "Risk of OLED burn-in",
+      "Expensive",
+      "No USB-C"
+    ]
+  },
+  {
+    "id": "benq-pd2706ua",
+    "brand": "benq",
+    "name": "BenQ PD2706UA",
+    "category": "monitor",
+    "image": "https://picsum.photos/seed/benq-pd2706ua/400/400",
+    "fallbackImg": "",
+    "releaseDate": "Released 2023, May",
+    "basePrice": 449,
+    "popularity": 75,
+    "rating": 4.6,
+    "reviewCount": 1240,
+    "review": "A designer monitor built for creative professionals with factory-calibrated color accuracy and multiple color modes for different creative workflows.",
+    "quickSpecs": {
+      "display": "27-inch IPS, 2560x1440 (QHD)",
+      "refreshRate": "60Hz",
+      "panelType": "IPS",
+      "responseTime": "5ms",
+      "connectivity": "USB-C 90W, HDMI, DP"
+    },
+    "prices": [
+      {
+        "store": "Amazon",
+        "price": 399,
+        "url": "https://www.amazon.com/s?k=BenQ+PD2706UA"
+      },
+      {
+        "store": "B&H Photo",
+        "price": 449,
+        "url": "https://www.bhphotovideo.com/"
+      }
+    ],
+    "pros": [
+      "Factory calibrated Delta E < 2",
+      "USB-C with 90W charging",
+      "KVM switch built-in",
+      "Multiple designer modes"
+    ],
+    "cons": [
+      "60Hz only",
+      "Limited gaming features",
+      "Plastic build"
+    ]
+  },
+  {
+    "id": "dell-aw2725df",
+    "brand": "dell",
+    "name": "Dell Alienware AW2725DF",
+    "category": "monitor",
+    "image": "https://picsum.photos/seed/dell-aw2725df/400/400",
+    "fallbackImg": "",
+    "releaseDate": "Released 2024, February",
+    "basePrice": 899,
+    "popularity": 86,
+    "rating": 4.8,
+    "reviewCount": 2100,
+    "review": "A premium QD-OLED gaming monitor with 360Hz refresh rate delivering unmatched visual quality and speed for competitive and enthusiast gamers alike.",
+    "quickSpecs": {
+      "display": "27-inch QD-OLED, 2560x1440 (QHD)",
+      "refreshRate": "360Hz",
+      "panelType": "QD-OLED",
+      "responseTime": "0.03ms GTG",
+      "connectivity": "HDMI 2.1 x2, DP 1.4 x2"
+    },
+    "prices": [
+      {
+        "store": "Amazon",
+        "price": 799,
+        "url": "https://www.amazon.com/s?k=Alienware+AW2725DF"
+      },
+      {
+        "store": "Dell",
+        "price": 899,
+        "url": "https://www.dell.com/en-us/shop/monitors/"
+      }
+    ],
+    "pros": [
+      "360Hz OLED is unmatched for gaming",
+      "QD-OLED delivers vivid colors",
+      "Excellent HDR",
+      "Low input lag"
+    ],
+    "cons": [
+      "Premium pricing",
+      "Burn-in risk with static content",
+      "Power hungry"
+    ]
+  },
+  {
+    "id": "lg-32un880-b",
+    "brand": "lg",
+    "name": "LG Ergo 32UN880-B",
+    "category": "monitor",
+    "image": "https://picsum.photos/seed/lg-32un880-b/400/400",
+    "fallbackImg": "",
+    "releaseDate": "Released 2020, September",
+    "basePrice": 599,
+    "popularity": 72,
+    "rating": 4.5,
+    "reviewCount": 1870,
+    "review": "The unique Ergo arm design replaces the traditional stand, offering incredible flexibility in positioning. A solid 4K productivity monitor with excellent color.",
+    "quickSpecs": {
+      "display": "32-inch IPS, 3840x2160 (4K UHD)",
+      "refreshRate": "60Hz",
+      "panelType": "IPS",
+      "responseTime": "5ms",
+      "connectivity": "USB-C 60W, HDMI x2, DP"
+    },
+    "prices": [
+      {
+        "store": "Amazon",
+        "price": 499,
+        "url": "https://www.amazon.com/s?k=LG+32UN880"
+      },
+      {
+        "store": "LG Store",
+        "price": 599,
+        "url": "https://www.lg.com/us/monitors/"
+      }
+    ],
+    "pros": [
+      "Ergo arm is incredibly versatile",
+      "Large 32-inch 4K display",
+      "USB-C connectivity",
+      "Excellent color accuracy"
+    ],
+    "cons": [
+      "60Hz refresh rate",
+      "No HDR",
+      "Arm requires desk clamp"
+    ]
+  },
+  {
+    "id": "samsung-viewfinity-s8",
+    "brand": "samsung",
+    "name": "Samsung ViewFinity S8 S80TC",
+    "category": "monitor",
+    "image": "https://picsum.photos/seed/samsung-viewfinity-s8/400/400",
+    "fallbackImg": "",
+    "releaseDate": "Released 2023, January",
+    "basePrice": 449,
+    "popularity": 70,
+    "rating": 4.4,
+    "reviewCount": 980,
+    "review": "A premium productivity monitor with a stunning 4K resolution and slim design. Great for professionals who need crisp text and accurate colors.",
+    "quickSpecs": {
+      "display": "32-inch IPS, 3840x2160 (4K UHD)",
+      "refreshRate": "60Hz",
+      "panelType": "IPS",
+      "responseTime": "5ms",
+      "connectivity": "USB-C 90W, HDMI, DP"
+    },
+    "prices": [
+      {
+        "store": "Amazon",
+        "price": 399,
+        "url": "https://www.amazon.com/s?k=Samsung+ViewFinity+S8"
+      },
+      {
+        "store": "Samsung",
+        "price": 449,
+        "url": "https://www.samsung.com/us/monitors/"
+      }
+    ],
+    "pros": [
+      "Sleek, thin design",
+      "USB-C 90W charging",
+      "Auto Source Switch Plus",
+      "Anti-glare coating"
+    ],
+    "cons": [
+      "Average contrast",
+      "Speakers are weak",
+      "Limited gaming features"
+    ]
+  },
+  {
+    "id": "msi-mag-274qrf-qd",
+    "brand": "msi",
+    "name": "MSI MAG 274QRF QD-OLED",
+    "category": "monitor",
+    "image": "https://picsum.photos/seed/msi-mag-274qrf-qd/400/400",
+    "fallbackImg": "",
+    "releaseDate": "Released 2024, May",
+    "basePrice": 549,
+    "popularity": 80,
+    "rating": 4.6,
+    "reviewCount": 1560,
+    "review": "A fantastic mid-range QD-OLED gaming monitor offering OLED quality at a more accessible price point. 170Hz refresh rate covers most gaming needs.",
+    "quickSpecs": {
+      "display": "27-inch QD-OLED, 2560x1440 (QHD)",
+      "refreshRate": "170Hz",
+      "panelType": "QD-OLED",
+      "responseTime": "0.03ms GTG",
+      "connectivity": "HDMI 2.0 x2, DP 1.4 x2"
+    },
+    "prices": [
+      {
+        "store": "Amazon",
+        "price": 499,
+        "url": "https://www.amazon.com/s?k=MSI+MAG+274QRF"
+      },
+      {
+        "store": "Newegg",
+        "price": 549,
+        "url": "https://www.newegg.com/"
+      }
+    ],
+    "pros": [
+      "QD-OLED at competitive price",
+      "Excellent color gamut",
+      "Fast response time",
+      "Good HDR"
+    ],
+    "cons": [
+      "170Hz lower than some competitors",
+      "No HDMI 2.1",
+      "Fan noise under load"
+    ]
+  },
+  {
+    "id": "viewsonic-xg270-2k",
+    "brand": "viewsonic",
+    "name": "ViewSonic XG270-2K",
+    "category": "monitor",
+    "image": "https://picsum.photos/seed/viewsonic-xg270-2k/400/400",
+    "fallbackImg": "",
+    "releaseDate": "Released 2024, March",
+    "basePrice": 329,
+    "popularity": 68,
+    "rating": 4.3,
+    "reviewCount": 870,
+    "review": "A budget-friendly QHD gaming monitor that punches above its weight. 165Hz refresh rate and good color make it a value champion.",
+    "quickSpecs": {
+      "display": "27-inch IPS, 2560x1440 (QHD)",
+      "refreshRate": "165Hz",
+      "panelType": "IPS",
+      "responseTime": "1ms GTG",
+      "connectivity": "HDMI 2.0 x2, DP 1.2"
+    },
+    "prices": [
+      {
+        "store": "Amazon",
+        "price": 279,
+        "url": "https://www.amazon.com/s?k=ViewSonic+XG270-2K"
+      },
+      {
+        "store": "Newegg",
+        "price": 329,
+        "url": "https://www.newegg.com/"
+      }
+    ],
+    "pros": [
+      "Excellent value for QHD gaming",
+      "Good color accuracy",
+      "FreeSync compatible",
+      "Slim design"
+    ],
+    "cons": [
+      "Build quality feels budget",
+      "HDR is nominal",
+      "Limited USB hub"
+    ]
+  },
+  {
+    "id": "acer-predator-xb273k",
+    "brand": "acer",
+    "name": "Acer Predator XB273K NV",
+    "category": "monitor",
+    "image": "https://picsum.photos/seed/acer-predator-xb273k/400/400",
+    "fallbackImg": "",
+    "releaseDate": "Released 2022, October",
+    "basePrice": 699,
+    "popularity": 74,
+    "rating": 4.5,
+    "reviewCount": 1430,
+    "review": "A 4K gaming monitor with 144Hz refresh rate, bridging the gap between high resolution and high refresh rate for enthusiasts with powerful PCs.",
+    "quickSpecs": {
+      "display": "27-inch IPS, 3840x2160 (4K UHD)",
+      "refreshRate": "144Hz",
+      "panelType": "IPS",
+      "responseTime": "1ms GTG",
+      "connectivity": "HDMI 2.1 x2, DP 1.4 x2"
+    },
+    "prices": [
+      {
+        "store": "Amazon",
+        "price": 599,
+        "url": "https://www.amazon.com/s?k=Acer+Predator+XB273K"
+      },
+      {
+        "store": "Newegg",
+        "price": 699,
+        "url": "https://www.newegg.com/"
+      }
+    ],
+    "pros": [
+      "4K at 144Hz is excellent",
+      "HDMI 2.1 for consoles",
+      "Great color accuracy",
+      "NVIDIA G-Sync compatible"
+    ],
+    "cons": [
+      "Requires beefy GPU for 4K gaming",
+      "No USB-C",
+      "Average contrast"
+    ]
+  },
+  {
+    "id": "philips-evnia-34m2c8600",
+    "brand": "philips",
+    "name": "Philips Evnia 34M2C8600",
+    "category": "monitor",
+    "image": "https://picsum.photos/seed/philips-evnia-34m2c8600/400/400",
+    "fallbackImg": "",
+    "releaseDate": "Released 2023, September",
+    "basePrice": 799,
+    "popularity": 71,
+    "rating": 4.4,
+    "reviewCount": 670,
+    "review": "A stunning ultrawide QD-OLED gaming monitor with Ambiglow lighting for an immersive experience. Great colors and contrast from the QD-OLED panel.",
+    "quickSpecs": {
+      "display": "34-inch QD-OLED Curved, 3440x1440",
+      "refreshRate": "175Hz",
+      "panelType": "QD-OLED",
+      "responseTime": "0.03ms GTG",
+      "connectivity": "HDMI 2.0 x2, DP 1.4 x2"
+    },
+    "prices": [
+      {
+        "store": "Amazon",
+        "price": 699,
+        "url": "https://www.amazon.com/s?k=Philips+Evnia+34M2C8600"
+      },
+      {
+        "store": "B&H Photo",
+        "price": 799,
+        "url": "https://www.bhphotovideo.com/"
+      }
+    ],
+    "pros": [
+      "QD-OLED ultrawide experience",
+      "Ambiglow lighting is fun",
+      "175Hz refresh rate",
+      "Great HDR performance"
+    ],
+    "cons": [
+      "Expensive",
+      "Heavy",
+      "No HDMI 2.1"
+    ]
+  },
+  {
+    "id": "dell-u3423we",
+    "brand": "dell",
+    "name": "Dell UltraSharp U3423WE",
+    "category": "monitor",
+    "image": "https://picsum.photos/seed/dell-u3423we/400/400",
+    "fallbackImg": "",
+    "releaseDate": "Released 2023, June",
+    "basePrice": 749,
+    "popularity": 78,
+    "rating": 4.6,
+    "reviewCount": 1560,
+    "review": "The ultimate productivity ultrawide with IPS Black technology. KVM switch, USB-C hub, and excellent multitasking features make it a workstation powerhouse.",
+    "quickSpecs": {
+      "display": "34-inch IPS Curved, 3440x1440",
+      "refreshRate": "60Hz",
+      "panelType": "IPS Black",
+      "responseTime": "5ms",
+      "connectivity": "USB-C 90W, HDMI, DP x2"
+    },
+    "prices": [
+      {
+        "store": "Amazon",
+        "price": 649,
+        "url": "https://www.amazon.com/s?k=Dell+U3423WE"
+      },
+      {
+        "store": "Dell",
+        "price": 749,
+        "url": "https://www.dell.com/en-us/shop/monitors/"
+      }
+    ],
+    "pros": [
+      "IPS Black for deep contrast",
+      "USB-C hub with KVM",
+      "PBP and PIP support",
+      "Excellent build quality"
+    ],
+    "cons": [
+      "60Hz only for productivity",
+      "Premium price",
+      "Curved not for everyone"
+    ]
+  },
+  {
+    "id": "lg-27gr95qe-b",
+    "brand": "lg",
+    "name": "LG UltraGear 27GR95QE-B",
+    "category": "monitor",
+    "image": "https://picsum.photos/seed/lg-27gr95qe-b/400/400",
+    "fallbackImg": "",
+    "releaseDate": "Released 2023, August",
+    "basePrice": 699,
+    "popularity": 83,
+    "rating": 4.7,
+    "reviewCount": 2340,
+    "review": "LG's first OLED gaming monitor delivers stunning picture quality with 240Hz refresh rate. The OLED panel makes every game look incredible.",
+    "quickSpecs": {
+      "display": "27-inch OLED, 2560x1440 (QHD)",
+      "refreshRate": "240Hz",
+      "panelType": "OLED",
+      "responseTime": "0.03ms GTG",
+      "connectivity": "HDMI 2.1 x2, DP 1.4"
+    },
+    "prices": [
+      {
+        "store": "Amazon",
+        "price": 599,
+        "url": "https://www.amazon.com/s?k=LG+27GR95QE"
+      },
+      {
+        "store": "Best Buy",
+        "price": 699,
+        "url": "https://www.bestbuy.com/site/searchpage.jsp?st=LG+27GR95QE"
+      }
+    ],
+    "pros": [
+      "OLED quality at 240Hz",
+      "HDMI 2.1 for next-gen consoles",
+      "G-Sync and FreeSync Premium",
+      "Excellent HDR"
+    ],
+    "cons": [
+      "Burn-in concerns",
+      "No USB-C",
+      "Matte coating reduces OLED pop"
+    ]
+  },
+  {
+    "id": "benq-ex2710u",
+    "brand": "benq",
+    "name": "BenQ Mobiuz EX2710U",
+    "category": "monitor",
+    "image": "https://picsum.photos/seed/benq-ex2710u/400/400",
+    "fallbackImg": "",
+    "releaseDate": "Released 2022, May",
+    "basePrice": 699,
+    "popularity": 76,
+    "rating": 4.5,
+    "reviewCount": 1780,
+    "review": "A premium 4K gaming monitor with HDR600, excellent built-in speakers, and BenQ's eye-care technology. Great all-rounder for gaming and media.",
+    "quickSpecs": {
+      "display": "27-inch IPS, 3840x2160 (4K UHD)",
+      "refreshRate": "144Hz",
+      "panelType": "IPS",
+      "responseTime": "1ms GTG",
+      "connectivity": "HDMI 2.1 x2, DP 1.4"
+    },
+    "prices": [
+      {
+        "store": "Amazon",
+        "price": 599,
+        "url": "https://www.amazon.com/s?k=BenQ+EX2710U"
+      },
+      {
+        "store": "B&H Photo",
+        "price": 699,
+        "url": "https://www.bhphotovideo.com/"
+      }
+    ],
+    "pros": [
+      "4K 144Hz gaming",
+      "Excellent HDR600",
+      "Great built-in speakers",
+      "Eye-care technology"
+    ],
+    "cons": [
+      "No USB-C",
+      "HDR requires bright content",
+      "Average contrast for IPS"
+    ]
+  },
+  {
+    "id": "asus-proart-pa279crv",
+    "brand": "asus",
+    "name": "ASUS ProArt PA279CRV",
+    "category": "monitor",
+    "image": "https://picsum.photos/seed/asus-proart-pa279crv/400/400",
+    "fallbackImg": "",
+    "releaseDate": "Released 2023, October",
+    "basePrice": 549,
+    "popularity": 73,
+    "rating": 4.7,
+    "reviewCount": 1120,
+    "review": "A professional-grade 4K monitor with factory-calibrated colors covering 99% DCI-P3. The USB-C daisy-chaining capability is excellent for creative workflows.",
+    "quickSpecs": {
+      "display": "27-inch IPS, 3840x2160 (4K UHD)",
+      "refreshRate": "60Hz",
+      "panelType": "IPS",
+      "responseTime": "5ms",
+      "connectivity": "USB-C 96W, HDMI, DP x2"
+    },
+    "prices": [
+      {
+        "store": "Amazon",
+        "price": 499,
+        "url": "https://www.amazon.com/s?k=ASUS+ProArt+PA279CRV"
+      },
+      {
+        "store": "B&H Photo",
+        "price": 549,
+        "url": "https://www.bhphotovideo.com/"
+      }
+    ],
+    "pros": [
+      "Calman verified Delta E < 2",
+      "USB-C 96W daisy-chain",
+      "Wide color gamut",
+      "Affordable for pro monitors"
+    ],
+    "cons": [
+      "60Hz only",
+      "No gaming features",
+      "Design is basic"
+    ]
+  },
+  {
+    "id": "samsung-odyssey-oled-g8",
+    "brand": "samsung",
+    "name": "Samsung Odyssey OLED G8 G85SB",
+    "category": "monitor",
+    "image": "https://picsum.photos/seed/samsung-odyssey-oled-g8/400/400",
+    "fallbackImg": "",
+    "releaseDate": "Released 2023, September",
+    "basePrice": 1099,
+    "popularity": 79,
+    "rating": 4.5,
+    "reviewCount": 890,
+    "review": "Samsung's 34-inch ultrawide QD-OLED monitor with Smart TV features built-in. A versatile display for gaming, productivity, and entertainment.",
+    "quickSpecs": {
+      "display": "34-inch QD-OLED Curved, 3440x1440",
+      "refreshRate": "175Hz",
+      "panelType": "QD-OLED",
+      "responseTime": "0.1ms GTG",
+      "connectivity": "HDMI 2.1, DP 1.4, USB-C 90W"
+    },
+    "prices": [
+      {
+        "store": "Amazon",
+        "price": 899,
+        "url": "https://www.amazon.com/s?k=Samsung+OLED+G8"
+      },
+      {
+        "store": "Samsung",
+        "price": 1099,
+        "url": "https://www.samsung.com/us/monitors/"
+      }
+    ],
+    "pros": [
+      "QD-OLED with 175Hz",
+      "Built-in Smart TV apps",
+      "USB-C 90W charging",
+      "Premium design"
+    ],
+    "cons": [
+      "Expensive",
+      "Tizen OS can be slow",
+      "Burn-in risk"
+    ]
+  },
+  {
+    "id": "msi-mpg-341cqp-qd",
+    "brand": "msi",
+    "name": "MSI MPG 341CQP QD-OLED",
+    "category": "monitor",
+    "image": "https://picsum.photos/seed/msi-mpg-341cqp-qd/400/400",
+    "fallbackImg": "",
+    "releaseDate": "Released 2024, January",
+    "basePrice": 799,
+    "popularity": 77,
+    "rating": 4.6,
+    "reviewCount": 980,
+    "review": "A competitive QD-OLED ultrawide with 175Hz refresh rate and MSI's OLED Care 2.0 burn-in prevention. Great value in the ultrawide OLED space.",
+    "quickSpecs": {
+      "display": "34-inch QD-OLED Curved, 3440x1440",
+      "refreshRate": "175Hz",
+      "panelType": "QD-OLED",
+      "responseTime": "0.03ms GTG",
+      "connectivity": "HDMI 2.1 x2, DP 1.4 x2, USB-C 90W"
+    },
+    "prices": [
+      {
+        "store": "Amazon",
+        "price": 699,
+        "url": "https://www.amazon.com/s?k=MSI+MPG+341CQP"
+      },
+      {
+        "store": "Newegg",
+        "price": 799,
+        "url": "https://www.newegg.com/"
+      }
+    ],
+    "pros": [
+      "QD-OLED ultrawide",
+      "HDMI 2.1 + USB-C 90W",
+      "OLED Care 2.0 anti burn-in",
+      "Great value for QD-OLED"
+    ],
+    "cons": [
+      "Curved not for all",
+      "Heavy",
+      "Fan can be audible"
+    ]
+  },
+  {
+    "id": "acer-nitro-xv272k",
+    "brand": "acer",
+    "name": "Acer Nitro XV272K V3",
+    "category": "monitor",
+    "image": "https://picsum.photos/seed/acer-nitro-xv272k/400/400",
+    "fallbackImg": "",
+    "releaseDate": "Released 2024, April",
+    "basePrice": 279,
+    "popularity": 82,
+    "rating": 4.4,
+    "reviewCount": 2100,
+    "review": "An incredible budget 4K gaming monitor with 160Hz refresh rate. Delivers excellent value for gamers who want high resolution without breaking the bank.",
+    "quickSpecs": {
+      "display": "27-inch IPS, 3840x2160 (4K UHD)",
+      "refreshRate": "160Hz",
+      "panelType": "IPS",
+      "responseTime": "1ms GTG",
+      "connectivity": "HDMI 2.1 x2, DP 1.4"
+    },
+    "prices": [
+      {
+        "store": "Amazon",
+        "price": 249,
+        "url": "https://www.amazon.com/s?k=Acer+Nitro+XV272K"
+      },
+      {
+        "store": "Newegg",
+        "price": 279,
+        "url": "https://www.newegg.com/"
+      }
+    ],
+    "pros": [
+      "Best value 4K 160Hz monitor",
+      "HDMI 2.1 for consoles",
+      "Good color out of box",
+      "FreeSync Premium"
+    ],
+    "cons": [
+      "Build quality is budget",
+      "HDR is nominal",
+      "Average contrast"
+    ]
+  },
+  {
+    "id": "viewsonic-vp2776",
+    "brand": "viewsonic",
+    "name": "ViewSonic VP2776",
+    "category": "monitor",
+    "image": "https://picsum.photos/seed/viewsonic-vp2776/400/400",
+    "fallbackImg": "",
+    "releaseDate": "Released 2023, February",
+    "basePrice": 599,
+    "popularity": 65,
+    "rating": 4.5,
+    "reviewCount": 720,
+    "review": "A professional color-critical monitor with Nano IPS technology delivering 98% DCI-P3 coverage. Factory calibrated for photographers and video editors.",
+    "quickSpecs": {
+      "display": "27-inch Nano IPS, 2560x1440 (QHD)",
+      "refreshRate": "165Hz",
+      "panelType": "Nano IPS",
+      "responseTime": "1ms GTG",
+      "connectivity": "USB-C 90W, HDMI x2, DP x2"
+    },
+    "prices": [
+      {
+        "store": "Amazon",
+        "price": 549,
+        "url": "https://www.amazon.com/s?k=ViewSonic+VP2776"
+      },
+      {
+        "store": "B&H Photo",
+        "price": 599,
+        "url": "https://www.bhphotovideo.com/"
+      }
+    ],
+    "pros": [
+      "98% DCI-P3 color coverage",
+      "USB-C with 90W charging",
+      "165Hz for smooth scrolling",
+      "Hardware calibration support"
+    ],
+    "cons": [
+      "Expensive for the resolution",
+      "Complex OSD",
+      "Average contrast"
+    ]
+  },
+  {
+    "id": "lg-24gp750-b",
+    "brand": "lg",
+    "name": "LG UltraGear 24GP750-B",
+    "category": "monitor",
+    "image": "https://picsum.photos/seed/lg-24gp750-b/400/400",
+    "fallbackImg": "",
+    "releaseDate": "Released 2024, June",
+    "basePrice": 199,
+    "popularity": 70,
+    "rating": 4.3,
+    "reviewCount": 1450,
+    "review": "A compact 24-inch FHD gaming monitor perfect for esports players. 240Hz refresh rate and 1ms response time deliver competitive-grade performance.",
+    "quickSpecs": {
+      "display": "24-inch IPS, 1920x1080 (FHD)",
+      "refreshRate": "240Hz",
+      "panelType": "IPS",
+      "responseTime": "1ms GTG",
+      "connectivity": "HDMI 2.0 x2, DP 1.4"
+    },
+    "prices": [
+      {
+        "store": "Amazon",
+        "price": 169,
+        "url": "https://www.amazon.com/s?k=LG+24GP750"
+      },
+      {
+        "store": "Best Buy",
+        "price": 199,
+        "url": "https://www.bestbuy.com/site/searchpage.jsp?st=LG+24GP750"
+      }
+    ],
+    "pros": [
+      "240Hz is perfect for esports",
+      "Good color for IPS",
+      "Compact size",
+      "Affordable"
+    ],
+    "cons": [
+      "Only FHD resolution",
+      "Small for some users",
+      "No USB-C"
+    ]
+  },
+  {
+    "id": "dell-u4025qw",
+    "brand": "dell",
+    "name": "Dell UltraSharp U4025QW",
+    "category": "monitor",
+    "image": "https://picsum.photos/seed/dell-u4025qw/400/400",
+    "fallbackImg": "",
+    "releaseDate": "Released 2024, March",
+    "basePrice": 1099,
+    "popularity": 80,
+    "rating": 4.7,
+    "reviewCount": 890,
+    "review": "The ultimate productivity monitor with a massive 40-inch 5K2K resolution IPS Black panel. Thunderbolt hub with 140W charging makes it a one-cable workstation solution.",
+    "quickSpecs": {
+      "display": "40-inch IPS Curved, 5120x2160 (5K2K)",
+      "refreshRate": "120Hz",
+      "panelType": "IPS Black",
+      "responseTime": "5ms",
+      "connectivity": "Thunderbolt 4 140W, HDMI 2.1, DP 1.4 x2"
+    },
+    "prices": [
+      {
+        "store": "Amazon",
+        "price": 999,
+        "url": "https://www.amazon.com/s?k=Dell+U4025QW"
+      },
+      {
+        "store": "Dell",
+        "price": 1099,
+        "url": "https://www.dell.com/en-us/shop/monitors/"
+      }
+    ],
+    "pros": [
+      "5K2K resolution is stunning",
+      "120Hz IPS Black",
+      "Thunderbolt 4 with 140W",
+      "Best productivity monitor available"
+    ],
+    "cons": [
+      "Very expensive",
+      "Requires powerful GPU for 5K2K",
+      "Heavy"
+    ]
+  },
+  {
+    "id": "philips-27e1n8900",
+    "brand": "philips",
+    "name": "Philips 27E1N8900",
+    "category": "monitor",
+    "image": "https://picsum.photos/seed/philips-27e1n8900/400/400",
+    "fallbackImg": "",
+    "releaseDate": "Released 2023, April",
+    "basePrice": 799,
+    "popularity": 63,
+    "rating": 4.5,
+    "reviewCount": 480,
+    "review": "A 4K OLED productivity monitor with exceptional color accuracy and true blacks. Ideal for photo and video editing where contrast matters.",
+    "quickSpecs": {
+      "display": "27-inch OLED, 3840x2160 (4K UHD)",
+      "refreshRate": "60Hz",
+      "panelType": "OLED",
+      "responseTime": "0.1ms",
+      "connectivity": "USB-C 80W, HDMI x2, DP"
+    },
+    "prices": [
+      {
+        "store": "Amazon",
+        "price": 699,
+        "url": "https://www.amazon.com/s?k=Philips+27E1N8900"
+      },
+      {
+        "store": "B&H Photo",
+        "price": 799,
+        "url": "https://www.bhphotovideo.com/"
+      }
+    ],
+    "pros": [
+      "4K OLED for productivity",
+      "True blacks and infinite contrast",
+      "USB-C 80W",
+      "Factory calibrated"
+    ],
+    "cons": [
+      "Only 60Hz",
+      "Expensive",
+      "Burn-in risk for static UIs"
+    ]
+  },
+  {
+    "id": "benq-mobiuz-ex270qm",
+    "brand": "benq",
+    "name": "BenQ Mobiuz EX270QM",
+    "category": "monitor",
+    "image": "https://picsum.photos/seed/benq-mobiuz-ex270qm/400/400",
+    "fallbackImg": "",
+    "releaseDate": "Released 2022, December",
+    "basePrice": 999,
+    "popularity": 69,
+    "rating": 4.6,
+    "reviewCount": 640,
+    "review": "A premium 4K gaming monitor with 240Hz Mini-LED backlight delivering excellent HDR performance. treVolo speakers provide surprisingly good audio.",
+    "quickSpecs": {
+      "display": "27-inch IPS, 3840x2160 (4K UHD)",
+      "refreshRate": "240Hz",
+      "panelType": "IPS Mini-LED",
+      "responseTime": "1ms GTG",
+      "connectivity": "HDMI 2.1 x2, DP 1.4 x2"
+    },
+    "prices": [
+      {
+        "store": "Amazon",
+        "price": 799,
+        "url": "https://www.amazon.com/s?k=BenQ+EX270QM"
+      },
+      {
+        "store": "B&H Photo",
+        "price": 999,
+        "url": "https://www.bhphotovideo.com/"
+      }
+    ],
+    "pros": [
+      "4K 240Hz Mini-LED",
+      "Excellent HDR",
+      "Great treVolo speakers",
+      "HDMI 2.1 for consoles"
+    ],
+    "cons": [
+      "Very expensive",
+      "Mini-LED halo effect",
+      "Power hungry"
+    ]
+  },
+  {
+    "id": "asus-tuf-vg289q1a",
+    "brand": "asus",
+    "name": "ASUS TUF Gaming VG289Q1A",
+    "category": "monitor",
+    "image": "https://picsum.photos/seed/asus-tuf-vg289q1a/400/400",
+    "fallbackImg": "",
+    "releaseDate": "Released 2021, January",
+    "basePrice": 249,
+    "popularity": 75,
+    "rating": 4.4,
+    "reviewCount": 4560,
+    "review": "A popular budget 4K gaming monitor. 60Hz refresh rate with FreeSync makes it great for console gaming and casual PC gaming at an affordable price.",
+    "quickSpecs": {
+      "display": "28-inch IPS, 3840x2160 (4K UHD)",
+      "refreshRate": "60Hz",
+      "panelType": "IPS",
+      "responseTime": "1ms MPRT",
+      "connectivity": "HDMI 2.0 x2, DP 1.2"
+    },
+    "prices": [
+      {
+        "store": "Amazon",
+        "price": 199,
+        "url": "https://www.amazon.com/s?k=ASUS+VG289Q1A"
+      },
+      {
+        "store": "Newegg",
+        "price": 249,
+        "url": "https://www.newegg.com/"
+      }
+    ],
+    "pros": [
+      "Affordable 4K gaming",
+      "Good color accuracy",
+      "FreeSync compatible",
+      "Decent built-in speakers"
+    ],
+    "cons": [
+      "Only 60Hz",
+      "No HDMI 2.1",
+      "Average HDR"
+    ]
+  },
+  {
+    "id": "samsung-odyssey-g7-g70d",
+    "brand": "samsung",
+    "name": "Samsung Odyssey G7 G70D",
+    "category": "monitor",
+    "image": "https://picsum.photos/seed/samsung-odyssey-g7-g70d/400/400",
+    "fallbackImg": "",
+    "releaseDate": "Released 2024, July",
+    "basePrice": 599,
+    "popularity": 78,
+    "rating": 4.5,
+    "reviewCount": 1230,
+    "review": "Samsung's latest flat OLED gaming monitor with 240Hz refresh rate. Moving away from the aggressive curve, this flat OLED delivers excellent image quality.",
+    "quickSpecs": {
+      "display": "27-inch OLED Flat, 2560x1440 (QHD)",
+      "refreshRate": "240Hz",
+      "panelType": "OLED",
+      "responseTime": "0.03ms GTG",
+      "connectivity": "HDMI 2.1 x2, DP 1.4"
+    },
+    "prices": [
+      {
+        "store": "Amazon",
+        "price": 499,
+        "url": "https://www.amazon.com/s?k=Samsung+Odyssey+G70D"
+      },
+      {
+        "store": "Samsung",
+        "price": 599,
+        "url": "https://www.samsung.com/us/monitors/"
+      }
+    ],
+    "pros": [
+      "Flat OLED panel",
+      "240Hz refresh rate",
+      "HDMI 2.1",
+      "Samsung Smart features"
+    ],
+    "cons": [
+      "Only QHD resolution",
+      "Burn-in concerns",
+      "New model, limited long-term reviews"
+    ]
+  },
+  {
+    "id": "msi-meg-342c-qd",
+    "brand": "msi",
+    "name": "MSI MEG 342C QD-OLED",
+    "category": "monitor",
+    "image": "https://picsum.photos/seed/msi-meg-342c-qd/400/400",
+    "fallbackImg": "",
+    "releaseDate": "Released 2024, February",
+    "basePrice": 1199,
+    "popularity": 74,
+    "rating": 4.7,
+    "reviewCount": 560,
+    "review": "MSI's flagship ultrawide with UWQHD resolution QD-OLED panel and 175Hz refresh rate. KVM switch and USB-C hub make it versatile for work and play.",
+    "quickSpecs": {
+      "display": "34-inch QD-OLED Curved, 3440x1440",
+      "refreshRate": "175Hz",
+      "panelType": "QD-OLED",
+      "responseTime": "0.03ms GTG",
+      "connectivity": "HDMI 2.1 x2, DP 1.4 x2, USB-C 90W"
+    },
+    "prices": [
+      {
+        "store": "Amazon",
+        "price": 999,
+        "url": "https://www.amazon.com/s?k=MSI+MEG+342C"
+      },
+      {
+        "store": "Newegg",
+        "price": 1199,
+        "url": "https://www.newegg.com/"
+      }
+    ],
+    "pros": [
+      "Top-tier QD-OLED",
+      "USB-C 90W with KVM",
+      "175Hz ultrawide",
+      "Premium build"
+    ],
+    "cons": [
+      "Expensive",
+      "Large footprint",
+      "Fan noise"
+    ]
+  },
+  {
+    "id": "lg-32gq950-b",
+    "brand": "lg",
+    "name": "LG UltraGear 32GQ950-B",
+    "category": "monitor",
+    "image": "https://picsum.photos/seed/lg-32gq950-b/400/400",
+    "fallbackImg": "",
+    "releaseDate": "Released 2022, November",
+    "basePrice": 699,
+    "popularity": 72,
+    "rating": 4.5,
+    "reviewCount": 1340,
+    "review": "A Nano IPS 4K gaming monitor with 144Hz refresh rate. ATW polarizer improves contrast over typical IPS panels for a better gaming experience.",
+    "quickSpecs": {
+      "display": "32-inch Nano IPS, 3840x2160 (4K UHD)",
+      "refreshRate": "144Hz",
+      "panelType": "Nano IPS with ATW",
+      "responseTime": "1ms GTG",
+      "connectivity": "HDMI 2.1 x2, DP 1.4"
+    },
+    "prices": [
+      {
+        "store": "Amazon",
+        "price": 599,
+        "url": "https://www.amazon.com/s?k=LG+32GQ950"
+      },
+      {
+        "store": "LG Store",
+        "price": 699,
+        "url": "https://www.lg.com/us/monitors/"
+      }
+    ],
+    "pros": [
+      "4K 144Hz Nano IPS",
+      "ATW polarizer for better contrast",
+      "G-Sync Ultimate",
+      "Great color"
+    ],
+    "cons": [
+      "No USB-C",
+      "Average HDR",
+      "Expensive for IPS"
+    ]
+  },
+  {
+    "id": "acer-predator-x34-v",
+    "brand": "acer",
+    "name": "Acer Predator X34 V",
+    "category": "monitor",
+    "image": "https://picsum.photos/seed/acer-predator-x34-v/400/400",
+    "fallbackImg": "",
+    "releaseDate": "Released 2023, December",
+    "basePrice": 799,
+    "popularity": 70,
+    "rating": 4.4,
+    "reviewCount": 540,
+    "review": "A 34-inch ultrawide with 180Hz refresh rate and excellent Mini-LED backlighting for strong HDR performance in gaming and content creation.",
+    "quickSpecs": {
+      "display": "34-inch IPS Curved, 3440x1440",
+      "refreshRate": "180Hz",
+      "panelType": "IPS Mini-LED",
+      "responseTime": "1ms GTG",
+      "connectivity": "HDMI 2.1 x2, DP 1.4 x2"
+    },
+    "prices": [
+      {
+        "store": "Amazon",
+        "price": 699,
+        "url": "https://www.amazon.com/s?k=Acer+Predator+X34"
+      },
+      {
+        "store": "Newegg",
+        "price": 799,
+        "url": "https://www.newegg.com/"
+      }
+    ],
+    "pros": [
+      "180Hz ultrawide",
+      "Mini-LED HDR",
+      "Good color coverage",
+      "Solid build"
+    ],
+    "cons": [
+      "Curved not for all",
+      "Mini-LED halo effect",
+      "Expensive"
+    ]
+  },
+  {
+    "id": "viewsonic-vx2758-2k",
+    "brand": "viewsonic",
+    "name": "ViewSonic VX2758-2K-PRO",
+    "category": "monitor",
+    "image": "https://picsum.photos/seed/viewsonic-vx2758-2k/400/400",
+    "fallbackImg": "",
+    "releaseDate": "Released 2024, August",
+    "basePrice": 199,
+    "popularity": 73,
+    "rating": 4.3,
+    "reviewCount": 1890,
+    "review": "One of the most affordable QHD 165Hz gaming monitors on the market. Great entry point for gamers wanting to upgrade from FHD.",
+    "quickSpecs": {
+      "display": "27-inch IPS, 2560x1440 (QHD)",
+      "refreshRate": "165Hz",
+      "panelType": "IPS",
+      "responseTime": "1ms GTG",
+      "connectivity": "HDMI 2.0 x2, DP 1.2"
+    },
+    "prices": [
+      {
+        "store": "Amazon",
+        "price": 169,
+        "url": "https://www.amazon.com/s?k=ViewSonic+VX2758-2K"
+      },
+      {
+        "store": "Newegg",
+        "price": 199,
+        "url": "https://www.newegg.com/"
+      }
+    ],
+    "pros": [
+      "Very affordable QHD gaming",
+      "165Hz refresh rate",
+      "Good color for the price",
+      "Compact design"
+    ],
+    "cons": [
+      "Build quality is budget",
+      "Limited ergonomics",
+      "No USB-C"
+    ]
+  },
+  {
+    "id": "dell-s2722qc",
+    "brand": "dell",
+    "name": "Dell S2722QC",
+    "category": "monitor",
+    "image": "https://picsum.photos/seed/dell-s2722qc/400/400",
+    "fallbackImg": "",
+    "releaseDate": "Released 2022, January",
+    "basePrice": 349,
+    "popularity": 66,
+    "rating": 4.4,
+    "reviewCount": 3210,
+    "review": "A well-rounded 4K productivity monitor with USB-C connectivity. Great for home office use with its clean design and solid image quality.",
+    "quickSpecs": {
+      "display": "27-inch IPS, 3840x2160 (4K UHD)",
+      "refreshRate": "60Hz",
+      "panelType": "IPS",
+      "responseTime": "4ms",
+      "connectivity": "USB-C 65W, HDMI x2"
+    },
+    "prices": [
+      {
+        "store": "Amazon",
+        "price": 279,
+        "url": "https://www.amazon.com/s?k=Dell+S2722QC"
+      },
+      {
+        "store": "Dell",
+        "price": 349,
+        "url": "https://www.dell.com/en-us/shop/monitors/"
+      }
+    ],
+    "pros": [
+      "USB-C 65W charging",
+      "Good color accuracy",
+      "Clean, modern design",
+      "Built-in speakers"
+    ],
+    "cons": [
+      "Only 60Hz",
+      "Average brightness",
+      "Limited gaming features"
+    ]
+  },
+  {
+    "id": "benq-ex2510s",
+    "brand": "benq",
+    "name": "BenQ Mobiuz EX2510S",
+    "category": "monitor",
+    "image": "https://picsum.photos/seed/benq-ex2510s/400/400",
+    "fallbackImg": "",
+    "releaseDate": "Released 2021, November",
+    "basePrice": 299,
+    "popularity": 71,
+    "rating": 4.5,
+    "reviewCount": 2670,
+    "review": "A beloved FHD gaming monitor with excellent HDRi technology and built-in treVolo speakers. Great all-rounder at an affordable price.",
+    "quickSpecs": {
+      "display": "24.5-inch IPS, 1920x1080 (FHD)",
+      "refreshRate": "165Hz",
+      "panelType": "IPS",
+      "responseTime": "1ms GTG",
+      "connectivity": "HDMI 2.0 x2, DP 1.2"
+    },
+    "prices": [
+      {
+        "store": "Amazon",
+        "price": 249,
+        "url": "https://www.amazon.com/s?k=BenQ+EX2510S"
+      },
+      {
+        "store": "B&H Photo",
+        "price": 299,
+        "url": "https://www.bhphotovideo.com/"
+      }
+    ],
+    "pros": [
+      "HDRi technology is effective",
+      "treVolo speakers are great",
+      "165Hz smooth gaming",
+      "Good color"
+    ],
+    "cons": [
+      "Only FHD",
+      "No USB-C",
+      "HDR400 is basic"
+    ]
+  },
+  {
+    "id": "asus-rog-xg27aqdm2",
+    "brand": "asus",
+    "name": "ASUS ROG Swift OLED XG27AQDM2",
+    "category": "monitor",
+    "image": "https://picsum.photos/seed/asus-rog-xg27aqdm2/400/400",
+    "fallbackImg": "",
+    "releaseDate": "Released 2024, September",
+    "basePrice": 749,
+    "popularity": 84,
+    "rating": 4.8,
+    "reviewCount": 890,
+    "review": "The next-gen OLED gaming monitor with 240Hz and improved burn-in protection. Heatsink design keeps the panel cool for long gaming sessions.",
+    "quickSpecs": {
+      "display": "27-inch OLED, 2560x1440 (QHD)",
+      "refreshRate": "240Hz",
+      "panelType": "OLED",
+      "responseTime": "0.03ms GTG",
+      "connectivity": "HDMI 2.1 x2, DP 1.4"
+    },
+    "prices": [
+      {
+        "store": "Amazon",
+        "price": 649,
+        "url": "https://www.amazon.com/s?k=ASUS+XG27AQDM2"
+      },
+      {
+        "store": "B&H Photo",
+        "price": 749,
+        "url": "https://www.bhphotovideo.com/"
+      }
+    ],
+    "pros": [
+      "240Hz OLED",
+      "Improved heatsink for burn-in protection",
+      "HDMI 2.1",
+      "Excellent HDR"
+    ],
+    "cons": [
+      "Expensive",
+      "No USB-C",
+      "QHD only"
+    ]
+  },
+  {
+    "id": "samsung-odyssey-ark",
+    "brand": "samsung",
+    "name": "Samsung Odyssey Ark G97NC",
+    "category": "monitor",
+    "image": "https://picsum.photos/seed/samsung-odyssey-ark/400/400",
+    "fallbackImg": "",
+    "releaseDate": "Released 2022, November",
+    "basePrice": 2499,
+    "popularity": 60,
+    "rating": 4.2,
+    "reviewCount": 340,
+    "review": "The massive 55-inch 4K curved gaming monitor with rotatable screen. An impressive but niche product for enthusiasts with space and budget.",
+    "quickSpecs": {
+      "display": "55-inch VA Curved (1000R), 3840x2160 (4K)",
+      "refreshRate": "165Hz",
+      "panelType": "VA Mini-LED",
+      "responseTime": "1ms GTG",
+      "connectivity": "HDMI 2.1 x4, DP 1.4"
+    },
+    "prices": [
+      {
+        "store": "Amazon",
+        "price": 1999,
+        "url": "https://www.amazon.com/s?k=Samsung+Odyssey+Ark"
+      },
+      {
+        "store": "Samsung",
+        "price": 2499,
+        "url": "https://www.samsung.com/us/monitors/"
+      }
+    ],
+    "pros": [
+      "Massive 55-inch display",
+      "Rotatable screen",
+      "Mini-LED HDR",
+      "4K 165Hz"
+    ],
+    "cons": [
+      "Extremely expensive",
+      "Enormous desk space needed",
+      "Very heavy"
+    ]
+  },
+  {
+    "id": "philips-279p1",
+    "brand": "philips",
+    "name": "Philips 279P1",
+    "category": "monitor",
+    "image": "https://picsum.photos/seed/philips-279p1/400/400",
+    "fallbackImg": "",
+    "releaseDate": "Released 2020, October",
+    "basePrice": 449,
+    "popularity": 64,
+    "rating": 4.4,
+    "reviewCount": 2890,
+    "review": "A 4K USB-C docking monitor with integrated Ethernet. Perfect for laptop users who want a one-cable solution for work.",
+    "quickSpecs": {
+      "display": "27-inch IPS, 3840x2160 (4K UHD)",
+      "refreshRate": "60Hz",
+      "panelType": "IPS",
+      "responseTime": "4ms",
+      "connectivity": "USB-C 90W, HDMI, DP, Ethernet"
+    },
+    "prices": [
+      {
+        "store": "Amazon",
+        "price": 379,
+        "url": "https://www.amazon.com/s?k=Philips+279P1"
+      },
+      {
+        "store": "B&H Photo",
+        "price": 449,
+        "url": "https://www.bhphotovideo.com/"
+      }
+    ],
+    "pros": [
+      "USB-C docking with Ethernet",
+      "90W power delivery",
+      "Good color accuracy",
+      "Built-in KVM"
+    ],
+    "cons": [
+      "Only 60Hz",
+      "Average contrast",
+      "Limited gaming features"
+    ]
+  },
+  {
+    "id": "msi-optix-mag274qrf",
+    "brand": "msi",
+    "name": "MSI Optix MAG274QRF-QD",
+    "category": "monitor",
+    "image": "https://picsum.photos/seed/msi-optix-mag274qrf/400/400",
+    "fallbackImg": "",
+    "releaseDate": "Released 2021, June",
+    "basePrice": 329,
+    "popularity": 76,
+    "rating": 4.5,
+    "reviewCount": 3450,
+    "review": "A highly-rated QHD gaming monitor with Quantum Dot technology for exceptional color. 165Hz refresh rate covers most gaming needs.",
+    "quickSpecs": {
+      "display": "27-inch Rapid IPS, 2560x1440 (QHD)",
+      "refreshRate": "165Hz",
+      "panelType": "Rapid IPS",
+      "responseTime": "1ms GTG",
+      "connectivity": "HDMI 2.0b x2, DP 1.4a, USB-C 15W"
+    },
+    "prices": [
+      {
+        "store": "Amazon",
+        "price": 279,
+        "url": "https://www.amazon.com/s?k=MSI+MAG274QRF"
+      },
+      {
+        "store": "Newegg",
+        "price": 329,
+        "url": "https://www.newegg.com/"
+      }
+    ],
+    "pros": [
+      "Quantum Dot color",
+      "165Hz smooth gaming",
+      "USB-C connectivity",
+      "Great value"
+    ],
+    "cons": [
+      "USB-C only 15W",
+      "Average HDR",
+      "Limited ergonomics"
+    ]
+  },
+  {
+    "id": "lg-34wq75c-b",
+    "brand": "lg",
+    "name": "LG 34WQ75C-B UltraWide",
+    "category": "monitor",
+    "image": "https://picsum.photos/seed/lg-34wq75c-b/400/400",
+    "fallbackImg": "",
+    "releaseDate": "Released 2023, March",
+    "basePrice": 399,
+    "popularity": 67,
+    "rating": 4.3,
+    "reviewCount": 1230,
+    "review": "A curved 34-inch ultrawide productivity monitor with USB-C. Great for multitasking and creative work at a reasonable price.",
+    "quickSpecs": {
+      "display": "34-inch IPS Curved, 3440x1440",
+      "refreshRate": "60Hz",
+      "panelType": "IPS",
+      "responseTime": "5ms",
+      "connectivity": "USB-C 65W, HDMI x2, DP"
+    },
+    "prices": [
+      {
+        "store": "Amazon",
+        "price": 329,
+        "url": "https://www.amazon.com/s?k=LG+34WQ75C"
+      },
+      {
+        "store": "LG Store",
+        "price": 399,
+        "url": "https://www.lg.com/us/monitors/"
+      }
+    ],
+    "pros": [
+      "Affordable ultrawide",
+      "USB-C 65W",
+      "Good for multitasking",
+      "Curved immersion"
+    ],
+    "cons": [
+      "Only 60Hz",
+      "Average color accuracy",
+      "No gaming features"
+    ]
+  },
+  {
+    "id": "dell-aw3225qf",
+    "brand": "dell",
+    "name": "Dell Alienware AW3225QF",
+    "category": "monitor",
+    "image": "https://picsum.photos/seed/dell-aw3225qf/400/400",
+    "fallbackImg": "",
+    "releaseDate": "Released 2024, January",
+    "basePrice": 1199,
+    "popularity": 87,
+    "rating": 4.8,
+    "reviewCount": 1560,
+    "review": "The world's first 4K QD-OLED gaming monitor with 240Hz. This flagship delivers the ultimate combination of resolution, speed, and image quality.",
+    "quickSpecs": {
+      "display": "32-inch QD-OLED Curved, 3840x2160 (4K)",
+      "refreshRate": "240Hz",
+      "panelType": "QD-OLED",
+      "responseTime": "0.03ms GTG",
+      "connectivity": "HDMI 2.1 x2, DP 1.4 x2, USB-C"
+    },
+    "prices": [
+      {
+        "store": "Amazon",
+        "price": 999,
+        "url": "https://www.amazon.com/s?k=Alienware+AW3225QF"
+      },
+      {
+        "store": "Dell",
+        "price": 1199,
+        "url": "https://www.dell.com/en-us/shop/monitors/"
+      }
+    ],
+    "pros": [
+      "4K QD-OLED at 240Hz",
+      "Incredible HDR",
+      "HDMI 2.1 for consoles",
+      "Premium build quality"
+    ],
+    "cons": [
+      "Very expensive",
+      "Burn-in risk",
+      "Heavy and large"
+    ]
+  },
+  {
+    "id": "benq-sw272u",
+    "brand": "benq",
+    "name": "BenQ SW272U",
+    "category": "monitor",
+    "image": "https://picsum.photos/seed/benq-sw272u/400/400",
+    "fallbackImg": "",
+    "releaseDate": "Released 2024, April",
+    "basePrice": 1099,
+    "popularity": 62,
+    "rating": 4.7,
+    "reviewCount": 340,
+    "review": "A professional photography monitor with hardware calibration and 99% Adobe RGB coverage. The hotkey puck G3 makes workflow adjustments effortless.",
+    "quickSpecs": {
+      "display": "27-inch IPS, 3840x2160 (4K UHD)",
+      "refreshRate": "60Hz",
+      "panelType": "IPS",
+      "responseTime": "5ms",
+      "connectivity": "USB-C 90W, HDMI x2, DP x2"
+    },
+    "prices": [
+      {
+        "store": "Amazon",
+        "price": 999,
+        "url": "https://www.amazon.com/s?k=BenQ+SW272U"
+      },
+      {
+        "store": "B&H Photo",
+        "price": 1099,
+        "url": "https://www.bhphotovideo.com/"
+      }
+    ],
+    "pros": [
+      "99% Adobe RGB",
+      "Hardware calibration",
+      "USB-C 90W",
+      "Hotkey Puck G3"
+    ],
+    "cons": [
+      "Very expensive for productivity",
+      "Only 60Hz",
+      "Heavy"
+    ]
+  },
+  {
+    "id": "acer-cp3271k",
+    "brand": "acer",
+    "name": "Acer CP3271K V",
+    "category": "monitor",
+    "image": "https://picsum.photos/seed/acer-cp3271k/400/400",
+    "fallbackImg": "",
+    "releaseDate": "Released 2024, May",
+    "basePrice": 549,
+    "popularity": 68,
+    "rating": 4.4,
+    "reviewCount": 780,
+    "review": "A 4K 144Hz gaming monitor with Mini-LED backlight for strong HDR. Good middle ground between OLED and traditional IPS at a competitive price.",
+    "quickSpecs": {
+      "display": "27-inch IPS, 3840x2160 (4K UHD)",
+      "refreshRate": "144Hz",
+      "panelType": "IPS Mini-LED",
+      "responseTime": "1ms GTG",
+      "connectivity": "HDMI 2.1 x2, DP 1.4 x2"
+    },
+    "prices": [
+      {
+        "store": "Amazon",
+        "price": 449,
+        "url": "https://www.amazon.com/s?k=Acer+CP3271K"
+      },
+      {
+        "store": "Newegg",
+        "price": 549,
+        "url": "https://www.newegg.com/"
+      }
+    ],
+    "pros": [
+      "4K 144Hz with Mini-LED",
+      "Good HDR performance",
+      "HDMI 2.1",
+      "Competitive price"
+    ],
+    "cons": [
+      "Mini-LED halo effect",
+      "Average built-in speakers",
+      "Limited USB hub"
+    ]
+  },
+  {
+    "id": "viewsonic-xg322u-4k",
+    "brand": "viewsonic",
+    "name": "ViewSonic XG322U-4K",
+    "category": "monitor",
+    "image": "https://picsum.photos/seed/viewsonic-xg322u-4k/400/400",
+    "fallbackImg": "",
+    "releaseDate": "Released 2024, June",
+    "basePrice": 699,
+    "popularity": 66,
+    "rating": 4.5,
+    "reviewCount": 450,
+    "review": "A 32-inch 4K gaming monitor with 144Hz and excellent color accuracy. The larger screen size is great for immersive gaming experiences.",
+    "quickSpecs": {
+      "display": "32-inch IPS, 3840x2160 (4K UHD)",
+      "refreshRate": "144Hz",
+      "panelType": "IPS",
+      "responseTime": "1ms GTG",
+      "connectivity": "HDMI 2.1 x2, DP 1.4"
+    },
+    "prices": [
+      {
+        "store": "Amazon",
+        "price": 599,
+        "url": "https://www.amazon.com/s?k=ViewSonic+XG322U"
+      },
+      {
+        "store": "B&H Photo",
+        "price": 699,
+        "url": "https://www.bhphotovideo.com/"
+      }
+    ],
+    "pros": [
+      "32-inch 4K is immersive",
+      "144Hz smooth gaming",
+      "Good color accuracy",
+      "HDMI 2.1"
+    ],
+    "cons": [
+      "Large footprint",
+      "No USB-C",
+      "Average HDR"
+    ]
+  },
+  {
+    "id": "samsung-odyssey-g5",
+    "brand": "samsung",
+    "name": "Samsung Odyssey G5 G55T",
+    "category": "monitor",
+    "image": "https://picsum.photos/seed/samsung-odyssey-g5/400/400",
+    "fallbackImg": "",
+    "releaseDate": "Released 2020, August",
+    "basePrice": 299,
+    "popularity": 80,
+    "rating": 4.3,
+    "reviewCount": 5670,
+    "review": "A popular budget QHD gaming monitor with 165Hz refresh rate. The 1000R curve adds immersion and it offers great value for the price.",
+    "quickSpecs": {
+      "display": "27-inch VA Curved (1000R), 2560x1440 (QHD)",
+      "refreshRate": "165Hz",
+      "panelType": "VA",
+      "responseTime": "1ms GTG",
+      "connectivity": "HDMI 2.0 x2, DP 1.4"
+    },
+    "prices": [
+      {
+        "store": "Amazon",
+        "price": 229,
+        "url": "https://www.amazon.com/s?k=Samsung+Odyssey+G5"
+      },
+      {
+        "store": "Samsung",
+        "price": 299,
+        "url": "https://www.samsung.com/us/monitors/"
+      }
+    ],
+    "pros": [
+      "Affordable QHD 165Hz",
+      "1000R curve is immersive",
+      "Good contrast for VA",
+      "FreeSync Premium"
+    ],
+    "cons": [
+      "Curve not for all",
+      "Color accuracy is average",
+      "Build quality is budget"
+    ]
+  },
+  {
+    "id": "asus-vg249q1a",
+    "brand": "asus",
+    "name": "ASUS TUF Gaming VG249Q1A",
+    "category": "monitor",
+    "image": "https://picsum.photos/seed/asus-vg249q1a/400/400",
+    "fallbackImg": "",
+    "releaseDate": "Released 2021, March",
+    "basePrice": 179,
+    "popularity": 77,
+    "rating": 4.4,
+    "reviewCount": 6780,
+    "review": "A reliable and affordable FHD gaming monitor with 165Hz refresh rate. Great for esports and competitive gaming on a budget.",
+    "quickSpecs": {
+      "display": "24-inch IPS, 1920x1080 (FHD)",
+      "refreshRate": "165Hz",
+      "panelType": "IPS",
+      "responseTime": "1ms MPRT",
+      "connectivity": "HDMI 2.0 x2, DP 1.2"
+    },
+    "prices": [
+      {
+        "store": "Amazon",
+        "price": 149,
+        "url": "https://www.amazon.com/s?k=ASUS+VG249Q1A"
+      },
+      {
+        "store": "Newegg",
+        "price": 179,
+        "url": "https://www.newegg.com/"
+      }
+    ],
+    "pros": [
+      "Very affordable",
+      "165Hz smooth gaming",
+      "Good IPS color",
+      "Compact size"
+    ],
+    "cons": [
+      "Only FHD",
+      "Limited ergonomics",
+      "No USB-C"
+    ]
+  }
+]
