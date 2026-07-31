@@ -1,0 +1,324 @@
+# =============================================================================
+# PhoneHub Weekly Deep Check Workflow
+# =============================================================================
+# Runs every Monday at 08:00 UTC to perform thorough data health validation.
+# Goes deeper than the daily workflow — checks every logo, every image,
+# benchmark coverage, and generates a GitHub Issue if problems are found.
+# =============================================================================
+
+name: PhoneHub Weekly Deep Check
+
+on:
+  schedule:
+    - cron: '0 8 * * 1'       # Every Monday at 08:00 UTC
+  workflow_dispatch:            # Manual trigger from GitHub Actions UI
+
+env:
+  NEXT_PUBLIC_SITE_URL: ${{ secrets.NEXT_PUBLIC_SITE_URL || 'https://phonehub-next.vercel.app' }}
+
+jobs:
+  # ---------------------------------------------------------------------------
+  # JOB 1: Deep Data Validation
+  # Runs comprehensive checks on all data files and assets.
+  # ---------------------------------------------------------------------------
+  deep-validation:
+    name: Deep Data Validation
+    runs-on: ubuntu-latest
+    outputs:
+      issue_body: ${{ steps.report.outputs.body }}
+      has_issues: ${{ steps.report.outputs.has_issues }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Generate Prisma client
+        run: npm run db:generate
+        continue-on-error: true
+
+      # ----- CHECK 1: Validate ALL brand logos -----
+      # Fetches every brand logo and reports which ones are broken/missing.
+      - name: Validate ALL brand logos
+        id: logo_check
+        run: |
+          echo "=== Brand Logo Validation ===" >> $GITHUB_STEP_SUMMARY
+          npm run fetch:logos 2>&1 | tee logo-output.txt
+          LOGO_ERRORS=$(grep -ci "error\|failed\|404\|missing\|broken" logo-output.txt || true)
+          echo "logo_errors=$LOGO_ERRORS" >> $GITHUB_OUTPUT
+          echo "Found $LOGO_ERRORS logo issues."
+        continue-on-error: true
+
+      # ----- CHECK 2: Broken product images -----
+      # Scans products.json for image paths and verifies each file exists.
+      - name: Check for broken product images
+        id: image_check
+        run: |
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "=== Product Image Validation ===" >> $GITHUB_STEP_SUMMARY
+
+          BROKEN=0
+          TOTAL=0
+          MISSING_LIST=""
+
+          # Extract all image paths from products.json and specs.json
+          for DATA_FILE in src/data/products.json src/data/specs.json; do
+            if [[ -f "$DATA_FILE" ]]; then
+              # Pull out image fields (image, img, logo, icon, etc.)
+              PATHS=$(grep -oP '"(?:image|img|logo|icon|thumbnail|photo|picture)"\s*:\s*"([^"]+)"' "$DATA_FILE" \
+                | grep -oP '"[^"]*"$' | tr -d '"' || true)
+
+              for IMG_PATH in $PATHS; do
+                TOTAL=$((TOTAL + 1))
+                # Resolve relative to public/ or root
+                if [[ "$IMG_PATH" == http* ]]; then
+                  # Remote URL — check HTTP status
+                  STATUS=$(curl -s -o /dev/null -w "%{http_code}" --max-time 5 "$IMG_PATH" 2>/dev/null || echo "000")
+                  if [[ "$STATUS" -ge 400 || "$STATUS" == "000" ]]; then
+                    BROKEN=$((BROKEN + 1))
+                    MISSING_LIST="${MISSING_LIST}\n- [ ] $IMG_PATH (HTTP $STATUS)"
+                  fi
+                else
+                  # Local file — check existence
+                  LOCAL_PATH="public/${IMG_PATH#/}"
+                  if [[ ! -f "$LOCAL_PATH" ]] && [[ ! -f "$IMG_PATH" ]]; then
+                    BROKEN=$((BROKEN + 1))
+                    MISSING_LIST="${MISSING_LIST}\n- [ ] $IMG_PATH (file not found)"
+                  fi
+                fi
+              done
+            fi
+          done
+
+          echo "Checked $TOTAL image references, found $BROKEN broken."
+          echo "broken_images=$BROKEN" >> $GITHUB_OUTPUT
+          echo "total_images=$TOTAL" >> $GITHUB_OUTPUT
+
+          # Write the list for the report
+          echo -e "$MISSING_LIST" > broken-images.txt
+        continue-on-error: true
+
+      # ----- CHECK 3: Benchmark data coverage -----
+      # Ensures benchmark scores exist for a reasonable % of products.
+      - name: Validate benchmark data coverage
+        id: benchmark_check
+        run: |
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "=== Benchmark Data Coverage ===" >> $GITHUB_STEP_SUMMARY
+
+          node -e "
+            const fs = require('fs');
+            let issues = [];
+
+            // Load data files
+            const products = JSON.parse(fs.readFileSync('src/data/products.json', 'utf8'));
+            const benchmarks = fs.existsSync('src/data/benchmarks.json')
+              ? JSON.parse(fs.readFileSync('src/data/benchmarks.json', 'utf8'))
+              : [];
+            const specs = fs.existsSync('src/data/specs.json')
+              ? JSON.parse(fs.readFileSync('src/data/specs.json', 'utf8'))
+              : [];
+
+            const productCount = Array.isArray(products) ? products.length : Object.keys(products).length;
+            const benchmarkCount = Array.isArray(benchmarks) ? benchmarks.length : Object.keys(benchmarks).length;
+            const specCount = Array.isArray(specs) ? specs.length : Object.keys(specs).length;
+
+            const coverage = productCount > 0 ? Math.round((benchmarkCount / productCount) * 100) : 0;
+            const specCoverage = productCount > 0 ? Math.round((specCount / productCount) * 100) : 0;
+
+            console.log('Products:', productCount);
+            console.log('Benchmarks:', benchmarkCount, '(' + coverage + '% coverage)');
+            console.log('Specs:', specCount, '(' + specCoverage + '% coverage)');
+
+            if (coverage < 50) issues.push('Benchmark coverage below 50% (' + coverage + '%)');
+            if (specCoverage < 50) issues.push('Spec coverage below 50% (' + specCoverage + '%)');
+            if (productCount === 0) issues.push('No products found in products.json');
+            if (benchmarkCount === 0) issues.push('No benchmarks found in benchmarks.json');
+
+            // Output for GitHub Actions
+            const fs2 = require('fs');
+            fs2.appendFileSync(process.env.GITHUB_OUTPUT, 'product_count=' + productCount + '\n');
+            fs2.appendFileSync(process.env.GITHUB_OUTPUT, 'benchmark_count=' + benchmarkCount + '\n');
+            fs2.appendFileSync(process.env.GITHUB_OUTPUT, 'coverage_pct=' + coverage + '\n');
+            fs2.appendFileSync(process.env.GITHUB_OUTPUT, 'spec_count=' + specCount + '\n');
+            fs2.appendFileSync(process.env.GITHUB_OUTPUT, 'spec_coverage_pct=' + specCoverage + '\n');
+            fs2.appendFileSync(process.env.GITHUB_OUTPUT, 'issues=' + encodeURIComponent(issues.join('|')) + '\n');
+
+            if (issues.length > 0) {
+              console.log('ISSUES:', issues.join('; '));
+            }
+          " 2>&1 | tee benchmark-output.txt
+        continue-on-error: true
+
+      # ----- CHECK 4: Data freshness -----
+      # Verifies that news data isn't stale.
+      - name: Check data freshness
+        id: freshness_check
+        run: |
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "=== Data Freshness ===" >> $GITHUB_STEP_SUMMARY
+
+          node -e "
+            const fs = require('fs');
+            const news = JSON.parse(fs.readFileSync('src/data/news.json', 'utf8'));
+            const items = Array.isArray(news) ? news : (news.articles || news.items || []);
+            const now = Date.now();
+            let staleCount = 0;
+            let newestDate = 0;
+
+            items.forEach(item => {
+              const d = new Date(item.date || item.publishedAt || item.pubDate || 0).getTime();
+              if (d > newestDate) newestDate = d;
+              // Flag items older than 14 days
+              if (now - d > 14 * 24 * 60 * 60 * 1000) staleCount++;
+            });
+
+            const newestAgeDays = Math.round((now - newestDate) / (24 * 60 * 60 * 1000));
+            console.log('Total news items:', items.length);
+            console.log('Newest item age:', newestAgeDays, 'days');
+            console.log('Stale items (>14 days):', staleCount);
+
+            const fs2 = require('fs');
+            fs2.appendFileSync(process.env.GITHUB_OUTPUT, 'news_count=' + items.length + '\n');
+            fs2.appendFileSync(process.env.GITHUB_OUTPUT, 'newest_age_days=' + newestAgeDays + '\n');
+            fs2.appendFileSync(process.env.GITHUB_OUTPUT, 'stale_count=' + staleCount + '\n');
+          " 2>&1
+        continue-on-error: true
+
+      # ----- GENERATE REPORT -----
+      # Collates all check results into a report body for the GitHub Issue.
+      - name: Generate health report
+        id: report
+        run: |
+          LOGO_ERRORS=${{ steps.logo_check.outputs.logo_errors || 0 }}
+          BROKEN_IMAGES=${{ steps.image_check.outputs.broken_images || 0 }}
+          TOTAL_IMAGES=${{ steps.image_check.outputs.total_images || 0 }}
+          BENCHMARK_ISSUES=${{ steps.benchmark_check.outputs.issues || '' }}
+          PRODUCT_COUNT=${{ steps.benchmark_check.outputs.product_count || 0 }}
+          BENCHMARK_COUNT=${{ steps.benchmark_check.outputs.benchmark_count || 0 }}
+          COVERAGE_PCT=${{ steps.benchmark_check.outputs.coverage_pct || 0 }}
+          SPEC_COUNT=${{ steps.benchmark_check.outputs.spec_count || 0 }}
+          SPEC_COVERAGE_PCT=${{ steps.benchmark_check.outputs.spec_coverage_pct || 0 }}
+          NEWS_COUNT=${{ steps.freshness_check.outputs.news_count || 0 }}
+          NEWEST_AGE=${{ steps.freshness_check.outputs.newest_age_days || 'unknown' }}
+          STALE_COUNT=${{ steps.freshness_check.outputs.stale_count || 0 }}
+
+          HAS_ISSUES="false"
+          if [[ "$LOGO_ERRORS" -gt 0 ]] || [[ "$BROKEN_IMAGES" -gt 0 ]] || [[ -n "$BENCHMARK_ISSUES" && "$BENCHMARK_ISSUES" != "null" ]] || [[ "$STALE_COUNT" -gt 10 ]]; then
+            HAS_ISSUES="true"
+          fi
+
+          DECODED_ISSUES=$(python3 -c "import urllib.parse; print(urllib.parse.unquote('$BENCHMARK_ISSUES'))" 2>/dev/null || echo "")
+
+          cat > report-body.md << REPORT_EOF
+          # PhoneHub Data Health Report
+          **Generated:** $(date -u '+%Y-%m-%d %H:%M UTC')
+          **Workflow Run:** [${{ github.run_id }}](${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }})
+
+          ---
+
+          ## 1. Brand Logo Validation
+          | Metric | Value |
+          |--------|-------|
+          | Logo errors found | **${LOGO_ERRORS}** |
+
+          $([ "$LOGO_ERRORS" -gt 0 ] && echo "> :warning: Some brand logos may be broken or unreachable." || echo "> :white_check_mark: All brand logos appear valid.")
+
+          ## 2. Product Image Integrity
+          | Metric | Value |
+          |--------|-------|
+          | Total images checked | ${TOTAL_IMAGES} |
+          | Broken/missing | **${BROKEN_IMAGES}** |
+
+          $([ "$BROKEN_IMAGES" -gt 0 ] && echo "> :warning: ${BROKEN_IMAGES} product image(s) are broken or missing." || echo "> :white_check_mark: All product images are intact.")
+
+          ## 3. Benchmark Data Coverage
+          | Metric | Value |
+          |--------|-------|
+          | Products | ${PRODUCT_COUNT} |
+          | Benchmarks | ${BENCHMARK_COUNT} (${COVERAGE_PCT}% coverage) |
+          | Specs | ${SPEC_COUNT} (${SPEC_COVERAGE_PCT}% coverage) |
+
+          $([ -n "$DECODED_ISSUES" ] && echo "> :warning: Coverage issues: ${DECODED_ISSUES}" || echo "> :white_check_mark: Benchmark and spec coverage looks healthy.")
+
+          ## 4. Data Freshness
+          | Metric | Value |
+          |--------|-------|
+          | News items | ${NEWS_COUNT} |
+          | Newest article age | ${NEWEST_AGE} days |
+          | Stale articles (>14d) | ${STALE_COUNT} |
+
+          $([ "$STALE_COUNT" -gt 10 ] && echo "> :warning: ${STALE_COUNT} articles are stale (>14 days old)." || echo "> :white_check_mark: News data is reasonably fresh.")
+
+          ---
+
+          ## Summary
+          **Overall status:** $([ "$HAS_ISSUES" == "true" ] && echo ":red_circle: Issues detected — review needed" || echo ":green_circle: All checks passed")
+          REPORT_EOF
+
+          # Strip leading whitespace from heredoc
+          sed -i 's/^          //' report-body.md
+
+          echo "has_issues=$HAS_ISSUES" >> $GITHUB_OUTPUT
+
+          # Use delimiter for multiline output
+          {
+            echo 'body<<EOF'
+            cat report-body.md
+            echo 'EOF'
+          } >> $GITHUB_OUTPUT
+
+          # Also print to step summary for easy viewing in the Actions UI
+          cat report-body.md >> $GITHUB_STEP_SUMMARY
+
+  # ---------------------------------------------------------------------------
+  # JOB 2: Create GitHub Issue (only if problems were found)
+  # ---------------------------------------------------------------------------
+  create-issue:
+    name: Create Health Report Issue
+    runs-on: ubuntu-latest
+    needs: deep-validation
+    if: needs.deep-validation.outputs.has_issues == 'true'
+    permissions:
+      issues: write
+    steps:
+      - name: Create or update GitHub Issue
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const body = `${{ needs.deep-validation.outputs.issue_body }}`;
+            const title = `🏥 Weekly Data Health Report — ${new Date().toISOString().slice(0, 10)}`;
+
+            // Check if there's already an open health report issue
+            const issues = await github.rest.issues.listForRepo({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              state: 'open',
+              labels: 'data-health',
+            });
+
+            if (issues.data.length > 0) {
+              // Update the existing issue with the latest report
+              await github.rest.issues.createComment({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                issue_number: issues.data[0].number,
+                body: body,
+              });
+              console.log(`Updated existing issue #${issues.data[0].number}`);
+            } else {
+              // Create a new issue
+              const newIssue = await github.rest.issues.create({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                title: title,
+                body: body,
+                labels: ['data-health', 'automated'],
+              });
+              console.log(`Created new issue #${newIssue.data.number}`);
+            }
