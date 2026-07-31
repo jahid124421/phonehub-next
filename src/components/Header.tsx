@@ -10,9 +10,13 @@ const navLinks = [
   { label: "Home", href: "/" },
   { label: "Brands", href: "/brands" },
   { label: "Compare", href: "/compare" },
+  { label: "Deals", href: "/deals" },
   { label: "News", href: "/news" },
   { label: "AI Finder", href: "/ai-finder" },
+  { label: "Finder", href: "/advanced-finder" },
   { label: "Benchmarks", href: "/benchmarks" },
+  { label: "Guides", href: "/guides" },
+  { label: "Upcoming", href: "/upcoming" },
   { label: "Tools", href: "/tools" },
 ];
 

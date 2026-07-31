@@ -7,6 +7,7 @@ import {
   getProductsByCategory,
   getSpecsForProduct,
   getBenchmarksForProduct,
+  getScoreForProduct,
   type Product,
 } from "@/lib/data";
 import Breadcrumb from "@/components/Breadcrumb";
@@ -17,6 +18,8 @@ import RecentlyViewed from "@/components/RecentlyViewed";
 import ProductImage from "@/components/ProductImage";
 import GiscusDiscussion from "@/components/GiscusDiscussion";
 import PhoneCard from "@/components/PhoneCard";
+import ScoreBadge from "@/components/ScoreBadge";
+import UserReviews from "@/components/UserReviews";
 import { SITE_URL } from "@/lib/config";
 import { productSchema, breadcrumbSchema } from "@/lib/schema";
 
@@ -145,6 +148,7 @@ export default async function PhoneDetailPage({
   if (!product) notFound();
 
   const specs = getSpecsForProduct(id) || {};
+  const score = getScoreForProduct(id);
   const brandProducts = getProductsByBrand(product.brand).filter((p) => p.id !== id);
   const similar: Product[] =
     brandProducts.length >= 4
@@ -248,6 +252,42 @@ export default async function PhoneDetailPage({
             <CompareButton productId={product.id} />
             <WatchlistButton productId={product.id} />
           </div>
+
+          {/* PhoneHub Score */}
+          {score && (
+            <div className="flex items-start gap-4 pt-2">
+              <ScoreBadge score={score} size="large" />
+              <div className="space-y-1.5 flex-1">
+                <div className="text-sm font-bold text-base-content/70 uppercase tracking-wide">PhoneHub Score Breakdown</div>
+                <div className="grid grid-cols-3 gap-x-4 gap-y-1 text-xs">
+                  {[
+                    { label: 'Display', value: score.display },
+                    { label: 'Camera', value: score.camera },
+                    { label: 'Performance', value: score.performance },
+                    { label: 'Battery', value: score.battery },
+                    { label: 'Value', value: score.value },
+                    { label: 'Build', value: score.build },
+                  ].map(({ label, value }) => (
+                    <div key={label} className="flex items-center gap-1.5">
+                      <div className="flex-1 bg-base-300 rounded-full h-1.5">
+                        <div
+                          className="h-full rounded-full"
+                          style={{
+                            width: `${value}%`,
+                            backgroundColor: value >= 80 ? '#22c55e' : value >= 60 ? '#eab308' : value >= 40 ? '#f97316' : '#ef4444',
+                          }}
+                        />
+                      </div>
+                      <span className="text-base-content/60 min-w-[56px]">{label}</span>
+                      <span className="font-semibold min-w-[22px] text-right" style={{
+                        color: value >= 80 ? '#22c55e' : value >= 60 ? '#eab308' : value >= 40 ? '#f97316' : '#ef4444',
+                      }}>{value}</span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+          )}
 
           {/* Quick Specs */}
           {product.quickSpecs && Object.keys(product.quickSpecs).length > 0 && (
@@ -495,7 +535,10 @@ export default async function PhoneDetailPage({
         </section>
       )}
 
-      {/* 6. Recently Viewed */}
+      {/* 6. User Reviews */}
+      <UserReviews productId={product.id} />
+
+      {/* 7. Recently Viewed */}
       <RecentlyViewed currentProductId={product.id} />
 
       {/* 7. Similar Products */}

@@ -1,0 +1,546 @@
+[
+  {
+    "id": "samsung-galaxy-s25-fe",
+    "name": "Samsung Galaxy S25 FE",
+    "brand": "Samsung",
+    "category": "phone",
+    "expectedLaunch": "Q3 2026",
+    "status": "rumored",
+    "expectedPrice": "$699",
+    "expectedSpecs": {
+      "display": "6.7\" Dynamic AMOLED 2X, 120Hz",
+      "chipset": "Snapdragon 8 Gen 3 / Exynos 2400",
+      "camera": "50MP + 12MP + 8MP",
+      "battery": "4,700mAh, 25W",
+      "os": "Android 15, One UI 7"
+    },
+    "confidence": "high"
+  },
+  {
+    "id": "samsung-galaxy-z-fold7",
+    "name": "Samsung Galaxy Z Fold7",
+    "brand": "Samsung",
+    "category": "phone",
+    "expectedLaunch": "Q3 2026",
+    "status": "confirmed",
+    "expectedPrice": "$1,899",
+    "expectedSpecs": {
+      "display": "7.6\" foldable Dynamic AMOLED, 120Hz",
+      "chipset": "Snapdragon 8 Gen 4",
+      "camera": "200MP + 12MP + 10MP",
+      "battery": "4,600mAh, 45W",
+      "os": "Android 16, One UI 8"
+    },
+    "confidence": "high"
+  },
+  {
+    "id": "samsung-galaxy-z-flip7",
+    "name": "Samsung Galaxy Z Flip7",
+    "brand": "Samsung",
+    "category": "phone",
+    "expectedLaunch": "Q3 2026",
+    "status": "confirmed",
+    "expectedPrice": "$1,099",
+    "expectedSpecs": {
+      "display": "6.9\" foldable Dynamic AMOLED, 120Hz",
+      "chipset": "Snapdragon 8 Gen 4",
+      "camera": "50MP + 12MP",
+      "battery": "4,000mAh, 25W",
+      "os": "Android 16, One UI 8"
+    },
+    "confidence": "high"
+  },
+  {
+    "id": "iphone-18-pro-max",
+    "name": "Apple iPhone 18 Pro Max",
+    "brand": "Apple",
+    "category": "phone",
+    "expectedLaunch": "Q4 2026",
+    "status": "leaked",
+    "expectedPrice": "$1,399",
+    "expectedSpecs": {
+      "display": "6.9\" Super Retina XDR OLED, 120Hz",
+      "chipset": "Apple A20 Pro (2nm)",
+      "camera": "48MP + 48MP + 12MP, periscope telephoto",
+      "battery": "4,800mAh, 40W",
+      "os": "iOS 20"
+    },
+    "confidence": "high"
+  },
+  {
+    "id": "iphone-18-pro",
+    "name": "Apple iPhone 18 Pro",
+    "brand": "Apple",
+    "category": "phone",
+    "expectedLaunch": "Q4 2026",
+    "status": "leaked",
+    "expectedPrice": "$1,199",
+    "expectedSpecs": {
+      "display": "6.3\" Super Retina XDR OLED, 120Hz",
+      "chipset": "Apple A20 Pro (2nm)",
+      "camera": "48MP + 48MP + 12MP",
+      "battery": "4,200mAh, 35W",
+      "os": "iOS 20"
+    },
+    "confidence": "high"
+  },
+  {
+    "id": "iphone-18",
+    "name": "Apple iPhone 18",
+    "brand": "Apple",
+    "category": "phone",
+    "expectedLaunch": "Q4 2026",
+    "status": "rumored",
+    "expectedPrice": "$899",
+    "expectedSpecs": {
+      "display": "6.1\" Super Retina XDR OLED, 90Hz",
+      "chipset": "Apple A20 (2nm)",
+      "camera": "48MP + 12MP",
+      "battery": "3,900mAh, 30W",
+      "os": "iOS 20"
+    },
+    "confidence": "medium"
+  },
+  {
+    "id": "iphone-fold",
+    "name": "Apple iPhone Fold",
+    "brand": "Apple",
+    "category": "phone",
+    "expectedLaunch": "Q4 2026",
+    "status": "rumored",
+    "expectedPrice": "$1,999",
+    "expectedSpecs": {
+      "display": "7.8\" foldable OLED, 120Hz",
+      "chipset": "Apple A20 Pro (2nm)",
+      "camera": "48MP + 48MP + 12MP",
+      "battery": "5,000mAh, 45W",
+      "os": "iOS 20"
+    },
+    "confidence": "low"
+  },
+  {
+    "id": "google-pixel-11-pro-xl",
+    "name": "Google Pixel 11 Pro XL",
+    "brand": "Google",
+    "category": "phone",
+    "expectedLaunch": "Q4 2026",
+    "status": "leaked",
+    "expectedPrice": "$1,199",
+    "expectedSpecs": {
+      "display": "6.9\" LTPO OLED, 120Hz",
+      "chipset": "Google Tensor G6",
+      "camera": "50MP + 50MP + 48MP",
+      "battery": "5,200mAh, 45W",
+      "os": "Android 17"
+    },
+    "confidence": "medium"
+  },
+  {
+    "id": "google-pixel-11-pro",
+    "name": "Google Pixel 11 Pro",
+    "brand": "Google",
+    "category": "phone",
+    "expectedLaunch": "Q4 2026",
+    "status": "leaked",
+    "expectedPrice": "$999",
+    "expectedSpecs": {
+      "display": "6.3\" LTPO OLED, 120Hz",
+      "chipset": "Google Tensor G6",
+      "camera": "50MP + 50MP + 48MP",
+      "battery": "4,700mAh, 37W",
+      "os": "Android 17"
+    },
+    "confidence": "medium"
+  },
+  {
+    "id": "google-pixel-11a",
+    "name": "Google Pixel 11a",
+    "brand": "Google",
+    "category": "phone",
+    "expectedLaunch": "Q2 2027",
+    "status": "rumored",
+    "expectedPrice": "$499",
+    "expectedSpecs": {
+      "display": "6.1\" OLED, 90Hz",
+      "chipset": "Google Tensor G5",
+      "camera": "64MP + 13MP",
+      "battery": "4,500mAh, 30W",
+      "os": "Android 17"
+    },
+    "confidence": "low"
+  },
+  {
+    "id": "xiaomi-16-ultra",
+    "name": "Xiaomi 16 Ultra",
+    "brand": "Xiaomi",
+    "category": "phone",
+    "expectedLaunch": "Q1 2027",
+    "status": "leaked",
+    "expectedPrice": "$999",
+    "expectedSpecs": {
+      "display": "6.8\" AMOLED, 144Hz",
+      "chipset": "Snapdragon 8 Gen 4",
+      "camera": "200MP Leica + 50MP + 50MP",
+      "battery": "5,500mAh, 120W",
+      "os": "Android 16, HyperOS 3"
+    },
+    "confidence": "medium"
+  },
+  {
+    "id": "xiaomi-16-pro",
+    "name": "Xiaomi 16 Pro",
+    "brand": "Xiaomi",
+    "category": "phone",
+    "expectedLaunch": "Q1 2027",
+    "status": "leaked",
+    "expectedPrice": "$749",
+    "expectedSpecs": {
+      "display": "6.7\" AMOLED, 120Hz",
+      "chipset": "Snapdragon 8 Gen 4",
+      "camera": "50MP Leica + 50MP + 12MP",
+      "battery": "5,200mAh, 90W",
+      "os": "Android 16, HyperOS 3"
+    },
+    "confidence": "medium"
+  },
+  {
+    "id": "xiaomi-redmi-k100-pro",
+    "name": "Xiaomi Redmi K100 Pro",
+    "brand": "Xiaomi",
+    "category": "phone",
+    "expectedLaunch": "Q1 2027",
+    "status": "rumored",
+    "expectedPrice": "$549",
+    "expectedSpecs": {
+      "display": "6.67\" AMOLED, 144Hz",
+      "chipset": "Snapdragon 8 Gen 3",
+      "camera": "50MP + 8MP + 2MP",
+      "battery": "5,500mAh, 120W",
+      "os": "Android 16, HyperOS 3"
+    },
+    "confidence": "low"
+  },
+  {
+    "id": "oneplus-14-pro",
+    "name": "OnePlus 14 Pro",
+    "brand": "OnePlus",
+    "category": "phone",
+    "expectedLaunch": "Q1 2027",
+    "status": "leaked",
+    "expectedPrice": "$899",
+    "expectedSpecs": {
+      "display": "6.8\" LTPO AMOLED, 120Hz",
+      "chipset": "Snapdragon 8 Gen 4",
+      "camera": "50MP Hasselblad + 50MP + 64MP",
+      "battery": "5,600mAh, 100W",
+      "os": "Android 16, OxygenOS 16"
+    },
+    "confidence": "medium"
+  },
+  {
+    "id": "oneplus-nord-7",
+    "name": "OnePlus Nord 7",
+    "brand": "OnePlus",
+    "category": "phone",
+    "expectedLaunch": "Q3 2026",
+    "status": "rumored",
+    "expectedPrice": "$449",
+    "expectedSpecs": {
+      "display": "6.7\" AMOLED, 120Hz",
+      "chipset": "Snapdragon 7 Gen 4",
+      "camera": "50MP + 8MP",
+      "battery": "5,500mAh, 80W",
+      "os": "Android 16, OxygenOS 16"
+    },
+    "confidence": "low"
+  },
+  {
+    "id": "nothing-phone-4",
+    "name": "Nothing Phone (4)",
+    "brand": "Nothing",
+    "category": "phone",
+    "expectedLaunch": "Q3 2026",
+    "status": "confirmed",
+    "expectedPrice": "$699",
+    "expectedSpecs": {
+      "display": "6.6\" LTPO AMOLED, 120Hz",
+      "chipset": "Snapdragon 8 Gen 3",
+      "camera": "50MP + 50MP",
+      "battery": "5,000mAh, 45W",
+      "os": "Android 16, Nothing OS 4.0"
+    },
+    "confidence": "high"
+  },
+  {
+    "id": "nothing-phone-4a-pro",
+    "name": "Nothing Phone (4a) Pro",
+    "brand": "Nothing",
+    "category": "phone",
+    "expectedLaunch": "Q4 2026",
+    "status": "rumored",
+    "expectedPrice": "$449",
+    "expectedSpecs": {
+      "display": "6.5\" AMOLED, 120Hz",
+      "chipset": "Snapdragon 7 Gen 3",
+      "camera": "50MP + 8MP",
+      "battery": "5,000mAh, 33W",
+      "os": "Android 16, Nothing OS 4.0"
+    },
+    "confidence": "low"
+  },
+  {
+    "id": "motorola-edge-60-ultra",
+    "name": "Motorola Edge 60 Ultra",
+    "brand": "Motorola",
+    "category": "phone",
+    "expectedLaunch": "Q3 2026",
+    "status": "leaked",
+    "expectedPrice": "$799",
+    "expectedSpecs": {
+      "display": "6.7\" pOLED, 165Hz",
+      "chipset": "Snapdragon 8 Gen 3",
+      "camera": "50MP + 50MP + 64MP",
+      "battery": "5,000mAh, 68W",
+      "os": "Android 16"
+    },
+    "confidence": "medium"
+  },
+  {
+    "id": "motorola-razr-2026-ultra",
+    "name": "Motorola Razr 2026 Ultra",
+    "brand": "Motorola",
+    "category": "phone",
+    "expectedLaunch": "Q3 2026",
+    "status": "leaked",
+    "expectedPrice": "$999",
+    "expectedSpecs": {
+      "display": "6.9\" foldable pOLED, 165Hz",
+      "chipset": "Snapdragon 8 Gen 4",
+      "camera": "50MP + 13MP",
+      "battery": "4,200mAh, 45W",
+      "os": "Android 16"
+    },
+    "confidence": "medium"
+  },
+  {
+    "id": "oppo-find-x9-ultra",
+    "name": "OPPO Find X9 Ultra",
+    "brand": "OPPO",
+    "category": "phone",
+    "expectedLaunch": "Q4 2026",
+    "status": "leaked",
+    "expectedPrice": "$1,099",
+    "expectedSpecs": {
+      "display": "6.8\" LTPO AMOLED, 120Hz",
+      "chipset": "Snapdragon 8 Gen 4",
+      "camera": "50MP Hasselblad + 50MP + 64MP periscope",
+      "battery": "5,500mAh, 100W",
+      "os": "Android 16, ColorOS 16"
+    },
+    "confidence": "medium"
+  },
+  {
+    "id": "oppo-find-n5-flip",
+    "name": "OPPO Find N5 Flip",
+    "brand": "OPPO",
+    "category": "phone",
+    "expectedLaunch": "Q4 2026",
+    "status": "rumored",
+    "expectedPrice": "$999",
+    "expectedSpecs": {
+      "display": "6.8\" foldable AMOLED, 120Hz",
+      "chipset": "Snapdragon 8 Gen 4",
+      "camera": "50MP + 50MP",
+      "battery": "4,500mAh, 67W",
+      "os": "Android 16, ColorOS 16"
+    },
+    "confidence": "low"
+  },
+  {
+    "id": "vivo-x300-pro",
+    "name": "vivo X300 Pro",
+    "brand": "vivo",
+    "category": "phone",
+    "expectedLaunch": "Q4 2026",
+    "status": "leaked",
+    "expectedPrice": "$899",
+    "expectedSpecs": {
+      "display": "6.78\" LTPO AMOLED, 120Hz",
+      "chipset": "Snapdragon 8 Gen 4",
+      "camera": "200MP Zeiss + 50MP + 50MP",
+      "battery": "5,500mAh, 90W",
+      "os": "Android 16, Funtouch OS 16"
+    },
+    "confidence": "medium"
+  },
+  {
+    "id": "realme-gt-7-pro",
+    "name": "Realme GT 7 Pro",
+    "brand": "Realme",
+    "category": "phone",
+    "expectedLaunch": "Q4 2026",
+    "status": "rumored",
+    "expectedPrice": "$599",
+    "expectedSpecs": {
+      "display": "6.7\" AMOLED, 144Hz",
+      "chipset": "Snapdragon 8 Gen 3",
+      "camera": "50MP + 8MP + 2MP",
+      "battery": "5,500mAh, 100W",
+      "os": "Android 16, Realme UI 6"
+    },
+    "confidence": "low"
+  },
+  {
+    "id": "huawei-mate-70-pro-plus",
+    "name": "Huawei Mate 70 Pro+",
+    "brand": "Huawei",
+    "category": "phone",
+    "expectedLaunch": "Q4 2026",
+    "status": "rumored",
+    "expectedPrice": "$1,299",
+    "expectedSpecs": {
+      "display": "6.9\" LTPO OLED, 120Hz",
+      "chipset": "Kirin 9100",
+      "camera": "50MP XMAGE + 50MP + 48MP",
+      "battery": "5,400mAh, 100W",
+      "os": "HarmonyOS 5.0"
+    },
+    "confidence": "low"
+  },
+  {
+    "id": "sony-xperia-1-vii",
+    "name": "Sony Xperia 1 VII",
+    "brand": "Sony",
+    "category": "phone",
+    "expectedLaunch": "Q3 2026",
+    "status": "leaked",
+    "expectedPrice": "$1,399",
+    "expectedSpecs": {
+      "display": "6.5\" 4K OLED, 120Hz",
+      "chipset": "Snapdragon 8 Gen 4",
+      "camera": "52MP + 12MP + 12MP, variable telephoto",
+      "battery": "5,000mAh, 30W",
+      "os": "Android 16"
+    },
+    "confidence": "medium"
+  },
+  {
+    "id": "asus-rog-phone-10",
+    "name": "ASUS ROG Phone 10",
+    "brand": "ASUS",
+    "category": "phone",
+    "expectedLaunch": "Q3 2026",
+    "status": "rumored",
+    "expectedPrice": "$999",
+    "expectedSpecs": {
+      "display": "6.78\" AMOLED, 185Hz",
+      "chipset": "Snapdragon 8 Gen 4",
+      "camera": "50MP + 13MP",
+      "battery": "6,000mAh, 65W",
+      "os": "Android 16, ROG UI"
+    },
+    "confidence": "low"
+  },
+  {
+    "id": "asus-zenfone-13",
+    "name": "ASUS Zenfone 13",
+    "brand": "ASUS",
+    "category": "phone",
+    "expectedLaunch": "Q3 2026",
+    "status": "rumored",
+    "expectedPrice": "$749",
+    "expectedSpecs": {
+      "display": "6.3\" AMOLED, 120Hz",
+      "chipset": "Snapdragon 8 Gen 4",
+      "camera": "50MP gimbal + 13MP + 10MP",
+      "battery": "4,800mAh, 30W",
+      "os": "Android 16, ZenUI 12"
+    },
+    "confidence": "low"
+  },
+  {
+    "id": "samsung-galaxy-a77",
+    "name": "Samsung Galaxy A77",
+    "brand": "Samsung",
+    "category": "phone",
+    "expectedLaunch": "Q4 2026",
+    "status": "rumored",
+    "expectedPrice": "$449",
+    "expectedSpecs": {
+      "display": "6.6\" Super AMOLED, 120Hz",
+      "chipset": "Exynos 1580",
+      "camera": "50MP + 12MP + 5MP",
+      "battery": "5,000mAh, 25W",
+      "os": "Android 16, One UI 8"
+    },
+    "confidence": "low"
+  },
+  {
+    "id": "xiaomi-pad-7-pro",
+    "name": "Xiaomi Pad 7 Pro",
+    "brand": "Xiaomi",
+    "category": "tablet",
+    "expectedLaunch": "Q3 2026",
+    "status": "leaked",
+    "expectedPrice": "$499",
+    "expectedSpecs": {
+      "display": "12.4\" IPS LCD, 144Hz",
+      "chipset": "Snapdragon 8 Gen 3",
+      "camera": "13MP rear, 8MP front",
+      "battery": "10,000mAh, 67W",
+      "os": "Android 16, HyperOS 3"
+    },
+    "confidence": "medium"
+  },
+  {
+    "id": "samsung-galaxy-tab-s11-ultra",
+    "name": "Samsung Galaxy Tab S11 Ultra",
+    "brand": "Samsung",
+    "category": "tablet",
+    "expectedLaunch": "Q3 2026",
+    "status": "rumored",
+    "expectedPrice": "$1,199",
+    "expectedSpecs": {
+      "display": "14.6\" Dynamic AMOLED 2X, 120Hz",
+      "chipset": "Snapdragon 8 Gen 4",
+      "camera": "13MP + 8MP rear, 12MP front",
+      "battery": "11,200mAh, 45W",
+      "os": "Android 16, One UI 8"
+    },
+    "confidence": "low"
+  },
+  {
+    "id": "google-pixel-tablet-3",
+    "name": "Google Pixel Tablet 3",
+    "brand": "Google",
+    "category": "tablet",
+    "expectedLaunch": "Q4 2026",
+    "status": "rumored",
+    "expectedPrice": "$599",
+    "expectedSpecs": {
+      "display": "11\" OLED, 90Hz",
+      "chipset": "Google Tensor G5",
+      "camera": "13MP rear, 8MP front",
+      "battery": "8,000mAh, 30W",
+      "os": "Android 16"
+    },
+    "confidence": "low"
+  },
+  {
+    "id": "oneplus-pad-4",
+    "name": "OnePlus Pad 4",
+    "brand": "OnePlus",
+    "category": "tablet",
+    "expectedLaunch": "Q1 2027",
+    "status": "rumored",
+    "expectedPrice": "$499",
+    "expectedSpecs": {
+      "display": "12.1\" AMOLED, 144Hz",
+      "chipset": "Snapdragon 8 Gen 3",
+      "camera": "13MP rear, 8MP front",
+      "battery": "9,500mAh, 67W",
+      "os": "Android 16, OxygenOS 16"
+    },
+    "confidence": "low"
+  }
+]

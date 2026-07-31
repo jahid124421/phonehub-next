@@ -6,15 +6,19 @@ import Link from 'next/link';
 import type { Product } from '@/lib/data';
 import { formatPrice, formatDate } from '@/lib/formatters';
 import Breadcrumb from '@/components/Breadcrumb';
+import ScoreBadge from '@/components/ScoreBadge';
+import type { PhoneHubScore } from '@/lib/score-calculator';
 
 /* ------------------------------------------------------------------ */
 /*  Types                                                              */
 /* ------------------------------------------------------------------ */
 
 type SpecsMap = Record<string, Record<string, Record<string, string>>>;
+type ScoresMap = Record<string, PhoneHubScore>;
 
 interface CompareClientProps {
   allSpecs: SpecsMap;
+  allScores?: ScoresMap;
 }
 
 /* ------------------------------------------------------------------ */
@@ -67,7 +71,7 @@ function sortSections(sections: string[]): string[] {
 /*  Component                                                          */
 /* ------------------------------------------------------------------ */
 
-export default function CompareClient({ allSpecs }: CompareClientProps) {
+export default function CompareClient({ allSpecs, allScores = {} }: CompareClientProps) {
   const searchParams = useSearchParams();
   const router = useRouter();
   const [mounted, setMounted] = useState(false);
@@ -253,6 +257,26 @@ export default function CompareClient({ allSpecs }: CompareClientProps) {
 
           {/* ---- Summary rows ---- */}
           <tbody>
+            {/* PhoneHub Score row */}
+            <tr>
+              <td className="sticky left-0 bg-base-100 z-10 font-medium text-base-content/70">
+                PhoneHub Score
+              </td>
+              {selectedProducts.map((p) => {
+                const s = allScores[p.id];
+                return (
+                  <td key={p.id} className="text-center">
+                    {s ? (
+                      <div className="flex flex-col items-center gap-1">
+                        <ScoreBadge score={s} size="compact" />
+                      </div>
+                    ) : (
+                      <span className="text-base-content/40 text-sm">N/A</span>
+                    )}
+                  </td>
+                );
+              })}
+            </tr>
             <tr>
               <td className="sticky left-0 bg-base-100 z-10 font-medium text-base-content/70">
                 Lowest Price
@@ -287,6 +311,41 @@ export default function CompareClient({ allSpecs }: CompareClientProps) {
                 </td>
               ))}
             </tr>
+            {/* Score breakdown rows */}
+            {(() => {
+              const hasAnyScore = selectedProducts.some(p => allScores[p.id]);
+              if (!hasAnyScore) return null;
+              const categories: { label: string; key: keyof PhoneHubScore }[] = [
+                { label: '📊 Display', key: 'display' },
+                { label: '📷 Camera', key: 'camera' },
+                { label: '⚡ Performance', key: 'performance' },
+                { label: '🔋 Battery', key: 'battery' },
+                { label: '💰 Value', key: 'value' },
+                { label: '🏗 Build', key: 'build' },
+              ];
+              return categories.map(({ label, key }) => (
+                <tr key={key}>
+                  <td className="sticky left-0 bg-base-100 z-10 font-medium text-base-content/70 text-sm">
+                    {label}
+                  </td>
+                  {selectedProducts.map((p) => {
+                    const s = allScores[p.id];
+                    const val = s ? s[key] : null;
+                    const color = val == null ? undefined
+                      : val >= 80 ? '#22c55e' : val >= 60 ? '#eab308' : val >= 40 ? '#f97316' : '#ef4444';
+                    return (
+                      <td key={p.id} className="text-center text-sm">
+                        {val != null ? (
+                          <span className="font-semibold" style={{ color }}>{val}/100</span>
+                        ) : (
+                          <span className="text-base-content/40">—</span>
+                        )}
+                      </td>
+                    );
+                  })}
+                </tr>
+              ));
+            })()}
           </tbody>
 
           {/* ---- Spec sections ---- */}

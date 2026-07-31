@@ -1,7 +1,8 @@
 import Link from "next/link";
-import { type Product } from "@/lib/data";
+import { type Product, getScoreForProduct } from "@/lib/data";
 import CompareButton from "./CompareButton";
 import ProductImage from "./ProductImage";
+import ScoreBadge from "./ScoreBadge";
 
 function StarRating({ rating, reviewCount }: { rating: number; reviewCount: number }) {
   const full = Math.floor(rating / 2);
@@ -51,6 +52,7 @@ function StarRating({ rating, reviewCount }: { rating: number; reviewCount: numb
 
 export default function PhoneCard({ product }: { product: Product }) {
   const fallback = product.fallbackImg ? `/${product.fallbackImg}` : "/img/no-image.svg";
+  const score = getScoreForProduct(product.id);
 
   return (
     <div className="card card-compact bg-base-200 border border-base-300 hover:border-primary transition-all hover:-translate-y-1 duration-200">
@@ -58,6 +60,12 @@ export default function PhoneCard({ product }: { product: Product }) {
         {/* Image area */}
         <figure className="relative aspect-square bg-base-300 overflow-hidden">
           <ProductImage src={product.image} alt={product.name} fallback={fallback} />
+          {/* Score badge top-right */}
+          {score && (
+            <div className="absolute top-2 right-2 z-10">
+              <ScoreBadge score={score} size="compact" />
+            </div>
+          )}
         </figure>
 
         {/* Card body */}

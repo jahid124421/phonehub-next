@@ -11,10 +11,14 @@ const links = {
   explore: [
     { label: "Search", href: "/search" },
     { label: "Compare", href: "/compare" },
+    { label: "Deals", href: "/deals" },
     { label: "News", href: "/news" },
     { label: "Brands", href: "/brands" },
     { label: "AI Finder", href: "/ai-finder" },
+    { label: "Advanced Finder", href: "/advanced-finder" },
     { label: "Benchmarks", href: "/benchmarks" },
+    { label: "Buying Guides", href: "/guides" },
+    { label: "Upcoming Phones", href: "/upcoming" },
     { label: "Tools", href: "/tools" },
     { label: "Monitors", href: "/search?cat=monitor" },
     { label: "Routers", href: "/search?cat=router" },
@@ -24,6 +28,7 @@ const links = {
     { label: "Phones", href: "/search?cat=phone" },
     { label: "Laptops", href: "/search?cat=laptop" },
     { label: "Cars", href: "/search?cat=auto" },
+    { label: "Write a Review", href: "/search" },
   ],
   legal: [
     { label: "Privacy Policy", href: "/privacy" },

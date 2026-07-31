@@ -1,0 +1,252 @@
+{
+  "guides": [
+    {
+      "id": "best-camera-phones-2026",
+      "title": "Best Camera Phones 2026",
+      "description": "The ultimate camera phones for photography enthusiasts — from 200MP sensors to AI-powered computational photography.",
+      "icon": "📷",
+      "category": "phone",
+      "products": [
+        "samsung-galaxy-s24-ultra",
+        "pixel-9-pro-xl",
+        "iphone-17-pro-max",
+        "iphone-17-pro",
+        "galaxy-s26-ultra",
+        "pixel-10-pro-xl",
+        "iphone-16-pro-max",
+        "samsung-galaxy-s25-ultra",
+        "pixel-9-pro",
+        "iphone-15-pro-max"
+      ],
+      "reasoning": {
+        "samsung-galaxy-s24-ultra": "200MP main sensor with 100x Space Zoom and pro-grade Nightography",
+        "pixel-9-pro-xl": "Best computational photography with Magic Eraser and AI editing tools",
+        "iphone-17-pro-max": "Apple's most advanced triple-camera system with Photonic Engine 3.0",
+        "iphone-17-pro": "Compact flagship with the same powerful camera system as the Pro Max",
+        "galaxy-s26-ultra": "Samsung's latest ultra with upgraded 200MP sensor and enhanced AI processing",
+        "pixel-10-pro-xl": "Google's best Tensor-powered camera with Video Boost and Best Take",
+        "iphone-16-pro-max": "Previous-gen Apple flagship with excellent 48MP main and 5x telephoto",
+        "samsung-galaxy-s25-ultra": "Outstanding zoom range and Expert RAW support for enthusiasts",
+        "pixel-9-pro": "Compact Pixel with identical ultrawide and telephoto as the XL",
+        "iphone-15-pro-max": "Still one of the best video-recording phones with ProRes support"
+      }
+    },
+    {
+      "id": "best-budget-phones-under-500",
+      "title": "Best Budget Phones Under $500",
+      "description": "Great smartphones that won't break the bank — solid cameras, good battery life, and modern features at affordable prices.",
+      "icon": "💰",
+      "category": "phone",
+      "products": [
+        "oneplus-12r",
+        "redmi-17c",
+        "nord-ce6-lite",
+        "15t",
+        "xiaomi-13-lite",
+        "poco-x3",
+        "narzo-100-lite",
+        "p4-lite",
+        "redmi-a5",
+        "v70-lite"
+      ],
+      "reasoning": {
+        "oneplus-12r": "Flagship killer with Snapdragon 8 Gen 2 and 100W fast charging",
+        "redmi-17c": "Best ultra-budget option with a 50MP camera and 5000mAh battery",
+        "nord-ce6-lite": "Clean OxygenOS experience with reliable all-day battery life",
+        "15t": "MediaTek Dimensity chipset with 120Hz AMOLED display",
+        "xiaomi-13-lite": "Sleek design with capable cameras and fast charging at a great price",
+        "poco-x3": "Legendary value king — great performance and 120Hz display",
+        "narzo-100-lite": "Solid entry-level phone with clean Realme UI and good battery",
+        "p4-lite": "Reliable daily driver with decent cameras and smooth performance",
+        "redmi-a5": "Ultra-affordable with surprisingly good build quality",
+        "v70-lite": "Vivo's budget champion with AMOLED display and slim design"
+      }
+    },
+    {
+      "id": "best-gaming-phones",
+      "title": "Best Gaming Phones",
+      "description": "High-performance gaming beasts with top-tier chipsets, high refresh rate displays, and advanced cooling systems.",
+      "icon": "🎮",
+      "category": "phone",
+      "products": [
+        "iphone-17-pro-max",
+        "galaxy-s26-ultra",
+        "ace-6-ultra",
+        "iphone-17-pro",
+        "pixel-10-pro-xl",
+        "samsung-galaxy-s24-ultra",
+        "redmi-k90-ultra",
+        "iphone-16-pro-max",
+        "n6",
+        "rog-phone-7"
+      ],
+      "reasoning": {
+        "iphone-17-pro-max": "A20 Pro chip delivers console-grade gaming with hardware-accelerated ray tracing",
+        "galaxy-s26-ultra": "Snapdragon 8 Gen 4 with advanced vapor chamber cooling for sustained performance",
+        "ace-6-ultra": "OnePlus gaming flagship with 120W charging and high-touch sampling rate",
+        "iphone-17-pro": "Same powerful A20 Pro chip in a more compact gaming form factor",
+        "pixel-10-pro-xl": "Tensor G6 with dedicated AI game optimization and smooth 120Hz gameplay",
+        "samsung-galaxy-s24-ultra": "Proven gaming powerhouse with Game Booster and Snapdragon 8 Gen 3",
+        "redmi-k90-ultra": "Flagship performance at mid-range price with MediaTek Dimensity 9400",
+        "iphone-16-pro-max": "Still excellent for gaming with A18 Pro and 120Hz ProMotion",
+        "n6": "Budget-friendly gaming option with decent chipset and high refresh display",
+        "rog-phone-7": "Dedicated gaming phone with shoulder triggers and 165Hz display"
+      }
+    },
+    {
+      "id": "best-battery-life-phones",
+      "title": "Best Battery Life Phones",
+      "description": "Phones that last all day and beyond — massive batteries, efficient chipsets, and blazing-fast charging.",
+      "icon": "🔋",
+      "category": "phone",
+      "products": [
+        "galaxy-s26-ultra",
+        "pixel-10-pro-xl",
+        "samsung-galaxy-s25-ultra",
+        "redmi-k90-max",
+        "iphone-17-pro-max",
+        "ace-6-ultra",
+        "pixel-9-pro-xl",
+        "iphone-16-pro-max",
+        "nord-ce6",
+        "redmi-k90-ultra"
+      ],
+      "reasoning": {
+        "galaxy-s26-ultra": "5,500mAh battery with Snapdragon 8 Gen 4 efficiency — easily 2-day battery",
+        "pixel-10-pro-xl": "5,200mAh cell with Tensor G6's power optimization and 45W charging",
+        "samsung-galaxy-s25-ultra": "Reliable all-day battery with 5,000mAh and efficient Snapdragon 8 Gen 3",
+        "redmi-k90-max": "Massive 6,000mAh battery with 120W HyperCharge — 0 to 100% in 20 minutes",
+        "iphone-17-pro-max": "Apple's largest iPhone battery ever with A20 Pro efficiency gains",
+        "ace-6-ultra": "5,500mAh with OnePlus' 120W SuperVOOC — full charge in under 25 minutes",
+        "pixel-9-pro-xl": "5,060mAh battery with extreme battery saver lasting up to 72 hours",
+        "iphone-16-pro-max": "Excellent standby time and all-day active use with A18 Pro",
+        "nord-ce6": "Great mid-range battery life with 5,500mAh and efficient chipset",
+        "redmi-k90-ultra": "Large battery paired with fast charging for power users"
+      }
+    },
+    {
+      "id": "best-premium-flagships-2026",
+      "title": "Best Premium Flagships 2026",
+      "description": "The absolute best smartphones money can buy — no compromises on specs, build quality, or features.",
+      "icon": "👑",
+      "category": "phone",
+      "products": [
+        "iphone-17-pro-max",
+        "galaxy-s26-ultra",
+        "samsung-galaxy-s24-ultra",
+        "iphone-17-pro",
+        "pixel-10-pro-xl",
+        "iphone-16-pro-max",
+        "pixel-9-pro-xl",
+        "samsung-galaxy-s25-ultra",
+        "pixel-10-pro-fold",
+        "iphone-15-pro-max"
+      ],
+      "reasoning": {
+        "iphone-17-pro-max": "Apple's ultimate flagship — A20 Pro, titanium design, and best-in-class video",
+        "galaxy-s26-ultra": "Samsung's most powerful phone with 200MP camera and S Pen support",
+        "samsung-galaxy-s24-ultra": "Still a top-tier choice with proven reliability and 100x Space Zoom",
+        "iphone-17-pro": "Full Pro experience in a pocket-friendly size with A20 Pro chip",
+        "pixel-10-pro-xl": "Google's AI-first flagship with the smartest camera system available",
+        "iphone-16-pro-max": "Premium Apple experience with excellent cameras and all-day battery",
+        "pixel-9-pro-xl": "Outstanding value flagship with Tensor G4 and 7 years of updates",
+        "samsung-galaxy-s25-ultra": "Latest Samsung ultra with refined design and enhanced Galaxy AI features",
+        "pixel-10-pro-fold": "Google's foldable flagship combining tablet versatility with phone convenience",
+        "iphone-15-pro-max": "Previous-gen Apple ultra still delivers flagship-tier performance"
+      }
+    },
+    {
+      "id": "best-laptops-for-students",
+      "title": "Best Laptops for Students",
+      "description": "Portable, powerful, and student-budget-friendly laptops for coursework, research, and creativity.",
+      "icon": "🎓",
+      "category": "laptop",
+      "products": [
+        "laptop-macbook-pro-13--m1-2020",
+        "laptop-surface-laptop-go",
+        "laptop-matebook-x",
+        "laptop-thinkpad-g-series",
+        "laptop-medion-akoya-s6445",
+        "laptop-compaq-contura",
+        "laptop-pinebook",
+        "laptop-acer-aspire-4752",
+        "laptop-acer-aspire-s7",
+        "laptop-thinkpad-t420"
+      ],
+      "reasoning": {
+        "laptop-macbook-pro-13--m1-2020": "Unbeatable performance-per-watt with M1 chip and 20-hour battery life",
+        "laptop-surface-laptop-go": "Lightweight Windows laptop with great keyboard and touchscreen",
+        "laptop-matebook-x": "Ultra-slim Huawei laptop with gorgeous display and solid build quality",
+        "laptop-thinkpad-g-series": "Legendary ThinkPad durability and keyboard at an accessible price",
+        "laptop-medion-akoya-s6445": "Budget-friendly convertible with decent specs for everyday tasks",
+        "laptop-compaq-contura": "Reliable workhorse laptop perfect for research and document work",
+        "laptop-pinebook": "Ultra-affordable Linux laptop ideal for CS students and developers",
+        "laptop-acer-aspire-4752": "Great value Acer with solid performance for coursework",
+        "laptop-acer-aspire-s7": "Premium ultrabook design with excellent portability for campus life",
+        "laptop-thinkpad-t420": "Indestructible ThinkPad classic — perfect for heavy daily use"
+      }
+    },
+    {
+      "id": "best-monitors-for-productivity",
+      "title": "Best Monitors for Productivity",
+      "description": "Ultra-wide, 4K, and color-accurate monitors that boost your workflow — perfect for work-from-home and creative professionals.",
+      "icon": "🖥️",
+      "category": "monitor",
+      "products": [
+        "dell-u2723qe",
+        "dell-u3423we",
+        "lg-32un880-b",
+        "benq-pd2706ua",
+        "asus-proart-pa279crv",
+        "viewsonic-vp2776",
+        "samsung-viewfinity-s8",
+        "lg-27gp850-b",
+        "msi-mag-274qrf-qd",
+        "benq-ex2710u"
+      ],
+      "reasoning": {
+        "dell-u2723qe": "Best 4K productivity monitor with USB-C hub and IPS Black technology",
+        "dell-u3423we": "34-inch ultrawide curved display perfect for multitasking and spreadsheets",
+        "lg-32un880-b": "Ergo stand with 4K UHD — the most flexible monitor setup for any desk",
+        "benq-pd2706ua": "Designer-grade color accuracy with KVM switch for multi-device workflows",
+        "asus-proart-pa279crv": "Factory-calibrated 4K for creative professionals at an unbeatable price",
+        "viewsonic-vp2776": "ColorPro certified with hardware calibration for photo and video editing",
+        "samsung-viewfinity-s8": "5K resolution productivity monitor with USB-C and slim design",
+        "lg-27gp850-b": "Fast Nano IPS panel equally great for work and gaming",
+        "msi-mag-274qrf-qd": "QD-OLED technology delivers stunning contrast for content creation",
+        "benq-ex2710u": "4K HDR gaming and productivity hybrid with HDRi eye-care technology"
+      }
+    },
+    {
+      "id": "best-wifi-7-routers",
+      "title": "Best Wi-Fi 7 Routers",
+      "description": "Next-generation Wi-Fi 7 routers delivering blazing-fast speeds, ultra-low latency, and multi-gigabit connectivity.",
+      "icon": "📡",
+      "category": "router",
+      "products": [
+        "tp-link-archer-be95",
+        "asus-rt-be88u",
+        "netgear-nighthawk-rs700s",
+        "amazon-eero-max-7",
+        "asus-rt-be86u",
+        "linksys-hydration-pro-7",
+        "tp-link-archer-axe75",
+        "tp-link-archer-ax73",
+        "google-nest-wifi-pro",
+        "asus-rt-ax86u-pro"
+      ],
+      "reasoning": {
+        "tp-link-archer-be95": "Quad-band Wi-Fi 7 beast with 320MHz channels and 25Gbps combined speed",
+        "asus-rt-be88u": "Premium Wi-Fi 7 router with ASUS AiMesh support and 2.5G ports",
+        "netgear-nighthawk-rs700s": "Tri-band Wi-Fi 7 with Netgear Armor security and easy setup",
+        "amazon-eero-max-7": "Best mesh Wi-Fi 7 system with seamless roaming and smart home hub",
+        "asus-rt-be86u": "Mid-range Wi-Fi 7 with excellent price-to-performance ratio",
+        "linksys-hydration-pro-7": "Reliable Wi-Fi 7 mesh with Intelligent Mesh technology",
+        "tp-link-archer-axe75": "Wi-Fi 6E tri-band router with great coverage at an affordable price",
+        "tp-link-archer-ax73": "Best budget dual-band router with Wi-Fi 6 and excellent range",
+        "google-nest-wifi-pro": "Wi-Fi 6E mesh with Google Home integration and Thread support",
+        "asus-rt-ax86u-pro": "Proven gaming router with 2.5G port and WTFast game accelerator"
+      }
+    }
+  ]
+}

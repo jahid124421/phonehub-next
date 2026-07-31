@@ -1,5 +1,5 @@
 import { Suspense } from 'react';
-import { getAllProducts, getSpecsForProduct } from '@/lib/data';
+import { getAllProducts, getSpecsForProduct, getAllScores } from '@/lib/data';
 import { SITE_URL } from '@/lib/config';
 import CompareClient from './CompareClient';
 
@@ -29,7 +29,7 @@ export default function ComparePage() {
         </div>
       }
     >
-      <CompareClient allSpecs={specsMap} />
+      <CompareClient allSpecs={specsMap} allScores={getAllScores()} />
     </Suspense>
   );
 }
