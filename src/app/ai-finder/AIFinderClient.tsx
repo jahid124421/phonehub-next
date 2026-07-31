@@ -600,7 +600,7 @@ function AIFinderCard({ product }: { product: ResultProduct }) {
         </div>
       </Link>
 
-      <div className="px-4 pb-4 flex justify-end -mt-1">
+      <div className="px-4 pb-4 flex justify-end">
         <CompareButton productId={product.id} />
       </div>
     </div>
