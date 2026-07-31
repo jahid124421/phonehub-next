@@ -2,7 +2,7 @@
   {
     "id": "apple",
     "name": "Apple",
-    "logo": "https://cdn.simpleicons.org/apple",
+    "logo": "https://cdn.brandfetch.io/apple.com/w/400/h/400",
     "color": "#000000",
     "category": "Mobile",
     "sub_categories": [
@@ -13,7 +13,7 @@
   {
     "id": "samsung",
     "name": "Samsung",
-    "logo": "https://cdn.simpleicons.org/samsung",
+    "logo": "https://cdn.brandfetch.io/samsung.com/w/400/h/400",
     "color": "#1428A0",
     "category": "Mobile",
     "sub_categories": [
@@ -26,7 +26,7 @@
   {
     "id": "google",
     "name": "Google",
-    "logo": "https://cdn.simpleicons.org/google",
+    "logo": "https://cdn.brandfetch.io/google.com/w/400/h/400",
     "color": "#4285F4",
     "category": "Mobile",
     "sub_categories": [
@@ -37,7 +37,7 @@
   {
     "id": "xiaomi",
     "name": "Xiaomi",
-    "logo": "https://cdn.simpleicons.org/xiaomi",
+    "logo": "https://cdn.brandfetch.io/xiaomi.com/w/400/h/400",
     "color": "#FF6900",
     "category": "Mobile",
     "sub_categories": [
@@ -48,7 +48,7 @@
   {
     "id": "oneplus",
     "name": "OnePlus",
-    "logo": "https://cdn.simpleicons.org/oneplus",
+    "logo": "https://cdn.brandfetch.io/oneplus.com/w/400/h/400",
     "color": "#EB0028",
     "category": "Mobile",
     "sub_categories": [
@@ -58,7 +58,7 @@
   {
     "id": "nothing",
     "name": "Nothing",
-    "logo": "https://cdn.simpleicons.org/nothing/000000",
+    "logo": "https://cdn.brandfetch.io/nothing.tech/w/400/h/400",
     "color": "#000000",
     "category": "Mobile",
     "sub_categories": [
@@ -68,7 +68,7 @@
   {
     "id": "vivo",
     "name": "vivo",
-    "logo": "https://cdn.simpleicons.org/vivo",
+    "logo": "https://cdn.brandfetch.io/vivo.com/w/400/h/400",
     "color": "#0C64E8",
     "category": "Mobile",
     "sub_categories": [
@@ -78,7 +78,7 @@
   {
     "id": "realme",
     "name": "Realme",
-    "logo": "https://cdn.simpleicons.org/realme/FFC600",
+    "logo": "https://cdn.brandfetch.io/realme.com/w/400/h/400",
     "color": "#FFC600",
     "category": "Mobile",
     "sub_categories": [
@@ -88,7 +88,7 @@
   {
     "id": "oppo",
     "name": "Oppo",
-    "logo": "https://cdn.simpleicons.org/oppo",
+    "logo": "https://cdn.brandfetch.io/oppo.com/w/400/h/400",
     "color": "#1BA784",
     "category": "Mobile",
     "sub_categories": [
@@ -98,7 +98,7 @@
   {
     "id": "motorola",
     "name": "Motorola",
-    "logo": "https://cdn.simpleicons.org/motorola",
+    "logo": "https://cdn.brandfetch.io/motorola.com/w/400/h/400",
     "color": "#5C92FC",
     "category": "Mobile",
     "sub_categories": [
@@ -108,7 +108,7 @@
   {
     "id": "sony",
     "name": "Sony",
-    "logo": "https://cdn.simpleicons.org/sony",
+    "logo": "https://cdn.brandfetch.io/sony.com/w/400/h/400",
     "color": "#0B0B0B",
     "category": "Electronics",
     "sub_categories": [
@@ -119,7 +119,7 @@
   {
     "id": "nokia",
     "name": "Nokia",
-    "logo": "https://cdn.simpleicons.org/nokia",
+    "logo": "https://cdn.brandfetch.io/nokia.com/w/400/h/400",
     "color": "#124191",
     "category": "Mobile",
     "sub_categories": [
@@ -129,7 +129,7 @@
   {
     "id": "honor",
     "name": "Honor",
-    "logo": "https://cdn.simpleicons.org/honor/00B0E9",
+    "logo": "https://cdn.brandfetch.io/honor.com/w/400/h/400",
     "color": "#00B0E9",
     "category": "Mobile",
     "sub_categories": [
@@ -139,7 +139,7 @@
   {
     "id": "asus",
     "name": "Asus",
-    "logo": "https://cdn.simpleicons.org/asus",
+    "logo": "https://cdn.brandfetch.io/asus.com/w/400/h/400",
     "color": "#000000",
     "category": "Electronics",
     "sub_categories": [
@@ -150,7 +150,7 @@
   {
     "id": "huawei",
     "name": "Huawei",
-    "logo": "https://cdn.simpleicons.org/huawei",
+    "logo": "https://cdn.brandfetch.io/huawei.com/w/400/h/400",
     "color": "#C7000B",
     "category": "Mobile",
     "sub_categories": [
@@ -175,7 +175,7 @@
   {
     "id": "toshiba",
     "name": "Toshiba",
-    "logo": "https://cdn.simpleicons.org/toshiba",
+    "logo": "https://cdn.brandfetch.io/toshiba.com/w/400/h/400",
     "color": "#FF0000",
     "category": "Laptop",
     "sub_categories": [
@@ -193,7 +193,7 @@
   {
     "id": "lenovo",
     "name": "Lenovo",
-    "logo": "https://cdn.simpleicons.org/lenovo",
+    "logo": "https://cdn.brandfetch.io/lenovo.com/w/400/h/400",
     "color": "#E2231A",
     "category": "Laptop",
     "sub_categories": [
@@ -211,7 +211,7 @@
   {
     "id": "pine64",
     "name": "Pine64",
-    "logo": "https://cdn.simpleicons.org/pine64/000000",
+    "logo": "https://cdn.brandfetch.io/pine64.org/w/400/h/400",
     "color": "#000000",
     "category": "Computers"
   },
@@ -232,7 +232,7 @@
   {
     "id": "acer",
     "name": "Acer",
-    "logo": "https://cdn.simpleicons.org/acer",
+    "logo": "https://cdn.brandfetch.io/acer.com/w/400/h/400",
     "color": "#83B81A",
     "category": "Laptop",
     "sub_categories": [
@@ -242,7 +242,7 @@
   {
     "id": "dell",
     "name": "Dell",
-    "logo": "https://cdn.simpleicons.org/dell",
+    "logo": "https://cdn.brandfetch.io/dell.com/w/400/h/400",
     "color": "#007DB8",
     "category": "Laptop",
     "sub_categories": [
@@ -252,7 +252,7 @@
   {
     "id": "garmin",
     "name": "Garmin",
-    "logo": "https://cdn.simpleicons.org/garmin",
+    "logo": "https://cdn.brandfetch.io/garmin.com/w/400/h/400",
     "color": "#000000",
     "category": "Electronics",
     "sub_categories": [
@@ -279,28 +279,28 @@
   {
     "id": "sinclair",
     "name": "Sinclair",
-    "logo": "https://cdn.simpleicons.org/sinclair/000000",
+    "logo": "https://cdn.brandfetch.io/sinclair.com/w/400/h/400",
     "color": "#000000",
     "category": "Other"
   },
   {
     "id": "magnavox",
     "name": "Magnavox",
-    "logo": "https://cdn.simpleicons.org/magnavox/000000",
+    "logo": "https://cdn.brandfetch.io/magnavox.com/w/400/h/400",
     "color": "#000000",
     "category": "TVs"
   },
   {
     "id": "sega",
     "name": "Sega",
-    "logo": "https://cdn.simpleicons.org/sega",
+    "logo": "https://cdn.brandfetch.io/sega.com/w/400/h/400",
     "color": "#003399",
     "category": "Electronics"
   },
   {
     "id": "lg",
     "name": "LG",
-    "logo": "https://cdn.simpleicons.org/lg",
+    "logo": "https://cdn.brandfetch.io/lg.com/w/400/h/400",
     "color": "#A50034",
     "category": "TVs",
     "sub_categories": [
@@ -332,7 +332,7 @@
   {
     "id": "tesla",
     "name": "Tesla",
-    "logo": "https://cdn.simpleicons.org/tesla",
+    "logo": "https://cdn.brandfetch.io/tesla.com/w/400/h/400",
     "color": "#CC0000",
     "category": "Auto"
   },
@@ -357,7 +357,7 @@
   {
     "id": "fujifilm",
     "name": "Fujifilm",
-    "logo": "https://cdn.simpleicons.org/fujifilm",
+    "logo": "https://cdn.brandfetch.io/fujifilm.com/w/400/h/400",
     "color": "#ED1C24",
     "category": "Electronics",
     "sub_categories": [
@@ -384,7 +384,7 @@
   {
     "id": "renault",
     "name": "Renault",
-    "logo": "https://cdn.simpleicons.org/renault",
+    "logo": "https://cdn.brandfetch.io/renault.com/w/400/h/400",
     "color": "#FFCC00",
     "category": "Auto"
   },
@@ -398,14 +398,14 @@
   {
     "id": "volkswagen",
     "name": "Volkswagen",
-    "logo": "https://cdn.simpleicons.org/volkswagen",
+    "logo": "https://cdn.brandfetch.io/volkswagen.com/w/400/h/400",
     "color": "#001E50",
     "category": "Auto"
   },
   {
     "id": "rolls-royce",
     "name": "Rolls-Royce",
-    "logo": "https://cdn.simpleicons.org/rollsroyce",
+    "logo": "https://cdn.brandfetch.io/rolls-royce.com/w/400/h/400",
     "color": "#000000",
     "category": "Auto"
   },
@@ -419,7 +419,7 @@
   {
     "id": "ferrari",
     "name": "Ferrari",
-    "logo": "https://cdn.simpleicons.org/ferrari",
+    "logo": "https://cdn.brandfetch.io/ferrari.com/w/400/h/400",
     "color": "#FF2800",
     "category": "Auto"
   },
@@ -433,14 +433,14 @@
   {
     "id": "peugeot",
     "name": "Peugeot",
-    "logo": "https://cdn.simpleicons.org/peugeot",
+    "logo": "https://cdn.brandfetch.io/peugeot.com/w/400/h/400",
     "color": "#000000",
     "category": "Auto"
   },
   {
     "id": "mitsubishi",
     "name": "Mitsubishi",
-    "logo": "https://cdn.simpleicons.org/mitsubishi",
+    "logo": "https://cdn.brandfetch.io/mitsubishi.com/w/400/h/400",
     "color": "#E2001A",
     "category": "Auto"
   },
@@ -461,21 +461,21 @@
   {
     "id": "subaru",
     "name": "Subaru",
-    "logo": "https://cdn.simpleicons.org/subaru",
+    "logo": "https://cdn.brandfetch.io/subaru.com/w/400/h/400",
     "color": "#013C7A",
     "category": "Auto"
   },
   {
     "id": "toyota",
     "name": "Toyota",
-    "logo": "https://cdn.simpleicons.org/toyota",
+    "logo": "https://cdn.brandfetch.io/toyota.com/w/400/h/400",
     "color": "#D31017",
     "category": "Auto"
   },
   {
     "id": "porsche",
     "name": "Porsche",
-    "logo": "https://cdn.simpleicons.org/porsche",
+    "logo": "https://cdn.brandfetch.io/porsche.com/w/400/h/400",
     "color": "#000000",
     "category": "Auto"
   },
@@ -496,7 +496,7 @@
   {
     "id": "mazda",
     "name": "Mazda",
-    "logo": "https://cdn.simpleicons.org/mazda",
+    "logo": "https://cdn.brandfetch.io/mazda.com/w/400/h/400",
     "color": "#101010",
     "category": "Auto"
   },
@@ -510,7 +510,7 @@
   {
     "id": "honda",
     "name": "Honda",
-    "logo": "https://cdn.simpleicons.org/honda",
+    "logo": "https://cdn.brandfetch.io/honda.com/w/400/h/400",
     "color": "#E1001A",
     "category": "Auto"
   },
@@ -552,7 +552,7 @@
   {
     "id": "fiat",
     "name": "Fiat",
-    "logo": "https://cdn.simpleicons.org/fiat",
+    "logo": "https://cdn.brandfetch.io/fiat.com/w/400/h/400",
     "color": "#AA001C",
     "category": "Auto"
   },
@@ -566,7 +566,7 @@
   {
     "id": "ford",
     "name": "Ford",
-    "logo": "https://cdn.simpleicons.org/ford",
+    "logo": "https://cdn.brandfetch.io/ford.com/w/400/h/400",
     "color": "#003D79",
     "category": "Auto"
   },
@@ -580,14 +580,14 @@
   {
     "id": "audi",
     "name": "Audi",
-    "logo": "https://cdn.simpleicons.org/audi",
+    "logo": "https://cdn.brandfetch.io/audi.com/w/400/h/400",
     "color": "#000000",
     "category": "Auto"
   },
   {
     "id": "bugatti",
     "name": "Bugatti",
-    "logo": "https://cdn.simpleicons.org/bugatti",
+    "logo": "https://cdn.brandfetch.io/bugatti.com/w/400/h/400",
     "color": "#000000",
     "category": "Auto"
   },
@@ -608,21 +608,21 @@
   {
     "id": "nissan",
     "name": "Nissan",
-    "logo": "https://cdn.simpleicons.org/nissan",
+    "logo": "https://cdn.brandfetch.io/nissan.com/w/400/h/400",
     "color": "#C3002F",
     "category": "Auto"
   },
   {
     "id": "bmw",
     "name": "BMW",
-    "logo": "https://cdn.simpleicons.org/bmw",
+    "logo": "https://cdn.brandfetch.io/bmw.com/w/400/h/400",
     "color": "#0066B1",
     "category": "Auto"
   },
   {
     "id": "opel",
     "name": "Opel",
-    "logo": "https://cdn.simpleicons.org/opel",
+    "logo": "https://cdn.brandfetch.io/opel.com/w/400/h/400",
     "color": "#000000",
     "category": "Auto"
   },
@@ -643,7 +643,7 @@
   {
     "id": "aston",
     "name": "Aston",
-    "logo": "https://cdn.simpleicons.org/astonmartin",
+    "logo": "https://cdn.brandfetch.io/aston.com/w/400/h/400",
     "color": "#00665E",
     "category": "Auto"
   },
@@ -688,7 +688,7 @@
   {
     "id": "hewlett-packard",
     "name": "Hewlett-Packard",
-    "logo": "https://cdn.simpleicons.org/hp",
+    "logo": "https://cdn.brandfetch.io/hewlett-packard.com/w/400/h/400",
     "color": "#0096D6",
     "category": "Laptop",
     "sub_categories": [
@@ -761,7 +761,7 @@
   {
     "id": "cadillac",
     "name": "Cadillac",
-    "logo": "https://cdn.simpleicons.org/cadillac",
+    "logo": "https://cdn.brandfetch.io/cadillac.com/w/400/h/400",
     "color": "#000000",
     "category": "Auto"
   },
@@ -803,7 +803,7 @@
   {
     "id": "volvo",
     "name": "Volvo",
-    "logo": "https://cdn.simpleicons.org/volvo",
+    "logo": "https://cdn.brandfetch.io/volvo.com/w/400/h/400",
     "color": "#003057",
     "category": "Auto"
   },
@@ -824,7 +824,7 @@
   {
     "id": "coda",
     "name": "Coda",
-    "logo": "https://cdn.simpleicons.org/coda",
+    "logo": "https://cdn.brandfetch.io/coda.com/w/400/h/400",
     "color": "#000000",
     "category": "Auto"
   },
@@ -838,14 +838,14 @@
   {
     "id": "seat",
     "name": "SEAT",
-    "logo": "https://cdn.simpleicons.org/seat",
+    "logo": "https://cdn.brandfetch.io/seat.com/w/400/h/400",
     "color": "#000000",
     "category": "Auto"
   },
   {
     "id": "maserati",
     "name": "Maserati",
-    "logo": "https://cdn.simpleicons.org/maserati",
+    "logo": "https://cdn.brandfetch.io/maserati.com/w/400/h/400",
     "color": "#000000",
     "category": "Auto"
   },
@@ -859,14 +859,14 @@
   {
     "id": "kia",
     "name": "Kia",
-    "logo": "https://cdn.simpleicons.org/kia",
+    "logo": "https://cdn.brandfetch.io/kia.com/w/400/h/400",
     "color": "#05141F",
     "category": "Auto"
   },
   {
     "id": "mg",
     "name": "MG",
-    "logo": "https://cdn.simpleicons.org/mg",
+    "logo": "https://cdn.brandfetch.io/mg.com/w/400/h/400",
     "color": "#CC0000",
     "category": "Auto"
   },
@@ -887,7 +887,7 @@
   {
     "id": "hyundai",
     "name": "Hyundai",
-    "logo": "https://cdn.simpleicons.org/hyundai",
+    "logo": "https://cdn.brandfetch.io/hyundai.com/w/400/h/400",
     "color": "#002C5F",
     "category": "Auto"
   },
@@ -915,14 +915,14 @@
   {
     "id": "zündapp",
     "name": "Zündapp",
-    "logo": "https://cdn.simpleicons.org/zndapp",
+    "logo": "https://cdn.brandfetch.io/zündapp.com/w/400/h/400",
     "color": "#5b8cff",
     "category": "Other"
   },
   {
     "id": "lamborghini",
     "name": "Lamborghini",
-    "logo": "https://cdn.simpleicons.org/lamborghini",
+    "logo": "https://cdn.brandfetch.io/lamborghini.com/w/400/h/400",
     "color": "#DDB321",
     "category": "Auto"
   },
@@ -1006,7 +1006,7 @@
   {
     "id": "citroën",
     "name": "Citroën",
-    "logo": "https://cdn.simpleicons.org/citroen",
+    "logo": "https://cdn.brandfetch.io/citroën.com/w/400/h/400",
     "color": "#000000",
     "category": "Auto"
   },
@@ -1237,7 +1237,7 @@
   {
     "id": "sharp-s",
     "name": "Sharp's",
-    "logo": "https://cdn.simpleicons.org/sharp",
+    "logo": "https://cdn.brandfetch.io/sharp.com/w/400/h/400",
     "color": "#000000",
     "category": "TVs",
     "sub_categories": [
@@ -1261,14 +1261,14 @@
   {
     "id": "tata",
     "name": "Tata",
-    "logo": "https://cdn.simpleicons.org/tata",
+    "logo": "https://cdn.brandfetch.io/tata.com/w/400/h/400",
     "color": "#4860A0",
     "category": "Auto"
   },
   {
     "id": "frans",
     "name": "Frans",
-    "logo": "https://cdn.simpleicons.org/frans",
+    "logo": "https://cdn.brandfetch.io/frans.com/w/400/h/400",
     "color": "#5b8cff",
     "category": "Other"
   },
@@ -1345,252 +1345,252 @@
   {
     "id": "suzuki",
     "name": "Suzuki",
-    "logo": "https://cdn.simpleicons.org/suzuki",
+    "logo": "https://cdn.brandfetch.io/suzuki.com/w/400/h/400",
     "color": "#5b8cff",
     "category": "Other"
   },
   {
     "id": "messerschmitt",
     "name": "Messerschmitt",
-    "logo": "https://cdn.simpleicons.org/messerschmitt",
+    "logo": "https://cdn.brandfetch.io/messerschmitt.com/w/400/h/400",
     "color": "#5b8cff",
     "category": "Other"
   },
   {
     "id": "myers",
     "name": "Myers",
-    "logo": "https://cdn.simpleicons.org/myers",
+    "logo": "https://cdn.brandfetch.io/myers.com/w/400/h/400",
     "color": "#5b8cff",
     "category": "Other"
   },
   {
     "id": "rover",
     "name": "Rover",
-    "logo": "https://cdn.simpleicons.org/landrover",
+    "logo": "https://cdn.brandfetch.io/rover.com/w/400/h/400",
     "color": "#5b8cff",
     "category": "Other"
   },
   {
     "id": "dacia",
     "name": "Dacia",
-    "logo": "https://cdn.simpleicons.org/dacia",
+    "logo": "https://cdn.brandfetch.io/dacia.com/w/400/h/400",
     "color": "#5b8cff",
     "category": "Other"
   },
   {
     "id": "reliant",
     "name": "Reliant",
-    "logo": "https://cdn.simpleicons.org/reliant",
+    "logo": "https://cdn.brandfetch.io/reliant.com/w/400/h/400",
     "color": "#5b8cff",
     "category": "Other"
   },
   {
     "id": "goggomobil",
     "name": "Goggomobil",
-    "logo": "https://cdn.simpleicons.org/goggomobil",
+    "logo": "https://cdn.brandfetch.io/goggomobil.com/w/400/h/400",
     "color": "#5b8cff",
     "category": "Other"
   },
   {
     "id": "land",
     "name": "Land",
-    "logo": "https://cdn.simpleicons.org/landrover",
+    "logo": "https://cdn.brandfetch.io/land.com/w/400/h/400",
     "color": "#5b8cff",
     "category": "Other"
   },
   {
     "id": "buddy",
     "name": "Buddy",
-    "logo": "https://cdn.simpleicons.org/buddy",
+    "logo": "https://cdn.brandfetch.io/buddy.com/w/400/h/400",
     "color": "#5b8cff",
     "category": "Other"
   },
   {
     "id": "saic",
     "name": "SAIC",
-    "logo": "https://cdn.simpleicons.org/saicmotor",
+    "logo": "https://cdn.brandfetch.io/saic.com/w/400/h/400",
     "color": "#5b8cff",
     "category": "Other"
   },
   {
     "id": "buick",
     "name": "Buick",
-    "logo": "https://cdn.simpleicons.org/buick",
+    "logo": "https://cdn.brandfetch.io/buick.com/w/400/h/400",
     "color": "#5b8cff",
     "category": "Other"
   },
   {
     "id": "alcatel",
     "name": "Alcatel",
-    "logo": "https://cdn.simpleicons.org/alcatel",
+    "logo": "https://cdn.brandfetch.io/alcatel.com/w/400/h/400",
     "color": "#5b8cff",
     "category": "Other"
   },
   {
     "id": "proton",
     "name": "Proton",
-    "logo": "https://cdn.simpleicons.org/proton",
+    "logo": "https://cdn.brandfetch.io/proton.com/w/400/h/400",
     "color": "#5b8cff",
     "category": "Other"
   },
   {
     "id": "infiniti",
     "name": "Infiniti",
-    "logo": "https://cdn.simpleicons.org/infiniti",
+    "logo": "https://cdn.brandfetch.io/infiniti.com/w/400/h/400",
     "color": "#5b8cff",
     "category": "Other"
   },
   {
     "id": "innocenti",
     "name": "Innocenti",
-    "logo": "https://cdn.simpleicons.org/innocenti",
+    "logo": "https://cdn.brandfetch.io/innocenti.com/w/400/h/400",
     "color": "#5b8cff",
     "category": "Other"
   },
   {
     "id": "intermeccanica",
     "name": "Intermeccanica",
-    "logo": "https://cdn.simpleicons.org/intermeccanica",
+    "logo": "https://cdn.brandfetch.io/intermeccanica.com/w/400/h/400",
     "color": "#5b8cff",
     "category": "Other"
   },
   {
     "id": "icml",
     "name": "ICML",
-    "logo": "https://cdn.simpleicons.org/icml",
+    "logo": "https://cdn.brandfetch.io/icml.com/w/400/h/400",
     "color": "#5b8cff",
     "category": "Other"
   },
   {
     "id": "stoewer",
     "name": "Stoewer",
-    "logo": "https://cdn.simpleicons.org/stoewer",
+    "logo": "https://cdn.brandfetch.io/stoewer.com/w/400/h/400",
     "color": "#5b8cff",
     "category": "Other"
   },
   {
     "id": "jensen",
     "name": "Jensen",
-    "logo": "https://cdn.simpleicons.org/jensen",
+    "logo": "https://cdn.brandfetch.io/jensen.com/w/400/h/400",
     "color": "#5b8cff",
     "category": "Other"
   },
   {
     "id": "triumph",
     "name": "Triumph",
-    "logo": "https://cdn.simpleicons.org/triumph",
+    "logo": "https://cdn.brandfetch.io/triumph.com/w/400/h/400",
     "color": "#5b8cff",
     "category": "Other"
   },
   {
     "id": "izhavto",
     "name": "IzhAvto",
-    "logo": "https://cdn.simpleicons.org/izhavto",
+    "logo": "https://cdn.brandfetch.io/izhavto.com/w/400/h/400",
     "color": "#5b8cff",
     "category": "Other"
   },
   {
     "id": "jeep",
     "name": "Jeep",
-    "logo": "https://cdn.simpleicons.org/jeep",
+    "logo": "https://cdn.brandfetch.io/jeep.com/w/400/h/400",
     "color": "#5b8cff",
     "category": "Other"
   },
   {
     "id": "italdesign",
     "name": "Italdesign",
-    "logo": "https://cdn.simpleicons.org/italdesign",
+    "logo": "https://cdn.brandfetch.io/italdesign.com/w/400/h/400",
     "color": "#5b8cff",
     "category": "Other"
   },
   {
     "id": "monteverdi",
     "name": "Monteverdi",
-    "logo": "https://cdn.simpleicons.org/monteverdi",
+    "logo": "https://cdn.brandfetch.io/monteverdi.com/w/400/h/400",
     "color": "#5b8cff",
     "category": "Other"
   },
   {
     "id": "maḥmīyat",
     "name": "Maḥmīyat",
-    "logo": "https://cdn.simpleicons.org/mahmiyat",
+    "logo": "https://cdn.brandfetch.io/maḥmīyat.com/w/400/h/400",
     "color": "#5b8cff",
     "category": "Other"
   },
   {
     "id": "voisin",
     "name": "Voisin",
-    "logo": "https://cdn.simpleicons.org/voisin",
+    "logo": "https://cdn.brandfetch.io/voisin.com/w/400/h/400",
     "color": "#5b8cff",
     "category": "Other"
   },
   {
     "id": "pontiac",
     "name": "Pontiac",
-    "logo": "https://cdn.simpleicons.org/pontiac",
+    "logo": "https://cdn.brandfetch.io/pontiac.com/w/400/h/400",
     "color": "#5b8cff",
     "category": "Other"
   },
   {
     "id": "mclaren",
     "name": "McLaren",
-    "logo": "https://cdn.simpleicons.org/mclaren",
+    "logo": "https://cdn.brandfetch.io/mclaren.com/w/400/h/400",
     "color": "#5b8cff",
     "category": "Other"
   },
   {
     "id": "dome",
     "name": "Dome",
-    "logo": "https://cdn.simpleicons.org/dome",
+    "logo": "https://cdn.brandfetch.io/dome.com/w/400/h/400",
     "color": "#5b8cff",
     "category": "Other"
   },
   {
     "id": "simca",
     "name": "Simca",
-    "logo": "https://cdn.simpleicons.org/simca",
+    "logo": "https://cdn.brandfetch.io/simca.com/w/400/h/400",
     "color": "#5b8cff",
     "category": "Other"
   },
   {
     "id": "tucker",
     "name": "Tucker",
-    "logo": "https://cdn.simpleicons.org/tucker",
+    "logo": "https://cdn.brandfetch.io/tucker.com/w/400/h/400",
     "color": "#5b8cff",
     "category": "Other"
   },
   {
     "id": "rust",
     "name": "Rust",
-    "logo": "https://cdn.simpleicons.org/rust",
+    "logo": "https://cdn.brandfetch.io/rust.com/w/400/h/400",
     "color": "#5b8cff",
     "category": "Other"
   },
   {
     "id": "north",
     "name": "North",
-    "logo": "https://cdn.simpleicons.org/north",
+    "logo": "https://cdn.brandfetch.io/north.com/w/400/h/400",
     "color": "#5b8cff",
     "category": "Other"
   },
   {
     "id": "saleen",
     "name": "Saleen",
-    "logo": "https://cdn.simpleicons.org/saleen",
+    "logo": "https://cdn.brandfetch.io/saleen.com/w/400/h/400",
     "color": "#5b8cff",
     "category": "Other"
   },
   {
     "id": "wanderer",
     "name": "Wanderer",
-    "logo": "https://cdn.simpleicons.org/wanderer",
+    "logo": "https://cdn.brandfetch.io/wanderer.com/w/400/h/400",
     "color": "#5b8cff",
     "category": "Other"
   },
   {
     "id": "benq",
     "name": "BenQ",
-    "logo": "https://cdn.simpleicons.org/benq",
+    "logo": "https://cdn.brandfetch.io/benq.com/w/400/h/400",
     "color": "#0072C6",
     "category": "Electronics",
     "sub_categories": [
@@ -1610,7 +1610,7 @@
   {
     "id": "philips",
     "name": "Philips",
-    "logo": "https://cdn.simpleicons.org/philips",
+    "logo": "https://cdn.brandfetch.io/philips.com/w/400/h/400",
     "color": "#0B5ED7",
     "category": "Electronics",
     "sub_categories": [
@@ -1622,7 +1622,7 @@
   {
     "id": "msi",
     "name": "MSI",
-    "logo": "https://cdn.simpleicons.org/msi",
+    "logo": "https://cdn.brandfetch.io/msi.com/w/400/h/400",
     "color": "#FF0000",
     "category": "Electronics",
     "sub_categories": [
@@ -1633,7 +1633,7 @@
   {
     "id": "tp-link",
     "name": "TP-Link",
-    "logo": "https://cdn.simpleicons.org/tplink",
+    "logo": "https://cdn.brandfetch.io/tplink.com/w/400/h/400",
     "color": "#4ACBD6",
     "category": "Electronics",
     "sub_categories": [
@@ -1643,7 +1643,7 @@
   {
     "id": "netgear",
     "name": "Netgear",
-    "logo": "https://cdn.simpleicons.org/netgear",
+    "logo": "https://cdn.brandfetch.io/netgear.com/w/400/h/400",
     "color": "#2F8FCF",
     "category": "Electronics",
     "sub_categories": [

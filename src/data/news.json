@@ -1,5 +1,148 @@
 [
   {
+    "id": "n66798600",
+    "title": "How do you plan on buying your next iPhone? [Poll]",
+    "excerpt": "Apple made a big change to iPhone purchasing options this week. Not only did it launch the Apple Upgrade leasing program, but it also killed the iPhone Upgrade Program. With the iPhone 18 lineup just ",
+    "date": "2026-07-31",
+    "dateLabel": "Today",
+    "tag": "mobiles",
+    "url": "https://9to5mac.com/2026/07/31/buy-your-next-iphone-poll/",
+    "source": "9to5Mac",
+    "image": "https://picsum.photos/seed/4627/600/340"
+  },
+  {
+    "id": "n912169087",
+    "title": "'C-suite executives need to upskill themselves to really understand the threats': AI is becoming a tool for attackers and defenders, but true resilience requires a constantly changing strategy, says former GCHQ intelligence expert",
+    "excerpt": "The only choice for businesses it to adapt and respond, and that means using an evolving resilience strategy.",
+    "date": "2026-07-31",
+    "dateLabel": "Today",
+    "tag": "tech",
+    "url": "https://www.techradar.com/pro/security/c-suite-executives-need-to-upskill-themselves-to-really-understand-the-threats-ai-is-becoming-a-tool-for-attackers-and-defenders-but-true-resilience-requires-a-constantly-changing-strategy-says-former-gchq-intelligence-expert",
+    "source": "TechRadar",
+    "image": "https://cdn.mos.cms.futurecdn.net/uFka7M2YjcFGhhtPTMDnJY-1280-80.jpg"
+  },
+  {
+    "id": "n689020347",
+    "title": "I replaced the Pixel's default launcher with Niagara Launcher, and I can't go back",
+    "excerpt": "This launcher changed how I use my Pixel by doing less, not more.",
+    "date": "2026-07-31",
+    "dateLabel": "Today",
+    "tag": "mobiles",
+    "url": "https://www.xda-developers.com/replaced-pixels-default-launcher-with-niagara-launcher-cant-go-back/",
+    "source": "XDA Developers",
+    "image": "https://static0.xdaimages.com/wordpress/wp-content/uploads/wm/2026/07/dsc08636.jpg"
+  },
+  {
+    "id": "n1367294871",
+    "title": "Galaxy SmartTag 3 leak hints at a redesign with (no) strings attached",
+    "excerpt": "Your tracker now needs a tracker outfit.",
+    "date": "2026-07-31",
+    "dateLabel": "Today",
+    "tag": "mobiles",
+    "url": "https://www.androidauthority.com/samsung-galaxy-smarttag-3-leak-3693320/",
+    "source": "Android Authority",
+    "image": "https://picsum.photos/seed/6296/600/340"
+  },
+  {
+    "id": "n859577829",
+    "title": "AI scammers outperform humans when it comes to building trust",
+    "excerpt": "The AI chatbot was more effective at creating “exploitable trust” than the humans.",
+    "date": "2026-07-31",
+    "dateLabel": "Today",
+    "tag": "tech",
+    "url": "https://arstechnica.com/security/2026/07/ai-scammers-outperform-humans-when-it-comes-to-building-trust/",
+    "source": "Ars Technica",
+    "image": "https://picsum.photos/seed/5885/600/340"
+  },
+  {
+    "id": "n909795716",
+    "title": "I stopped exposing half my self-hosted services to the internet, and nothing broke",
+    "excerpt": "Two doors, one rule: Justify yourself.",
+    "date": "2026-07-31",
+    "dateLabel": "Today",
+    "tag": "tech",
+    "url": "https://www.xda-developers.com/stopped-exposing-half-my-self-hosted-services-to-internet-nothing-broke/",
+    "source": "XDA Developers",
+    "image": "https://static0.xdaimages.com/wordpress/wp-content/uploads/wm/2026/07/homelab-pangolin-public-resources-hero.jpeg"
+  },
+  {
+    "id": "n749226243",
+    "title": "iOS 27 gives Apple Mail my most wished for feature upgrade",
+    "excerpt": "Apple’s Mail app in iOS 27 promises to offer the feature upgrade that’s been at the top of my wishlist for years: search that “just works.”",
+    "date": "2026-07-31",
+    "dateLabel": "Today",
+    "tag": "mobiles",
+    "url": "https://9to5mac.com/2026/07/31/ios-27-gives-apple-mail-my-most-wished-for-feature-upgrade/",
+    "source": "9to5Mac",
+    "image": "https://picsum.photos/seed/5263/600/340"
+  },
+  {
+    "id": "n1324394042",
+    "title": "Why traditional security checks are failing in the age of AI-driven fraud",
+    "excerpt": "As AI supercharges fraud with deepfakes and synthetic identities, continuous, layered defenses are now essential.",
+    "date": "2026-07-31",
+    "dateLabel": "Today",
+    "tag": "tech",
+    "url": "https://www.techradar.com/pro/why-traditional-security-checks-are-failing-in-the-age-of-ai-driven-fraud",
+    "source": "TechRadar",
+    "image": "https://cdn.mos.cms.futurecdn.net/x4SmwpYXk8yGgDmYCVeckL-1280-80.jpg"
+  },
+  {
+    "id": "n1690395696",
+    "title": "The surge in AI-driven fraud requires coordinated global defense",
+    "excerpt": "AI has enabled an 8,000% fraud surge, and a global networked response is our best bet to stop it.",
+    "date": "2026-07-31",
+    "dateLabel": "Today",
+    "tag": "routers",
+    "url": "https://www.techradar.com/pro/the-surge-in-ai-driven-fraud-requires-coordinated-global-defense",
+    "source": "TechRadar",
+    "image": "https://cdn.mos.cms.futurecdn.net/5RYCUPY3MrRkUECQECzDC-1280-80.jpg"
+  },
+  {
+    "id": "n1755239942",
+    "title": "iPhone 18 Pro may launch at $1,399 starting price, per report",
+    "excerpt": "iPhone 18 Pro is coming very soon, and it might cost much more than its predecessor, with a second report now predicting a starting price around $1,399.",
+    "date": "2026-07-31",
+    "dateLabel": "Today",
+    "tag": "mobiles",
+    "url": "https://9to5mac.com/2026/07/31/iphone-18-pro-may-launch-at-1399-starting-price-per-report/",
+    "source": "9to5Mac",
+    "image": "https://picsum.photos/seed/5256/600/340"
+  },
+  {
+    "id": "n626086790",
+    "title": "Anthropic says Claude accidentally hacked real companies too",
+    "excerpt": "Anthropic just realized several of its Claude AI models hacked into the systems of three different organizations during testing, acting on their own and without the company noticing. The revelation co",
+    "date": "2026-07-31",
+    "dateLabel": "Today",
+    "tag": "tech",
+    "url": "https://www.theverge.com/ai-artificial-intelligence/973670/anthropic-claude-hacked-organizations-during-cyber-tests",
+    "source": "The Verge",
+    "image": "https://picsum.photos/seed/5784/600/340"
+  },
+  {
+    "id": "n1548706448",
+    "title": "Review: The Galaxy Z Fold 8’s new shape isn’t for you – it’s for everyone",
+    "excerpt": "The appeal of a book-style foldable is obvious. A smartphone that opens up to something more expansive, more capable – just, more. Yet, the tall and narrow Galaxy Z Fold designs of yesteryear never fu",
+    "date": "2026-07-31",
+    "dateLabel": "Today",
+    "tag": "mobiles",
+    "url": "https://9to5google.com/2026/07/31/samsung-galaxy-z-fold-8-review/",
+    "source": "9to5Google",
+    "image": "https://picsum.photos/seed/39068/600/340"
+  },
+  {
+    "id": "n586400487",
+    "title": "Amazon will give money back to some of you as part of US tariff refund",
+    "excerpt": "However, the company didn’t specify when these refunds to eligible shoppers would be processed.",
+    "date": "2026-07-31",
+    "dateLabel": "Today",
+    "tag": "tech",
+    "url": "https://www.androidauthority.com/amazon-us-tariff-refund-3693229/",
+    "source": "Android Authority",
+    "image": "https://picsum.photos/seed/6419/600/340"
+  },
+  {
     "id": "n182757786",
     "title": "I can't believe it's taken LinkedIn so long to push back against AI slop — but will its changes really stop all the cringey updates?",
     "excerpt": "LinkedIn is testing a \"seems like AI slop\" feature, and I couldn't be happier.",
@@ -9,6 +152,17 @@
     "url": "https://www.techradar.com/pro/i-cant-believe-its-taken-linkedin-so-long-to-push-back-against-ai-slop-but-will-its-changes-really-stop-all-the-cringey-updates",
     "source": "TechRadar",
     "image": "https://cdn.mos.cms.futurecdn.net/ektNug9Sg4oyYARpJ7VnCZ-1280-80.jpg"
+  },
+  {
+    "id": "n997994634",
+    "title": "Pathogenic review: Damn, it feels good to be a virus",
+    "excerpt": "The hot new roguelite twin-stick shooter lives up to the hype.",
+    "date": "2026-07-31",
+    "dateLabel": "Today",
+    "tag": "tech",
+    "url": "https://arstechnica.com/gaming/2026/07/pathogenic-review-damn-it-feels-good-to-be-a-virus/",
+    "source": "Ars Technica",
+    "image": "https://picsum.photos/seed/4723/600/340"
   },
   {
     "id": "n1818179466",
@@ -253,6 +407,17 @@
     "image": "https://cdn.mos.cms.futurecdn.net/bX5euheCUQjX5myM75Lq5B-1280-80.png"
   },
   {
+    "id": "n1623647261",
+    "title": "How a Yale AI-cheating dispute became a 13-count federal lawsuit",
+    "excerpt": "A disputed exam, an unreliable detector, and one very late Apple Pages file.",
+    "date": "2026-07-31",
+    "dateLabel": "Today",
+    "tag": "tech",
+    "url": "https://arstechnica.com/tech-policy/2026/07/how-a-yale-ai-cheating-dispute-became-a-13-count-federal-lawsuit/",
+    "source": "Ars Technica",
+    "image": "https://picsum.photos/seed/5766/600/340"
+  },
+  {
     "id": "n949555820",
     "title": "First drones, now robot vacuums — the US government's ban on foreign robots is confirmed to include many of the best robovacs and robot lawn mowers on the market, and brands may have been caught off-guard",
     "excerpt": "The FCC has confirmed that the US ban on foreign-made advanced robotic devices includes robot vacuums and similar bots",
@@ -273,17 +438,6 @@
     "url": "https://www.tomshardware.com/pc-components/ssds/samsungs-fastest-ssd-is-back-to-prime-day-pricing-only-usd30-difference-between-the-much-faster-gen-5-9100-pro-and-gen-4-990",
     "source": "Tom's Hardware",
     "image": "https://cdn.mos.cms.futurecdn.net/D93EHS9DPUzkTdFysmHPvR-1280-80.jpg"
-  },
-  {
-    "id": "n936054104",
-    "title": "Your gaming rig's biggest bottleneck might be a BIOS setting you never touched",
-    "excerpt": "Make your gaming PC go faster with this easy setting.",
-    "date": "2026-07-31",
-    "dateLabel": "Today",
-    "tag": "mobiles",
-    "url": "https://www.xda-developers.com/your-gaming-rigs-biggest-bottleneck-might-be-a-bios-setting-you-never-touched/",
-    "source": "XDA Developers",
-    "image": "https://static0.xdaimages.com/wordpress/wp-content/uploads/wm/2026/07/amd-threadripper-x860e-bios.jpg"
   },
   {
     "id": "n1774957388",
@@ -363,6 +517,17 @@
     "image": "https://picsum.photos/seed/22630/600/340"
   },
   {
+    "id": "n51782884",
+    "title": "Rocket Report: New launch rule may limit environmental regulations, Falcon 9 to hit Moon",
+    "excerpt": "\"America won the first Space Race, and we can do it again.\"",
+    "date": "2026-07-31",
+    "dateLabel": "Today",
+    "tag": "tech",
+    "url": "https://arstechnica.com/space/2026/07/rocket-report-big-deals-for-us-launch-firms-rfa-one-debut-is-delayed/",
+    "source": "Ars Technica",
+    "image": "https://picsum.photos/seed/8233/600/340"
+  },
+  {
     "id": "n876835751",
     "title": "Why the UK’s quantum procurement strategy matters more than the £2bn headline",
     "excerpt": "The UK’s quantum procurement strategy could prove far more significant than the £2 billion investment itself.",
@@ -372,17 +537,6 @@
     "url": "https://www.techradar.com/pro/why-the-uks-quantum-procurement-strategy-matters-more-than-the-gbp2bn-headline",
     "source": "TechRadar",
     "image": "https://cdn.mos.cms.futurecdn.net/tgQW6JSNiMk5FnF94bbQVM-1280-80.jpg"
-  },
-  {
-    "id": "n1238129012",
-    "title": "Ambitious gamer turns fanless Subway menu PCs into gaming rigs — passive Intel Core i3 units manage just 15 fps in GTA V and 25 fps in Minecraft",
-    "excerpt": "An intrepid TechTuber has tested a trio of passive digital signage mini PCs from the Subway sandwich chain to check if they can be repurposed for gaming fun.",
-    "date": "2026-07-31",
-    "dateLabel": "Today",
-    "tag": "electronics",
-    "url": "https://www.tomshardware.com/video-games/pc-gaming/ambitious-gamer-turns-three-old-subway-menu-signage-pcs-to-gaming-puny-intel-core-i3-machines-can-only-muster-15-fps-running-gta-5-25-fps-on-minecraft",
-    "source": "Tom's Hardware",
-    "image": "https://cdn.mos.cms.futurecdn.net/nEWLLAdx3CpGwuGSNGeRic-1280-80.jpg"
   },
   {
     "id": "n2047346159",
@@ -396,6 +550,17 @@
     "image": "https://cdn.mos.cms.futurecdn.net/SXUNdwDjVqpYgFhDksUbn5-1280-80.png"
   },
   {
+    "id": "n1238129012",
+    "title": "Ambitious gamer turns fanless Subway menu PCs into gaming rigs — passive Intel Core i3 units manage just 15 fps in GTA V and 25 fps in Minecraft",
+    "excerpt": "An intrepid TechTuber has tested a trio of passive digital signage mini PCs from the Subway sandwich chain to check if they can be repurposed for gaming fun.",
+    "date": "2026-07-31",
+    "dateLabel": "Today",
+    "tag": "electronics",
+    "url": "https://www.tomshardware.com/video-games/pc-gaming/ambitious-gamer-turns-three-old-subway-menu-signage-pcs-to-gaming-puny-intel-core-i3-machines-can-only-muster-15-fps-running-gta-5-25-fps-on-minecraft",
+    "source": "Tom's Hardware",
+    "image": "https://cdn.mos.cms.futurecdn.net/nEWLLAdx3CpGwuGSNGeRic-1280-80.jpg"
+  },
+  {
     "id": "n1238308232",
     "title": "The UK wants to lead on AI, but who is going to build it?",
     "excerpt": "The UK’s AI future depends on building the workforce behind its data centers.",
@@ -405,17 +570,6 @@
     "url": "https://www.techradar.com/pro/the-uk-wants-to-lead-on-ai-but-who-is-going-to-build-it",
     "source": "TechRadar",
     "image": "https://cdn.mos.cms.futurecdn.net/PAztEScphfxGJfYno5NjrL-1280-80.jpg"
-  },
-  {
-    "id": "n1349032860",
-    "title": "Claude 'lost' hours of my chat history overnight, and I found it hiding on an invisible branch",
-    "excerpt": "Your missing chats (probably) aren't gone",
-    "date": "2026-07-31",
-    "dateLabel": "Today",
-    "tag": "tech",
-    "url": "https://www.xda-developers.com/claude-lost-hours-of-my-chat-history-overnight-until-figured-where-hidden/",
-    "source": "XDA Developers",
-    "image": "https://static0.xdaimages.com/wordpress/wp-content/uploads/wm/2026/07/claude-app-open-on-tablet-screen.jpg"
   },
   {
     "id": "n395297912",
@@ -583,28 +737,6 @@
     "image": "https://cdn.mos.cms.futurecdn.net/2iH4kSL6LCJbxYBpQT5iiM-1280-80.jpg"
   },
   {
-    "id": "n314951580",
-    "title": "This ESP32 e-ink project helps you start your day right, and it requires zero code to set up",
-    "excerpt": "Everything you need at a glance.",
-    "date": "2026-07-31",
-    "dateLabel": "Today",
-    "tag": "tech",
-    "url": "https://www.xda-developers.com/this-esp32-e-ink-project-helps-you-start-your-day-right-and-it-requires-zero-code-to-set-up/",
-    "source": "XDA Developers",
-    "image": "https://static0.xdaimages.com/wordpress/wp-content/uploads/2026/07/esp32-e-ink-day-planner-featured.jpg"
-  },
-  {
-    "id": "n207472599",
-    "title": "Microsoft is reportedly fixing the really slow Windows 11 context menu, and we can customise it too",
-    "excerpt": "There's a good chance the rumor is true.",
-    "date": "2026-07-31",
-    "dateLabel": "Today",
-    "tag": "tech",
-    "url": "https://www.xda-developers.com/microsoft-is-reportedly-fixing-the-really-slow-windows-11-context-menu-and-we-can-customise-it-too/",
-    "source": "XDA Developers",
-    "image": "https://static0.xdaimages.com/wordpress/wp-content/uploads/wm/2026/07/sdelete-secure-delete-sysinternals-windows-11-context-menu.jpg"
-  },
-  {
     "id": "n951963576",
     "title": "Fast NBN, but slow Wi-Fi? It might be time for a mesh system upgrade",
     "excerpt": "Learn how mesh Wi-Fi works, how it connects to different internet services and whether it is the right way to improve coverage in your home.",
@@ -746,6 +878,28 @@
     "url": "https://www.theverge.com/games/973520/xbox-ceo-memo-one-year-growth",
     "source": "The Verge",
     "image": "https://picsum.photos/seed/5745/600/340"
+  },
+  {
+    "id": "n2087130470",
+    "title": "Tim Cook passes the baton in Apple's Q3 2026 earnings call",
+    "excerpt": "The iPhone and Mac sold well, but memory costs threaten further price increases.",
+    "date": "2026-07-30",
+    "dateLabel": "Today",
+    "tag": "mobiles",
+    "url": "https://arstechnica.com/gadgets/2026/07/tim-cooks-last-earnings-call-strong-iphone-sales-but-memory-costs-loom-large/",
+    "source": "Ars Technica",
+    "image": "https://picsum.photos/seed/4990/600/340"
+  },
+  {
+    "id": "n1520809292",
+    "title": "Android rolls out local ‘Documents’ backup that syncs to Google Drive",
+    "excerpt": "Google now lets Android users automatically upload files and other downloads from their phone or tablet to Google Drive thanks to a new “Documents” backup.",
+    "date": "2026-07-30",
+    "dateLabel": "Today",
+    "tag": "mobiles",
+    "url": "https://9to5google.com/2026/07/30/android-documents-local-backup/",
+    "source": "9to5Google",
+    "image": "https://picsum.photos/seed/22788/600/340"
   },
   {
     "id": "n2008973379",
@@ -902,6 +1056,17 @@
     "image": "https://picsum.photos/seed/22665/600/340"
   },
   {
+    "id": "n831194736",
+    "title": "Chrome may get faster updates with no restart required",
+    "excerpt": "The last two versions of Chrome have included more patches than the previous 23 combined.",
+    "date": "2026-07-30",
+    "dateLabel": "Today",
+    "tag": "tech",
+    "url": "https://arstechnica.com/ai/2026/07/chrome-may-get-faster-updates-with-no-restart-required/",
+    "source": "Ars Technica",
+    "image": "https://picsum.photos/seed/5215/600/340"
+  },
+  {
     "id": "n1346293795",
     "title": "iPhone 18 Pro could introduce new Apple solution for cellular, hints report",
     "excerpt": "iPhone 18 Pro could make a major transition away from Qualcomm modems in favor of an Apple-designed C2. Here’s the latest update on what to expect.",
@@ -933,170 +1098,5 @@
     "url": "https://www.techradar.com/pro/amazon-wants-to-launch-over-5-000-satellites-to-build-new-mobile-networks",
     "source": "TechRadar",
     "image": "https://cdn.mos.cms.futurecdn.net/oucjGhYv8jnaCk9ufnrpaX-1280-80.jpg"
-  },
-  {
-    "id": "n1103878455",
-    "title": "Samsung’s Galaxy Watch 9 is $40 off at Costco and comes with over $50 in freebies",
-    "excerpt": "Samsung’s upcoming Galaxy Watch 9. | Photo: Dominic Preston / The Verge The Galaxy Watch 9 launches on August 7th, and not only does Costco have the best preorder incentives we’ve seen so far, the wat",
-    "date": "2026-07-30",
-    "dateLabel": "Today",
-    "tag": "mobiles",
-    "url": "https://www.theverge.com/gadgets/973211/costco-galaxy-watch-9-preorder-costco-deal-sale",
-    "source": "The Verge",
-    "image": "https://picsum.photos/seed/15142/600/340"
-  },
-  {
-    "id": "n1857360947",
-    "title": "New Pixel Watch 5 leak puts 41mm and 45mm options head to head",
-    "excerpt": "See how Google's latest smartwatch size options compare.",
-    "date": "2026-07-30",
-    "dateLabel": "Today",
-    "tag": "mobiles",
-    "url": "https://www.androidauthority.com/pixel-watch-5-sizes-3692965/",
-    "source": "Android Authority",
-    "image": "https://picsum.photos/seed/5385/600/340"
-  },
-  {
-    "id": "n1786047739",
-    "title": "Samsung Expects the Chip Shortage to Get Worse Before It Gets Better",
-    "excerpt": "Samsung Expects the Chip Shortage to Get Worse Before It Gets Better",
-    "date": "2026-07-30",
-    "dateLabel": "Today",
-    "tag": "electronics",
-    "url": "https://www.cnet.com/tech/samsung-expects-the-chip-shortage-to-get-worse-before-it-gets-better/",
-    "source": "CNET",
-    "image": "https://picsum.photos/seed/6200/600/340"
-  },
-  {
-    "id": "n1208314950",
-    "title": "A Fairphone Gen 6 Plus could be on the way",
-    "excerpt": "The updated phone could have two advantages over the Gen 6.",
-    "date": "2026-07-30",
-    "dateLabel": "Today",
-    "tag": "mobiles",
-    "url": "https://www.androidauthority.com/fairphone-6-plus-details-3692960/",
-    "source": "Android Authority",
-    "image": "https://picsum.photos/seed/3646/600/340"
-  },
-  {
-    "id": "n1965333715",
-    "title": "This MacBook Pro just fell below its pre-price-hike MSRP (Save $500)",
-    "excerpt": "Yes, we did get some sizable (and unfortunate) price hikes on the MacBook lineup recently. But, alongside the summer sale price on AirPods Pro 3 at $50 off and AirPods Max 2 at $100 off, Amazon’s ongo",
-    "date": "2026-07-30",
-    "dateLabel": "Today",
-    "tag": "laptops",
-    "url": "https://9to5mac.com/2026/07/30/this-macbook-pro-just-fell-below-its-pre-price-hike-msrp-save-500/",
-    "source": "9to5Mac",
-    "image": "https://picsum.photos/seed/5799/600/340"
-  },
-  {
-    "id": "n1108792460",
-    "title": "LinkedIn actually adds a ‘seems like AI slop’ button",
-    "excerpt": "A lot of content on LinkedIn might seem like AI slop, and now, you'll be able to report those posts. As part of a series of updates to reduce the volume of AI slop on the platform, LinkedIn is introdu",
-    "date": "2026-07-30",
-    "dateLabel": "Today",
-    "tag": "tech",
-    "url": "https://www.theverge.com/ai-artificial-intelligence/973384/linkedin-seems-like-ai-slop-button",
-    "source": "The Verge",
-    "image": "https://picsum.photos/seed/21057/600/340"
-  },
-  {
-    "id": "n1019258308",
-    "title": "9to5Mac Daily: July 30, 2026 – iOS 26.6, Apple’s smart home plans",
-    "excerpt": "Listen to a recap of the top stories of the day from 9to5Mac. 9to5Mac Daily is available on iTunes and Apple’s Podcasts app, Stitcher, TuneIn, Google Play, or through our dedicated RSS feed for Overca",
-    "date": "2026-07-30",
-    "dateLabel": "Today",
-    "tag": "mobiles",
-    "url": "https://9to5mac.com/2026/07/30/daily-july-30-2026/",
-    "source": "9to5Mac",
-    "image": "https://picsum.photos/seed/21358/600/340"
-  },
-  {
-    "id": "n790822997",
-    "title": "New Pixel 11 Pro Fold leak gives us an official-looking peek at Google’s next foldable",
-    "excerpt": "This is our first look at Pixel Glow on the foldable.",
-    "date": "2026-07-30",
-    "dateLabel": "Today",
-    "tag": "mobiles",
-    "url": "https://www.androidauthority.com/pixel-11-pro-fold-marketing-images-leak-3692956/",
-    "source": "Android Authority",
-    "image": "https://picsum.photos/seed/15918/600/340"
-  },
-  {
-    "id": "n686730816",
-    "title": "Pixel Watch 5 leaks in official-looking images with same charging system",
-    "excerpt": "The latest Pixel Watch 5 leak today provides further confirmation that the external design and case will be identical to the last generation.",
-    "date": "2026-07-30",
-    "dateLabel": "Today",
-    "tag": "mobiles",
-    "url": "https://9to5google.com/2026/07/30/pixel-watch-5-angles-leak/",
-    "source": "9to5Google",
-    "image": "https://picsum.photos/seed/6770/600/340"
-  },
-  {
-    "id": "n1929314141",
-    "title": "Today’s best Android app deals and freebies: Dead Cells, Actraiser, Chrono Trigger, Thronefall, more",
-    "excerpt": "Your afternoon lineup of the best Android game and app deals is now ready to roll, including titles like Dead Cells, Actraiser Renaissance, Chrono Trigger, Thronefall, Summer Catchers, SpongeBob – The",
-    "date": "2026-07-30",
-    "dateLabel": "Today",
-    "tag": "mobiles",
-    "url": "https://9to5toys.com/2026/07/30/best-android-app-deals-dead-cells-actraiser/",
-    "source": "9to5Google",
-    "image": "https://picsum.photos/seed/17222/600/340"
-  },
-  {
-    "id": "n807207662",
-    "title": "Fortnite returns to iPhone in Brazil with Epic Games Store launch",
-    "excerpt": "Fortnite is back on the iPhone in Brazil today with the launch of the Epic Games Store. However, Epic Games is calling foul on the nine-step process required for access.",
-    "date": "2026-07-30",
-    "dateLabel": "Today",
-    "tag": "mobiles",
-    "url": "https://9to5mac.com/2026/07/30/fortnite-returns-to-iphone-in-brazil-with-epic-games-store-launch/",
-    "source": "9to5Mac",
-    "image": "https://picsum.photos/seed/6097/600/340"
-  },
-  {
-    "id": "n509295218",
-    "title": "Snap will finally show what its $2.2K AR Specs can really do",
-    "excerpt": "Two launches are apparently better than one for the eye-wateringly expensive smart glasses.",
-    "date": "2026-07-30",
-    "dateLabel": "Today",
-    "tag": "tech",
-    "url": "https://www.androidauthority.com/snap-specs-ar-glasses-september-event-3692940/",
-    "source": "Android Authority",
-    "image": "https://picsum.photos/seed/5246/600/340"
-  },
-  {
-    "id": "n551868267",
-    "title": "Apple is about to launch Home product overhaul I’ve wanted for years",
-    "excerpt": "A new Bloomberg report earlier this week confirmed what’s long been expected: Apple’s major new push into Home products will kick off soon. And I’m thrilled by what rumors say is coming.",
-    "date": "2026-07-30",
-    "dateLabel": "Today",
-    "tag": "tech",
-    "url": "https://9to5mac.com/2026/07/30/apple-is-about-to-launch-home-product-overhaul-ive-wanted-for-years/",
-    "source": "9to5Mac",
-    "image": "https://picsum.photos/seed/14530/600/340"
-  },
-  {
-    "id": "n1929368426",
-    "title": "I Used Every AI Cheating App and Detector and Came to One Conclusion",
-    "excerpt": "I Used Every AI Cheating App and Detector and Came to One Conclusion",
-    "date": "2026-07-30",
-    "dateLabel": "Today",
-    "tag": "tech",
-    "url": "https://www.cnet.com/tech/services-and-software/i-used-every-ai-cheating-app-and-detector-and-came-to-one-conclusion/",
-    "source": "CNET",
-    "image": "https://picsum.photos/seed/5995/600/340"
-  },
-  {
-    "id": "n745587005",
-    "title": "Pixel 11 series leaks with seemingly official renders, includes all-matte Pixel 11 Pro [Gallery]",
-    "excerpt": "Fresh off some leaks showcasing the Pixel 11 Pro Fold in official-looking renders, we’re getting new looks at all three of Google’s non-folding Pixel 11 models in seemingly all of this year’s color op",
-    "date": "2026-07-30",
-    "dateLabel": "Today",
-    "tag": "mobiles",
-    "url": "https://9to5google.com/2026/07/30/pixel-11-series-leaks-with-seemingly-official-renders-includes-all-matte-pixel-11-pro-gallery/",
-    "source": "9to5Google",
-    "image": "https://picsum.photos/seed/8825/600/340"
   }
 ]
