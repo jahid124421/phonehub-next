@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="300" height="400" viewBox="0 0 300 400">
+  <defs>
+    <linearGradient id="g" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#ff6900"/>
+      <stop offset="1" stop-color="#0f1115"/>
+    </linearGradient>
+  </defs>
+  <rect width="300" height="400" fill="url(#g)"/>
+  <rect x="90" y="70" width="120" height="150" rx="16" fill="rgba(255,255,255,0.12)" stroke="rgba(255,255,255,0.25)"/>
+  <text x="150" y="165" font-family="Segoe UI, Arial, sans-serif" font-size="64" font-weight="700" fill="#ffffff" text-anchor="middle">R</text>
+  <text font-family="Segoe UI, Arial, sans-serif" font-size="20" font-weight="600" fill="#ffffff" text-anchor="middle"><tspan x="150" y="286">Redmi K90</tspan><tspan x="150" y="316">Ultra</tspan></text>
+</svg>

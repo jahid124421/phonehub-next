@@ -83,13 +83,12 @@ export default function PhoneCard({ product }: { product: Product }) {
               )}
             </div>
           </div>
+          {/* Compare button — inside card-body */}
+          <div className="flex justify-end mt-2">
+            <CompareButton productId={product.id} />
+          </div>
         </div>
       </Link>
-
-      {/* Compare button - inside card, outside link */}
-      <div className="px-4 pb-4 flex justify-end">
-        <CompareButton productId={product.id} />
-      </div>
     </div>
   );
 }

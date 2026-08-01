@@ -16,7 +16,6 @@ import {
 } from "@/lib/homepage-data";
 import PhoneCard from "@/components/PhoneCard";
 import NewsCard from "@/components/NewsCard";
-import SearchBar from "@/components/SearchBar";
 import CookieConsent from "@/components/CookieConsent";
 import CategoryStrip from "@/components/CategoryStrip";
 import { websiteSchema, itemListSchema } from "@/lib/schema";
@@ -182,7 +181,6 @@ export default function Home() {
           <p className="text-lg md:text-xl text-base-content/70 max-w-2xl mx-auto">
             The smartest way to research phones, laptops, monitors, cars &amp; more
           </p>
-          <SearchBar variant="hero" />
         </div>
       </section>
 

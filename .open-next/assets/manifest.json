@@ -1,0 +1,12 @@
+{
+  "name": "PhoneHub — Specs, Prices & Reviews",
+  "short_name": "PhoneHub",
+  "description": "Compare phones, tablets, laptops and more: specs, prices, reviews and daily tech news.",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "background_color": "#0d0f14",
+  "theme_color": "#5b8cff",
+  "icons": [
+    { "src": "favicon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any" }
+  ]
+}

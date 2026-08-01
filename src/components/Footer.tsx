@@ -15,7 +15,6 @@ const links = {
     { label: "News", href: "/news" },
     { label: "Brands", href: "/brands" },
     { label: "AI Finder", href: "/ai-finder" },
-    { label: "Advanced Finder", href: "/advanced-finder" },
     { label: "Benchmarks", href: "/benchmarks" },
     { label: "Buying Guides", href: "/guides" },
     { label: "Upcoming Phones", href: "/upcoming" },
