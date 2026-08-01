@@ -68,7 +68,7 @@ function BrandTile({ brand, count }: { brand: Brand; count: number }) {
       href={href}
       className="card card-compact bg-base-200 border border-base-300 hover:border-primary transition-all items-center text-center p-3 gap-2"
     >
-      <div className="w-14 h-14 rounded-full overflow-hidden flex items-center justify-center bg-base-300 shrink-0">
+      <div className="w-14 h-14 rounded-full overflow-hidden flex items-center justify-center bg-white ring-1 ring-base-300 shrink-0">
         {!isEmojiLogo && brand.logo ? (
           <img
             src={brand.logo}

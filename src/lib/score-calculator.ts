@@ -273,8 +273,11 @@ function calcValueScore(
 
   // Value = how much spec you get per dollar, relative to category average
   // High spec + low price = high value
+  // Clamp the ratio so expensive flagships aren't crushed and ultra-cheap
+  // devices aren't inflated beyond reason.
   const priceRatio = categoryAvgPrice / price; // >1 means cheaper than average
-  const raw = specTotal * priceRatio;
+  const clampedRatio = Math.max(0.5, Math.min(2.0, priceRatio));
+  const raw = specTotal * clampedRatio;
 
   // Normalize: raw of 100 = excellent value, 50 = average
   return clamp(Math.round(raw * 0.9));
@@ -516,7 +519,7 @@ function calcGenericScore(product: any): PhoneHubScore {
   const price = product?.basePrice || 0;
 
   const valueScore = price > 0
-    ? clamp(Math.round(baseScore * (200 / Math.max(price, 50))))
+    ? clamp(Math.round(baseScore * Math.max(0.5, Math.min(2, 200 / Math.max(price, 50)))))
     : 50;
 
   const s = clamp(baseScore);
@@ -557,13 +560,80 @@ export function calculateScore(
   const avgPrice = categoryAvgPrice ?? 600;
   const value = calcValueScore(product, { display, camera, performance, battery, build }, avgPrice);
 
-  const total = Math.round(
-    display * 0.20 +
-    camera * 0.18 +
-    performance * 0.22 +
-    battery * 0.15 +
-    value * 0.15 +
-    build * 0.10
+  // ─── Rating/price prior ──────────────────────────────────────────────
+  // Many catalog entries lack detailed spec sections, which would otherwise
+  // collapse their scores to bare baselines (~25). Anchor such products to a
+  // prior derived from user rating and price tier so flagships land ~80–95
+  // and budget devices ~40–65 instead of looking broken.
+  const rating = typeof product?.rating === 'number' && product.rating > 0 ? product.rating : 4.0;
+  const price = product?.basePrice || 0;
+  const ratingNorm = Math.max(0, Math.min(1, (rating - 3.5) / 1.5));
+  const priceTier = price >= 1000 ? 1 : price >= 700 ? 0.8 : price >= 450 ? 0.55 : price >= 250 ? 0.3 : price > 0 ? 0.15 : 0.3;
+  const prior = clamp(48 + ratingNorm * 30 + priceTier * 22);
+
+  // A section only counts as real data if it holds at least one non-stub value
+  const isStubValue = (v: unknown) => {
+    const s = (typeof v === 'string' ? v : '').trim();
+    return !s || s === '—' || s === '-' || s.toLowerCase() === 'n/a' || s.toLowerCase() === 'unknown';
+  };
+  const coreSections = ['Display', 'Platform', 'Main Camera', 'Battery', 'Memory', 'Body'];
+  const meaningfulSections = coreSections.filter((name) => {
+    const key = Object.keys(specs).find((k) => k.toLowerCase() === name.toLowerCase());
+    if (!key) return false;
+    return Object.values(specs[key]).some((v) => !isStubValue(v));
+  });
+  const dataRich = Boolean(benchmarkData?.antutu?.total) || meaningfulSections.length >= 2;
+
+  if (!dataRich) {
+    // Spec-poor product: anchor each component to the prior (spec-derived
+    // values are bare baselines here, so they get minimal weight).
+    const anchor = (c: number) => clamp(Math.round(c * 0.1 + prior * 0.9));
+    const aDisplay = anchor(display);
+    const aCamera = anchor(camera);
+    const aPerformance = anchor(performance);
+    const aBattery = anchor(battery);
+    const aValue = anchor(value);
+    const aBuild = anchor(build);
+
+    const total = Math.round(
+      aDisplay * 0.20 +
+      aCamera * 0.18 +
+      aPerformance * 0.22 +
+      aBattery * 0.15 +
+      aValue * 0.15 +
+      aBuild * 0.10
+    );
+
+    return {
+      total: clamp(total),
+      display: aDisplay,
+      camera: aCamera,
+      performance: aPerformance,
+      battery: aBattery,
+      value: aValue,
+      build: aBuild,
+    };
+  }
+
+  const total = Math.max(
+    Math.round(
+      display * 0.20 +
+      camera * 0.18 +
+      performance * 0.22 +
+      battery * 0.15 +
+      value * 0.15 +
+      build * 0.10
+    ),
+    // Lift: never let a product crater far below its rating/price prior,
+    // while never exceeding its honest computed score by more than the blend.
+    Math.round(
+      (display * 0.20 +
+      camera * 0.18 +
+      performance * 0.22 +
+      battery * 0.15 +
+      value * 0.15 +
+      build * 0.10) * 0.45 + prior * 0.55
+    )
   );
 
   return {

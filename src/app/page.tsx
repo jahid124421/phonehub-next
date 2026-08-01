@@ -223,11 +223,6 @@ export default function Home() {
                     alt={featured.title}
                     className="w-full h-full object-cover"
                   />
-                  {featured.tag && (
-                    <span className="absolute top-2 left-2 badge badge-md badge-primary">
-                      {featured.tag}
-                    </span>
-                  )}
                 </figure>
                 <div className="card-body p-5 gap-2 flex-1">
                   <span className="badge badge-outline badge-sm self-start">Featured</span>
@@ -355,7 +350,7 @@ export default function Home() {
                         >
                           {/* Logo or monogram */}
                           {!isEmojiLogo && b.logo ? (
-                            <div className="w-10 h-10 rounded-full overflow-hidden bg-base-300 flex items-center justify-center">
+                            <div className="w-10 h-10 rounded-full overflow-hidden bg-white ring-1 ring-base-300 p-1.5 flex items-center justify-center">
                               <img
                                 src={b.logo}
                                 alt={b.name}

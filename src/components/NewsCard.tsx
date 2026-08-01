@@ -42,12 +42,6 @@ export default function NewsCard({ news }: { news: NewsItem }) {
           className="w-full h-full object-cover"
           loading="lazy"
         />
-        {/* Tag overlay badge */}
-        {news.tag && (
-          <span className="absolute top-2 left-2 badge badge-md badge-primary">
-            {news.tag}
-          </span>
-        )}
       </figure>
 
       {/* Card body */}
