@@ -22,6 +22,8 @@ on:
   workflow_dispatch:            # Manual trigger from GitHub Actions UI
   push:
     branches: [main]            # Also run on push to verify nothing broke
+    paths-ignore:               # Skip if only data files changed (bot commits)
+      - 'src/data/**'
 
 env:
   NEXT_PUBLIC_SITE_URL: ${{ secrets.NEXT_PUBLIC_SITE_URL || 'https://phonehub-next.vercel.app' }}
@@ -29,6 +31,10 @@ env:
 
 permissions:
   contents: write
+
+concurrency:
+  group: daily-automation
+  cancel-in-progress: false
 
 jobs:
   # ---------------------------------------------------------------------------
@@ -38,6 +44,7 @@ jobs:
   refresh-data:
     name: Refresh Data & News
     runs-on: ubuntu-latest
+    timeout-minutes: 30
     outputs:
       has_changes: ${{ steps.changes.outputs.has_changes }}
     steps:
@@ -121,6 +128,7 @@ jobs:
   build-verify:
     name: Build Verification
     runs-on: ubuntu-latest
+    timeout-minutes: 15
     needs: refresh-data
     steps:
       - uses: actions/checkout@v4
