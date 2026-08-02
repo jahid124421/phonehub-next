@@ -1,5 +1,38 @@
 [
   {
+    "id": "n1177746825",
+    "title": "Half of adults admit they would publish work created mainly by AI and not say so — despite believing other people should do just that",
+    "excerpt": "Survey reveals people expect AI-created work to be labeled as such, but aren’t so keen on doing the labeling when they’ve worked on the prompt themselves.",
+    "date": "2026-08-02",
+    "dateLabel": "Today",
+    "tag": "tech",
+    "url": "https://www.techradar.com/pro/half-of-adults-admit-they-would-publish-work-created-mainly-by-ai-and-not-say-so-despite-believing-other-people-should-do-just-that",
+    "source": "TechRadar",
+    "image": "https://cdn.mos.cms.futurecdn.net/La2hxWBUPb8RxyEANMEMVh-1280-80.jpg"
+  },
+  {
+    "id": "n341775572",
+    "title": "Linux's market share in North America has breached 10% for the first time, says StatCounter",
+    "excerpt": "The start of something big, or is something else affecting the numbers?",
+    "date": "2026-08-02",
+    "dateLabel": "Today",
+    "tag": "tech",
+    "url": "https://www.xda-developers.com/linuxs-market-share-in-north-america-has-breached-10-statcounter/",
+    "source": "XDA Developers",
+    "image": "https://static0.xdaimages.com/wordpress/wp-content/uploads/wm/2026/06/img_4838.png"
+  },
+  {
+    "id": "n1595074523",
+    "title": "Your daily coffee is over 90% water, and tap water could be ruining your best beans — experts explain how to choose the right filter to unlock the full flavor",
+    "excerpt": "I spoke to water-quality experts to find out what I should look for when choosing a water filter to upgrade my coffee-making experience.",
+    "date": "2026-08-02",
+    "dateLabel": "Today",
+    "tag": "tech",
+    "url": "https://www.techradar.com/home/coffee-machines/your-daily-coffee-is-over-90-percent-water-and-tap-water-could-be-ruining-your-best-beans-experts-explain-how-to-choose-the-right-filter-to-unlock-the-full-flavor",
+    "source": "TechRadar",
+    "image": "https://cdn.mos.cms.futurecdn.net/43E4awdHUMt3FkXTWVf4pQ-1280-80.jpg"
+  },
+  {
     "id": "n290404132",
     "title": "I’ve driven the new Cupra Raval and it’s proof that the hot hatch can live on in the EV era",
     "excerpt": "Cupra unleashes the first car on the new Volkswagen MEB+ platform and it's a proper pocket rocket",
@@ -209,17 +242,6 @@
     "image": "https://picsum.photos/seed/24227/600/340"
   },
   {
-    "id": "n2125294714",
-    "title": "I let this free open-source tool optimize my Plex library and reclaimed 8TB of storage",
-    "excerpt": "Better than buying a drive in this economy",
-    "date": "2026-08-01",
-    "dateLabel": "Today",
-    "tag": "tech",
-    "url": "https://www.xda-developers.com/free-open-source-tool-optimize-plex-library-reclaimed-8tb-storage/",
-    "source": "XDA Developers",
-    "image": "https://static0.xdaimages.com/wordpress/wp-content/uploads/wm/2026/07/unmanic.jpg"
-  },
-  {
     "id": "n1454311668",
     "title": "What kind of iPhone gamer are you? Find out in our quiz and get some hand-picked Apple Arcade recommendations",
     "excerpt": "Find out what kind of gamer you are, and get some bespoke Apple Arcade game recommendations, with our quiz.",
@@ -229,17 +251,6 @@
     "url": "https://www.techradar.com/gaming/mobile-gaming/what-kind-of-iphone-gamer-are-you",
     "source": "TechRadar",
     "image": "https://cdn.mos.cms.futurecdn.net/GXw4niVHcchvJndbj5NZRB-1280-80.jpg"
-  },
-  {
-    "id": "n1135192777",
-    "title": "I ignored my motherboard's settings for years, and it quietly cost me performance",
-    "excerpt": "My fault for assuming BIOS settings are permanent.",
-    "date": "2026-08-01",
-    "dateLabel": "Today",
-    "tag": "mobiles",
-    "url": "https://www.xda-developers.com/ignored-motherboards-settings-for-years-it-quietly-cost-performance/",
-    "source": "XDA Developers",
-    "image": "https://static0.xdaimages.com/wordpress/wp-content/uploads/wm/2026/07/bios-menu-on-monitor.jpg"
   },
   {
     "id": "n1309546442",
@@ -616,17 +627,6 @@
     "image": "https://picsum.photos/seed/14778/600/340"
   },
   {
-    "id": "n1750224492",
-    "title": "There’s a micro mobility revolution underway in the USA, spurred on by a rise in popularity of golf carts — could this be a turning point for the country that pioneered gigantic SUVs?",
-    "excerpt": "America’s small-car revolution is underway — and golf carts are leading the charge",
-    "date": "2026-08-01",
-    "dateLabel": "Today",
-    "tag": "auto",
-    "url": "https://www.techradar.com/vehicle-tech/hybrid-electric-vehicles/theres-a-micro-mobility-revolution-underway-in-the-usa-spurred-on-by-a-rise-in-popularity-of-golf-carts-could-this-be-a-turning-point-for-the-country-that-pioneered-gigantic-suvs",
-    "source": "TechRadar",
-    "image": "https://cdn.mos.cms.futurecdn.net/k9AvxCgTnH2jYpfdxTaTXe-1280-80.jpg"
-  },
-  {
     "id": "n1691723284",
     "title": "I asked ChatGPT and Siri AI to build me a workout plan — and there was only one winner",
     "excerpt": "ChatGPT and Siri AI made AI-powered workout plans for me, and only one was worth keeping.",
@@ -636,6 +636,17 @@
     "url": "https://www.techradar.com/health-fitness/i-asked-chatgpt-and-siri-ai-to-build-me-a-workout-plan-and-there-was-only-one-winner",
     "source": "TechRadar",
     "image": "https://cdn.mos.cms.futurecdn.net/koehKubQKREtngSacUmpwJ-1280-80.jpg"
+  },
+  {
+    "id": "n1750224492",
+    "title": "There’s a micro mobility revolution underway in the USA, spurred on by a rise in popularity of golf carts — could this be a turning point for the country that pioneered gigantic SUVs?",
+    "excerpt": "America’s small-car revolution is underway — and golf carts are leading the charge",
+    "date": "2026-08-01",
+    "dateLabel": "Today",
+    "tag": "auto",
+    "url": "https://www.techradar.com/vehicle-tech/hybrid-electric-vehicles/theres-a-micro-mobility-revolution-underway-in-the-usa-spurred-on-by-a-rise-in-popularity-of-golf-carts-could-this-be-a-turning-point-for-the-country-that-pioneered-gigantic-suvs",
+    "source": "TechRadar",
+    "image": "https://cdn.mos.cms.futurecdn.net/k9AvxCgTnH2jYpfdxTaTXe-1280-80.jpg"
   },
   {
     "id": "n655856308",
@@ -686,7 +697,7 @@
     "title": "How to watch Tour de France Femmes 2026: FREE live streams, TV channels, schedule",
     "excerpt": "All the ways to watch Tour de France Femmes 2026 live streams – including for FREE – as favourites Pauline Ferrand-Prévot and Demi Vollering face off.",
     "date": "2026-08-01",
-    "dateLabel": "Today",
+    "dateLabel": "Yesterday",
     "tag": "tvs",
     "url": "https://www.techradar.com/how-to-watch/cycling/tour-de-france-femmes-2026-free-streams",
     "source": "TechRadar",
@@ -697,7 +708,7 @@
     "title": "I logged 250 miles testing Android Auto vs Apple CarPlay and there's one I'm going to stick with",
     "excerpt": "Which of these competent dashboards deserves to take priority in your vehicle? I put in the miles to find out.",
     "date": "2026-08-01",
-    "dateLabel": "Today",
+    "dateLabel": "Yesterday",
     "tag": "mobiles",
     "url": "https://www.techradar.com/vehicle-tech/car-infotainment/i-logged-250-miles-testing-android-auto-vs-apple-carplay-and-theres-one-im-going-to-stick-with",
     "source": "TechRadar",
@@ -708,33 +719,33 @@
     "title": "I've started grading iPhone 17 Pro Max footage like cinema camera footage, and ProRes RAW is why",
     "excerpt": "The iPhone 17 Pro Max is the first smartphone that can shoot ProRes RAW, and after weeks of cutting real footage in DaVinci Resolve, I think it's the most significant camera upgrade Apple has shipped ",
     "date": "2026-08-01",
-    "dateLabel": "Today",
+    "dateLabel": "Yesterday",
     "tag": "mobiles",
     "url": "https://www.techradar.com/pro/ive-started-grading-iphone-17-pro-max-footage-like-cinema-camera-footage-and-prores-raw-is-why",
     "source": "TechRadar",
     "image": "https://cdn.mos.cms.futurecdn.net/DRrCrTgPUWq2Xp8RVnEjhW-1280-80.jpg"
   },
   {
-    "id": "n2004963666",
-    "title": "How to watch Clasica San Sebastian 2026: FREE live streams, TV channels, start time",
-    "excerpt": "All the ways to watch Clasica San Sebastian 2026 live streams – including for FREE – as Remco Evenepoel and Giulio Ciccone face off at Donostia Klasikoa.",
-    "date": "2026-08-01",
-    "dateLabel": "Today",
-    "tag": "tvs",
-    "url": "https://www.techradar.com/how-to-watch/cycling/clasica-san-sebastian-2026-free-live-streams",
-    "source": "TechRadar",
-    "image": "https://cdn.mos.cms.futurecdn.net/PxUzFzjgydjJppi3geE4uS-1280-80.jpg"
-  },
-  {
     "id": "n1108469036",
     "title": "New study reveals how AI is reshaping how people shop online — but they still don't really trust it enough",
     "excerpt": "Report claims around 20% of UK online shoppers use AI search to start looking for new products, but AI recommendations have not translated into increased sales.",
     "date": "2026-08-01",
-    "dateLabel": "Today",
+    "dateLabel": "Yesterday",
     "tag": "tech",
     "url": "https://www.techradar.com/pro/new-study-reveals-how-ai-is-reshaping-how-people-shop-online-but-they-still-dont-really-trust-it-enough",
     "source": "TechRadar",
     "image": "https://cdn.mos.cms.futurecdn.net/NMBmyzfLwQFn8e8FR4ZhqL-1280-80.jpg"
+  },
+  {
+    "id": "n2004963666",
+    "title": "How to watch Clasica San Sebastian 2026: FREE live streams, TV channels, start time",
+    "excerpt": "All the ways to watch Clasica San Sebastian 2026 live streams – including for FREE – as Remco Evenepoel and Giulio Ciccone face off at Donostia Klasikoa.",
+    "date": "2026-08-01",
+    "dateLabel": "Yesterday",
+    "tag": "tvs",
+    "url": "https://www.techradar.com/how-to-watch/cycling/clasica-san-sebastian-2026-free-live-streams",
+    "source": "TechRadar",
+    "image": "https://cdn.mos.cms.futurecdn.net/PxUzFzjgydjJppi3geE4uS-1280-80.jpg"
   },
   {
     "id": "n1142024924",
@@ -1087,16 +1098,5 @@
     "url": "https://arstechnica.com/gaming/2026/07/sony-acknowledges-backlash-will-cautiously-move-forward-with-end-of-discs/",
     "source": "Ars Technica",
     "image": "https://picsum.photos/seed/24131/600/340"
-  },
-  {
-    "id": "n1829838726",
-    "title": "First Googlebooks from Lenovo leak: Two sizes and 2-in-1 tablet",
-    "excerpt": "Ahead of the fall launch, the first set of Googlebooks from Lenovo has leaked.",
-    "date": "2026-07-31",
-    "dateLabel": "Yesterday",
-    "tag": "tech",
-    "url": "https://9to5google.com/2026/07/31/googlebook-lenovo-leak/",
-    "source": "9to5Google",
-    "image": "https://picsum.photos/seed/5708/600/340"
   }
 ]
