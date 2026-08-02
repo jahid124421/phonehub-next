@@ -1,0 +1,29 @@
+name: Vercel Production Deploy
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+concurrency:
+  group: vercel-prod
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    name: Deploy to Vercel
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Link Vercel project
+        run: |
+          mkdir -p .vercel
+          echo '{"projectId":"prj_cgK1HOuwfIauewuC5tUkg07Njn6s","orgId":"team_ZS9n9al5Jw2kbbq5Xb8oakWI"}' > .vercel/project.json
+
+      - name: Deploy to Vercel (production)
+        env:
+          VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
+        run: npx --yes vercel@58.4.4 deploy --prod --yes --token "$VERCEL_TOKEN"
