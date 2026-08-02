@@ -1,6 +1,5 @@
 import { type NewsItem } from "@/lib/data";
-
-const placeholderImage = `data:image/svg+xml,${encodeURIComponent(`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450" fill="none"><rect width="800" height="450" fill="#1a1a2e"/><text x="400" y="225" text-anchor="middle" dominant-baseline="middle" font-family="sans-serif" font-size="24" fill="#4a4a6a">No Image</text></svg>`)}`;
+import NewsImage from "./NewsImage";
 
 function getRelativeDate(dateStr: string): string {
   const date = new Date(dateStr);
@@ -25,8 +24,6 @@ function getRelativeDate(dateStr: string): string {
 }
 
 export default function NewsCard({ news }: { news: NewsItem }) {
-  const imageSrc = news.image || placeholderImage;
-
   return (
     <a
       href={news.url}
@@ -36,12 +33,7 @@ export default function NewsCard({ news }: { news: NewsItem }) {
     >
       {/* Hero image area */}
       <figure className="relative aspect-video overflow-hidden bg-base-300">
-        <img
-          src={imageSrc}
-          alt={news.title}
-          className="w-full h-full object-cover"
-          loading="lazy"
-        />
+        <NewsImage src={news.image} alt={news.title} />
       </figure>
 
       {/* Card body */}

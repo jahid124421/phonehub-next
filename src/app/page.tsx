@@ -16,6 +16,7 @@ import {
 } from "@/lib/homepage-data";
 import PhoneCard from "@/components/PhoneCard";
 import NewsCard from "@/components/NewsCard";
+import NewsImage from "@/components/NewsImage";
 import CookieConsent from "@/components/CookieConsent";
 import CategoryStrip from "@/components/CategoryStrip";
 import { websiteSchema, itemListSchema } from "@/lib/schema";
@@ -198,7 +199,7 @@ export default function Home() {
           const rest = news.slice(1, 9);
           return (
             <section>
-              <div className="flex items-center justify-between mb-4">
+              <div className="flex items-center justify-between mb-6">
                 <h2 className="text-2xl font-bold">
                   📰 Latest News &amp; Guides
                 </h2>
@@ -218,11 +219,7 @@ export default function Home() {
                 className="block mb-6 card bg-base-200 border border-base-300 hover:border-primary transition-all hover:-translate-y-0.5 duration-200 md:flex md:items-stretch md:overflow-hidden"
               >
                 <figure className="relative aspect-video md:aspect-auto md:w-80 md:shrink-0 overflow-hidden bg-base-300">
-                  <img
-                    src={featured.image || `data:image/svg+xml,${encodeURIComponent('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450" fill="none"><rect width="800" height="450" fill="#1a1a2e"/><text x="400" y="225" text-anchor="middle" dominant-baseline="middle" font-family="sans-serif" font-size="24" fill="#4a4a6a">No Image</text></svg>')}`}
-                    alt={featured.title}
-                    className="w-full h-full object-cover"
-                  />
+                  <NewsImage src={featured.image} alt={featured.title} />
                 </figure>
                 <div className="card-body p-5 gap-2 flex-1">
                   <span className="badge badge-outline badge-sm self-start">Featured</span>
@@ -251,7 +248,7 @@ export default function Home() {
         {/*  3. Trending Now                                            */}
         {/* ========================================================== */}
         <section>
-          <div className="flex items-center justify-between mb-4">
+          <div className="flex items-center justify-between mb-6">
             <h2 className="text-2xl font-bold">🚀 Trending Now</h2>
             <Link
               href="/search?sort=popularity"
@@ -273,7 +270,7 @@ export default function Home() {
         {/*  4. Popular Right Now                                       */}
         {/* ========================================================== */}
         <section>
-          <div className="flex items-center justify-between mb-4">
+          <div className="flex items-center justify-between mb-6">
             <h2 className="text-2xl font-bold">🔥 Popular Right Now</h2>
             <Link
               href="/search?sort=popularity"
@@ -293,7 +290,7 @@ export default function Home() {
         {/*  5. Latest Releases                                         */}
         {/* ========================================================== */}
         <section>
-          <div className="flex items-center justify-between mb-4">
+          <div className="flex items-center justify-between mb-6">
             <h2 className="text-2xl font-bold">🆕 Latest Releases</h2>
             <Link
               href="/search?sort=newest"
