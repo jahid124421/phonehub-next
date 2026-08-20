@@ -5,6 +5,7 @@ import Footer from "@/components/Footer";
 import ScrollToTop from "@/components/ScrollToTop";
 import ScrollRestoration from "@/components/ScrollRestoration";
 import CompareBar from "@/components/CompareBar";
+import CommandPalette from "@/components/CommandPalette";
 import { SITE_URL } from "@/lib/config";
 import { organizationSchema } from "@/lib/schema";
 import "./globals.css";
@@ -44,7 +45,10 @@ export default function RootLayout({
       <head>
         <meta charSet="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="theme-color" content="#0d0f14" />
         <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+        <link rel="manifest" href="/manifest.json" />
+        <link rel="apple-touch-icon" href="/favicon.svg" />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link rel="dns-prefetch" href="https://cdn.brandfetch.io" />
@@ -74,6 +78,7 @@ export default function RootLayout({
         <ScrollToTop />
         <ScrollRestoration />
         <CompareBar />
+        <CommandPalette />
       </body>
     </html>
   );

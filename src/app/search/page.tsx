@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { getAllProducts, getAllBrands } from "@/lib/data";
 import { SITE_URL } from "@/lib/config";
+import AnswerBox from "@/components/AnswerBox";
 import SearchClient from "./SearchClient";
 
 export const metadata: Metadata = {
@@ -30,12 +31,17 @@ export default function SearchPage() {
   }
 
   return (
-    <SearchClient
-      initialResults={initialResults}
-      initialBrands={brands}
-      categories={categories}
-      totalProducts={allProducts.length}
-      brandProductCounts={brandProductCounts}
-    />
+    <>
+      <div className="max-w-7xl mx-auto px-4 pt-6">
+        <AnswerBox />
+      </div>
+      <SearchClient
+        initialResults={initialResults}
+        initialBrands={brands}
+        categories={categories}
+        totalProducts={allProducts.length}
+        brandProductCounts={brandProductCounts}
+      />
+    </>
   );
 }

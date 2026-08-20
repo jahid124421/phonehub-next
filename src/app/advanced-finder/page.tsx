@@ -1,16 +1,27 @@
 import type { Metadata } from "next";
 import { SITE_URL } from "@/lib/config";
-import { getPhoneProducts } from "@/lib/data";
+import { parseFinderState } from "./finder-shared";
+import { buildFacetOptions, runFinder } from "./finder-server";
 import AdvancedFinderClient from "./AdvancedFinderClient";
 
 export const metadata: Metadata = {
   title: "Advanced Phone Finder - 50+ Filter Dimensions | PhoneHub",
   description:
-    "Find the perfect phone with 50+ filter dimensions. Filter by display, camera, battery, performance, build, connectivity and more.",
+    "Find the perfect phone with 50+ filter dimensions. Filter by brand, price, RAM, storage, battery, display, camera, chipset, connectivity and more.",
+  keywords: [
+    "phone finder",
+    "advanced phone filter",
+    "compare phones by specs",
+    "phone search by RAM battery camera",
+    "smartphone finder tool",
+  ],
   alternates: {
     canonical: `${SITE_URL}/advanced-finder`,
   },
   openGraph: {
+    title: "Advanced Phone Finder - 50+ Filter Dimensions | PhoneHub",
+    description:
+      "Filter phones by brand, price, RAM, storage, battery, display, chipset, 5G and more.",
     images: [{ url: `${SITE_URL}/og-image.png`, width: 1200, height: 630, alt: "PhoneHub Advanced Finder" }],
   },
 };
@@ -26,47 +37,21 @@ const jsonLd = {
   offers: { "@type": "Offer", price: "0", priceCurrency: "USD" },
 };
 
-// Build a lightweight payload — only fields needed by the UI
-type FinderProduct = {
-  id: string;
-  name: string;
-  brand: string;
-  basePrice: number;
-  image: string;
-  rating: number;
-  reviewCount: number;
-  popularity: number;
-  filterSpecs: Record<string, unknown>;
-};
+const INITIAL_LIMIT = 60;
 
-function buildPayload(): FinderProduct[] {
-  const phones = getPhoneProducts();
-  return phones.map((p) => ({
-    id: p.id,
-    name: p.name,
-    brand: p.brand,
-    basePrice: p.basePrice,
-    image: p.image,
-    rating: p.rating,
-    reviewCount: p.reviewCount,
-    popularity: p.popularity,
-    filterSpecs: p.filterSpecs as unknown as Record<string, unknown>,
-  }));
-}
+export default async function AdvancedFinderPage({
+  searchParams,
+}: {
+  searchParams: Promise<Record<string, string | string[] | undefined>>;
+}) {
+  const sp = await searchParams;
+  const initialState = parseFinderState((key) => {
+    const v = sp[key];
+    return Array.isArray(v) ? v[0] ?? null : v ?? null;
+  });
 
-// Gather dynamic option values for brand & chipset
-function getDynamicOptions() {
-  const phones = getPhoneProducts();
-  const brands = [...new Set(phones.map((p) => p.brand))].sort();
-  const chipsets = [
-    ...new Set(phones.map((p) => p.filterSpecs?.chipset).filter(Boolean) as string[]),
-  ].sort();
-  return { brands, chipsets };
-}
-
-export default function AdvancedFinderPage() {
-  const products = buildPayload();
-  const dynamic = getDynamicOptions();
+  const facetOptions = buildFacetOptions();
+  const { results, total } = runFinder(initialState, INITIAL_LIMIT);
 
   return (
     <>
@@ -74,7 +59,12 @@ export default function AdvancedFinderPage() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
-      <AdvancedFinderClient products={products} dynamicOptions={dynamic} />
+      <AdvancedFinderClient
+        facetOptions={facetOptions}
+        initialState={initialState}
+        initialResults={results}
+        initialTotal={total}
+      />
     </>
   );
 }

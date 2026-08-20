@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { SITE_URL } from "@/lib/config";
+import AnswerBox from "@/components/AnswerBox";
 import AIFinderClient from "./AIFinderClient";
 
 export const metadata: Metadata = {
@@ -36,6 +37,9 @@ export default function AIFinderPage() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
+      <div className="container pt-6 max-w-5xl mx-auto">
+        <AnswerBox />
+      </div>
       <AIFinderClient />
     </>
   );

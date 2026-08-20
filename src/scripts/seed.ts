@@ -7,7 +7,7 @@ import * as path from 'path'
 const adapter = new PrismaPg({ connectionString: process.env.DATABASE_URL! })
 const prisma = new PrismaClient({ adapter })
 
-const DATA_DIR = path.resolve(__dirname, '../../../../phonehub/data')
+const DATA_DIR = path.resolve(__dirname, '../data')
 
 // ---------- helpers ----------
 

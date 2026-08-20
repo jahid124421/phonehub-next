@@ -10,6 +10,7 @@ const links = {
   ],
   explore: [
     { label: "Search", href: "/search" },
+    { label: "Advanced Finder", href: "/advanced-finder" },
     { label: "Compare", href: "/compare" },
     { label: "Deals", href: "/deals" },
     { label: "News", href: "/news" },
@@ -18,6 +19,8 @@ const links = {
     { label: "Benchmarks", href: "/benchmarks" },
     { label: "Buying Guides", href: "/guides" },
     { label: "Upcoming Phones", href: "/upcoming" },
+    { label: "Best Of Lists", href: "/best/best-phones-2026" },
+    { label: "Developer API", href: "/developers" },
     { label: "Tools", href: "/tools" },
     { label: "Monitors", href: "/search?cat=monitor" },
     { label: "Routers", href: "/search?cat=router" },

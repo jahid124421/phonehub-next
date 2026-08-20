@@ -8,13 +8,26 @@ import { formatPrice, formatDate } from '@/lib/formatters';
 import Breadcrumb from '@/components/Breadcrumb';
 import ScoreBadge from '@/components/ScoreBadge';
 import type { PhoneHubScore } from '@/lib/score-calculator';
+import {
+  computeRecommendation,
+  computeUseCaseVerdicts,
+  getLowestPrice,
+  getRowVerdict,
+  type ScoresMap,
+  type SpecsMap,
+} from '@/lib/compare-verdict';
 
 /* ------------------------------------------------------------------ */
 /*  Types                                                              */
 /* ------------------------------------------------------------------ */
 
-type SpecsMap = Record<string, Record<string, Record<string, string>>>;
-type ScoresMap = Record<string, PhoneHubScore>;
+const USE_CASE_ICONS: Record<string, string> = {
+  overall: '🏆',
+  photography: '📷',
+  gaming: '🎮',
+  battery: '🔋',
+  value: '💰',
+};
 
 interface CompareClientProps {
   allSpecs: SpecsMap;
@@ -48,15 +61,7 @@ const SECTION_ORDER = [
 /*  Helpers                                                            */
 /* ------------------------------------------------------------------ */
 
-function lowestPrice(p: Product): number {
-  if (p.prices && p.prices.length) {
-    const valid = p.prices
-      .map((pr) => pr.price)
-      .filter((v): v is number => v !== null && v > 0);
-    if (valid.length) return Math.min(...valid);
-  }
-  return p.basePrice ?? 0;
-}
+const lowestPrice = getLowestPrice;
 
 function sortSections(sections: string[]): string[] {
   const orderMap = new Map(SECTION_ORDER.map((s, i) => [s.toLowerCase(), i]));
@@ -77,6 +82,7 @@ export default function CompareClient({ allSpecs, allScores = {} }: CompareClien
   const [mounted, setMounted] = useState(false);
   const [selectedProducts, setSelectedProducts] = useState<Product[]>([]);
   const [isLoadingProducts, setIsLoadingProducts] = useState(false);
+  const [diffsOnly, setDiffsOnly] = useState(false);
 
   // Derive selected IDs from URL or localStorage
   const [selectedIds, setSelectedIds] = useState<string[]>([]);
@@ -165,6 +171,16 @@ export default function CompareClient({ allSpecs, allScores = {} }: CompareClien
 
   const sortedSections = useMemo(() => sortSections(Object.keys(specSections)), [specSections]);
 
+  // Verdicts + recommendation (deterministic, derived from specs/scores)
+  const useCaseVerdicts = useMemo(
+    () => computeUseCaseVerdicts(selectedProducts, allSpecs, allScores),
+    [selectedProducts, allSpecs, allScores],
+  );
+  const recommendation = useMemo(
+    () => computeRecommendation(selectedProducts, allSpecs, allScores),
+    [selectedProducts, allSpecs, allScores],
+  );
+
   // Don't render until mounted (avoid hydration mismatch with useSearchParams)
   if (!mounted) {
     return (
@@ -216,6 +232,59 @@ export default function CompareClient({ allSpecs, allScores = {} }: CompareClien
         Comparing {selectedProducts.length} device{selectedProducts.length > 1 ? 's' : ''} side by side
       </p>
 
+      {/* ---- PhoneHub recommends ---- */}
+      {recommendation && (
+        <div className="rounded-box border border-primary/40 bg-primary/5 p-4 mb-4 flex items-start gap-3">
+          <span className="text-2xl leading-none mt-0.5" aria-hidden>🏆</span>
+          <div>
+            <p className="font-bold">{recommendation.headline}</p>
+            <p className="text-sm text-base-content/70 mt-1">{recommendation.body}</p>
+          </div>
+        </div>
+      )}
+
+      {/* ---- Verdict strip: winner per use-case ---- */}
+      {useCaseVerdicts.length > 0 && (
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-3 mb-6">
+          {useCaseVerdicts.map((v) => {
+            const winner = selectedProducts[v.winnerIndex];
+            if (!winner) return null;
+            const isOverall = v.id === 'overall';
+            return (
+              <div
+                key={v.id}
+                className={`rounded-box border p-3 ${
+                  isOverall
+                    ? 'border-primary/50 bg-primary/10'
+                    : 'border-base-300 bg-base-200/50'
+                }`}
+              >
+                <p className="text-xs font-semibold uppercase tracking-wide text-base-content/60">
+                  {USE_CASE_ICONS[v.id]} {v.label}
+                </p>
+                <p className={`font-bold text-sm mt-1 ${isOverall ? 'text-primary' : ''}`}>
+                  {winner.name}
+                </p>
+                <p className="text-xs text-base-content/60 mt-1">{v.reason}</p>
+              </div>
+            );
+          })}
+        </div>
+      )}
+
+      {/* ---- Controls ---- */}
+      <div className="flex justify-end mb-2">
+        <label className="label cursor-pointer gap-2 py-0">
+          <span className="label-text text-sm text-base-content/70">Show differences only</span>
+          <input
+            type="checkbox"
+            className="toggle toggle-primary toggle-sm"
+            checked={diffsOnly}
+            onChange={(e) => setDiffsOnly(e.target.checked)}
+          />
+        </label>
+      </div>
+
       <div className="overflow-x-auto rounded-box border border-base-300">
         <table className="table table-pin-cols w-full">
           {/* ---- Header: product images + names + remove ---- */}
@@ -258,38 +327,63 @@ export default function CompareClient({ allSpecs, allScores = {} }: CompareClien
           {/* ---- Summary rows ---- */}
           <tbody>
             {/* PhoneHub Score row */}
-            <tr>
-              <td className="sticky left-0 bg-base-100 z-10 font-medium text-base-content/70">
-                PhoneHub Score
-              </td>
-              {selectedProducts.map((p) => {
-                const s = allScores[p.id];
-                return (
-                  <td key={p.id} className="text-center">
-                    {s ? (
-                      <div className="flex flex-col items-center gap-1">
-                        <ScoreBadge score={s} size="compact" />
-                      </div>
-                    ) : (
-                      <span className="text-base-content/40 text-sm">N/A</span>
-                    )}
+            {(() => {
+              const totals = selectedProducts.map((p) => allScores[p.id]?.total ?? null);
+              const present = totals.filter((v): v is number => v !== null);
+              const best = present.length >= 2 ? Math.max(...present) : null;
+              const tied = present.length >= 2 && present.every((v) => v === best);
+              return (
+                <tr>
+                  <td className="sticky left-0 bg-base-100 z-10 font-medium text-base-content/70">
+                    PhoneHub Score
                   </td>
-                );
-              })}
-            </tr>
-            <tr>
-              <td className="sticky left-0 bg-base-100 z-10 font-medium text-base-content/70">
-                Lowest Price
-              </td>
-              {selectedProducts.map((p) => {
-                const price = lowestPrice(p);
-                return (
-                  <td key={p.id} className="text-center font-semibold">
-                    {formatPrice(price)}
+                  {selectedProducts.map((p, i) => {
+                    const s = allScores[p.id];
+                    const isWinner = !tied && best !== null && totals[i] === best;
+                    return (
+                      <td
+                        key={p.id}
+                        className={`text-center ${isWinner ? 'bg-success/10' : ''}`}
+                      >
+                        {s ? (
+                          <div className="flex flex-col items-center gap-1">
+                            <ScoreBadge score={s} size="compact" />
+                            {isWinner && <span className="text-success text-xs font-semibold">✓ Best</span>}
+                          </div>
+                        ) : (
+                          <span className="text-base-content/40 text-sm">N/A</span>
+                        )}
+                      </td>
+                    );
+                  })}
+                </tr>
+              );
+            })()}
+            {(() => {
+              const prices = selectedProducts.map((p) => lowestPrice(p));
+              const valid = prices.filter((n) => n > 0);
+              const best = valid.length >= 2 ? Math.min(...valid) : null;
+              const tied = valid.length >= 2 && valid.every((v) => v === best);
+              return (
+                <tr>
+                  <td className="sticky left-0 bg-base-100 z-10 font-medium text-base-content/70">
+                    Lowest Price
                   </td>
-                );
-              })}
-            </tr>
+                  {selectedProducts.map((p, i) => {
+                    const isWinner = !tied && best !== null && prices[i] === best;
+                    return (
+                      <td
+                        key={p.id}
+                        className={`text-center font-semibold ${isWinner ? 'bg-success/10 text-success' : ''}`}
+                      >
+                        {formatPrice(prices[i])}
+                        {isWinner && <span className="ml-1">✓</span>}
+                      </td>
+                    );
+                  })}
+                </tr>
+              );
+            })()}
             <tr>
               <td className="sticky left-0 bg-base-100 z-10 font-medium text-base-content/70">
                 Rating
@@ -323,28 +417,39 @@ export default function CompareClient({ allSpecs, allScores = {} }: CompareClien
                 { label: '💰 Value', key: 'value' },
                 { label: '🏗 Build', key: 'build' },
               ];
-              return categories.map(({ label, key }) => (
-                <tr key={key}>
-                  <td className="sticky left-0 bg-base-100 z-10 font-medium text-base-content/70 text-sm">
-                    {label}
-                  </td>
-                  {selectedProducts.map((p) => {
-                    const s = allScores[p.id];
-                    const val = s ? s[key] : null;
-                    const color = val == null ? undefined
-                      : val >= 80 ? '#22c55e' : val >= 60 ? '#eab308' : val >= 40 ? '#f97316' : '#ef4444';
-                    return (
-                      <td key={p.id} className="text-center text-sm">
-                        {val != null ? (
-                          <span className="font-semibold" style={{ color }}>{val}/100</span>
-                        ) : (
-                          <span className="text-base-content/40">—</span>
-                        )}
-                      </td>
-                    );
-                  })}
-                </tr>
-              ));
+              return categories.map(({ label, key }) => {
+                const vals = selectedProducts.map((p) => allScores[p.id]?.[key] ?? null);
+                const present = vals.filter((v): v is number => v !== null);
+                const best = present.length >= 2 ? Math.max(...present) : null;
+                const tied = present.length >= 2 && present.every((v) => v === best);
+                return (
+                  <tr key={key}>
+                    <td className="sticky left-0 bg-base-100 z-10 font-medium text-base-content/70 text-sm">
+                      {label}
+                    </td>
+                    {selectedProducts.map((p, i) => {
+                      const val = vals[i];
+                      const isWinner = !tied && best !== null && val === best;
+                      const color = val == null ? undefined
+                        : val >= 80 ? '#22c55e' : val >= 60 ? '#eab308' : val >= 40 ? '#f97316' : '#ef4444';
+                      return (
+                        <td
+                          key={p.id}
+                          className={`text-center text-sm ${isWinner ? 'bg-success/10' : ''}`}
+                        >
+                          {val != null ? (
+                            <span className="font-semibold" style={{ color }}>
+                              {val}/100{isWinner && <span className="text-success ml-1">✓</span>}
+                            </span>
+                          ) : (
+                            <span className="text-base-content/40">—</span>
+                          )}
+                        </td>
+                      );
+                    })}
+                  </tr>
+                );
+              });
             })()}
           </tbody>
 
@@ -368,20 +473,36 @@ export default function CompareClient({ allSpecs, allScores = {} }: CompareClien
                     const s = allSpecs[p.id];
                     return (s && s[section] && s[section][key]) || '—';
                   });
-                  const allSame = vals.every((v) => v === vals[0]);
+                  const verdict = getRowVerdict(vals, section, key);
+                  if (diffsOnly && verdict.allSame) return null;
                   return (
-                    <tr key={key}>
+                    <tr key={key} className={verdict.allSame ? 'opacity-60' : ''}>
                       <td className="sticky left-0 bg-base-100 z-10 font-medium text-base-content/70 text-sm">
                         {key}
                       </td>
-                      {selectedProducts.map((p, i) => (
-                        <td
-                          key={p.id}
-                          className={`text-center text-sm ${!allSame ? 'bg-primary/5' : ''}`}
-                        >
-                          {vals[i]}
-                        </td>
-                      ))}
+                      {selectedProducts.map((p, i) => {
+                        const isWinner = verdict.winners.includes(i);
+                        const differs = !verdict.allSame;
+                        return (
+                          <td
+                            key={p.id}
+                            className={`text-center text-sm ${
+                              isWinner
+                                ? 'bg-success/10 font-semibold'
+                                : differs && verdict.comparable
+                                  ? ''
+                                  : differs
+                                    ? 'bg-primary/5'
+                                    : ''
+                            }`}
+                          >
+                            {vals[i]}
+                            {isWinner && (
+                              <span className="text-success ml-1" title="Best in this row">✓</span>
+                            )}
+                          </td>
+                        );
+                      })}
                     </tr>
                   );
                 })}
@@ -392,7 +513,8 @@ export default function CompareClient({ allSpecs, allScores = {} }: CompareClien
       </div>
 
       <p className="text-base-content/50 text-sm mt-3">
-        Highlighted cells indicate where the devices differ.
+        Green cells with a ✓ mark the winning value in comparable rows. Identical rows are dimmed
+        — use the toggle above to show differences only.
       </p>
     </div>
   );

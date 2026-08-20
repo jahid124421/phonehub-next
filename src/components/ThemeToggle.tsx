@@ -22,7 +22,7 @@ export default function ThemeToggle() {
 
   return (
     <>
-      <style jsx>{`
+      <style>{`
         .theme-toggle-btn:hover {
           border-color: var(--primary) !important;
           transform: translateY(-1px) !important;

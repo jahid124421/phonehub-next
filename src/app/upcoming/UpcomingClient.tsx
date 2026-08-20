@@ -15,11 +15,31 @@ const CONFIDENCE_COLORS: Record<string, string> = {
   low: "#94a3b8",
 };
 
-const QUARTER_ORDER = ["Q3 2026", "Q4 2026", "Q1 2027", "Q2 2027"];
-
+/** Parse "Q3 2026" into a sortable number (2026*4 + 3). Unknown → far future. */
 function getQuarterSort(q: string): number {
-  const idx = QUARTER_ORDER.indexOf(q);
-  return idx === -1 ? 99 : idx;
+  const match = q.match(/Q([1-4])\s*(\d{4})/i);
+  if (!match) return 99999;
+  return parseInt(match[2], 10) * 4 + parseInt(match[1], 10);
+}
+
+/** Rough months until the START of a quarter like "Q3 2026". Negative = already passed. */
+function monthsUntilQuarter(q: string): number | null {
+  const match = q.match(/Q([1-4])\s*(\d{4})/i);
+  if (!match) return null;
+  const quarter = parseInt(match[1], 10);
+  const year = parseInt(match[2], 10);
+  const now = new Date();
+  const startMonth = (quarter - 1) * 3; // 0-indexed start month of the quarter
+  return (year - now.getFullYear()) * 12 + (startMonth - now.getMonth());
+}
+
+function countdownLabel(q: string): string | null {
+  const months = monthsUntilQuarter(q);
+  if (months === null) return null;
+  if (months < 0) return "Expected soon";
+  if (months === 0) return "This quarter";
+  if (months < 3) return `~${months} mo away`;
+  return `~${Math.round(months / 3)} qtrs away`;
 }
 
 export default function UpcomingClient({ devices }: { devices: UpcomingDevice[] }) {
@@ -102,6 +122,20 @@ export default function UpcomingClient({ devices }: { devices: UpcomingDevice[] 
               }}
             />
             <h2 className="text-xl font-bold">{quarter}</h2>
+            {countdownLabel(quarter) && (
+              <span
+                className="text-xs font-semibold"
+                style={{
+                  background: "var(--primary)",
+                  color: "#fff",
+                  padding: "2px 10px",
+                  borderRadius: 20,
+                  whiteSpace: "nowrap",
+                }}
+              >
+                {countdownLabel(quarter)}
+              </span>
+            )}
             <div style={{ flex: 1, height: 1, background: "var(--border)" }} />
             <span className="text-sm" style={{ color: "var(--muted)" }}>{items.length} device{items.length !== 1 ? "s" : ""}</span>
           </div>

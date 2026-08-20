@@ -1,36 +1,60 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# PhoneHub
 
-## Getting Started
+Find, compare & decide — a fast, clean, ad-light alternative to GSMArena / Smartprix.
+Live at [phonehub-next.vercel.app](https://phonehub-next.vercel.app/).
 
-First, run the development server:
+## Why it exists
+
+| Incumbent weakness | PhoneHub's answer |
+| --- | --- |
+| Ad-choked, slow, 2012-era UX | Static-first Next.js, dark mode, PWA, keyboard-first (`Ctrl+K`) command palette |
+| Compare = static table dump | Diff-highlighted compare for up to 4 devices + per-use-case verdict scoring |
+| Shallow filters | Advanced Finder with 40+ facets |
+| News is a blog, not a hub | Deduped multi-source news + rumor tracker + launch calendar |
+| No answers, only data | AI answer layer (Groq → Gemini → local heuristic fallback) |
+| Closed platform | Free public JSON API — see `/developers` |
+
+## Tech stack
+
+- **Frontend:** Next.js (App Router) + TypeScript + Tailwind CSS 4 + daisyUI 5
+- **Database:** Postgres (Supabase) + Prisma 7 — JSON-file fallback keeps the site fully functional without a DB
+- **Search:** Postgres `tsvector` FTS with in-memory fallback
+- **AI:** Groq (`llama-3.3-70b-versatile`) primary → Gemini (`gemini-2.0-flash`) fallback → local heuristic engine
+- **Data:** RSS aggregation (10+ sources), daily GitHub Actions + Vercel cron refresh
+- **Deploy:** Vercel
+
+## Getting started
 
 ```bash
+npm install
+cp .env.example .env   # fill in what you have — everything is optional
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+The site runs with **zero env vars** (JSON data + heuristic AI fallback). Add keys to unlock more:
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+| Variable | Unlocks |
+| --- | --- |
+| `DATABASE_URL` | Postgres-backed API responses (Prisma) |
+| `GROQ_API_KEY` | LLM answers via Groq (free at console.groq.com) |
+| `GEMINI_API_KEY` | LLM fallback via Gemini free tier |
+| `CRON_SECRET` | Protects `/api/cron/daily` and `/api/revalidate` |
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Key routes
 
-## Learn More
+- `/search` — full-text search · `/advanced-finder` — 40+ facet filters
+- `/compare?ids=a,b,c` — up to 4 devices, verdict scoring
+- `/best/[slug]` — 30 programmatic "best of" landing pages · `/vs/a-vs-b` — head-to-head pages
+- `/upcoming` — launch calendar + rumor tracker · `/developers` — public API docs
+- `/api/search`, `/api/finder`, `/api/brands`, `/api/news`, `/api/prices/[id]`, `/api/answer`
 
-To learn more about Next.js, take a look at the following resources:
+## Data pipeline
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- `scripts/fetch-news.ts` — RSS aggregation + dedupe → `src/data/news.json`
+- `scripts/compute-scores.ts` — PhoneHubScore per device → `src/data/scores.json`
+- `scripts/enrich-specs.ts` — parses specs into filterable facets
+- `.github/workflows/daily.yml` — daily refresh, commits data, pings IndexNow
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## License
 
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+MIT (data aggregated from public sources; see `/disclosure`).

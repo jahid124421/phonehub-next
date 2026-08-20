@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
-import { getUpcomingDevices, type UpcomingDevice } from "@/lib/data";
+import { getUpcomingDevices, getRumorNews, type UpcomingDevice } from "@/lib/data";
 import { SITE_URL } from "@/lib/config";
 import UpcomingClient from "./UpcomingClient";
+import RumorTracker from "@/components/RumorTracker";
 
 export const dynamic = "force-static";
 export const revalidate = 86400; // daily
@@ -34,6 +35,7 @@ const upcomingJsonLd = {
 
 export default function UpcomingPage() {
   const devices: UpcomingDevice[] = getUpcomingDevices();
+  const rumors = getRumorNews(10);
 
   return (
     <>
@@ -48,7 +50,23 @@ export default function UpcomingPage() {
             Track {devices.length}+ upcoming smartphones, tablets and foldables — confirmed launches, leaks, and rumors
           </p>
         </div>
-        <UpcomingClient devices={devices} />
+        <div
+          style={{
+            display: "grid",
+            gridTemplateColumns: "minmax(0, 1fr) 320px",
+            gap: 24,
+            alignItems: "start",
+          }}
+          className="upcoming-layout"
+        >
+          <UpcomingClient devices={devices} />
+          <RumorTracker items={rumors} />
+        </div>
+        <style>{`
+          @media (max-width: 960px) {
+            .upcoming-layout { grid-template-columns: 1fr !important; }
+          }
+        `}</style>
       </div>
     </>
   );

@@ -98,10 +98,8 @@ export default function Header() {
           ))}
         </nav>
 
-        {/* Search form */}
-        <form
-          action="/search"
-          method="get"
+        {/* Search — opens the keyboard-first command palette */}
+        <div
           style={{
             marginLeft: "auto",
             flex: 1,
@@ -110,38 +108,57 @@ export default function Header() {
           }}
           className="header-search-form"
         >
-          <input
-            type="text"
-            name="q"
-            placeholder="Search phones, laptops, cars..."
+          <button
+            type="button"
+            onClick={() =>
+              window.dispatchEvent(new CustomEvent("phonehub:open-palette"))
+            }
             style={{
               flex: 1,
+              display: "flex",
+              alignItems: "center",
+              gap: 10,
               padding: "10px 14px",
-              borderRadius: "10px 0 0 10px",
+              borderRadius: 10,
               border: "1px solid var(--search-border)",
-              borderRight: "none",
               background: "var(--search-bg)",
-              color: "var(--text)",
-              outline: "none",
+              color: "var(--muted)",
+              cursor: "text",
               fontSize: 14,
+              textAlign: "left",
             }}
-          />
-          <button
-            type="submit"
-            style={{
-              padding: "0 16px",
-              border: "none",
-              borderRadius: "0 10px 10px 0",
-              background: "var(--primary)",
-              color: "#fff",
-              cursor: "pointer",
-              fontWeight: 600,
-              fontSize: 14,
-            }}
+            aria-label="Open search (Ctrl+K)"
           >
-            Search
+            <svg
+              width="15"
+              height="15"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+              style={{ flexShrink: 0 }}
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
+              />
+            </svg>
+            <span style={{ flex: 1 }}>Search phones, laptops, cars...</span>
+            <kbd
+              style={{
+                fontSize: 11,
+                padding: "2px 6px",
+                borderRadius: 5,
+                border: "1px solid var(--search-border)",
+                background: "var(--surface)",
+                whiteSpace: "nowrap",
+              }}
+            >
+              Ctrl K
+            </kbd>
           </button>
-        </form>
+        </div>
 
         {/* Currency picker */}
         <CurrencyPicker />
@@ -232,8 +249,8 @@ export default function Header() {
         </nav>
       )}
 
-      {/* Scoped responsive styles */}
-      <style jsx>{`
+      {/* Global responsive styles (rendered once, applies site-wide) */}
+      <style>{`
         .nav-link:hover {
           color: var(--text) !important;
           background: var(--nav-hover-bg) !important;

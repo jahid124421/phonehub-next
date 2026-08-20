@@ -371,6 +371,33 @@ export function getUpcomingDevices(): UpcomingDevice[] {
   return upcomingDevices as UpcomingDevice[];
 }
 
+// ── Rumor Tracker ────────────────────────────────────────────────────────────
+const RUMOR_KEYWORDS = [
+  "rumor",
+  "rumour",
+  "leak",
+  "leaked",
+  "renders",
+  "allegedly",
+  "reportedly",
+  "tipped",
+  "expected to",
+  "upcoming",
+  "spotted",
+  "certification",
+  "teased",
+  "confirmed to",
+];
+
+export function getRumorNews(limit = 12): NewsItem[] {
+  return getAllNews()
+    .filter((item) => {
+      const haystack = `${item.title} ${item.excerpt}`.toLowerCase();
+      return RUMOR_KEYWORDS.some((kw) => haystack.includes(kw));
+    })
+    .slice(0, limit);
+}
+
 // ── Buying Guides ────────────────────────────────────────────────────────────────
 export interface BuyingGuide {
   id: string;
