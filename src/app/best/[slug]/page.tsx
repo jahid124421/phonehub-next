@@ -12,6 +12,12 @@ import {
   type PhoneWithSpecs,
 } from "@/lib/best-pages";
 import { breadcrumbSchema, itemListSchema } from "@/lib/schema";
+import {
+  bestPageFaqs,
+  listHighlights,
+  methodologyParagraphs,
+  rankBlurb,
+} from "@/lib/best-copy";
 
 // ─── SSG + ISR config ────────────────────────────────────────────────────────
 export const dynamic = "force-static";
@@ -79,6 +85,12 @@ export default async function BestPage({
   const top3 = ranked.slice(0, 3);
   const compareUrl = `/compare?ids=${top3.map((r) => r.phone.id).join(",")}`;
 
+  // Data-derived unique content: stats from this exact ranked set, FAQs and
+  // ranking methodology — so each buying guide reads differently.
+  const highlights = listHighlights(ranked, def.scoreKey);
+  const faqs = bestPageFaqs(def, ranked);
+  const methodology = methodologyParagraphs(def.scoreKey);
+
   const jsonLd = [
     itemListSchema(
       def.title,
@@ -92,6 +104,15 @@ export default async function BestPage({
       { name: "Best", url: `/best/${def.slug}` },
       { name: def.title, url: `/best/${def.slug}` },
     ]),
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      mainEntity: faqs.map((f) => ({
+        "@type": "Question",
+        name: f.q,
+        acceptedAnswer: { "@type": "Answer", text: f.a },
+      })),
+    },
   ];
 
   return (
@@ -126,11 +147,30 @@ export default async function BestPage({
         </div>
       </header>
 
+      {/* Standout stats for this exact ranked set */}
+      {highlights.length > 0 && (
+        <section className="grid grid-cols-2 md:grid-cols-4 gap-3">
+          {highlights.map((h) => (
+            <div
+              key={h.label}
+              className="card bg-base-200 border border-base-300 p-3 text-center"
+            >
+              <div className="text-xs uppercase tracking-wide text-base-content/50">
+                {h.label}
+              </div>
+              <div className="font-semibold truncate">{h.name}</div>
+              <div className="text-primary font-bold">{h.detail}</div>
+            </div>
+          ))}
+        </section>
+      )}
+
       <ol className="space-y-4">
         {ranked.map(({ phone, score }, index) => {
           const fallback = phone.fallbackImg
             ? `/${phone.fallbackImg}`
             : "/img/no-image.svg";
+          const blurb = rankBlurb(ranked, index, def.scoreKey);
           return (
             <li
               key={phone.id}
@@ -185,6 +225,10 @@ export default async function BestPage({
                     {keySpecsLine(phone)}
                   </p>
 
+                  {blurb && (
+                    <p className="text-sm text-base-content/80">{blurb}</p>
+                  )}
+
                   {phone.pros.length > 0 && (
                     <ul className="text-sm text-base-content/70 space-y-0.5">
                       {phone.pros.slice(0, 2).map((pro, i) => (
@@ -210,6 +254,37 @@ export default async function BestPage({
           );
         })}
       </ol>
+
+      {/* Ranking methodology */}
+      <section className="space-y-3 pt-4 border-t border-base-300">
+        <h2 className="text-xl font-semibold">How we ranked this list</h2>
+        {methodology.map((paragraph, i) => (
+          <p key={i} className="text-base-content/70 max-w-3xl">
+            {paragraph}
+          </p>
+        ))}
+      </section>
+
+      {/* FAQ (visible, mirrors JSON-LD) */}
+      {faqs.length > 0 && (
+        <section className="space-y-3">
+          <h2 className="text-xl font-semibold">FAQ</h2>
+          <div className="space-y-2">
+            {faqs.map((f, i) => (
+              <div
+                key={i}
+                className="collapse collapse-arrow bg-base-200 border border-base-300"
+              >
+                <input type="checkbox" />
+                <div className="collapse-title font-medium">{f.q}</div>
+                <div className="collapse-content text-base-content/70">
+                  <p>{f.a}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </section>
+      )}
 
       {/* Internal linking */}
       <section className="space-y-3 pt-4 border-t border-base-300">

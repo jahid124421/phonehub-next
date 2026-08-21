@@ -308,7 +308,7 @@ export function computeUseCaseVerdicts(
   // ── Photography ──
   {
     let idx = scoreWinner(facts, 'camera');
-    let reason: string;
+    let reason = '';
     if (idx >= 0) {
       const f = facts[idx];
       reason = f.mp
@@ -316,12 +316,17 @@ export function computeUseCaseVerdicts(
         : `Top camera score (${f.score!.camera}/100).`;
     } else {
       idx = argmax(facts.map((f) => f.mp));
-      const f = facts[idx];
-      reason = f.mp
-        ? `Highest-resolution main camera at ${fmtNum(f.mp)} MP.`
-        : 'Best camera hardware on paper.';
+      if (idx >= 0) {
+        const f = facts[idx];
+        reason = f.mp
+          ? `Highest-resolution main camera at ${fmtNum(f.mp)} MP.`
+          : 'Best camera hardware on paper.';
+      }
     }
-    verdicts.push({ id: 'photography', label: 'Photography', winnerIndex: idx, reason });
+    // Skip the use case entirely when neither product has usable data.
+    if (idx >= 0) {
+      verdicts.push({ id: 'photography', label: 'Photography', winnerIndex: idx, reason });
+    }
   }
 
   // ── Gaming / Performance ──
@@ -353,7 +358,7 @@ export function computeUseCaseVerdicts(
   // ── Battery life ──
   {
     let idx = scoreWinner(facts, 'battery');
-    let reason: string;
+    let reason = '';
     if (idx >= 0) {
       const f = facts[idx];
       reason = f.mah
@@ -361,18 +366,22 @@ export function computeUseCaseVerdicts(
         : `Top battery score (${f.score!.battery}/100).`;
     } else {
       idx = argmax(facts.map((f) => f.mah));
-      const f = facts[idx];
-      reason = f.mah
-        ? `Largest battery at ${fmtNum(f.mah)} mAh.`
-        : 'Best battery hardware on paper.';
+      if (idx >= 0) {
+        const f = facts[idx];
+        reason = f.mah
+          ? `Largest battery at ${fmtNum(f.mah)} mAh.`
+          : 'Best battery hardware on paper.';
+      }
     }
-    verdicts.push({ id: 'battery', label: 'Battery life', winnerIndex: idx, reason });
+    if (idx >= 0) {
+      verdicts.push({ id: 'battery', label: 'Battery life', winnerIndex: idx, reason });
+    }
   }
 
   // ── Value for money ──
   {
     let idx = scoreWinner(facts, 'value');
-    let reason: string;
+    let reason = '';
     if (idx >= 0) {
       const f = facts[idx];
       const price = fmtPrice(f.price);
@@ -386,12 +395,16 @@ export function computeUseCaseVerdicts(
         return composite / f.price;
       });
       idx = argmax(perDollar);
-      const price = fmtPrice(facts[idx].price);
-      reason = price
-        ? `Most hardware per dollar, starting at ${price}.`
-        : 'Best spec-to-price ratio.';
+      if (idx >= 0) {
+        const price = fmtPrice(facts[idx].price);
+        reason = price
+          ? `Most hardware per dollar, starting at ${price}.`
+          : 'Best spec-to-price ratio.';
+      }
     }
-    verdicts.push({ id: 'value', label: 'Value for money', winnerIndex: idx, reason });
+    if (idx >= 0) {
+      verdicts.push({ id: 'value', label: 'Value for money', winnerIndex: idx, reason });
+    }
   }
 
   return verdicts;
