@@ -32,14 +32,16 @@ export function safeCompareTokens(
  * Verify an `Authorization: Bearer <token>` header against CRON_SECRET.
  *
  * Policy:
- * - Secret configured  → always enforce (dev and prod).
- * - Secret missing + production → fail closed (deny).
- * - Secret missing + development → allow (local ergonomics).
+ * - Secret configured → always enforce (every environment).
+ * - Secret missing → fail closed, unless ALLOW_INSECURE_CRON=1 is set
+ *   (explicit opt-in intended for local development only).
  */
 export function isAuthorizedCronRequest(request: Request): boolean {
   const secret = process.env.CRON_SECRET;
   if (!secret) {
-    return process.env.NODE_ENV !== 'production';
+    // Fail closed by default — this also covers preview/staging deployments,
+    // which build with NODE_ENV=production and may inherit env vars.
+    return process.env.ALLOW_INSECURE_CRON === '1';
   }
   const authHeader = request.headers.get('authorization');
   if (safeCompareTokens(authHeader, `Bearer ${secret}`)) return true;

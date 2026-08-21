@@ -10,7 +10,17 @@ export const metadata: Metadata = {
   alternates: { canonical: "/developers" },
 };
 
-const ENDPOINTS = [
+interface EndpointDoc {
+  method: string;
+  path: string;
+  description: string;
+  params: string[][];
+  example: string;
+  /** Full curl command override (for non-GET endpoints). */
+  exampleCurl?: string;
+}
+
+const ENDPOINTS: EndpointDoc[] = [
   {
     method: "GET",
     path: "/api/search",
@@ -63,9 +73,10 @@ const ENDPOINTS = [
     method: "POST",
     path: "/api/answer",
     description:
-      "AI answers grounded in our product data. Body: { \"question\": \"...\" } (or GET ?q=). Rate-limited to 20 req/min per IP, plus a per-IP token budget (500 estimated tokens per 5 min, ~50 per answer — roughly 10 answers per 5 min). A shared daily AI budget applies — when it is spent, answers are served by the local heuristic engine (same product data, no LLM prose) until the next UTC day. Check the X-AI-Source and X-AI-Budget-Remaining response headers.",
+      "AI answers grounded in our product data. POST only in production (GET returns 404 — keeps questions out of URLs and access logs). Body: { \"question\": \"...\" }. Rate-limited to 20 req/min per IP, plus a per-IP token budget (500 estimated tokens per 5 min, ~50 per answer — roughly 10 answers per 5 min). A shared daily AI budget applies — when it is spent, answers are served by the local heuristic engine (same product data, no LLM prose) until the next UTC day. Check the X-AI-Source and X-AI-Budget-Remaining response headers.",
     params: [["question", "string", "Natural-language question (max 500 chars)"]],
-    example: `/api/answer?q=best+battery+phone+under+600`,
+    example: `/api/answer`,
+    exampleCurl: `curl -X POST "${SITE_URL}/api/answer" -H "Content-Type: application/json" -d '{"question":"best battery phone under 600"}'`,
   },
 ];
 
@@ -77,7 +88,7 @@ export default function DevelopersPage() {
         <p style={{ color: "var(--muted)" }}>
           Free JSON over HTTPS. No API key, no signup — send requests from
           anywhere (browser, curl, your backend). Fair-use rate limits apply
-          (20 req/min per IP on AI endpoints) — if you build something cool, a
+          (20 req/min per IP + a token budget on AI endpoints) — if you build something cool, a
           link back is appreciated.
         </p>
         <div
@@ -156,7 +167,7 @@ export default function DevelopersPage() {
               overflowX: "auto",
             }}
           >
-            <code>curl &quot;{SITE_URL}{ep.example}&quot;</code>
+            <code>{ep.exampleCurl ?? `curl "${SITE_URL}${ep.example}"`}</code>
           </div>
         </section>
       ))}

@@ -39,8 +39,10 @@ The site runs with **zero env vars** (JSON data + heuristic AI fallback). Add ke
 | `GROQ_API_KEY` | LLM answers via Groq (free at console.groq.com) |
 | `GEMINI_API_KEY` | LLM fallback via Gemini free tier |
 | `CRON_SECRET` | Protects `/api/cron/daily` and `/api/revalidate` (required in prod) |
+| `ALLOW_INSECURE_CRON` | Local dev only: call cron endpoints without a secret (never deploy) |
 | `AI_DAILY_LLM_BUDGET` | Shared daily cap on LLM calls (default 500; heuristics take over when spent) |
 | `SENTRY_DSN` | Server error tracking in Sentry (SDK-free, via Envelope API) |
+| `NEXT_PUBLIC_SENTRY_DSN` | Browser error reporting via error boundaries (DSNs are public-by-design) |
 | `ERROR_WEBHOOK_URL` | Slack/Discord error alerts |
 | `NEXT_PUBLIC_SITE_URL` | Canonical URLs for sitemap/OG tags |
 

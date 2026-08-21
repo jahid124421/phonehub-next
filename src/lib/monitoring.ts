@@ -1,15 +1,17 @@
-import crypto from 'node:crypto';
-
 /**
  * Lightweight, zero-dependency error tracking.
  *
+ * Isomorphic: safe to import from server code AND client components
+ * (e.g. error.tsx) — it uses no Node-only APIs.
+ *
  * Every captured error is:
  *  1. Logged as a structured JSON line (picked up by Vercel function logs
- *     and any log drain).
- *  2. Forwarded to Sentry via the Envelope HTTP API — but ONLY when
- *     `SENTRY_DSN` is configured. No SDK required, so it adds zero bytes
- *     to the client bundle and works in serverless functions.
- *  3. Posted to `ERROR_WEBHOOK_URL` (Slack/Discord-compatible) if set.
+ *     and any log drain; on the client it lands in the browser console).
+ *  2. Forwarded to Sentry via the Envelope HTTP API — no SDK required.
+ *     Server: uses SENTRY_DSN. Client: uses NEXT_PUBLIC_SENTRY_DSN
+ *     (Sentry DSNs are public-by-design).
+ *  3. Posted to `ERROR_WEBHOOK_URL` (Slack/Discord-compatible) — server
+ *     only; the webhook URL is never exposed to the browser bundle.
  *
  * Nothing here ever throws — monitoring must never break the request path.
  */
@@ -38,12 +40,18 @@ function parseDsn(dsn: string): ParsedDsn | null {
   return { publicKey: match[1], host: match[2], projectId: match[3] };
 }
 
+/** crypto.randomUUID() exists in Node 19+ and all modern browsers. */
+function newEventId(): string {
+  const uuid = globalThis.crypto?.randomUUID?.();
+  return (uuid ?? `${Date.now()}${Math.random().toString(16).slice(2)}`).replace(/-/g, '');
+}
+
 function buildSentryEnvelope(
   dsn: ParsedDsn,
   error: unknown,
   context: ErrorContext
 ): string {
-  const eventId = crypto.randomUUID().replace(/-/g, '');
+  const eventId = newEventId();
   const err = error instanceof Error ? error : new Error(String(error));
 
   const header = JSON.stringify({
@@ -54,7 +62,7 @@ function buildSentryEnvelope(
   const event = JSON.stringify({
     event_id: eventId,
     timestamp: Math.floor(Date.now() / 1000),
-    platform: 'node',
+    platform: typeof window === 'undefined' ? 'node' : 'javascript',
     level: 'error',
     logger: 'phonehub',
     transaction: context.route,
@@ -181,11 +189,13 @@ export async function captureError(
   const timer = setTimeout(() => controller.abort(), 2500);
   const tasks: Promise<unknown>[] = [];
 
-  const dsn = process.env.SENTRY_DSN ? parseDsn(process.env.SENTRY_DSN) : null;
+  const dsnRaw = process.env.SENTRY_DSN || process.env.NEXT_PUBLIC_SENTRY_DSN;
+  const dsn = dsnRaw ? parseDsn(dsnRaw) : null;
   if (dsn) {
     tasks.push(sendToSentry(dsn, buildSentryEnvelope(dsn, error, context), controller.signal));
   }
-  if (process.env.ERROR_WEBHOOK_URL) {
+  // Webhook stays server-only: its URL must never ship to the browser bundle.
+  if (typeof window === 'undefined' && process.env.ERROR_WEBHOOK_URL) {
     tasks.push(sendToWebhook(process.env.ERROR_WEBHOOK_URL, error, context, controller.signal));
   }
 

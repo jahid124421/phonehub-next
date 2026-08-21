@@ -39,16 +39,19 @@ function isRateLimited(ip: string): boolean {
   return false;
 }
 
-function isTokenBudgetExceeded(ip: string): boolean {
+/**
+ * Atomically check-and-reserve one answer's worth of tokens for an IP.
+ * The reservation is recorded synchronously, BEFORE any await — so concurrent
+ * requests from the same IP cannot interleave between check and record and
+ * slip past the budget. On failure the caller must refundTokenSpend().
+ */
+function tryReserveTokens(ip: string): boolean {
   const now = Date.now();
   const timestamps = (tokenSpends.get(ip) || []).filter((t) => now - t < TOKEN_WINDOW_MS);
-  tokenSpends.set(ip, timestamps);
-  return timestamps.length * TOKEN_COST_PER_ANSWER >= TOKEN_BUDGET;
-}
-
-function recordTokenSpend(ip: string): void {
-  const now = Date.now();
-  const timestamps = (tokenSpends.get(ip) || []).filter((t) => now - t < TOKEN_WINDOW_MS);
+  if ((timestamps.length + 1) * TOKEN_COST_PER_ANSWER > TOKEN_BUDGET) {
+    tokenSpends.set(ip, timestamps);
+    return false;
+  }
   timestamps.push(now);
   tokenSpends.set(ip, timestamps);
   // Occasional cleanup to avoid unbounded growth
@@ -57,6 +60,15 @@ function recordTokenSpend(ip: string): void {
       if (ts.every((t) => now - t >= TOKEN_WINDOW_MS)) tokenSpends.delete(key);
     }
   }
+  return true;
+}
+
+/** Refund one reservation (e.g. the AI call threw and consumed nothing). */
+function refundTokenSpend(ip: string): void {
+  const timestamps = tokenSpends.get(ip);
+  if (!timestamps || timestamps.length === 0) return;
+  timestamps.pop(); // all entries cost the same; dropping the newest is a fair refund
+  tokenSpends.set(ip, timestamps);
 }
 
 function getClientIp(request: NextRequest): string {
@@ -91,9 +103,9 @@ async function handle(question: string | null, request: NextRequest) {
     );
   }
 
-  // Token budget check happens after validation so bad requests are cheap,
-  // and before the (potentially costly) AI call.
-  if (isTokenBudgetExceeded(ip)) {
+  // Reserve budget AFTER validation (bad requests stay cheap) but BEFORE the
+  // async AI call, so concurrent same-IP requests can't race the limiter.
+  if (!tryReserveTokens(ip)) {
     return NextResponse.json(
       { error: 'Rate limit exceeded. Please wait before trying again.' },
       { status: 429, headers: { 'Cache-Control': 'no-store' } }
@@ -102,7 +114,6 @@ async function handle(question: string | null, request: NextRequest) {
 
   try {
     const result = await answerQuestion(trimmed);
-    recordTokenSpend(ip);
     return NextResponse.json(result, {
       headers: {
         'Cache-Control': 'no-store',
@@ -114,6 +125,7 @@ async function handle(question: string | null, request: NextRequest) {
   } catch (error) {
     // answerQuestion is designed to never throw (falls back to local),
     // but guard anyway so users never see an unhandled error.
+    refundTokenSpend(ip); // the call consumed no upstream tokens
     await captureError(error, { route: '/api/answer', operation: 'answer' });
     return NextResponse.json(
       { error: 'Something went wrong. Please try again.' },
@@ -137,5 +149,12 @@ export async function POST(request: NextRequest) {
 }
 
 export async function GET(request: NextRequest) {
+  // GET is disabled in production: query strings end up in access logs and
+  // browser history (question privacy), and cross-origin GETs need no CORS
+  // preflight — any third-party page could burn AI budget from a visitor's
+  // browser. Kept in dev for quick local testing.
+  if (process.env.NODE_ENV === 'production') {
+    return NextResponse.json({ error: 'Not found' }, { status: 404 });
+  }
   return handle(request.nextUrl.searchParams.get('q'), request);
 }
