@@ -63,7 +63,7 @@ const ENDPOINTS = [
     method: "POST",
     path: "/api/answer",
     description:
-      "AI answers grounded in our product data. Body: { \"question\": \"...\" }. Rate-limited to 20 req/min per IP.",
+      "AI answers grounded in our product data. Body: { \"question\": \"...\" } (or GET ?q=). Rate-limited to 20 req/min per IP. A shared daily AI budget applies — when it is spent, answers are served by the local heuristic engine (same product data, no LLM prose) until the next UTC day. Check the X-AI-Source and X-AI-Budget-Remaining response headers.",
     params: [["question", "string", "Natural-language question (max 500 chars)"]],
     example: `/api/answer?q=best+battery+phone+under+600`,
   },
@@ -75,8 +75,10 @@ export default function DevelopersPage() {
       <header className="space-y-3">
         <h1 className="text-3xl font-bold">PhoneHub Public API</h1>
         <p style={{ color: "var(--muted)" }}>
-          Free JSON over HTTPS. No API key, no signup. Fair-use rate limits apply —
-          if you build something cool, a link back is appreciated.
+          Free JSON over HTTPS. No API key, no signup — send requests from
+          anywhere (browser, curl, your backend). Fair-use rate limits apply
+          (20 req/min per IP on AI endpoints) — if you build something cool, a
+          link back is appreciated.
         </p>
         <div
           className="text-sm"

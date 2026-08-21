@@ -1,6 +1,8 @@
 import { NextResponse } from "next/server";
 import { revalidatePath, revalidateTag } from "next/cache";
 import Parser from "rss-parser";
+import { isAuthorizedCronRequest } from "@/lib/security";
+import { captureError } from "@/lib/monitoring";
 import products from "@/data/products.json";
 import brands from "@/data/brands.json";
 import news from "@/data/news.json";
@@ -384,12 +386,10 @@ function deriveStatus(issues: Issue[]): "healthy" | "warning" | "critical" {
 }
 
 export async function GET(request: Request) {
-  // Verify cron secret (Vercel sets this header for cron invocations)
-  const authHeader = request.headers.get("authorization");
-  if (authHeader !== `Bearer ${process.env.CRON_SECRET}`) {
-    if (process.env.NODE_ENV === "production") {
-      return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
-    }
+  // Verify cron secret with a timing-safe comparison (Vercel sets the
+  // Authorization header for cron invocations). Fails closed in production.
+  if (!isAuthorizedCronRequest(request)) {
+    return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
 
   // 1. Fetch fresh news from RSS feeds (runs in parallel with data checks)
@@ -398,7 +398,7 @@ export async function GET(request: Request) {
     freshNews = await fetchFreshNews();
     console.log(`[DailyCron] ✅ Fetched ${freshNews.length} fresh articles from RSS feeds`);
   } catch (err) {
-    console.error("[DailyCron] ❌ RSS fetch failed:", err);
+    await captureError(err, { route: "/api/cron/daily", operation: "rss-fetch" });
   }
 
   // 2. Data quality checks
@@ -469,7 +469,7 @@ export async function GET(request: Request) {
     revalidateTag('products', {});
     console.log("[DailyCron] ✅ Revalidated products tag");
   } catch (err) {
-    console.error("[DailyCron] ❌ Revalidation error:", err);
+    await captureError(err, { route: "/api/cron/daily", operation: "revalidate" });
   }
 
   return NextResponse.json(report);

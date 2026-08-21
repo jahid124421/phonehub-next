@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { prisma } from '@/lib/prisma';
+import { captureError } from '@/lib/monitoring';
 import { getAllProducts, type Product as JsonProduct } from '@/lib/data';
 
 interface SearchProduct {
@@ -199,7 +200,7 @@ export async function GET(request: NextRequest) {
       },
     });
   } catch (error) {
-    console.error('[API /api/search] Prisma error, falling back to JSON:', error);
+    await captureError(error, { route: '/api/search', operation: 'prisma-search' });
 
     const params = request.nextUrl.searchParams;
     const q = params.get('q') || '';

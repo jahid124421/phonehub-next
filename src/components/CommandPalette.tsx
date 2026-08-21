@@ -29,6 +29,8 @@ export default function CommandPalette() {
   const [activeIndex, setActiveIndex] = useState(0);
   const inputRef = useRef<HTMLInputElement>(null);
   const listRef = useRef<HTMLUListElement>(null);
+  const dialogRef = useRef<HTMLDivElement>(null);
+  const previouslyFocusedRef = useRef<HTMLElement | null>(null);
   const debounceRef = useRef<ReturnType<typeof setTimeout> | null>(null);
   const abortRef = useRef<AbortController | null>(null);
   const router = useRouter();
@@ -41,6 +43,9 @@ export default function CommandPalette() {
     setQuery("");
     setResults([]);
     setActiveIndex(0);
+    // Restore focus to whatever had it before the palette opened (a11y)
+    previouslyFocusedRef.current?.focus();
+    previouslyFocusedRef.current = null;
   }, []);
 
   // Global keyboard listener: Ctrl+K / Cmd+K toggles, "/" opens when not typing
@@ -74,12 +79,39 @@ export default function CommandPalette() {
     };
   }, [open, close]);
 
-  // Focus input when opened
+  // Focus input when opened; remember the previously focused element
   useEffect(() => {
     if (open) {
+      previouslyFocusedRef.current =
+        document.activeElement instanceof HTMLElement
+          ? document.activeElement
+          : null;
       requestAnimationFrame(() => inputRef.current?.focus());
     }
   }, [open]);
+
+  // Focus trap: keep Tab/Shift+Tab cycling inside the dialog (a11y)
+  const onDialogKeyDown = (e: React.KeyboardEvent) => {
+    if (e.key !== "Tab") return;
+    const container = dialogRef.current;
+    if (!container) return;
+    const focusable = Array.from(
+      container.querySelectorAll<HTMLElement>(
+        'input, button, [href], [tabindex]:not([tabindex="-1"])'
+      )
+    ).filter((el) => !el.hasAttribute("disabled"));
+    if (focusable.length === 0) return;
+    const first = focusable[0];
+    const last = focusable[focusable.length - 1];
+    const active = document.activeElement;
+    if (e.shiftKey && (active === first || !container.contains(active))) {
+      e.preventDefault();
+      last.focus();
+    } else if (!e.shiftKey && (active === last || !container.contains(active))) {
+      e.preventDefault();
+      first.focus();
+    }
+  };
 
   // Debounced search
   useEffect(() => {
@@ -164,10 +196,12 @@ export default function CommandPalette() {
 
   return (
     <div
+      ref={dialogRef}
       className="fixed inset-0 z-[100] flex items-start justify-center pt-[12vh] px-4"
       role="dialog"
       aria-modal="true"
       aria-label="Command palette"
+      onKeyDown={onDialogKeyDown}
     >
       <div
         className="absolute inset-0 bg-black/60 backdrop-blur-sm"

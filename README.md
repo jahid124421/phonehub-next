@@ -38,7 +38,13 @@ The site runs with **zero env vars** (JSON data + heuristic AI fallback). Add ke
 | `DATABASE_URL` | Postgres-backed API responses (Prisma) |
 | `GROQ_API_KEY` | LLM answers via Groq (free at console.groq.com) |
 | `GEMINI_API_KEY` | LLM fallback via Gemini free tier |
-| `CRON_SECRET` | Protects `/api/cron/daily` and `/api/revalidate` |
+| `CRON_SECRET` | Protects `/api/cron/daily` and `/api/revalidate` (required in prod) |
+| `AI_DAILY_LLM_BUDGET` | Shared daily cap on LLM calls (default 500; heuristics take over when spent) |
+| `SENTRY_DSN` | Server error tracking in Sentry (SDK-free, via Envelope API) |
+| `ERROR_WEBHOOK_URL` | Slack/Discord error alerts |
+| `NEXT_PUBLIC_SITE_URL` | Canonical URLs for sitemap/OG tags |
+
+Error tracking is built in: API routes emit structured JSON logs (Vercel log drains) and optionally forward to Sentry/webhook sinks — see `src/lib/monitoring.ts`.
 
 ## Key routes
 

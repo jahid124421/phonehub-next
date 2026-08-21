@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { prisma } from '@/lib/prisma';
+import { captureError } from '@/lib/monitoring';
 import { getAllNews, type NewsItem } from '@/lib/data';
 
 function jsonFallback(tag: string | null, page: number, limit: number) {
@@ -54,7 +55,7 @@ export async function GET(request: NextRequest) {
       },
     });
   } catch (error) {
-    console.error('[API /api/news] Prisma error, falling back to JSON:', error);
+    await captureError(error, { route: '/api/news', operation: 'prisma-news' });
 
     const params = request.nextUrl.searchParams;
     const tag = params.get('tag');

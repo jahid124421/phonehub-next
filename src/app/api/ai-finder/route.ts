@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { smartSearch, type FinderFilters } from '@/lib/ai-heuristics';
+import { captureError } from '@/lib/monitoring';
 // import { generateEmbedding } from '@/lib/embeddings'; // disabled until pgvector is wired up
 
 // ─── Types ───────────────────────────────────────────────────────────────────
@@ -39,7 +40,7 @@ export async function POST(request: NextRequest) {
       }
     );
   } catch (error) {
-    console.error('[AI Finder] Error:', error);
+    await captureError(error, { route: '/api/ai-finder', operation: 'ai-finder' });
     return NextResponse.json(
       { error: 'Search failed. Please try again.' },
       { status: 500 }

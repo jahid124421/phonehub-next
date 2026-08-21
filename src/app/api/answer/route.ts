@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { answerQuestion } from '@/lib/ai';
+import { answerQuestion, llmBudgetRemaining, llmBudgetLimit } from '@/lib/ai';
+import { captureError } from '@/lib/monitoring';
 
 export const dynamic = 'force-dynamic';
 
@@ -63,11 +64,17 @@ async function handle(question: string | null, request: NextRequest) {
   try {
     const result = await answerQuestion(trimmed);
     return NextResponse.json(result, {
-      headers: { 'Cache-Control': 'no-store' },
+      headers: {
+        'Cache-Control': 'no-store',
+        'X-AI-Source': result.source,
+        'X-AI-Budget-Limit': String(llmBudgetLimit()),
+        'X-AI-Budget-Remaining': String(llmBudgetRemaining()),
+      },
     });
-  } catch {
+  } catch (error) {
     // answerQuestion is designed to never throw (falls back to local),
     // but guard anyway so users never see an unhandled error.
+    await captureError(error, { route: '/api/answer', operation: 'answer' });
     return NextResponse.json(
       { error: 'Something went wrong. Please try again.' },
       { status: 500, headers: { 'Cache-Control': 'no-store' } }

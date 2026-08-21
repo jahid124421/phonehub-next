@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { prisma } from '@/lib/prisma';
+import { captureError } from '@/lib/monitoring';
 
 interface PriceRow {
   id: number;
@@ -73,7 +74,7 @@ export async function GET(
       },
     });
   } catch (error) {
-    console.error('[API /api/prices] Error:', error);
+    await captureError(error, { route: '/api/prices', operation: 'prisma-prices' });
     return NextResponse.json(
       { error: 'Failed to fetch prices', current: [], history: [] },
       { status: 500 }

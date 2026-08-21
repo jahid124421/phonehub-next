@@ -13,6 +13,10 @@ build/
 .env.local
 .env*.local
 
+# keep the template, ignore real env files
+.env*
+!.env.example
+
 # debug
 npm-debug.log*
 
@@ -31,5 +35,4 @@ Thumbs.db
 # Keep schema but ignore generated client
 # src/generated/prisma/ is committed for type safety
 .vercel
-.env*
 .open-next/

@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { prisma } from '@/lib/prisma';
+import { captureError } from '@/lib/monitoring';
 import { getAllBrands, getAllProducts, type Brand as JsonBrand } from '@/lib/data';
 
 interface BrandWithCount {
@@ -72,7 +73,7 @@ export async function GET(request: NextRequest) {
       },
     });
   } catch (error) {
-    console.error('[API /api/brands] Prisma error, falling back to JSON:', error);
+    await captureError(error, { route: '/api/brands', operation: 'prisma-brands' });
 
     const category = request.nextUrl.searchParams.get('category');
     const data = jsonFallback(category);

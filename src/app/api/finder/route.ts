@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { parseFinderState } from "@/app/advanced-finder/finder-shared";
 import { runFinder } from "@/app/advanced-finder/finder-server";
+import { captureError } from "@/lib/monitoring";
 
 export async function GET(request: NextRequest) {
   try {
@@ -20,7 +21,7 @@ export async function GET(request: NextRequest) {
       }
     );
   } catch (error) {
-    console.error("[API /api/finder] error:", error);
+    await captureError(error, { route: '/api/finder', operation: 'run-finder' });
     return NextResponse.json({ results: [], total: 0 }, { status: 500 });
   }
 }

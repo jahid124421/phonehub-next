@@ -16,6 +16,43 @@ export interface AnswerResult {
 
 const TIMEOUT_MS = 8000;
 
+// ─── Global daily LLM budget (defense-in-depth cost cap) ────────────────────
+//
+// The /api/answer rate limiter is per-IP, so a determined abuser with rotating
+// IPs could still drive unbounded Groq/Gemini spend. This is a GLOBAL daily cap
+// on LLM invocations: once exhausted, answers degrade gracefully to the local
+// heuristic engine (zero cost) until the next UTC day.
+//
+// Note: the counter is per serverless instance, so on Vercel total spend is
+// bounded by (active instances × budget) — still a hard, predictable ceiling.
+// Configure with AI_DAILY_LLM_BUDGET (default 500 calls/day).
+
+const DEFAULT_DAILY_LLM_BUDGET = 500;
+
+let budgetDay = new Date().toISOString().slice(0, 10);
+let llmCallsToday = 0;
+
+export function llmBudgetLimit(): number {
+  const raw = Number(process.env.AI_DAILY_LLM_BUDGET);
+  return Number.isFinite(raw) && raw > 0 ? Math.floor(raw) : DEFAULT_DAILY_LLM_BUDGET;
+}
+
+export function llmBudgetRemaining(): number {
+  const today = new Date().toISOString().slice(0, 10);
+  if (today !== budgetDay) {
+    budgetDay = today;
+    llmCallsToday = 0;
+  }
+  return Math.max(0, llmBudgetLimit() - llmCallsToday);
+}
+
+/** Returns true if an LLM call is allowed right now (and consumes one unit). */
+function consumeLlmBudget(): boolean {
+  if (llmBudgetRemaining() <= 0) return false;
+  llmCallsToday += 1;
+  return true;
+}
+
 // ─── Groq (primary) ──────────────────────────────────────────────────────────
 
 export async function askGroq(messages: ChatMessage[]): Promise<string> {
@@ -172,18 +209,24 @@ export async function answerQuestion(question: string): Promise<AnswerResult> {
     { role: 'user', content: buildPrompt(question, candidates) },
   ];
 
-  try {
-    const answer = await askGroq(messages);
-    return { answer, products, source: 'groq' };
-  } catch {
-    // Groq unavailable/failed — try Gemini
-  }
+  // Hard cost cap: when the shared daily LLM budget is spent, skip the
+  // paid providers entirely and answer with the free local engine.
+  if (consumeLlmBudget()) {
+    try {
+      const answer = await askGroq(messages);
+      return { answer, products, source: 'groq' };
+    } catch {
+      // Groq unavailable/failed — try Gemini
+    }
 
-  try {
-    const answer = await askGemini(`${SYSTEM_PROMPT}\n\n${messages[1].content}`);
-    return { answer, products, source: 'gemini' };
-  } catch {
-    // Gemini unavailable/failed — local heuristic answer
+    if (consumeLlmBudget()) {
+      try {
+        const answer = await askGemini(`${SYSTEM_PROMPT}\n\n${messages[1].content}`);
+        return { answer, products, source: 'gemini' };
+      } catch {
+        // Gemini unavailable/failed — local heuristic answer
+      }
+    }
   }
 
   return { answer: heuristicAnswer(question, candidates), products, source: 'local' };
