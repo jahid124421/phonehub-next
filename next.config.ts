@@ -1,5 +1,36 @@
 import type { NextConfig } from "next";
 
+// Content-Security-Policy. Applied in production only — dev mode needs
+// 'unsafe-eval' for HMR, which we don't want to allow in prod.
+// Hosts allowed beyond 'self':
+//   giscus.app        — comments widget (script + iframe)
+//   cloud.umami.is    — optional analytics (enabled via NEXT_PUBLIC_UMAMI_WEBSITE_ID)
+//   api.groq.com / generativelanguage.googleapis.com — LLM APIs (server-side
+//     only, but allowed here so a future browser-side call won't break)
+const csp = [
+  "default-src 'self'",
+  "script-src 'self' 'unsafe-inline' https://giscus.app https://cloud.umami.is",
+  "style-src 'self' 'unsafe-inline'",
+  "img-src 'self' https: data: blob:",
+  "connect-src 'self' https://api.groq.com https://generativelanguage.googleapis.com https://cloud.umami.is",
+  "font-src 'self' data:",
+  "frame-src https://giscus.app",
+  "object-src 'none'",
+  "frame-ancestors 'none'",
+  "base-uri 'self'",
+  "form-action 'self'",
+].join('; ');
+
+const securityHeaders = [
+  { key: 'X-Content-Type-Options', value: 'nosniff' },
+  { key: 'X-Frame-Options', value: 'DENY' },
+  { key: 'Referrer-Policy', value: 'strict-origin-when-cross-origin' },
+  { key: 'Permissions-Policy', value: 'camera=(), microphone=(), geolocation=()' },
+  ...(process.env.NODE_ENV === 'production'
+    ? [{ key: 'Content-Security-Policy', value: csp }]
+    : []),
+];
+
 const nextConfig: NextConfig = {
   images: {
     remotePatterns: [
@@ -15,12 +46,7 @@ const nextConfig: NextConfig = {
     return [
       {
         source: '/:path*',
-        headers: [
-          { key: 'X-Content-Type-Options', value: 'nosniff' },
-          { key: 'X-Frame-Options', value: 'DENY' },
-          { key: 'Referrer-Policy', value: 'strict-origin-when-cross-origin' },
-          { key: 'Permissions-Policy', value: 'camera=(), microphone=(), geolocation=()' },
-        ],
+        headers: securityHeaders,
       },
     ];
   },

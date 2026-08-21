@@ -63,7 +63,7 @@ const ENDPOINTS = [
     method: "POST",
     path: "/api/answer",
     description:
-      "AI answers grounded in our product data. Body: { \"question\": \"...\" } (or GET ?q=). Rate-limited to 20 req/min per IP. A shared daily AI budget applies — when it is spent, answers are served by the local heuristic engine (same product data, no LLM prose) until the next UTC day. Check the X-AI-Source and X-AI-Budget-Remaining response headers.",
+      "AI answers grounded in our product data. Body: { \"question\": \"...\" } (or GET ?q=). Rate-limited to 20 req/min per IP, plus a per-IP token budget (500 estimated tokens per 5 min, ~50 per answer — roughly 10 answers per 5 min). A shared daily AI budget applies — when it is spent, answers are served by the local heuristic engine (same product data, no LLM prose) until the next UTC day. Check the X-AI-Source and X-AI-Budget-Remaining response headers.",
     params: [["question", "string", "Natural-language question (max 500 chars)"]],
     example: `/api/answer?q=best+battery+phone+under+600`,
   },

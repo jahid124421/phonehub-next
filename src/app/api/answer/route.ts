@@ -8,9 +8,18 @@ const MAX_QUESTION_LEN = 500;
 const RATE_LIMIT = 20; // requests per window
 const WINDOW_MS = 60_000; // 1 minute
 
+// ─── Per-IP token budget (defense-in-depth on top of req/min limiting) ──────
+// Each successful answer costs an estimated TOKEN_COST_PER_ANSWER tokens.
+// An IP that spends more than TOKEN_BUDGET within the sliding TOKEN_WINDOW_MS
+// gets a 429 — this caps per-IP AI consumption even for carefully paced abuse.
+const TOKEN_WINDOW_MS = 5 * 60_000; // 5 minutes
+const TOKEN_BUDGET = 500; // estimated tokens per window per IP
+const TOKEN_COST_PER_ANSWER = 50;
+
 // ─── In-memory rate limiter (per-IP sliding window) ─────────────────────────
 
 const hits = new Map<string, number[]>();
+const tokenSpends = new Map<string, number[]>(); // timestamps of successful answers
 
 function isRateLimited(ip: string): boolean {
   const now = Date.now();
@@ -30,6 +39,26 @@ function isRateLimited(ip: string): boolean {
   return false;
 }
 
+function isTokenBudgetExceeded(ip: string): boolean {
+  const now = Date.now();
+  const timestamps = (tokenSpends.get(ip) || []).filter((t) => now - t < TOKEN_WINDOW_MS);
+  tokenSpends.set(ip, timestamps);
+  return timestamps.length * TOKEN_COST_PER_ANSWER >= TOKEN_BUDGET;
+}
+
+function recordTokenSpend(ip: string): void {
+  const now = Date.now();
+  const timestamps = (tokenSpends.get(ip) || []).filter((t) => now - t < TOKEN_WINDOW_MS);
+  timestamps.push(now);
+  tokenSpends.set(ip, timestamps);
+  // Occasional cleanup to avoid unbounded growth
+  if (tokenSpends.size > 1000) {
+    for (const [key, ts] of tokenSpends) {
+      if (ts.every((t) => now - t >= TOKEN_WINDOW_MS)) tokenSpends.delete(key);
+    }
+  }
+}
+
 function getClientIp(request: NextRequest): string {
   return (
     request.headers.get('x-forwarded-for')?.split(',')[0].trim() ||
@@ -39,7 +68,8 @@ function getClientIp(request: NextRequest): string {
 }
 
 async function handle(question: string | null, request: NextRequest) {
-  if (isRateLimited(getClientIp(request))) {
+  const ip = getClientIp(request);
+  if (isRateLimited(ip)) {
     return NextResponse.json(
       { error: 'Too many requests. Please wait a moment and try again.' },
       { status: 429, headers: { 'Cache-Control': 'no-store' } }
@@ -61,8 +91,18 @@ async function handle(question: string | null, request: NextRequest) {
     );
   }
 
+  // Token budget check happens after validation so bad requests are cheap,
+  // and before the (potentially costly) AI call.
+  if (isTokenBudgetExceeded(ip)) {
+    return NextResponse.json(
+      { error: 'Rate limit exceeded. Please wait before trying again.' },
+      { status: 429, headers: { 'Cache-Control': 'no-store' } }
+    );
+  }
+
   try {
     const result = await answerQuestion(trimmed);
+    recordTokenSpend(ip);
     return NextResponse.json(result, {
       headers: {
         'Cache-Control': 'no-store',
