@@ -40,6 +40,7 @@ export default function Header() {
       }}
     >
       <div
+        className="header-inner"
         style={{
           maxWidth: "var(--max)",
           margin: "0 auto",
@@ -160,6 +161,44 @@ export default function Header() {
           </button>
         </div>
 
+        {/* Icon-only search — shown at widths where the full field can't fit */}
+        <button
+          type="button"
+          onClick={() =>
+            window.dispatchEvent(new CustomEvent("phonehub:open-palette"))
+          }
+          className="header-search-icon-btn"
+          style={{
+            display: "none",
+            alignItems: "center",
+            justifyContent: "center",
+            width: 40,
+            height: 40,
+            flex: "none",
+            borderRadius: 10,
+            border: "1px solid var(--search-border)",
+            background: "var(--search-bg)",
+            color: "var(--muted)",
+            cursor: "pointer",
+          }}
+          aria-label="Open search (Ctrl+K)"
+        >
+          <svg
+            width="15"
+            height="15"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth={2}
+              d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
+            />
+          </svg>
+        </button>
+
         {/* Currency picker */}
         <CurrencyPicker />
 
@@ -268,8 +307,41 @@ export default function Header() {
         }
         .header-search-form {
           max-width: 420px;
+          min-width: 0;
         }
-        @media (max-width: 860px) {
+        /* Whenever the icon button is visible, the flex search field is hidden,
+           so the icon must carry the auto margin that pushes the group right. */
+        .header-search-icon-btn {
+          margin-left: auto;
+        }
+
+        /* 1280–1499px: compact nav links so the full search field still fits */
+        @media (max-width: 1499px) {
+          .header-inner {
+            gap: 10px !important;
+          }
+          .nav-links-desktop {
+            gap: 2px !important;
+            margin-left: 2px !important;
+          }
+          .nav-links-desktop .nav-link {
+            padding: 6px 8px !important;
+            font-size: 13px !important;
+          }
+        }
+
+        /* 1024–1279px: compact links + icon-only search */
+        @media (max-width: 1279px) {
+          .header-search-form {
+            display: none !important;
+          }
+          .header-search-icon-btn {
+            display: inline-flex !important;
+          }
+        }
+
+        /* ≤1023px: hamburger nav; the freed space fits the full search field */
+        @media (max-width: 1023px) {
           .nav-links-desktop {
             display: none !important;
           }
@@ -277,7 +349,20 @@ export default function Header() {
             display: block !important;
           }
           .header-search-form {
+            display: flex !important;
+          }
+          .header-search-icon-btn {
             display: none !important;
+          }
+        }
+
+        /* ≤640px: icon-only search (the mobile drawer has its own search form) */
+        @media (max-width: 640px) {
+          .header-search-form {
+            display: none !important;
+          }
+          .header-search-icon-btn {
+            display: inline-flex !important;
           }
         }
       `}</style>

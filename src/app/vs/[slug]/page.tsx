@@ -363,7 +363,7 @@ export default async function VsPage({
               )}
               <Link
                 href={`/phone/${p.id}`}
-                className="relative w-24 h-24 rounded-lg bg-base-300 overflow-hidden"
+                className="relative w-24 h-24 rounded-lg product-img-bg overflow-hidden"
               >
                 <ProductImage
                   src={p.image}

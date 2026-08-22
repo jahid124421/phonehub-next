@@ -191,7 +191,7 @@ export default async function BestPage({
                 {/* Image */}
                 <Link
                   href={`/phone/${phone.id}`}
-                  className="relative w-20 h-20 md:w-24 md:h-24 shrink-0 rounded-lg bg-base-300 overflow-hidden"
+                  className="relative w-20 h-20 md:w-24 md:h-24 shrink-0 rounded-lg product-img-bg overflow-hidden"
                 >
                   <ProductImage
                     src={phone.image}

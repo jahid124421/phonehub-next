@@ -206,7 +206,7 @@ export default async function PhoneDetailPage({
       {/* 2. Phone Top */}
       <div className="grid grid-cols-1 lg:grid-cols-[320px_1fr] gap-8">
         {/* Gallery */}
-        <div className="bg-base-200 rounded-2xl border border-base-300 overflow-hidden flex items-center justify-center aspect-square">
+        <div className="product-img-bg rounded-2xl border border-base-300 overflow-hidden flex items-center justify-center aspect-square">
           <ProductImage src={product.image} alt={product.name} fallback={fallback} />
         </div>
 

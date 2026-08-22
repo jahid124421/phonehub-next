@@ -19,6 +19,7 @@ build/
 
 # debug
 npm-debug.log*
+.next-server.log
 
 # IDE
 .vscode/

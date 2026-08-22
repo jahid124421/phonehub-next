@@ -1,6 +1,7 @@
 "use client";
 
-import { useState } from "react";
+import { Suspense, useEffect, useRef, useState } from "react";
+import { useSearchParams } from "next/navigation";
 import Link from "next/link";
 import type { Product } from "@/lib/data";
 
@@ -25,14 +26,41 @@ const SOURCE_BADGES: Record<Source, { label: string; className: string }> = {
 };
 
 export default function AnswerBox() {
+  return (
+    <Suspense fallback={<AnswerBoxShell />}>
+      <AnswerBoxInner />
+    </Suspense>
+  );
+}
+
+/** Static shell rendered while search params resolve (SSR / prerender). */
+function AnswerBoxShell() {
+  return (
+    <div className="card bg-base-200 shadow-sm mb-8">
+      <div className="card-body gap-4">
+        <h2 className="card-title text-lg">Ask PhoneHub AI</h2>
+        <div className="input input-bordered w-full opacity-50">
+          Ask anything, e.g. best phone for photography under $800?
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function AnswerBoxInner() {
+  const searchParams = useSearchParams();
+  const urlQuery = searchParams.get("q") || "";
   const [question, setQuestion] = useState("");
   const [loading, setLoading] = useState(false);
   const [result, setResult] = useState<AnswerResponse | null>(null);
   const [error, setError] = useState<string | null>(null);
+  const loadingRef = useRef(false);
+  const lastAutoAsked = useRef<string | null>(null);
 
   async function ask(q: string) {
     const trimmed = q.trim();
-    if (!trimmed || loading) return;
+    if (!trimmed || loadingRef.current) return;
+    loadingRef.current = true;
 
     setLoading(true);
     setError(null);
@@ -54,9 +82,22 @@ export default function AnswerBox() {
     } catch {
       setError("Network error. Please check your connection and try again.");
     } finally {
+      loadingRef.current = false;
       setLoading(false);
     }
   }
+
+  // Auto-ask when arriving with a search query (?q=...), e.g. from the
+  // header search or command palette. Fires once per unique query.
+  useEffect(() => {
+    const trimmed = urlQuery.trim();
+    if (trimmed.length < 3) return;
+    if (lastAutoAsked.current === trimmed) return;
+    lastAutoAsked.current = trimmed;
+    setQuestion(trimmed);
+    void ask(trimmed);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [urlQuery]);
 
   return (
     <div className="card bg-base-200 shadow-sm mb-8">

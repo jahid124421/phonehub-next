@@ -62,7 +62,7 @@ export default function PhoneCard({ product }: { product: Product }) {
     <div className="card card-compact bg-base-200 border border-base-300 hover:border-primary transition-all hover:-translate-y-1 duration-200">
       <Link href={`/phone/${product.id}`} className="block">
         {/* Image area */}
-        <figure className="relative aspect-square bg-base-300 overflow-hidden">
+        <figure className="relative aspect-square product-img-bg overflow-hidden">
           <ProductImage src={product.image} alt={product.name} fallback={fallback} />
           {/* Score badge top-right */}
           {score && (

@@ -15,6 +15,7 @@ import {
   brandProductCount,
 } from "@/lib/homepage-data";
 import PhoneCard from "@/components/PhoneCard";
+import ProductImage from "@/components/ProductImage";
 import NewsCard from "@/components/NewsCard";
 import NewsImage from "@/components/NewsImage";
 import CookieConsent from "@/components/CookieConsent";
@@ -409,23 +410,22 @@ export default function Home() {
 
                   <div className="flex flex-col gap-2 mt-2">
                     {g.items.map((p) => {
-                      const imgSrc = p.image
-                        ? `/img/${p.image}`
-                        : p.fallbackImg
-                          ? `/${p.fallbackImg}`
-                          : "/img/no-image.svg";
+                      // p.image is an absolute URL — never prefix it with /img/
+                      const imgFallback = p.fallbackImg
+                        ? `/${p.fallbackImg}`
+                        : "/img/no-image.svg";
                       return (
                         <Link
                           key={p.id}
                           href={`/phone/${p.id}`}
                           className="flex items-center gap-3 p-2 rounded-lg hover:bg-base-300 transition-colors"
                         >
-                          <div className="w-10 h-10 rounded-lg overflow-hidden bg-base-300 shrink-0 flex items-center justify-center">
-                            <img
-                              src={imgSrc}
+                          <div className="w-10 h-10 rounded-lg overflow-hidden product-img-bg shrink-0 flex items-center justify-center">
+                            <ProductImage
+                              src={p.image}
                               alt={p.name}
-                              className="w-full h-full object-contain"
-                              loading="lazy"
+                              fallback={imgFallback}
+                              className="w-full h-full object-contain p-1"
                             />
                           </div>
                           <div className="min-w-0 flex-1">

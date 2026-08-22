@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="400" height="400" viewBox="0 0 400 400">
+  <defs>
+    <linearGradient id="g" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#f3f6fb"/>
+      <stop offset="1" stop-color="#dbe2ee"/>
+    </linearGradient>
+  </defs>
+  <rect width="400" height="400" fill="url(#g)"/>
+  <rect x="70" y="96" width="260" height="150" rx="14" fill="#c3cde0" stroke="#9fb0cc" stroke-width="3"/><rect x="84" y="110" width="232" height="122" rx="8" fill="#ffffff" opacity="0.55"/><rect x="182" y="252" width="36" height="26" fill="#c3cde0" stroke="#9fb0cc" stroke-width="3"/><rect x="140" y="278" width="120" height="14" rx="7" fill="#c3cde0" stroke="#9fb0cc" stroke-width="3"/>
+  <circle cx="200" cy="200" r="26" fill="#3c4763" opacity="0.85"/>
+  <text x="200" y="208" font-family="Segoe UI, Arial, sans-serif" font-size="26" font-weight="700" fill="#ffffff" text-anchor="middle">S</text>
+  <text font-family="Segoe UI, Arial, sans-serif" font-size="21" font-weight="600" fill="#3c4763" text-anchor="middle"><tspan x="200" y="318">Samsung Odyssey G7</tspan><tspan x="200" y="344">G70D</tspan></text>
+  <text x="200" y="374" font-family="Segoe UI, Arial, sans-serif" font-size="13" fill="#7a869f" text-anchor="middle">monitor · product art</text>
+</svg>

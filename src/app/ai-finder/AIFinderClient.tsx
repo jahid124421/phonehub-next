@@ -549,7 +549,7 @@ function AIFinderCard({ product }: { product: ResultProduct }) {
       </div>
 
       <Link href={`/phone/${product.id}`} className="block">
-        <figure className="relative aspect-square bg-base-300 overflow-hidden">
+        <figure className="relative aspect-square product-img-bg overflow-hidden">
           <ProductImage
             src={product.image}
             alt={product.name}

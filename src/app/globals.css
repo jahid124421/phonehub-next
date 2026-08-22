@@ -1,5 +1,68 @@
 @import "tailwindcss";
-@plugin "daisyui";
+
+/* Built-in themes disabled — PhoneHub ships its own pair below.
+   Without this, the default daisyUI light theme sat on :root while
+   data-theme="phonehub" matched nothing, leaving --color-base-content
+   near-black on our dark surfaces (invisible text) and form controls
+   white-on-white. */
+@plugin "daisyui" {
+  themes: false;
+}
+
+/* PhoneHub dark — default theme (applies to :root and [data-theme="phonehub"]). */
+@plugin "daisyui/theme" {
+  name: "phonehub";
+  default: true;
+  color-scheme: dark;
+
+  --color-base-100: #0a0e1a;
+  --color-base-200: #0f1525;
+  --color-base-300: #151d32;
+  --color-base-content: #e7e9ee;
+  --color-primary: #3b82f6;
+  --color-primary-content: #ffffff;
+  --color-secondary: #8b5cf6;
+  --color-secondary-content: #ffffff;
+  --color-accent: #06b6d4;
+  --color-accent-content: #062530;
+  --color-neutral: #1c2640;
+  --color-neutral-content: #e7e9ee;
+  --color-info: #38bdf8;
+  --color-info-content: #082a3a;
+  --color-success: #4ade80;
+  --color-success-content: #052e12;
+  --color-warning: #fbbf24;
+  --color-warning-content: #3a2503;
+  --color-error: #f87171;
+  --color-error-content: #3d0a0a;
+}
+
+/* PhoneHub light — activated by ThemeToggle via data-theme="light". */
+@plugin "daisyui/theme" {
+  name: "light";
+  color-scheme: light;
+
+  --color-base-100: #f5f7fc;
+  --color-base-200: #ffffff;
+  --color-base-300: #d0d5dd;
+  --color-base-content: #141821;
+  --color-primary: #3b6cf6;
+  --color-primary-content: #ffffff;
+  --color-secondary: #8b5cf6;
+  --color-secondary-content: #ffffff;
+  --color-accent: #06b6d4;
+  --color-accent-content: #062530;
+  --color-neutral: #e8ecf2;
+  --color-neutral-content: #141821;
+  --color-info: #0284c7;
+  --color-info-content: #f0f9ff;
+  --color-success: #16a34a;
+  --color-success-content: #ffffff;
+  --color-warning: #d97706;
+  --color-warning-content: #ffffff;
+  --color-error: #dc2626;
+  --color-error-content: #ffffff;
+}
 
 @theme inline {
   --color-background: var(--background);
@@ -83,20 +146,7 @@
   --color-neutral: #e8ecf2;
 }
 
-/* DaisyUI theme overrides for PhoneHub dark theme */
-@theme inline {
-  --color-primary: #3b82f6;
-  --color-secondary: #8b5cf6;
-  --color-accent: #06b6d4;
-  --color-neutral: #1c2640;
-  --color-base-100: #0a0e1a;
-  --color-base-200: #0f1525;
-  --color-base-300: #151d32;
-  --color-info: #38bdf8;
-  --color-success: #4ade80;
-  --color-warning: #fbbf24;
-  --color-error: #f87171;
-}
+/* daisyUI base colors are owned by the custom themes declared above. */
 
 html {
   scroll-behavior: smooth;
@@ -305,6 +355,9 @@ section { padding: 34px 0; }
 .card:hover { border-color: var(--primary); transform: translateY(-3px); box-shadow: var(--shadow); }
 .card-img { background: var(--card-img-bg); aspect-ratio: 3/4; display: flex; align-items: center; justify-content: center; }
 .card-img img { object-fit: contain; height: 100%; }
+/* Product shots are mostly dark renders on transparent/white — give them a
+   light backdrop in both themes so they never dissolve into the dark card. */
+.product-img-bg { background: var(--card-img-bg); }
 .card-body { padding: 12px 14px 8px; }
 .card-brand { font-size: 12px; color: var(--muted); }
 .card-title { font-size: 15px; margin: 4px 0 8px; line-height: 1.3; min-height: 40px; }

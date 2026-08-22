@@ -193,7 +193,7 @@ export default function DealsClient() {
               className="group card bg-base-200 border border-base-300 hover:border-primary/50 transition-all hover:shadow-lg"
             >
               {/* Image */}
-              <div className="aspect-square bg-base-300 rounded-t-2xl overflow-hidden relative">
+              <div className="aspect-square product-img-bg rounded-t-2xl overflow-hidden relative">
                 <ProductImage
                   src={product.image}
                   alt={product.name}
