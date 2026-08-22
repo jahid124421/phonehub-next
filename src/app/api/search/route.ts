@@ -53,6 +53,7 @@ const SEARCH_STOP_WORDS = new Set([
   'best', 'the', 'a', 'an', 'for', 'with', 'and', 'or', 'of', 'to', 'in',
   'on', 'is', 'are', 'what', 'which', 'whats', 'top', 'good', 'great',
   'cheap', 'budget', 'buy', 'me', 'my', 'i', 'want', 'need', 'get', 'vs',
+  'under', 'below', 'less', 'than', 'up', 'around', 'max', 'maximum',
 ]);
 
 const SEARCH_CATEGORY_SYNONYMS: Record<string, string[]> = {
@@ -229,11 +230,26 @@ function jsonFallback(
 
   const useRelevance = Boolean(q);
   if (q) {
+    const queryLower = q.toLowerCase().trim();
+    const maxPrice = extractMaxPrice(queryLower);
+    const category = detectCategory(queryLower);
+
     products = relevanceSearch(products, q);
     // Strict matching found nothing — retry with a relaxed budget penalty so
     // the user sees the closest relevant products rather than an empty page.
-    if (products.length === 0 && extractMaxPrice(q.toLowerCase().trim()) !== null) {
-      products = relevanceSearch(products, q, true);
+    if (products.length === 0 && maxPrice !== null) {
+      products = relevanceSearch(getAllProducts(), q, true);
+    }
+    // Some categories have sparse specs, so feature terms can still leave a
+    // zero-result page. Fall back to closest products in the requested category.
+    if (products.length === 0 && maxPrice !== null && category) {
+      products = getAllProducts()
+        .filter((p) => p.category.toLowerCase() === category)
+        .sort((a, b) => {
+          const aDistance = a.basePrice > 0 ? Math.max(0, a.basePrice - maxPrice) : Number.MAX_SAFE_INTEGER;
+          const bDistance = b.basePrice > 0 ? Math.max(0, b.basePrice - maxPrice) : Number.MAX_SAFE_INTEGER;
+          return aDistance - bDistance || b.rating - a.rating || b.popularity - a.popularity;
+        });
     }
   }
 
@@ -273,6 +289,18 @@ export async function GET(request: NextRequest) {
   const page = Math.max(1, parseInt(params.get('page') || '1', 10));
   const limit = Math.min(100, Math.max(1, parseInt(params.get('limit') || '20', 10)));
   const ids = params.get('ids');
+
+  // Natural-language searches need tokenized relevance/category/soft-budget
+  // handling; Postgres plainto_tsquery is too literal for queries like
+  // "best camera phone" or "gaming laptop under 800".
+  if (q) {
+    const data = jsonFallback(q, cat, brand, sort, page, limit, ids);
+    return NextResponse.json(data, {
+      headers: {
+        'Cache-Control': 'public, s-maxage=3600, stale-while-revalidate=86400',
+      },
+    });
+  }
 
   // No database configured → serve the bundled JSON catalog immediately
   // instead of paying a failed-connection timeout on every request.
