@@ -3,6 +3,7 @@
 import { useState } from "react";
 import Link from "next/link";
 import type { PhoneHubScore } from "@/lib/score-calculator";
+import { scoreColor } from "@/lib/score-color";
 
 interface EnrichedGuideProduct {
   id: string;
@@ -28,9 +29,7 @@ interface EnrichedGuide {
 function ScoreBadge({ score }: { score: PhoneHubScore | null }) {
   if (!score) return <span style={{ color: "var(--muted)", fontSize: 13 }}>No score</span>;
   const color =
-    score.total >= 85 ? "#22c55e" :
-    score.total >= 70 ? "#eab308" :
-    score.total >= 50 ? "#f97316" : "#ef4444";
+    scoreColor(score.total);
   return (
     <span
       style={{
@@ -53,7 +52,7 @@ function ScoreBadge({ score }: { score: PhoneHubScore | null }) {
 }
 
 function RankBadge({ rank }: { rank: number }) {
-  const colors: Record<number, string> = { 1: "#fbbf24", 2: "#94a3b8", 3: "#d97706" };
+  const colors: Record<number, string> = { 1: "var(--star)", 2: "var(--score-unknown)", 3: "var(--score-fair)" };
   const bg = colors[rank] || "var(--border)";
   const text = rank <= 3 ? "#000" : "var(--muted)";
   return (

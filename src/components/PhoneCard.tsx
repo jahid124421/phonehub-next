@@ -54,7 +54,14 @@ function StarRating({ rating, reviewCount }: { rating: number; reviewCount: numb
   );
 }
 
-export default function PhoneCard({ product }: { product: Product }) {
+export default function PhoneCard({
+  product,
+  priority = false,
+}: {
+  product: Product;
+  /** Set on the first row of cards so the LCP image loads eagerly. */
+  priority?: boolean;
+}) {
   const fallback = product.fallbackImg ? `/${product.fallbackImg}` : "/img/no-image.svg";
   const score = getScoreForProduct(product.id);
 
@@ -63,7 +70,12 @@ export default function PhoneCard({ product }: { product: Product }) {
       <Link href={`/phone/${product.id}`} className="block">
         {/* Image area */}
         <figure className="relative aspect-square product-img-bg overflow-hidden">
-          <ProductImage src={product.image} alt={product.name} fallback={fallback} />
+          <ProductImage
+            src={product.image}
+            alt={product.name}
+            fallback={fallback}
+            priority={priority}
+          />
           {/* Score badge top-right */}
           {score && (
             <div className="absolute top-2 right-2 z-10">

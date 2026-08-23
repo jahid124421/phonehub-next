@@ -3,8 +3,6 @@ import {
   getTopBenchmarkProducts,
   getAllBenchmarks,
   getProductById,
-  type BenchmarkEntry,
-  type Product,
 } from "@/lib/data";
 import { SITE_URL } from "@/lib/config";
 import BenchmarksClient from "./BenchmarksClient";

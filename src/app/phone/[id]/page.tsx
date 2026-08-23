@@ -22,6 +22,7 @@ import ScoreBadge from "@/components/ScoreBadge";
 import UserReviews from "@/components/UserReviews";
 import { SITE_URL } from "@/lib/config";
 import { productSchema, breadcrumbSchema } from "@/lib/schema";
+import { scoreColor } from "@/lib/score-color";
 
 // ─── SSG + ISR config ────────────────────────────────────────────────────────
 export const dynamic = "force-static";
@@ -274,13 +275,13 @@ export default async function PhoneDetailPage({
                           className="h-full rounded-full"
                           style={{
                             width: `${value}%`,
-                            backgroundColor: value >= 80 ? '#22c55e' : value >= 60 ? '#eab308' : value >= 40 ? '#f97316' : '#ef4444',
+                            backgroundColor: scoreColor(value),
                           }}
                         />
                       </div>
                       <span className="text-base-content/60 min-w-[56px]">{label}</span>
                       <span className="font-semibold min-w-[22px] text-right" style={{
-                        color: value >= 80 ? '#22c55e' : value >= 60 ? '#eab308' : value >= 40 ? '#f97316' : '#ef4444',
+                        color: scoreColor(value),
                       }}>{value}</span>
                     </div>
                   ))}
@@ -342,7 +343,7 @@ export default async function PhoneDetailPage({
                     <td className="text-right">
                       <a
                         href={entry.url}
-                        rel="nofollow sponsored"
+                        rel="nofollow sponsored noopener noreferrer"
                         target="_blank"
                         className="btn btn-primary btn-sm"
                       >

@@ -6,7 +6,6 @@ const links = {
   about: [
     { label: "About Us", href: "/about" },
     { label: "Contact", href: "/contact" },
-    { label: "Careers", href: "#" },
   ],
   explore: [
     { label: "Search", href: "/search" },

@@ -2,13 +2,9 @@
 
 import { useState } from 'react';
 import type { PhoneHubScore } from '@/lib/score-calculator';
+import { scoreColor } from "@/lib/score-color";
 
-function scoreColor(score: number): string {
-  if (score >= 80) return '#22c55e';
-  if (score >= 60) return '#eab308';
-  if (score >= 40) return '#f97316';
-  return '#ef4444';
-}
+
 
 function scoreLabel(score: number): string {
   if (score >= 90) return 'Excellent';

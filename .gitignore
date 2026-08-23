@@ -37,3 +37,6 @@ Thumbs.db
 # src/generated/prisma/ is committed for type safety
 .vercel
 .open-next/
+
+# Local deploy scratch helpers
+.vercel-tmp/

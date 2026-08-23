@@ -1,5 +1,4 @@
 import Link from "next/link";
-import Image from "next/image";
 import { Suspense } from "react";
 import {
   getAllProducts,
@@ -259,9 +258,9 @@ export default function Home() {
             </Link>
           </div>
           <div className="flex gap-4 overflow-x-auto snap-x snap-mandatory pb-4 scrollbar-none">
-            {trending.map((p) => (
+            {trending.map((p, i) => (
               <div key={p.id} className="w-56 shrink-0 snap-start">
-                <PhoneCard product={p} />
+                <PhoneCard product={p} priority={i < 4} />
               </div>
             ))}
           </div>
