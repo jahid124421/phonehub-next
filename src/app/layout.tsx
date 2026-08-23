@@ -98,6 +98,13 @@ export default function RootLayout({
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link rel="dns-prefetch" href="https://cdn.brandfetch.io" />
 
+        {/* Apply the saved theme before first paint to avoid a dark/light flash */}
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `try{var t=localStorage.getItem("phonehub_theme");document.documentElement.setAttribute("data-theme",t==="light"?"light":"phonehub");}catch(e){}`,
+          }}
+        />
+
         {/* Organization JSON-LD */}
         <script
           type="application/ld+json"

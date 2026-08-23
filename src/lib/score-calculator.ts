@@ -271,16 +271,16 @@ function calcValueScore(
 
   const specTotal = (specScores.display + specScores.camera + specScores.performance + specScores.battery + specScores.build) / 5;
 
-  // Value = how much spec you get per dollar, relative to category average
-  // High spec + low price = high value
-  // Clamp the ratio so expensive flagships aren't crushed and ultra-cheap
-  // devices aren't inflated beyond reason.
+  // Value = how much spec you get per dollar, relative to category average.
+  // Soft multiplicative model: price advantage scales specs gently, so the
+  // score stays discriminating instead of saturating at 100 for every
+  // decent-specced phone under half the average price.
   const priceRatio = categoryAvgPrice / price; // >1 means cheaper than average
-  const clampedRatio = Math.max(0.5, Math.min(2.0, priceRatio));
-  const raw = specTotal * clampedRatio;
+  const clampedRatio = Math.max(0.45, Math.min(2.5, priceRatio));
 
-  // Normalize: raw of 100 = excellent value, 50 = average
-  return clamp(Math.round(raw * 0.9));
+  // Average specs at the average price keep ~85% of their spec score;
+  // only truly exceptional spec-per-dollar combos approach 100.
+  return clamp(Math.round(specTotal * (0.85 + 0.3 * (clampedRatio - 1))));
 }
 
 // ─── Build Score ─────────────────────────────────────────────────────────────────
@@ -411,7 +411,8 @@ function calcMonitorScore(product: any): PhoneHubScore {
   if (price > 0) {
     const specAvg = (displayScore + cameraScore + perfScore + batteryScore + buildScore) / 5;
     const avgMonitorPrice = 400;
-    valueScore = clamp(Math.round((specAvg * (avgMonitorPrice / price)) * 0.85));
+    const ratio = Math.max(0.45, Math.min(2.5, avgMonitorPrice / price));
+    valueScore = clamp(Math.round(specAvg * (0.85 + 0.3 * (ratio - 1))));
   }
 
   const total = Math.round(
@@ -488,7 +489,8 @@ function calcRouterScore(product: any): PhoneHubScore {
   if (price > 0) {
     const specAvg = (displayScore + cameraScore + perfScore + batteryScore + buildScore) / 5;
     const avgRouterPrice = 250;
-    valueScore = clamp(Math.round((specAvg * (avgRouterPrice / price)) * 0.85));
+    const ratio = Math.max(0.45, Math.min(2.5, avgRouterPrice / price));
+    valueScore = clamp(Math.round(specAvg * (0.85 + 0.3 * (ratio - 1))));
   }
 
   const total = Math.round(
@@ -519,7 +521,7 @@ function calcGenericScore(product: any): PhoneHubScore {
   const price = product?.basePrice || 0;
 
   const valueScore = price > 0
-    ? clamp(Math.round(baseScore * Math.max(0.5, Math.min(2, 200 / Math.max(price, 50)))))
+    ? clamp(Math.round(baseScore * (0.85 + 0.3 * (Math.max(0.45, Math.min(2.5, 200 / Math.max(price, 50))) - 1))))
     : 50;
 
   const s = clamp(baseScore);
