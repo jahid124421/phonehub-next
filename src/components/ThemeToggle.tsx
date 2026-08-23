@@ -9,7 +9,8 @@ export default function ThemeToggle() {
     const stored = localStorage.getItem("phonehub_theme");
     if (stored === "light" || stored === "dark") {
       setTheme(stored);
-      document.documentElement.setAttribute("data-theme", stored);
+      // "phonehub" is the dark daisyUI theme name; "dark" matches no theme
+      document.documentElement.setAttribute("data-theme", stored === "light" ? "light" : "phonehub");
     }
   }, []);
 
@@ -17,7 +18,7 @@ export default function ThemeToggle() {
     const next = theme === "dark" ? "light" : "dark";
     setTheme(next);
     localStorage.setItem("phonehub_theme", next);
-    document.documentElement.setAttribute("data-theme", next);
+    document.documentElement.setAttribute("data-theme", next === "light" ? "light" : "phonehub");
   };
 
   return (

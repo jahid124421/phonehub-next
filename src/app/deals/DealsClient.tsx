@@ -5,6 +5,7 @@ import { getAllProducts, getScoreForProduct, type Product } from "@/lib/data";
 import type { PhoneHubScore } from "@/lib/score-calculator";
 import ProductImage from "@/components/ProductImage";
 import ScoreBadge from "@/components/ScoreBadge";
+import { PriceDisplay } from "@/components/CurrencyPicker";
 import Link from "next/link";
 
 type TabKey = "value-kings" | "budget-steals" | "price-drops";
@@ -81,15 +82,19 @@ export default function DealsClient() {
       items = items.filter((d) => d.product.category === categoryFilter);
     }
 
-    // Sort
+    // Sort (with tie-breakers so equal scores still order sensibly)
     items = [...items].sort((a, b) => {
       switch (sortBy) {
         case "best-value":
-          return b.score.value - a.score.value;
+          return (
+            b.score.value - a.score.value ||
+            b.score.total - a.score.total ||
+            (a.product.basePrice || 999999) - (b.product.basePrice || 999999)
+          );
         case "lowest-price":
           return (a.product.basePrice || 999999) - (b.product.basePrice || 999999);
         case "highest-score":
-          return b.score.total - a.score.total;
+          return b.score.total - a.score.total || b.score.value - a.score.value;
         default:
           return 0;
       }
@@ -220,7 +225,7 @@ export default function DealsClient() {
                 {/* Price */}
                 {product.basePrice > 0 && (
                   <div className="text-2xl font-extrabold text-primary">
-                    ${product.basePrice.toLocaleString()}
+                    <PriceDisplay amount={product.basePrice} />
                   </div>
                 )}
 

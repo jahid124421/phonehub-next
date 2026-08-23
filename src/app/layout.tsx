@@ -54,6 +54,13 @@ export default function RootLayout({
         <link rel="dns-prefetch" href="https://cdn.brandfetch.io" />
         <link rel="dns-prefetch" href="https://fonts.googleapis.com" />
 
+        {/* Apply the saved theme before first paint to avoid a dark/light flash */}
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `try{var t=localStorage.getItem("phonehub_theme");document.documentElement.setAttribute("data-theme",t==="light"?"light":"phonehub");}catch(e){}`,
+          }}
+        />
+
         {/* Organization JSON-LD */}
         <script
           type="application/ld+json"
