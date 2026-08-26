@@ -140,7 +140,7 @@ function serializeProduct(p: ScoredProduct): string {
   const qs = p.quickSpecs || {};
   const fs = getFilterSpecsForProduct(p.id);
   const parts: string[] = [
-    `- ${p.brand} ${p.name} ($${p.basePrice}, rating ${p.rating}/5)`,
+    `- ${p.brand} ${p.name} (estimated launch price $${p.basePrice}, rating ${p.rating}/5)`,
   ];
   const specs: string[] = [];
   if (qs.camera || qs.mainCamera) specs.push(`Camera: ${qs.camera || qs.mainCamera}`);
@@ -160,7 +160,9 @@ function serializeProduct(p: ScoredProduct): string {
 
 const SYSTEM_PROMPT =
   "You are PhoneHub's phone expert. Answer ONLY using the product data below. " +
-  'Be concise, cite specific models with prices. If the data can\'t answer, say so.';
+  'Be concise and cite specific models. If you mention price, always phrase it as ' +
+  '"estimated launch price" — never as a current retail price or a live deal. ' +
+  "If the data can't answer, say so.";
 
 function buildPrompt(question: string, candidates: ScoredProduct[]): string {
   const context = candidates.map(serializeProduct).join('\n');
@@ -180,7 +182,7 @@ function heuristicAnswer(question: string, candidates: ScoredProduct[]): string 
     const keySpec =
       qs.camera || qs.mainCamera || qs.battery || qs.display || qs.screen || '';
     lines.push(
-      `**${p.brand} ${p.name}** — $${p.basePrice} (${p.rating}/5)` +
+      `**${p.brand} ${p.name}** — est. $${p.basePrice} launch price (${p.rating}/5)` +
         (keySpec ? ` — ${keySpec}` : '')
     );
     if (p.matchReasons.length > 0) {

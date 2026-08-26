@@ -1,8 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import type { Product } from "@/lib/data";
-import PhoneCard from "@/components/PhoneCard";
+import PhoneCard, { type CardProduct } from "@/components/PhoneCard";
 import {
   DEFAULT_FINDER_STATE,
   SORT_OPTIONS,
@@ -19,7 +18,7 @@ const RESULTS_LIMIT = 60;
 interface AdvancedFinderClientProps {
   facetOptions: FacetOptions;
   initialState: FinderState;
-  initialResults: Product[];
+  initialResults: CardProduct[];
   initialTotal: number;
 }
 
@@ -114,7 +113,7 @@ export default function AdvancedFinderClient({
 }: AdvancedFinderClientProps) {
   const [state, setState] = useState<FinderState>(initialState);
   const [queryState, setQueryState] = useState<FinderState>(initialState);
-  const [results, setResults] = useState<Product[]>(initialResults);
+  const [results, setResults] = useState<CardProduct[]>(initialResults);
   const [total, setTotal] = useState(initialTotal);
   const [loading, setLoading] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
@@ -146,7 +145,7 @@ export default function AdvancedFinderClient({
     fetch(`/api/finder?${qs ? `${qs}&` : ""}limit=${RESULTS_LIMIT}`)
       .then((r) => {
         if (!r.ok) throw new Error(`finder request failed: ${r.status}`);
-        return r.json() as Promise<{ results: Product[]; total: number }>;
+        return r.json() as Promise<{ results: CardProduct[]; total: number }>;
       })
       .then((data) => {
         if (seq.current !== mySeq) return;
@@ -446,7 +445,7 @@ export default function AdvancedFinderClient({
           ) : (
             <div className="grid grid-cols-2 sm:grid-cols-3 xl:grid-cols-4 gap-4">
               {results.map((p) => (
-                <PhoneCard key={p.id} product={p} />
+                <PhoneCard key={p.id} product={p} score={p.score} />
               ))}
             </div>
           )}

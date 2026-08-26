@@ -50,6 +50,12 @@ const nextConfig: NextConfig = {
     formats: ['image/avif', 'image/webp'],
   },
   compress: true,
+  experimental: {
+    // Fail the build loudly if a page tries to ship huge props to the client
+    // (default is 128KB warning-only at 512KB+ this guards against regressions
+    // like the 2.9MB products.json leaking into page data).
+    largePageDataBytes: 512 * 1024,
+  },
   async headers() {
     return [
       {

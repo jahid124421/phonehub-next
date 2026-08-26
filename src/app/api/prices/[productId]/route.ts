@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { prisma } from '@/lib/prisma';
-import { captureError } from '@/lib/monitoring';
+import { PRICES_ARE_ESTIMATES, PRICE_DISCLAIMER } from '@/lib/price';
 
 interface PriceRow {
   id: number;
@@ -68,13 +68,18 @@ export async function GET(
       id: h.id.toString(),
     }));
 
-    return NextResponse.json({ current, history }, {
+    return NextResponse.json({
+      current,
+      history,
+      source: PRICES_ARE_ESTIMATES ? 'estimate' : 'live',
+      disclaimer: PRICE_DISCLAIMER,
+    }, {
       headers: {
         'Cache-Control': 'public, s-maxage=3600, stale-while-revalidate=86400',
       },
     });
   } catch (error) {
-    await captureError(error, { route: '/api/prices', operation: 'prisma-prices' });
+    console.error('[API /api/prices] Error:', error);
     return NextResponse.json(
       { error: 'Failed to fetch prices', current: [], history: [] },
       { status: 500 }

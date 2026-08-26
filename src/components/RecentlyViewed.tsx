@@ -3,7 +3,6 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import { Trash2 } from "lucide-react";
-import { getProductById, type Product } from "@/lib/data";
 
 const VIEWED_KEY = "phonehub_viewed";
 const MAX_VIEWED = 10;
@@ -26,13 +25,10 @@ function getViewed(): ViewedItem[] {
   }
 }
 
-function addViewed(product: Product): ViewedItem[] {
+function addViewed(product: Omit<ViewedItem, "addedAt">): ViewedItem[] {
   let list = getViewed().filter((v) => v.id !== product.id);
   list.unshift({
-    id: product.id,
-    name: product.name,
-    image: product.image,
-    brand: product.brand,
+    ...product,
     addedAt: new Date().toISOString(),
   });
   if (list.length > MAX_VIEWED) list = list.slice(0, MAX_VIEWED);
@@ -46,16 +42,20 @@ function clearViewed() {
   window.dispatchEvent(new CustomEvent("viewed-updated", { detail: [] }));
 }
 
-export default function RecentlyViewed({ currentProductId }: { currentProductId?: string }) {
+// The current product's display fields are passed in from the server page —
+// this component must NOT import @/lib/data (would bundle 2.9MB of JSON).
+export default function RecentlyViewed({
+  currentProduct,
+}: {
+  currentProduct?: { id: string; name: string; image: string; brand: string };
+}) {
   const [items, setItems] = useState<ViewedItem[]>([]);
   const [mounted, setMounted] = useState(false);
+  const currentProductId = currentProduct?.id;
 
   useEffect(() => {
-    if (currentProductId) {
-      const product = getProductById(currentProductId);
-      if (product) {
-        addViewed(product);
-      }
+    if (currentProduct) {
+      addViewed(currentProduct);
     }
     setItems(getViewed());
     setMounted(true);
@@ -66,6 +66,7 @@ export default function RecentlyViewed({ currentProductId }: { currentProductId?
     };
     window.addEventListener("viewed-updated", handler);
     return () => window.removeEventListener("viewed-updated", handler);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [currentProductId]);
 
   const handleClear = () => {

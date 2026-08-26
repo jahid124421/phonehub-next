@@ -1,5 +1,7 @@
 import Link from "next/link";
 
+export const metadata = { title: "Page not found · PhoneHub" };
+
 export default function NotFound() {
   return (
     <main className="hero min-h-[60vh]">

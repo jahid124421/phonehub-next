@@ -1,9 +1,11 @@
 import Link from "next/link";
+import Image from "next/image";
 import { Suspense } from "react";
 import {
   getAllProducts,
   getAllBrands,
   getAllNews,
+  getScoreForProduct,
   type Product,
   type Brand,
 } from "@/lib/data";
@@ -14,7 +16,6 @@ import {
   brandProductCount,
 } from "@/lib/homepage-data";
 import PhoneCard from "@/components/PhoneCard";
-import ProductImage from "@/components/ProductImage";
 import NewsCard from "@/components/NewsCard";
 import NewsImage from "@/components/NewsImage";
 import CookieConsent from "@/components/CookieConsent";
@@ -215,7 +216,7 @@ export default function Home() {
               <a
                 href={featured.url}
                 target="_blank"
-                rel="noopener noreferrer nofollow"
+                rel="noopener nofollow"
                 className="block mb-6 card bg-base-200 border border-base-300 hover:border-primary transition-all hover:-translate-y-0.5 duration-200 md:flex md:items-stretch md:overflow-hidden"
               >
                 <figure className="relative aspect-video md:aspect-auto md:w-80 md:shrink-0 overflow-hidden bg-base-300">
@@ -258,9 +259,9 @@ export default function Home() {
             </Link>
           </div>
           <div className="flex gap-4 overflow-x-auto snap-x snap-mandatory pb-4 scrollbar-none">
-            {trending.map((p, i) => (
+            {trending.map((p) => (
               <div key={p.id} className="w-56 shrink-0 snap-start">
-                <PhoneCard product={p} priority={i < 4} />
+                <PhoneCard product={p} score={getScoreForProduct(p.id)} />
               </div>
             ))}
           </div>
@@ -281,7 +282,7 @@ export default function Home() {
           </div>
           <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4">
             {popular.map((p) => (
-              <PhoneCard key={p.id} product={p} />
+              <PhoneCard key={p.id} product={p} score={getScoreForProduct(p.id)} />
             ))}
           </div>
         </section>
@@ -301,7 +302,7 @@ export default function Home() {
           </div>
           <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4">
             {latest.map((p) => (
-              <PhoneCard key={p.id} product={p} />
+              <PhoneCard key={p.id} product={p} score={getScoreForProduct(p.id)} />
             ))}
           </div>
         </section>
@@ -409,22 +410,23 @@ export default function Home() {
 
                   <div className="flex flex-col gap-2 mt-2">
                     {g.items.map((p) => {
-                      // p.image is an absolute URL — never prefix it with /img/
-                      const imgFallback = p.fallbackImg
-                        ? `/${p.fallbackImg}`
-                        : "/img/no-image.svg";
+                      const imgSrc = p.image
+                        ? `/img/${p.image}`
+                        : p.fallbackImg
+                          ? `/${p.fallbackImg}`
+                          : "/img/no-image.svg";
                       return (
                         <Link
                           key={p.id}
                           href={`/phone/${p.id}`}
                           className="flex items-center gap-3 p-2 rounded-lg hover:bg-base-300 transition-colors"
                         >
-                          <div className="w-10 h-10 rounded-lg overflow-hidden product-img-bg shrink-0 flex items-center justify-center">
-                            <ProductImage
-                              src={p.image}
+                          <div className="w-10 h-10 rounded-lg overflow-hidden bg-base-300 shrink-0 flex items-center justify-center">
+                            <img
+                              src={imgSrc}
                               alt={p.name}
-                              fallback={imgFallback}
-                              className="w-full h-full object-contain p-1"
+                              className="w-full h-full object-contain"
+                              loading="lazy"
                             />
                           </div>
                           <div className="min-w-0 flex-1">

@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { getAllProducts, getAllBrands } from "@/lib/data";
+import { getAllProducts, getAllBrands, getScoreForProduct } from "@/lib/data";
 import { SITE_URL } from "@/lib/config";
 import AnswerBox from "@/components/AnswerBox";
 import SearchClient from "./SearchClient";
@@ -19,10 +19,12 @@ export default function SearchPage() {
   // Extract unique categories from products
   const categories = Array.from(new Set(allProducts.map((p) => p.category || "phone")));
 
-  // Only pass first page of results (sorted by popularity) to reduce initial payload
+  // Only pass first page of results (sorted by popularity) to reduce initial payload.
+  // Scores attached server-side so PhoneCard never bundles @/lib/data client-side.
   const initialResults = [...allProducts]
     .sort((a, b) => b.popularity - a.popularity)
-    .slice(0, 20);
+    .slice(0, 20)
+    .map((p) => ({ ...p, score: getScoreForProduct(p.id) }));
 
   // Pre-compute brand product counts server-side
   const brandProductCounts: Record<string, number> = {};

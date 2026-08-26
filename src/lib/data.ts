@@ -109,6 +109,12 @@ export function getProductById(id: string): Product | undefined {
   return productById.get(id);
 }
 
+export function getProductsByIds(ids: string[]): Product[] {
+  return ids
+    .map((id) => productById.get(id))
+    .filter((p): p is Product => !!p);
+}
+
 export function getProductsByBrand(brandId: string): Product[] {
   return productsByBrandMap.get(brandId) || [];
 }

@@ -5,28 +5,14 @@ import {
   getPhoneProducts,
   getProductById,
   getFilterSpecsForProduct,
-  getSpecsForProduct,
-  getScoreForProduct,
   type FilterSpecs,
   type Product,
 } from "@/lib/data";
 import Breadcrumb from "@/components/Breadcrumb";
 import ProductImage from "@/components/ProductImage";
+import PriceNote from "@/components/PriceNote";
+import { priceLabel } from "@/lib/price";
 import { breadcrumbSchema } from "@/lib/schema";
-import {
-  computeUseCaseVerdicts,
-  type ScoresMap,
-  type SpecsMap,
-} from "@/lib/compare-verdict";
-import {
-  buildCameraFaq,
-  buildDisplayFaq,
-  buildIntro,
-  buildMetaDescription,
-  isDataRich,
-  keyDifferences,
-  type VsCopyRow,
-} from "@/lib/vs-copy";
 
 // ─── SSG + ISR config ────────────────────────────────────────────────────────
 export const revalidate = 86400; // daily
@@ -65,6 +51,13 @@ export function generateStaticParams() {
   return getStaticVsSlugs().map((slug) => ({ slug }));
 }
 
+// Memoized set of curated slugs for the metadata robots decision.
+let curatedSlugsCache: Set<string> | null = null;
+function getCuratedSlugs(): Set<string> {
+  if (!curatedSlugsCache) curatedSlugsCache = new Set(getStaticVsSlugs());
+  return curatedSlugsCache;
+}
+
 // ─── slug parsing ────────────────────────────────────────────────────────────
 function parseVsSlug(slug: string): [string, string] | null {
   const idx = slug.indexOf("-vs-");
@@ -91,25 +84,18 @@ export async function generateMetadata({
   const pair = getPair(slug);
   if (!pair) return {};
   const [a, b] = pair;
-  const fa = getFilterSpecsForProduct(a.id);
-  const fb = getFilterSpecsForProduct(b.id);
-  const rows = buildRows(a, b, fa, fb);
-  const aWins = rows.filter((r) => r.winner === "a").length;
-  const bWins = rows.filter((r) => r.winner === "b").length;
-  const winner: Winner = aWins === bWins ? "tie" : aWins > bWins ? "a" : "b";
-  const description = buildMetaDescription(
-    a,
-    b,
-    winner,
-    aWins,
-    bWins,
-    keyDifferences(rows, a, b, 2)
-  );
+  const description = `${a.name} vs ${b.name}: side-by-side spec comparison, winner verdict, estimated launch price difference and battery comparison. See which phone you should buy.`;
+
+  // Only curated (pre-built) pairs are indexable. On-demand ISR pairs are
+  // long-tail programmatic pages — keep them out of the index to avoid
+  // thin-content bloat in SERPs.
+  const isCurated = getCuratedSlugs().has(slug);
 
   return {
     title: `${a.name} vs ${b.name}: Which Should You Buy?`,
     description,
     alternates: { canonical: `/vs/${slug}` },
+    robots: isCurated ? undefined : { index: false, follow: true },
     openGraph: {
       type: "website",
       title: `${a.name} vs ${b.name} — PhoneHub`,
@@ -121,9 +107,12 @@ export async function generateMetadata({
 // ─── comparison logic ────────────────────────────────────────────────────────
 type Winner = "a" | "b" | "tie" | null;
 
-// Rows carry their raw numeric values so the narrative builders in vs-copy
-// can quantify each gap ("40% larger battery"), not just restate the table.
-type VsRow = VsCopyRow;
+interface VsRow {
+  label: string;
+  aText: string;
+  bText: string;
+  winner: Winner;
+}
 
 function compareNumeric(
   label: string,
@@ -140,32 +129,14 @@ function compareNumeric(
     else if (higherIsBetter) winner = aVal > bVal ? "a" : "b";
     else winner = aVal < bVal ? "a" : "b";
   }
-  return {
-    label,
-    aText,
-    bText,
-    winner,
-    aNum: aVal,
-    bNum: bVal,
-    isBool: false,
-    lowerIsBetter: !higherIsBetter,
-  };
+  return { label, aText, bText, winner };
 }
 
 function textRow(label: string, aText: string | null, bText: string | null): VsRow {
-  return {
-    label,
-    aText: aText || "—",
-    bText: bText || "—",
-    winner: null,
-    aNum: null,
-    bNum: null,
-    isBool: false,
-    lowerIsBetter: false,
-  };
+  return { label, aText: aText || "—", bText: bText || "—", winner: null };
 }
 
-function boolRow(label: string, aVal: boolean, bVal: boolean, trustworthy = true): VsRow {
+function boolRow(label: string, aVal: boolean, bVal: boolean): VsRow {
   let winner: Winner = null;
   if (aVal !== bVal) winner = aVal ? "a" : "b";
   return {
@@ -173,11 +144,6 @@ function boolRow(label: string, aVal: boolean, bVal: boolean, trustworthy = true
     aText: aVal ? "Yes" : "No",
     bText: bVal ? "Yes" : "No",
     winner,
-    aNum: null,
-    bNum: null,
-    isBool: true,
-    boolTrustworthy: trustworthy,
-    lowerIsBetter: false,
   };
 }
 
@@ -188,18 +154,15 @@ function maxOf(nums: number[]): number | null {
 function buildRows(a: Product, b: Product, fa: FilterSpecs | null, fb: FilterSpecs | null): VsRow[] {
   const priceA = fa?.price ?? (a.basePrice > 0 ? a.basePrice : null);
   const priceB = fb?.price ?? (b.basePrice > 0 ? b.basePrice : null);
-  // Bool rows conflate "absent" with "not parsed" — narrative claims based on
-  // them are only safe when both phones have fully-enriched spec data.
-  const rich = isDataRich(fa) && isDataRich(fb);
 
   return [
-    compareNumeric("Launch price", priceA, priceB, false, (v) => `$${v.toLocaleString()}`),
+    compareNumeric("Est. launch price", priceA, priceB, false, (v) => `$${v.toLocaleString()}`),
     compareNumeric("Battery capacity", fa?.batteryCapacity ?? null, fb?.batteryCapacity ?? null, true, (v) => `${v.toLocaleString()} mAh`),
     compareNumeric("Charging speed", fa?.chargingWatt ?? null, fb?.chargingWatt ?? null, true, (v) => `${v}W`),
-    boolRow("Wireless charging", fa?.wirelessCharging ?? false, fb?.wirelessCharging ?? false, rich),
+    boolRow("Wireless charging", fa?.wirelessCharging ?? false, fb?.wirelessCharging ?? false),
     compareNumeric("Main camera", fa?.mainCameraMP ?? null, fb?.mainCameraMP ?? null, true, (v) => `${v} MP`),
-    boolRow("Telephoto lens", fa?.telephoto ?? false, fb?.telephoto ?? false, rich),
-    boolRow("Optical stabilization", fa?.ois ?? false, fb?.ois ?? false, rich),
+    boolRow("Telephoto lens", fa?.telephoto ?? false, fb?.telephoto ?? false),
+    boolRow("Optical stabilization", fa?.ois ?? false, fb?.ois ?? false),
     compareNumeric("Display size", fa?.displaySize ?? null, fb?.displaySize ?? null, true, (v) => `${v}"`),
     compareNumeric("Refresh rate", fa?.refreshRate ?? null, fb?.refreshRate ?? null, true, (v) => `${v} Hz`),
     compareNumeric("Peak brightness", fa?.brightnessNits ?? null, fb?.brightnessNits ?? null, true, (v) => `${v.toLocaleString()} nits`),
@@ -245,23 +208,21 @@ export default async function VsPage({
   const dateB = parseRelease(b.releaseDate);
 
   // ── FAQ content ──
+  // NOTE: prices are launch/MSRP estimates, not live retail quotes — the FAQ
+  // wording must always say so (see src/lib/price.ts).
   const priceAnswer =
     priceA !== null && priceB !== null
       ? priceA === priceB
-        ? `Both launched at $${priceA.toLocaleString()}, so there is no price difference between the ${a.name} and the ${b.name}.`
-        : `The ${priceA < priceB ? a.name : b.name} is cheaper: it launched at $${Math.min(priceA, priceB).toLocaleString()} versus $${Math.max(priceA, priceB).toLocaleString()} for the ${priceA < priceB ? b.name : a.name} — a difference of $${Math.abs(priceA - priceB).toLocaleString()}.`
-      : `We don't have complete launch pricing for both phones, so we can't give an exact difference. Check the linked product pages for current prices.`;
+        ? `Both have the same estimated launch price of $${priceA.toLocaleString()}, so there is no estimated price difference between the ${a.name} and the ${b.name}.`
+        : `The ${priceA < priceB ? a.name : b.name} is cheaper on estimated launch price: $${Math.min(priceA, priceB).toLocaleString()} versus $${Math.max(priceA, priceB).toLocaleString()} for the ${priceA < priceB ? b.name : a.name} — an estimated difference of $${Math.abs(priceA - priceB).toLocaleString()}. These are launch/MSRP estimates, not current retail prices.`
+      : `We don't have complete launch pricing for both phones, so we can't give an exact estimated difference. Check the linked product pages for details.`;
 
-  const relA = a.releaseDate.replace(/^Released\s+/i, "").trim();
-  const relB = b.releaseDate.replace(/^Released\s+/i, "").trim();
   const newerAnswer =
     dateA && dateB
       ? dateA === dateB
         ? `Both phones were released around the same time (${a.releaseDate.replace(/^Released\s+/i, "")}).`
         : `The ${dateA > dateB ? a.name : b.name} is newer — it was released ${(dateA > dateB ? a : b).releaseDate.replace(/^Released\s+/i, "")}, while the ${dateA > dateB ? b.name : a.name} launched ${(dateA > dateB ? b : a).releaseDate.replace(/^Released\s+/i, "")}.`
-      : relA && relB
-        ? `Release timing: ${a.name} — ${relA}; ${b.name} — ${relB}.`
-        : `We don't have complete release date information for both phones. Check the linked product pages for launch details.`;
+      : `Release timing: ${a.name} — ${a.releaseDate}; ${b.name} — ${b.releaseDate}.`;
 
   const batteryAnswer =
     battA !== null && battB !== null
@@ -270,24 +231,26 @@ export default async function VsPage({
         : `The ${battA > battB ? a.name : b.name} has the larger battery at ${Math.max(battA, battB).toLocaleString()} mAh, versus ${Math.min(battA, battB).toLocaleString()} mAh in the ${battA > battB ? b.name : a.name} — an advantage of ${Math.abs(battA - battB).toLocaleString()} mAh, which typically translates to longer screen-on time.`
       : `We don't have complete battery capacity data for both phones. Check the full spec pages linked below for details.`;
 
-  const cameraFaq = buildCameraFaq(a, b, fa, fb);
-  const displayFaq = buildDisplayFaq(a, b, fa, fb);
-  const faqs = [
-    { q: `Is the ${a.name} cheaper than the ${b.name}?`, a: priceAnswer },
-    { q: `Which is newer, the ${a.name} or the ${b.name}?`, a: newerAnswer },
-    { q: `Which has better battery life, the ${a.name} or the ${b.name}?`, a: batteryAnswer },
-    ...(cameraFaq ? [cameraFaq] : []),
-    ...(displayFaq ? [displayFaq] : []),
-  ];
-
   const faqSchema = {
     "@context": "https://schema.org",
     "@type": "FAQPage",
-    mainEntity: faqs.map((f) => ({
-      "@type": "Question",
-      name: f.q,
-      acceptedAnswer: { "@type": "Answer", text: f.a },
-    })),
+    mainEntity: [
+      {
+        "@type": "Question",
+        name: `Is the ${a.name} cheaper than the ${b.name}?`,
+        acceptedAnswer: { "@type": "Answer", text: priceAnswer },
+      },
+      {
+        "@type": "Question",
+        name: `Which is newer, the ${a.name} or the ${b.name}?`,
+        acceptedAnswer: { "@type": "Answer", text: newerAnswer },
+      },
+      {
+        "@type": "Question",
+        name: `Which has better battery life, the ${a.name} or the ${b.name}?`,
+        acceptedAnswer: { "@type": "Answer", text: batteryAnswer },
+      },
+    ],
   };
 
   const breadcrumbs = breadcrumbSchema([
@@ -295,21 +258,6 @@ export default async function VsPage({
     { name: "Versus", url: `/vs/${slug}` },
     { name: `${a.name} vs ${b.name}`, url: `/vs/${slug}` },
   ]);
-
-  const diffs = keyDifferences(rows, a, b);
-
-  // Use-case verdicts reuse the compare engine's analysis — per-pair, data-derived.
-  const specsMap: SpecsMap = {};
-  const specsA = getSpecsForProduct(a.id);
-  const specsB = getSpecsForProduct(b.id);
-  if (specsA) specsMap[a.id] = specsA;
-  if (specsB) specsMap[b.id] = specsB;
-  const scoresMap: ScoresMap = {};
-  const scoreA = getScoreForProduct(a.id);
-  const scoreB = getScoreForProduct(b.id);
-  if (scoreA) scoresMap[a.id] = scoreA;
-  if (scoreB) scoresMap[b.id] = scoreB;
-  const useCaseVerdicts = computeUseCaseVerdicts([a, b], specsMap, scoresMap);
 
   const verdictText =
     winnerProduct === null
@@ -342,7 +290,9 @@ export default async function VsPage({
         <h1 className="text-3xl md:text-4xl font-bold">
           {a.name} vs {b.name}
         </h1>
-        <p className="text-base-content/70">{buildIntro(a, b, fa, fb)}</p>
+        <p className="text-base-content/70">
+          Head-to-head spec comparison with a data-driven verdict.
+        </p>
       </header>
 
       {/* Product headers */}
@@ -363,7 +313,7 @@ export default async function VsPage({
               )}
               <Link
                 href={`/phone/${p.id}`}
-                className="relative w-24 h-24 rounded-lg product-img-bg overflow-hidden"
+                className="relative w-24 h-24 rounded-lg bg-base-300 overflow-hidden"
               >
                 <ProductImage
                   src={p.image}
@@ -378,7 +328,7 @@ export default async function VsPage({
               </h2>
               {p.basePrice > 0 && (
                 <span className="text-primary font-bold">
-                  ${p.basePrice.toLocaleString()}
+                  {priceLabel(p.basePrice)}
                 </span>
               )}
               <Link
@@ -411,18 +361,6 @@ export default async function VsPage({
         </div>
       </section>
 
-      {/* Key differences — the narrative summary of the table below */}
-      {diffs.length > 0 && (
-        <section className="space-y-3">
-          <h2 className="text-xl font-semibold">Key differences</h2>
-          <ul className="card bg-base-200 border border-base-300 p-5 space-y-2 list-disc list-inside text-base-content/80">
-            {diffs.map((d) => (
-              <li key={d.label}>{d.sentence}</li>
-            ))}
-          </ul>
-        </section>
-      )}
-
       {/* Spec table */}
       <section className="space-y-3">
         <h2 className="text-xl font-semibold">Spec by spec</h2>
@@ -450,47 +388,23 @@ export default async function VsPage({
           Highlighted cells mark the better value in each row. Lower is better
           for price and weight; higher is better everywhere else.
         </p>
+        <PriceNote />
       </section>
-
-      {/* Use-case verdicts from the compare engine */}
-      {useCaseVerdicts.length > 0 && (
-        <section className="space-y-3">
-          <h2 className="text-xl font-semibold">Which should you choose?</h2>
-          <div className="overflow-x-auto card bg-base-200 border border-base-300">
-            <table className="table table-sm md:table-md">
-              <thead>
-                <tr>
-                  <th>Use case</th>
-                  <th>Better pick</th>
-                  <th>Why</th>
-                </tr>
-              </thead>
-              <tbody>
-                {useCaseVerdicts.map((v) => (
-                  <tr key={v.id}>
-                    <td className="text-base-content/60 whitespace-nowrap">{v.label}</td>
-                    <td className="font-semibold whitespace-nowrap">
-                      {v.winnerIndex === 0 ? a.name : b.name}
-                    </td>
-                    <td className="text-base-content/70">{v.reason}</td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
-        </section>
-      )}
 
       {/* FAQ (visible, mirrors JSON-LD) */}
       <section className="space-y-3">
         <h2 className="text-xl font-semibold">FAQ</h2>
         <div className="space-y-2">
-          {faqs.map((item, i) => (
+          {[
+            { q: `Is the ${a.name} cheaper than the ${b.name}?`, ans: priceAnswer },
+            { q: `Which is newer, the ${a.name} or the ${b.name}?`, ans: newerAnswer },
+            { q: `Which has better battery life, the ${a.name} or the ${b.name}?`, ans: batteryAnswer },
+          ].map((item, i) => (
             <div key={i} className="collapse collapse-arrow bg-base-200 border border-base-300">
               <input type="checkbox" />
               <div className="collapse-title font-medium">{item.q}</div>
               <div className="collapse-content text-base-content/70">
-                <p>{item.a}</p>
+                <p>{item.ans}</p>
               </div>
             </div>
           ))}

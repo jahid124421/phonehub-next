@@ -2,8 +2,8 @@
 
 import { useSearchParams, useRouter } from "next/navigation";
 import { Suspense, useCallback, useEffect, useMemo, useState } from "react";
-import { type Product, type Brand } from "@/lib/data";
-import PhoneCard from "@/components/PhoneCard";
+import { type Brand } from "@/lib/data";
+import PhoneCard, { type CardProduct } from "@/components/PhoneCard";
 import Pagination from "@/components/Pagination";
 import Breadcrumb from "@/components/Breadcrumb";
 import { CATEGORIES } from "@/lib/categories";
@@ -16,7 +16,7 @@ const CAT_LABELS: Record<string, string> = Object.fromEntries(
 );
 
 interface Props {
-  initialResults: Product[];
+  initialResults: CardProduct[];
   initialBrands: Brand[];
   categories: string[];
   totalProducts: number;
@@ -57,7 +57,7 @@ function SearchClientInner({
   const [sidebarOpen, setSidebarOpen] = useState(false);
 
   // Fetched results state
-  const [results, setResults] = useState<Product[]>(initialResults);
+  const [results, setResults] = useState<CardProduct[]>(initialResults);
   const [total, setTotal] = useState(initialResults.length);
   const [totalPages, setTotalPages] = useState(1);
   const [isLoading, setIsLoading] = useState(false);
@@ -435,7 +435,7 @@ function SearchClientInner({
               }}
             >
               {pageItems.map((p) => (
-                <PhoneCard key={p.id} product={p} />
+                <PhoneCard key={p.id} product={p} score={p.score} />
               ))}
             </div>
           ) : (

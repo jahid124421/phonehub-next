@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import { SITE_URL } from "@/lib/config";
-import { toneColor, toneTint } from "@/lib/score-color";
 
 export const dynamic = "force-static";
 
@@ -16,8 +15,7 @@ interface EndpointDoc {
   path: string;
   description: string;
   params: string[][];
-  example: string;
-  /** Full curl command override (for non-GET endpoints). */
+  example?: string;
   exampleCurl?: string;
 }
 
@@ -74,9 +72,8 @@ const ENDPOINTS: EndpointDoc[] = [
     method: "POST",
     path: "/api/answer",
     description:
-      "AI answers grounded in our product data. POST only in production (GET returns 404 — keeps questions out of URLs and access logs). Body: { \"question\": \"...\" }. Rate-limited to 20 req/min per IP, plus a per-IP token budget (500 estimated tokens per 5 min, ~50 per answer — roughly 10 answers per 5 min). A shared daily AI budget applies — when it is spent, answers are served by the local heuristic engine (same product data, no LLM prose) until the next UTC day. Check the X-AI-Source and X-AI-Budget-Remaining response headers.",
+      "AI answers grounded in our product data. POST only (GET returns 405). Same-origin browser requests only; rate-limited to 20 req/min per IP with a global circuit breaker.",
     params: [["question", "string", "Natural-language question (max 500 chars)"]],
-    example: `/api/answer`,
     exampleCurl: `curl -X POST "${SITE_URL}/api/answer" -H "Content-Type: application/json" -d '{"question":"best battery phone under 600"}'`,
   },
 ];
@@ -87,10 +84,8 @@ export default function DevelopersPage() {
       <header className="space-y-3">
         <h1 className="text-3xl font-bold">PhoneHub Public API</h1>
         <p style={{ color: "var(--muted)" }}>
-          Free JSON over HTTPS. No API key, no signup — send requests from
-          anywhere (browser, curl, your backend). Fair-use rate limits apply
-          (20 req/min per IP + a token budget on AI endpoints) — if you build something cool, a
-          link back is appreciated.
+          Free JSON over HTTPS. No API key, no signup. Fair-use rate limits apply —
+          if you build something cool, a link back is appreciated.
         </p>
         <div
           className="text-sm"
@@ -120,8 +115,8 @@ export default function DevelopersPage() {
           <div className="flex items-center gap-3 flex-wrap">
             <span
               style={{
-                background: ep.method === "GET" ? toneTint("excellent") : toneTint("unknown"),
-                color: ep.method === "GET" ? toneColor("excellent") : toneColor("unknown"),
+                background: ep.method === "GET" ? "#16a34a22" : "#6366f122",
+                color: ep.method === "GET" ? "#22c55e" : "#818cf8",
                 fontWeight: 700,
                 fontSize: 12,
                 padding: "3px 10px",
@@ -161,7 +156,7 @@ export default function DevelopersPage() {
           <div
             className="text-xs"
             style={{
-              background: "var(--bg)",
+              background: "var(--bg, #0d0f14)",
               border: "1px solid var(--border)",
               borderRadius: 8,
               padding: "8px 12px",

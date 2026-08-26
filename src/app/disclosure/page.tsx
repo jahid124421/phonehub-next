@@ -34,10 +34,21 @@ export default function DisclosurePage() {
 
         <h2>About prices &amp; availability</h2>
         <p>
-          Prices and availability shown are indicative and can change at any time.
-          Always confirm the final price on the retailer&apos;s website before buying.
-          We are not responsible for pricing errors or stock changes on third-party
-          stores.
+          Prices shown on PhoneHub are indicative launch/MSRP estimates provided
+          for comparison only — they are <strong>not live retail quotes</strong>{" "}
+          and may differ from current store pricing. Availability can change at
+          any time. Always confirm the final price on the retailer&apos;s
+          website before buying. We are not responsible for pricing errors or
+          stock changes on third-party stores.
+        </p>
+
+        <h2>About our data &amp; AI answers</h2>
+        <p>
+          Specifications are aggregated from public sources and may contain
+          errors. PhoneHub Scores and &quot;value&quot; ratings are computed
+          metrics, not measurements of retail offers. Answers from our AI
+          features are generated from this data and may be wrong — verify
+          important details before making a purchase decision.
         </p>
 
         <h2>Editorial independence</h2>

@@ -540,7 +540,14 @@ export default async function PhoneDetailPage({
       <UserReviews productId={product.id} />
 
       {/* 7. Recently Viewed */}
-      <RecentlyViewed currentProductId={product.id} />
+      <RecentlyViewed
+        currentProduct={{
+          id: product.id,
+          name: product.name,
+          image: product.image,
+          brand: product.brand,
+        }}
+      />
 
       {/* 7. Similar Products */}
       {similar.length > 0 && (
@@ -548,7 +555,7 @@ export default async function PhoneDetailPage({
           <h2 className="text-xl font-bold mb-4">Similar Products</h2>
           <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4">
             {similar.map((p) => (
-              <PhoneCard key={p.id} product={p} />
+              <PhoneCard key={p.id} product={p} score={getScoreForProduct(p.id)} />
             ))}
           </div>
         </section>

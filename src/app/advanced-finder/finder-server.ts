@@ -10,6 +10,7 @@ import {
   type Product,
 } from "@/lib/data";
 import type { FacetOptions, FinderState, RangeBounds } from "./finder-shared";
+import type { CardProduct } from "@/components/PhoneCard";
 
 type PhoneWithSpecs = Product & { filterSpecs: FilterSpecs };
 
@@ -106,7 +107,7 @@ function sortResults(results: PhoneWithSpecs[], sort: FinderState["sort"]): Phon
 }
 
 /** Strip heavy fields + filterSpecs — only what PhoneCard needs goes over the wire. */
-function toCardProduct(p: PhoneWithSpecs): Product {
+function toCardProduct(p: PhoneWithSpecs): CardProduct {
   return {
     id: p.id,
     brand: p.brand,
@@ -124,13 +125,16 @@ function toCardProduct(p: PhoneWithSpecs): Product {
     prices: [],
     pros: [],
     cons: [],
+    // PhoneCard takes the score as a prop so it never imports @/lib/data
+    // into the client bundle.
+    score: getScoreForProduct(p.id),
   };
 }
 
 export function runFinder(
   state: FinderState,
   limit = 60
-): { results: Product[]; total: number } {
+): { results: CardProduct[]; total: number } {
   const filters: FilterInput = {};
 
   if (state.brands.length) filters.brand = state.brands;
