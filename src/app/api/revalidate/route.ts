@@ -10,7 +10,7 @@ export async function POST(request: NextRequest) {
 
   revalidatePath('/');
   revalidatePath('/search');
-  revalidateTag('products', {});
+  revalidateTag('products', 'max');
 
   return NextResponse.json({ revalidated: true, now: Date.now() });
 }

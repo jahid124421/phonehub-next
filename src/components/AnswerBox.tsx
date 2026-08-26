@@ -4,8 +4,9 @@ import { Suspense, useEffect, useRef, useState } from "react";
 import { useSearchParams } from "next/navigation";
 import Link from "next/link";
 import type { Product } from "@/lib/data";
+import { askPuter, isPuterAvailable } from "@/lib/puter";
 
-type Source = "groq" | "gemini" | "local";
+type Source = "puter" | "groq" | "gemini" | "local";
 
 interface AnswerResponse {
   answer: string;
@@ -20,6 +21,7 @@ const EXAMPLE_QUESTIONS = [
 ];
 
 const SOURCE_BADGES: Record<Source, { label: string; className: string }> = {
+  puter: { label: "AI · Puter (your account)", className: "badge-primary" },
   groq: { label: "AI · Groq", className: "badge-primary" },
   gemini: { label: "AI · Gemini", className: "badge-secondary" },
   local: { label: "Instant answer", className: "badge-accent" },
@@ -65,6 +67,18 @@ function AnswerBoxInner() {
     setLoading(true);
     setError(null);
     setResult(null);
+
+    // 1) Try Puter User-Pays first — $0 server cost
+    if (isPuterAvailable()) {
+      try {
+        const puterAnswer = await askPuter(trimmed);
+        setResult({ answer: puterAnswer, products: [], source: "puter" });
+        setLoading(false);
+        return;
+      } catch {
+        // Puter failed/signed out — fall through to server
+      }
+    }
 
     try {
       const res = await fetch("/api/answer", {

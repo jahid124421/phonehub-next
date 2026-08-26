@@ -113,6 +113,9 @@ export default function RootLayout({
           }}
         />
 
+        {/* Puter.js — User-Pays AI ($0 server cost) */}
+        <script src="https://js.puter.com/v2/" async />
+
         {/* Umami Analytics — privacy-first, self-hostable, no cookies */}
         {process.env.NEXT_PUBLIC_UMAMI_WEBSITE_ID && (
           <script
@@ -139,3 +142,4 @@ export default function RootLayout({
     </html>
   );
 }
+

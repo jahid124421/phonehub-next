@@ -391,7 +391,6 @@ export async function GET(request: Request) {
   if (!isAuthorizedCronRequest(request)) {
     return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
-
   // 1. Fetch fresh news from RSS feeds (runs in parallel with data checks)
   let freshNews: FreshArticle[] = [];
   try {
@@ -466,7 +465,7 @@ export async function GET(request: Request) {
     console.log("[DailyCron] ✅ Revalidated news page");
     revalidatePath('/brands');
     console.log("[DailyCron] ✅ Revalidated brands page");
-    revalidateTag('products', {});
+    revalidateTag('products', 'max');
     console.log("[DailyCron] ✅ Revalidated products tag");
   } catch (err) {
     await captureError(err, { route: "/api/cron/daily", operation: "revalidate" });
@@ -474,3 +473,5 @@ export async function GET(request: Request) {
 
   return NextResponse.json(report);
 }
+
+
