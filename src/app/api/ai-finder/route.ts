@@ -21,7 +21,7 @@ export async function POST(request: NextRequest) {
       return NextResponse.json({ error: 'Query must be 1-500 characters' }, { status: 400 });
     }
 
-    let method: 'hybrid' | 'keyword' = 'keyword';
+    const method: 'hybrid' | 'keyword' = 'keyword';
 
     // Embedding-based search disabled until pgvector is wired up.
     // Only call generateEmbedding when HUGGINGFACE_API_KEY is set and pgvector is available.

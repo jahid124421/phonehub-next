@@ -10,7 +10,7 @@ export default function TermsPage() {
     <main className="container mx-auto px-4 py-6">
       <Breadcrumb items={[{ label: "Home", href: "/" }, { label: "Terms of Use" }]} />
 
-      <div className="max-w-3xl mx-auto prose prose-invert mt-4">
+      <div className="max-w-3xl mx-auto prose mt-4">
         <h1>Terms of Use</h1>
 
         <p>

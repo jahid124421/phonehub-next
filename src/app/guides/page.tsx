@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { getBuyingGuides, getProductById, getScoreForProduct, type BuyingGuide, type Product } from "@/lib/data";
+import { getBuyingGuides, getProductById, getScoreForProduct, type BuyingGuide } from "@/lib/data";
 import type { PhoneHubScore } from "@/lib/score-calculator";
 import { SITE_URL } from "@/lib/config";
 import GuidesClient from "./GuidesClient";

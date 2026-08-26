@@ -2,17 +2,18 @@
 
 import { useMemo, useState } from "react";
 import type { UpcomingDevice } from "@/lib/data";
+import { toneColor, toneTint } from "@/lib/score-color";
 
 const STATUS_COLORS: Record<string, { bg: string; text: string; label: string }> = {
-  confirmed: { bg: "#16a34a22", text: "#22c55e", label: "Confirmed" },
-  leaked: { bg: "#eab30822", text: "#eab308", label: "Leaked" },
-  rumored: { bg: "#6366f122", text: "#818cf8", label: "Rumored" },
+  confirmed: { bg: toneTint("excellent"), text: toneColor("excellent"), label: "Confirmed" },
+  leaked: { bg: toneTint("good"), text: toneColor("good"), label: "Leaked" },
+  rumored: { bg: toneTint("unknown"), text: toneColor("unknown"), label: "Rumored" },
 };
 
 const CONFIDENCE_COLORS: Record<string, string> = {
-  high: "#22c55e",
-  medium: "#eab308",
-  low: "#94a3b8",
+  high: toneColor("excellent"),
+  medium: toneColor("good"),
+  low: toneColor("unknown"),
 };
 
 /** Parse "Q3 2026" into a sortable number (2026*4 + 3). Unknown → far future. */
@@ -143,7 +144,7 @@ export default function UpcomingClient({ devices }: { devices: UpcomingDevice[] 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
             {items.map((device) => {
               const statusStyle = STATUS_COLORS[device.status] || STATUS_COLORS.rumored;
-              const confColor = CONFIDENCE_COLORS[device.confidence] || "#94a3b8";
+              const confColor = CONFIDENCE_COLORS[device.confidence] || toneColor("unknown");
               return (
                 <div
                   key={device.id}

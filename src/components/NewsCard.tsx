@@ -28,7 +28,7 @@ export default function NewsCard({ news }: { news: NewsItem }) {
     <a
       href={news.url}
       target="_blank"
-      rel="noopener nofollow"
+      rel="noopener noreferrer nofollow"
       className="card bg-base-200 border border-base-300 hover:border-primary transition-all hover:-translate-y-1 duration-200"
     >
       {/* Hero image area */}

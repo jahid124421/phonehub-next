@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { prisma } from '@/lib/prisma';
 import { captureError } from '@/lib/monitoring';
-import { getAllBrands, getAllProducts, type Brand as JsonBrand } from '@/lib/data';
+import { getAllBrands, getAllProducts } from '@/lib/data';
 
 interface BrandWithCount {
   id: string;

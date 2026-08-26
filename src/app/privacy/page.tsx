@@ -17,7 +17,7 @@ export default function PrivacyPage() {
     <main className="container mx-auto px-4 py-6">
       <Breadcrumb items={[{ label: "Home", href: "/" }, { label: "Privacy Policy" }]} />
 
-      <div className="max-w-3xl mx-auto prose prose-invert mt-4">
+      <div className="max-w-3xl mx-auto prose mt-4">
         <h1>Privacy Policy</h1>
         <p className="text-base-content/60 not-prose">Last updated: {today}</p>
 
@@ -58,7 +58,7 @@ export default function PrivacyPage() {
             <a
               href="https://www.google.com/settings/ads"
               target="_blank"
-              rel="noopener"
+              rel="noopener noreferrer"
             >
               Google Ads Settings
             </a>

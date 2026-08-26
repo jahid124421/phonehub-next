@@ -11,7 +11,7 @@ export default function DisclosurePage() {
     <main className="container mx-auto px-4 py-6">
       <Breadcrumb items={[{ label: "Home", href: "/" }, { label: "Affiliate Disclosure" }]} />
 
-      <div className="max-w-3xl mx-auto prose prose-invert mt-4">
+      <div className="max-w-3xl mx-auto prose mt-4">
         <h1>Affiliate Disclosure</h1>
 
         <p>

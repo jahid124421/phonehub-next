@@ -8,6 +8,7 @@ import { formatPrice, formatDate } from '@/lib/formatters';
 import Breadcrumb from '@/components/Breadcrumb';
 import ScoreBadge from '@/components/ScoreBadge';
 import type { PhoneHubScore } from '@/lib/score-calculator';
+import { scoreColor } from "@/lib/score-color";
 import {
   computeRecommendation,
   computeUseCaseVerdicts,
@@ -431,7 +432,7 @@ export default function CompareClient({ allSpecs, allScores = {} }: CompareClien
                       const val = vals[i];
                       const isWinner = !tied && best !== null && val === best;
                       const color = val == null ? undefined
-                        : val >= 80 ? '#22c55e' : val >= 60 ? '#eab308' : val >= 40 ? '#f97316' : '#ef4444';
+                        : scoreColor(val);
                       return (
                         <td
                           key={p.id}

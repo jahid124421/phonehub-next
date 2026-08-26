@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { SITE_URL } from "@/lib/config";
+import { toneColor, toneTint } from "@/lib/score-color";
 
 export const dynamic = "force-static";
 
@@ -119,8 +120,8 @@ export default function DevelopersPage() {
           <div className="flex items-center gap-3 flex-wrap">
             <span
               style={{
-                background: ep.method === "GET" ? "#16a34a22" : "#6366f122",
-                color: ep.method === "GET" ? "#22c55e" : "#818cf8",
+                background: ep.method === "GET" ? toneTint("excellent") : toneTint("unknown"),
+                color: ep.method === "GET" ? toneColor("excellent") : toneColor("unknown"),
                 fontWeight: 700,
                 fontSize: 12,
                 padding: "3px 10px",
@@ -160,7 +161,7 @@ export default function DevelopersPage() {
           <div
             className="text-xs"
             style={{
-              background: "var(--bg, #0d0f14)",
+              background: "var(--bg)",
               border: "1px solid var(--border)",
               borderRadius: 8,
               padding: "8px 12px",

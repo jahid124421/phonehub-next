@@ -1,4 +1,5 @@
 import type { NewsItem } from "@/lib/data";
+import { toneColor, toneTint } from "@/lib/score-color";
 
 /**
  * Rumor tracker — surfaces leak/rumor stories from the aggregated news feed.
@@ -22,7 +23,7 @@ export default function RumorTracker({ items }: { items: NewsItem[] }) {
             width: 8,
             height: 8,
             borderRadius: "50%",
-            background: "#eab308",
+            background: toneColor("good"),
             display: "inline-block",
           }}
         />
@@ -53,8 +54,8 @@ export default function RumorTracker({ items }: { items: NewsItem[] }) {
               <div className="text-xs mt-1 flex items-center gap-2" style={{ color: "var(--muted)" }}>
                 <span
                   style={{
-                    background: "#eab30822",
-                    color: "#eab308",
+                    background: toneTint("good"),
+                    color: toneColor("good"),
                     fontWeight: 600,
                     padding: "1px 7px",
                     borderRadius: 12,

@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { prisma } from '@/lib/prisma';
 import { captureError } from '@/lib/monitoring';
-import { getAllNews, type NewsItem } from '@/lib/data';
+import { getAllNews } from '@/lib/data';
 
 function jsonFallback(tag: string | null, page: number, limit: number) {
   let items = getAllNews();
