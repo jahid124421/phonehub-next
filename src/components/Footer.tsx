@@ -6,7 +6,7 @@ const links = {
   about: [
     { label: "About Us", href: "/about" },
     { label: "Contact", href: "/contact" },
-    { label: "Careers", href: "#" },
+    { label: "Developer API", href: "/developers" },
   ],
   explore: [
     { label: "Search", href: "/search" },
@@ -30,7 +30,7 @@ const links = {
     { label: "Phones", href: "/search?cat=phone" },
     { label: "Laptops", href: "/search?cat=laptop" },
     { label: "Cars", href: "/search?cat=auto" },
-    { label: "Write a Review", href: "/search?cat=phone" },
+    { label: "Watchlist", href: "/watchlist" },
   ],
   legal: [
     { label: "Privacy Policy", href: "/privacy" },
@@ -154,9 +154,9 @@ export default function Footer() {
           <div className="flex items-center gap-4">
             {/* GitHub */}
             <a
-              href="https://github.com/jahid124421"
+              href="https://github.com/jahid124421/phonehub-next"
               target="_blank"
-              rel="noopener"
+              rel="noopener noreferrer"
               className="transition-colors"
               style={{ color: "var(--muted)" }}
               aria-label="PhoneHub on GitHub"

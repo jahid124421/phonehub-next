@@ -34,6 +34,12 @@ const securityHeaders = [
 ];
 
 const nextConfig: NextConfig = {
+  // Pin the workspace root so Next doesn't pick up stray parent-directory
+  // lockfiles (there are package-lock.json files above this project).
+  turbopack: {
+    root: __dirname,
+  },
+  outputFileTracingRoot: __dirname,
   images: {
     remotePatterns: [
       { protocol: 'https', hostname: 'fdn2.gsmarena.com' },
