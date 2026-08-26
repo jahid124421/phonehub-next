@@ -8,6 +8,7 @@
 @plugin "daisyui" {
   themes: false;
 }
+@plugin "@tailwindcss/typography";
 
 /* ─────────────────────────────────────────────────────────────────────────
    PhoneHub palette — SINGLE SOURCE OF TRUTH.

@@ -155,7 +155,7 @@ export default function Footer() {
             <a
               href="https://github.com/jahid124421"
               target="_blank"
-              rel="noopener"
+              rel="noopener noreferrer"
               className="transition-colors"
               style={{ color: "var(--muted)" }}
               aria-label="PhoneHub on GitHub"

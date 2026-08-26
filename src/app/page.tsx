@@ -215,7 +215,7 @@ export default function Home() {
               <a
                 href={featured.url}
                 target="_blank"
-                rel="noopener nofollow"
+                rel="noopener noreferrer nofollow"
                 className="block mb-6 card bg-base-200 border border-base-300 hover:border-primary transition-all hover:-translate-y-0.5 duration-200 md:flex md:items-stretch md:overflow-hidden"
               >
                 <figure className="relative aspect-video md:aspect-auto md:w-80 md:shrink-0 overflow-hidden bg-base-300">
