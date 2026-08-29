@@ -15199,5 +15199,14 @@
     "battery": 42,
     "value": 48,
     "build": 70
+  },
+  "galaxy-s26-plus": {
+    "total": 89,
+    "display": 100,
+    "camera": 100,
+    "performance": 75,
+    "battery": 89,
+    "value": 68,
+    "build": 90
   }
 }

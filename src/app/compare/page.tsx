@@ -1,5 +1,4 @@
 import { Suspense } from 'react';
-import { getAllProducts, getSpecsForProduct, getAllScores } from '@/lib/data';
 import { SITE_URL } from '@/lib/config';
 import CompareClient from './CompareClient';
 
@@ -12,15 +11,6 @@ export const metadata = {
 };
 
 export default function ComparePage() {
-  const products = getAllProducts();
-
-  // Build a specs map: { [productId]: specs } — only for products that have specs
-  const specsMap: Record<string, Record<string, Record<string, string>>> = {};
-  products.forEach((p) => {
-    const specs = getSpecsForProduct(p.id);
-    if (specs) specsMap[p.id] = specs;
-  });
-
   return (
     <Suspense
       fallback={
@@ -29,7 +19,7 @@ export default function ComparePage() {
         </div>
       }
     >
-      <CompareClient allSpecs={specsMap} allScores={getAllScores()} />
+      <CompareClient />
     </Suspense>
   );
 }

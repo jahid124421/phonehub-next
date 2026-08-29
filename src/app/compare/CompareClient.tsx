@@ -31,8 +31,9 @@ const USE_CASE_ICONS: Record<string, string> = {
 };
 
 interface CompareClientProps {
-  allSpecs: SpecsMap;
-  allScores?: ScoresMap;
+  // No props — specs & scores are fetched on demand for the selected IDs
+  // via /api/specs so the page never ships the full 1.6k-product dataset
+  // to the client (previously 474 KB specs + 181 KB scores).
 }
 
 /* ------------------------------------------------------------------ */
@@ -77,12 +78,14 @@ function sortSections(sections: string[]): string[] {
 /*  Component                                                          */
 /* ------------------------------------------------------------------ */
 
-export default function CompareClient({ allSpecs, allScores = {} }: CompareClientProps) {
+export default function CompareClient(_props: CompareClientProps) {
   const searchParams = useSearchParams();
   const router = useRouter();
   const [mounted, setMounted] = useState(false);
   const [selectedProducts, setSelectedProducts] = useState<Product[]>([]);
   const [isLoadingProducts, setIsLoadingProducts] = useState(false);
+  const [allSpecs, setAllSpecs] = useState<SpecsMap>({});
+  const [allScores, setAllScores] = useState<ScoresMap>({});
   const [diffsOnly, setDiffsOnly] = useState(false);
 
   // Derive selected IDs from URL or localStorage
@@ -135,6 +138,30 @@ export default function CompareClient({ allSpecs, allScores = {} }: CompareClien
     return () => {
       cancelled = true;
     };
+  }, [selectedIds]);
+
+  // Fetch specs & scores for the selected IDs (on demand — avoids shipping
+  // the full 1.6k-product specs/scores datasets to every visitor).
+  useEffect(() => {
+    if (selectedIds.length < 2) {
+      setAllSpecs({});
+      setAllScores({});
+      return;
+    }
+    let cancelled = false;
+    fetch(`/api/specs?ids=${selectedIds.join(',')}`)
+      .then((r) => r.json())
+      .then((data: { specs: SpecsMap; scores: ScoresMap }) => {
+        if (cancelled) return;
+        setAllSpecs(data.specs || {});
+        setAllScores((data.scores as ScoresMap) || {});
+      })
+      .catch(() => {
+        if (cancelled) return;
+        setAllSpecs({});
+        setAllScores({});
+      });
+    return () => { cancelled = true; };
   }, [selectedIds]);
 
   // Update URL + localStorage

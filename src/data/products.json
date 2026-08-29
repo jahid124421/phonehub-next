@@ -1676,12 +1676,12 @@
     }
   },
   {
-    "id": "galaxy-s26",
+    "id": "galaxy-s26-plus",
     "brand": "samsung",
     "name": "Galaxy S26+",
     "category": "phone",
     "image": "https://fdn2.gsmarena.com/vv/pics/samsung/samsung-galaxy-s26-plus-1.jpg",
-    "fallbackImg": "img/galaxy-s26.svg",
+    "fallbackImg": "img/galaxy-s26-plus.svg",
     "releaseDate": "Released 2026, March 06",
     "basePrice": 1689,
     "popularity": 85,

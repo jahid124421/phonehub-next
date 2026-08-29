@@ -1,20 +1,41 @@
 "use client";
 
-import { useState, useEffect, useMemo } from "react";
+import { useState, useEffect } from "react";
 import Link from "next/link";
 import { getCompareList, toggleCompare } from "./CompareButton";
-import { getAllProducts } from "@/lib/data";
 
 export default function CompareBar() {
   const [items, setItems] = useState<string[]>([]);
   const [visible, setVisible] = useState(false);
+  const [nameMap, setNameMap] = useState<Record<string, string>>({});
 
-  // Resolve product slugs (e.g. "oppo-reno16--china") to display names
-  const nameMap = useMemo(() => {
-    const map: Record<string, string> = {};
-    for (const p of getAllProducts()) map[p.id] = p.name;
-    return map;
-  }, []);
+  // Resolve product slugs to display names via lightweight API.
+  // Previously this imported `getAllProducts()` which bundled the full 2.9 MB
+  // products.json into every page's client JS. Now we fetch only the names
+  // for the IDs actually in the compare tray.
+  useEffect(() => {
+    if (!items.length) return;
+    const missing = items.filter((id) => !(id in nameMap));
+    if (!missing.length) return;
+    let cancelled = false;
+    fetch(`/api/products?ids=${missing.join(",")}`)
+      .then((r) => r.json())
+      .then((data: { products: Array<{ id: string; name: string }> }) => {
+        if (cancelled) return;
+        const patch: Record<string, string> = {};
+        for (const p of data.products || []) patch[p.id] = p.name;
+        // Fill gaps for ids that the API didn't return (deleted products)
+        for (const id of missing) if (!(id in patch)) patch[id] = id;
+        setNameMap((prev) => ({ ...prev, ...patch }));
+      })
+      .catch(() => {
+        if (cancelled) return;
+        const fallback: Record<string, string> = {};
+        for (const id of missing) fallback[id] = id;
+        setNameMap((prev) => ({ ...prev, ...fallback }));
+      });
+    return () => { cancelled = true; };
+  }, [items]); // eslint-disable-line react-hooks/exhaustive-deps
 
   useEffect(() => {
     setItems(getCompareList());
