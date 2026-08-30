@@ -2,31 +2,62 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import ThemeToggle from "./ThemeToggle";
 import CurrencyPicker from "./CurrencyPicker";
 
-const navLinks = [
-  { label: "Home", href: "/" },
-  { label: "Brands", href: "/brands" },
-  { label: "Compare", href: "/compare" },
-  { label: "Deals", href: "/deals" },
-  { label: "News", href: "/news" },
-  { label: "AI Finder", href: "/ai-finder" },
-  { label: "Benchmarks", href: "/benchmarks" },
-  { label: "Guides", href: "/guides" },
-  { label: "Upcoming", href: "/upcoming" },
-  { label: "Tools", href: "/tools" },
+const primaryLinks = [
+  { label: "Discover", href: "/" },
+  { label: "Compare", href: "/compare", withCount: true },
+  { label: "Intelligence", href: "/ai-finder" },
 ];
+
+const moreLinks = [
+  { label: "Deals", href: "/deals", sub: "Price drops" },
+  { label: "Guides", href: "/guides", sub: "Best picks" },
+  { label: "Benchmarks", href: "/benchmarks", sub: "Scores" },
+  { label: "News", href: "/news", sub: "Editorial" },
+  { label: "Upcoming", href: "/upcoming", sub: "Calendar" },
+  { label: "Tools", href: "/tools", sub: "Utilities" },
+  { label: "Brands", href: "/brands", sub: "222 brands" },
+];
+
+function getCompareCount(): number {
+  if (typeof window === "undefined") return 0;
+  try {
+    const v = localStorage.getItem("phonehub_compare");
+    return v ? (JSON.parse(v) as string[]).length : 0;
+  } catch {
+    return 0;
+  }
+}
 
 export default function Header() {
   const [mobileOpen, setMobileOpen] = useState(false);
+  const [moreOpen, setMoreOpen] = useState(false);
+  const [compareCount, setCompareCount] = useState(0);
   const pathname = usePathname();
+
+  useEffect(() => {
+    setCompareCount(getCompareCount());
+    const h = (e: Event) => {
+      const d = (e as CustomEvent).detail as string[] | undefined;
+      setCompareCount(d ? d.length : getCompareCount());
+    };
+    window.addEventListener("compare-updated", h);
+    window.addEventListener("storage", () => setCompareCount(getCompareCount()));
+    return () => {
+      window.removeEventListener("compare-updated", h);
+      window.removeEventListener("storage", () => setCompareCount(getCompareCount()));
+    };
+  }, []);
 
   const isActive = (href: string) => {
     if (href === "/") return pathname === "/";
     return pathname.startsWith(href);
   };
+
+  const openPalette = () => window.dispatchEvent(new CustomEvent("phonehub:open-palette"));
 
   return (
     <header
@@ -35,29 +66,28 @@ export default function Header() {
         top: 0,
         zIndex: 50,
         background: "var(--header-bg)",
-        backdropFilter: "saturate(140%) blur(12px)",
+        backdropFilter: "saturate(140%) blur(14px)",
         borderBottom: "1px solid var(--header-border)",
       }}
     >
       <div
-        className="header-inner"
         style={{
           maxWidth: "var(--max)",
           margin: "0 auto",
           padding: "0 18px",
           display: "flex",
           alignItems: "center",
-          gap: 18,
-          height: 64,
+          gap: 14,
+          height: 62,
         }}
       >
         {/* Logo */}
         <Link
           href="/"
           style={{
-            fontWeight: 800,
-            fontSize: 20,
-            letterSpacing: "-0.5px",
+            fontWeight: 900,
+            fontSize: 19,
+            letterSpacing: "-0.04em",
             whiteSpace: "nowrap",
             color: "var(--text)",
             textDecoration: "none",
@@ -66,54 +96,110 @@ export default function Header() {
           Phone<span style={{ color: "var(--primary)" }}>Hub</span>
         </Link>
 
-        {/* Nav links — desktop */}
-        <nav
-          style={{
-            display: "flex",
-            gap: 4,
-            marginLeft: 8,
-          }}
-          className="nav-links-desktop"
-        >
-          {navLinks.map((link) => (
+        {/* Primary nav — 3 + More (Noir v2 beats Versus 10-link clutter) */}
+        <nav className="nav-links-desktop" style={{ display: "flex", gap: 2, marginLeft: 6, alignItems: "center" }}>
+          {primaryLinks.map((link) => (
             <Link
               key={link.href}
               href={link.href}
-              className={`nav-link flex items-center justify-center ${
-                isActive(link.href) ? "nav-link--active" : ""
-              }`}
+              className={`nav-link ${isActive(link.href) ? "nav-link--active" : ""}`}
               style={{
-                padding: "8px 12px",
+                padding: "8px 11px",
                 borderRadius: 8,
-                color: isActive(link.href) ? "var(--primary)" : "var(--muted)",
-                fontWeight: 500,
-                fontSize: 14,
+                color: isActive(link.href) ? "var(--text)" : "var(--muted)",
+                fontWeight: 600,
+                fontSize: 13,
                 textDecoration: "none",
-                transition: "0.15s",
-                background: isActive(link.href) ? "var(--nav-hover-bg)" : "transparent",
-                borderBottom: isActive(link.href) ? "2px solid var(--primary)" : "2px solid transparent",
+                background: isActive(link.href) ? "var(--surface-2)" : "transparent",
+                border: "1px solid " + (isActive(link.href) ? "var(--border)" : "transparent"),
+                display: "inline-flex",
+                gap: 6,
+                alignItems: "center",
               }}
             >
               {link.label}
+              {link.withCount && compareCount > 0 && (
+                <span
+                  style={{
+                    fontSize: 11,
+                    fontWeight: 800,
+                    padding: "1px 6px",
+                    borderRadius: 999,
+                    background: "var(--primary)",
+                    color: "#fff",
+                  }}
+                >
+                  {compareCount}
+                </span>
+              )}
             </Link>
           ))}
+          <div style={{ position: "relative" }}>
+            <button
+              onClick={() => setMoreOpen((v) => !v)}
+              onBlur={() => setTimeout(() => setMoreOpen(false), 140)}
+              className="nav-link"
+              style={{
+                padding: "8px 11px",
+                borderRadius: 8,
+                color: "var(--muted)",
+                fontWeight: 600,
+                fontSize: 13,
+                background: moreOpen ? "var(--surface-2)" : "transparent",
+                border: "1px solid " + (moreOpen ? "var(--border)" : "transparent"),
+                cursor: "pointer",
+              }}
+              aria-haspopup="true"
+              aria-expanded={moreOpen}
+            >
+              More ▾
+            </button>
+            {moreOpen && (
+              <div
+                style={{
+                  position: "absolute",
+                  top: "calc(100% + 10px)",
+                  left: 0,
+                  minWidth: 220,
+                  background: "var(--surface)",
+                  border: "1px solid var(--border)",
+                  borderRadius: 12,
+                  padding: 6,
+                  boxShadow: "var(--shadow-lg)",
+                  zIndex: 20,
+                }}
+              >
+                {moreLinks.map((m) => (
+                  <Link
+                    key={m.href}
+                    href={m.href}
+                    onClick={() => setMoreOpen(false)}
+                    style={{
+                      display: "flex",
+                      justifyContent: "space-between",
+                      alignItems: "center",
+                      padding: "9px 10px",
+                      borderRadius: 8,
+                      fontSize: 13,
+                      color: isActive(m.href) ? "var(--text)" : "var(--muted)",
+                      background: isActive(m.href) ? "var(--surface-2)" : "transparent",
+                      textDecoration: "none",
+                    }}
+                  >
+                    <span style={{ fontWeight: 600 }}>{m.label}</span>
+                    <small style={{ color: "var(--muted)", fontSize: 11 }}>{m.sub}</small>
+                  </Link>
+                ))}
+              </div>
+            )}
+          </div>
         </nav>
 
-        {/* Search — opens the keyboard-first command palette */}
-        <div
-          style={{
-            marginLeft: "auto",
-            flex: 1,
-            maxWidth: 420,
-            display: "flex",
-          }}
-          className="header-search-form"
-        >
+        {/* Search pill — dispatches command palette; collapses to icon ≤1100px */}
+        <div className="header-search-form" style={{ marginLeft: "auto", flex: 1, maxWidth: 420, display: "flex" }}>
           <button
             type="button"
-            onClick={() =>
-              window.dispatchEvent(new CustomEvent("phonehub:open-palette"))
-            }
+            onClick={openPalette}
             style={{
               flex: 1,
               display: "flex",
@@ -125,27 +211,17 @@ export default function Header() {
               background: "var(--search-bg)",
               color: "var(--muted)",
               cursor: "text",
-              fontSize: 14,
+              fontSize: 13,
               textAlign: "left",
             }}
             aria-label="Open search (Ctrl+K)"
           >
-            <svg
-              width="15"
-              height="15"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-              style={{ flexShrink: 0 }}
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
-              />
+            <svg width="14" height="14" fill="none" stroke="currentColor" viewBox="0 0 24 24" style={{ flexShrink: 0 }}>
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
             </svg>
-            <span style={{ flex: 1 }}>Search phones, laptops, cars...</span>
+            <span style={{ flex: 1, whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis" }}>
+              Search phones, laptops, cars…
+            </span>
             <kbd
               style={{
                 fontSize: 11,
@@ -154,6 +230,7 @@ export default function Header() {
                 border: "1px solid var(--search-border)",
                 background: "var(--surface)",
                 whiteSpace: "nowrap",
+                fontFamily: "monospace",
               }}
             >
               Ctrl K
@@ -161,12 +238,9 @@ export default function Header() {
           </button>
         </div>
 
-        {/* Icon-only search — shown at widths where the full field can't fit */}
         <button
           type="button"
-          onClick={() =>
-            window.dispatchEvent(new CustomEvent("phonehub:open-palette"))
-          }
+          onClick={openPalette}
           className="header-search-icon-btn"
           style={{
             display: "none",
@@ -181,31 +255,60 @@ export default function Header() {
             color: "var(--muted)",
             cursor: "pointer",
           }}
-          aria-label="Open search (Ctrl+K)"
+          aria-label="Open search"
         >
-          <svg
-            width="15"
-            height="15"
-            fill="none"
-            stroke="currentColor"
-            viewBox="0 0 24 24"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth={2}
-              d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
-            />
+          <svg width="14" height="14" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
           </svg>
         </button>
 
-        {/* Currency picker */}
         <CurrencyPicker />
-
-        {/* Theme toggle */}
         <ThemeToggle />
 
-        {/* Mobile hamburger */}
+        {/* Compare pill — always visible, shows count */}
+        <Link
+          href="/compare"
+          style={{
+            position: "relative",
+            display: "inline-flex",
+            alignItems: "center",
+            gap: 6,
+            padding: "8px 12px",
+            borderRadius: 999,
+            border: "1px solid var(--primary)",
+            background: compareCount > 0 ? "var(--primary)" : "var(--surface)",
+            color: compareCount > 0 ? "#fff" : "var(--muted)",
+            fontWeight: 800,
+            fontSize: 13,
+            textDecoration: "none",
+            whiteSpace: "nowrap",
+          }}
+        >
+          Compare {compareCount > 0 ? `· ${compareCount}` : ""}
+          {compareCount > 0 && (
+            <span
+              style={{
+                position: "absolute",
+                top: -6,
+                right: -6,
+                minWidth: 18,
+                height: 18,
+                padding: "0 5px",
+                borderRadius: 999,
+                background: "#fff",
+                color: "var(--primary)",
+                fontSize: 11,
+                fontWeight: 900,
+                display: "grid",
+                placeItems: "center",
+                border: "2px solid var(--bg)",
+              }}
+            >
+              {compareCount}
+            </span>
+          )}
+        </Link>
+
         <button
           onClick={() => setMobileOpen(!mobileOpen)}
           style={{
@@ -213,7 +316,7 @@ export default function Header() {
             background: "none",
             border: "none",
             color: "var(--text)",
-            fontSize: 24,
+            fontSize: 22,
             cursor: "pointer",
           }}
           className="nav-toggle-btn"
@@ -223,7 +326,6 @@ export default function Header() {
         </button>
       </div>
 
-      {/* Mobile nav drawer */}
       {mobileOpen && (
         <nav
           style={{
@@ -235,7 +337,7 @@ export default function Header() {
             gap: 4,
           }}
         >
-          {navLinks.map((link) => (
+          {[...primaryLinks, ...moreLinks].map((link) => (
             <Link
               key={link.href}
               href={link.href}
@@ -244,126 +346,59 @@ export default function Header() {
                 padding: "10px 14px",
                 borderRadius: 8,
                 color: isActive(link.href) ? "var(--primary)" : "var(--muted)",
-                fontWeight: 500,
+                fontWeight: 600,
                 fontSize: 14,
                 textDecoration: "none",
-                background: isActive(link.href) ? "var(--nav-hover-bg)" : "transparent",
+                background: isActive(link.href) ? "var(--surface-2)" : "transparent",
               }}
             >
               {link.label}
             </Link>
           ))}
-          <form action="/search" method="get" style={{ display: "flex", padding: "8px 14px" }}>
-            <input
-              type="text"
-              name="q"
-              placeholder="Search..."
-              style={{
-                flex: 1,
-                padding: "10px 14px",
-                borderRadius: "10px 0 0 10px",
-                border: "1px solid var(--search-border)",
-                borderRight: "none",
-                background: "var(--search-bg)",
-                color: "var(--text)",
-                outline: "none",
-                fontSize: 14,
-              }}
-            />
-            <button
-              type="submit"
-              style={{
-                padding: "0 16px",
-                border: "none",
-                borderRadius: "0 10px 10px 0",
-                background: "var(--primary)",
-                color: "#fff",
-                cursor: "pointer",
-                fontWeight: 600,
-              }}
-            >
-              Search
-            </button>
-          </form>
+          <button
+            onClick={() => {
+              setMobileOpen(false);
+              openPalette();
+            }}
+            style={{
+              display: "flex",
+              alignItems: "center",
+              gap: 8,
+              padding: "10px 14px",
+              borderRadius: 10,
+              border: "1px solid var(--search-border)",
+              background: "var(--search-bg)",
+              color: "var(--muted)",
+              cursor: "pointer",
+              marginTop: 4,
+            }}
+          >
+            <svg width="14" height="14" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+            </svg>
+            Search…
+          </button>
         </nav>
       )}
 
-      {/* Global responsive styles (rendered once, applies site-wide) */}
       <style>{`
-        .nav-link:hover {
-          color: var(--text) !important;
-          background: var(--nav-hover-bg) !important;
+        .nav-link:hover { color: var(--text) !important; background: var(--surface-2) !important; }
+        .nav-links-desktop { display: flex !important; }
+        .nav-toggle-btn { display: none !important; }
+        .header-search-icon-btn { margin-left: auto; }
+        @media (max-width: 1100px) {
+          .header-search-form { display: none !important; }
+          .header-search-icon-btn { display: inline-flex !important; }
         }
-        .nav-link--active {
-          color: var(--primary) !important;
-          background: var(--nav-hover-bg) !important;
-          border-bottom: 2px solid var(--primary) !important;
+        @media (max-width: 860px) {
+          .nav-links-desktop { display: none !important; }
+          .nav-toggle-btn { display: block !important; }
+          .header-search-form { display: flex !important; }
+          .header-search-icon-btn { display: none !important; }
         }
-        .nav-links-desktop {
-          display: flex !important;
-        }
-        .nav-toggle-btn {
-          display: none !important;
-        }
-        .header-search-form {
-          max-width: 420px;
-          min-width: 0;
-        }
-        /* Whenever the icon button is visible, the flex search field is hidden,
-           so the icon must carry the auto margin that pushes the group right. */
-        .header-search-icon-btn {
-          margin-left: auto;
-        }
-
-        /* 1280–1499px: compact nav links so the full search field still fits */
-        @media (max-width: 1499px) {
-          .header-inner {
-            gap: 10px !important;
-          }
-          .nav-links-desktop {
-            gap: 2px !important;
-            margin-left: 2px !important;
-          }
-          .nav-links-desktop .nav-link {
-            padding: 6px 8px !important;
-            font-size: 13px !important;
-          }
-        }
-
-        /* 1024–1279px: compact links + icon-only search */
-        @media (max-width: 1279px) {
-          .header-search-form {
-            display: none !important;
-          }
-          .header-search-icon-btn {
-            display: inline-flex !important;
-          }
-        }
-
-        /* ≤1023px: hamburger nav; the freed space fits the full search field */
-        @media (max-width: 1023px) {
-          .nav-links-desktop {
-            display: none !important;
-          }
-          .nav-toggle-btn {
-            display: block !important;
-          }
-          .header-search-form {
-            display: flex !important;
-          }
-          .header-search-icon-btn {
-            display: none !important;
-          }
-        }
-
-        /* ≤640px: icon-only search (the mobile drawer has its own search form) */
         @media (max-width: 640px) {
-          .header-search-form {
-            display: none !important;
-          }
-          .header-search-icon-btn {
-            display: inline-flex !important;
-          }
+          .header-search-form { display: none !important; }
+          .header-search-icon-btn { display: inline-flex !important; }
         }
       `}</style>
     </header>
