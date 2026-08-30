@@ -314,14 +314,16 @@ export default function Home() {
         </div>
       </div>
 
-      <div className="max-w-7xl mx-auto px-4 space-y-10 pb-16">
+      <div className="max-w-7xl mx-auto px-4 pb-16">
         {/* Explorer — organized vs Versus mega-menu */}
-        <section style={{ marginTop: 28 }}>
-          <div className="flex items-center justify-between mb-3">
-            <h2 className="text-[15px] font-black tracking-tight">Explore — 100+ categories, organized</h2>
-            <Link href="/search" className="text-xs font-bold" style={{ color: "var(--primary)" }}>
-              See all categories →
-            </Link>
+        <section className="noir-section">
+          <div className="noir-section-head">
+            <div>
+              <div className="noir-kicker">Catalog</div>
+              <h2 className="noir-title">Explore — 100+ categories, organized</h2>
+              <div className="noir-title-sub">Versus breadth, human-grouped into 4 worlds.</div>
+            </div>
+            <Link href="/search" className="noir-viewall">See all categories →</Link>
           </div>
           <div className="noir-explorer">
             <div className="noir-cat-grid">
@@ -371,15 +373,17 @@ export default function Home() {
           </div>
         </section>
 
-        {/* Trending — hscroll */}
-        <section>
-          <div className="flex items-center justify-between mb-4">
-            <h2 className="text-xl font-bold">🚀 Trending Now</h2>
-            <Link href="/search?sort=popularity" className="text-sm hover:underline" style={{ color: "var(--primary)" }}>
-              View all →
-            </Link>
+        {/* Trending — one calm snap row, not a carousel shouting "sale" */}
+        <section className="noir-section">
+          <div className="noir-section-head">
+            <div>
+              <div className="noir-kicker">Now</div>
+              <h2 className="noir-title">Trending</h2>
+              <div className="noir-title-sub">What people compare most this week.</div>
+            </div>
+            <Link href="/search?sort=popularity" className="noir-viewall">View all →</Link>
           </div>
-          <div className="flex gap-4 overflow-x-auto snap-x snap-mandatory pb-4" style={{ scrollbarWidth: "none" } as any}>
+          <div className="flex gap-4 overflow-x-auto snap-x snap-mandatory pb-2" style={{ scrollbarWidth: "none" } as any}>
             {trending.map((p) => (
               <div key={p.id} className="w-56 shrink-0 snap-start">
                 <PhoneCard product={p} score={getScoreForProduct(p.id)} />
@@ -388,48 +392,55 @@ export default function Home() {
           </div>
         </section>
 
-        {/* Popular */}
-        <section>
-          <div className="flex items-center justify-between mb-4">
-            <h2 className="text-xl font-bold">🔥 Popular Right Now</h2>
-            <Link href="/search?sort=popularity" className="text-sm hover:underline" style={{ color: "var(--primary)" }}>
-              View all →
-            </Link>
+        {/* Popular + Latest — paired, shared rhythm */}
+        <section className="noir-section">
+          <div className="noir-section-head">
+            <div>
+              <div className="noir-kicker">Discovery</div>
+              <h2 className="noir-title">Popular &amp; Latest</h2>
+              <div className="noir-title-sub">Most chosen and most recent — pick your lane.</div>
+            </div>
           </div>
-          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4">
-            {popular.map((p) => (
-              <PhoneCard key={p.id} product={p} score={getScoreForProduct(p.id)} />
-            ))}
+          <div className="space-y-8">
+            <div>
+              <div className="flex items-center justify-between mb-3">
+                <h3 className="text-[13px] font-extrabold tracking-wide uppercase" style={{ color: "var(--muted)" }}>Popular Right Now</h3>
+                <Link href="/search?sort=popularity" className="noir-viewall">View all →</Link>
+              </div>
+              <div className="noir-grid-4">
+                {popular.slice(0, 8).map((p) => (
+                  <PhoneCard key={p.id} product={p} score={getScoreForProduct(p.id)} />
+                ))}
+              </div>
+            </div>
+            <div>
+              <div className="flex items-center justify-between mb-3">
+                <h3 className="text-[13px] font-extrabold tracking-wide uppercase" style={{ color: "var(--muted)" }}>Latest Releases</h3>
+                <Link href="/search?sort=newest" className="noir-viewall">View all →</Link>
+              </div>
+              <div className="noir-grid-4">
+                {latest.slice(0, 8).map((p) => (
+                  <PhoneCard key={p.id} product={p} score={getScoreForProduct(p.id)} />
+                ))}
+              </div>
+            </div>
           </div>
         </section>
 
-        {/* Latest */}
-        <section>
-          <div className="flex items-center justify-between mb-4">
-            <h2 className="text-xl font-bold">🆕 Latest Releases</h2>
-            <Link href="/search?sort=newest" className="text-sm hover:underline" style={{ color: "var(--primary)" }}>
-              View all →
-            </Link>
-          </div>
-          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4">
-            {latest.map((p) => (
-              <PhoneCard key={p.id} product={p} score={getScoreForProduct(p.id)} />
-            ))}
-          </div>
-        </section>
-
-        {/* News */}
+        {/* News — editorial, not blog spam */}
         {news.length > 0 &&
           (() => {
             const featured = news[0];
             const rest = news.slice(1, 9);
             return (
-              <section>
-                <div className="flex items-center justify-between mb-4">
-                  <h2 className="text-xl font-bold">📰 Latest News &amp; Guides</h2>
-                  <Link href="/news" className="text-sm hover:underline" style={{ color: "var(--primary)" }}>
-                    More →
-                  </Link>
+              <section className="noir-section">
+                <div className="noir-section-head">
+                  <div>
+                    <div className="noir-kicker">Editorial</div>
+                    <h2 className="noir-title">News &amp; Guides</h2>
+                    <div className="noir-title-sub">Hands-on takes, not press releases.</div>
+                  </div>
+                  <Link href="/news" className="noir-viewall">More →</Link>
                 </div>
                 <a
                   href={featured.url}
@@ -460,12 +471,14 @@ export default function Home() {
           })()}
 
         {/* Brands — curated: top 24 by product count, full atlas on /brands */}
-        <section>
-          <div className="flex items-center justify-between mb-4">
-            <h2 className="text-xl font-bold">Browse by Brand</h2>
-            <Link href="/brands" className="text-sm hover:underline" style={{ color: "var(--primary)" }}>
-              All {brands.length} brands →
-            </Link>
+        <section className="noir-section">
+          <div className="noir-section-head">
+            <div>
+              <div className="noir-kicker">Brands</div>
+              <h2 className="noir-title">Browse by Brand</h2>
+              <div className="noir-title-sub">Jump to a maker — full 222-brand atlas inside.</div>
+            </div>
+            <Link href="/brands" className="noir-viewall">All {brands.length} brands →</Link>
           </div>
           <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-6 lg:grid-cols-8 gap-3">
             {[...brands]
@@ -506,12 +519,14 @@ export default function Home() {
         </section>
 
         {/* Best Picks */}
-        <section>
-          <div className="flex items-center justify-between mb-4">
-            <h2 className="text-xl font-bold">🏆 Best Picks by Category</h2>
-            <Link href="/search?sort=rating" className="text-sm hover:underline" style={{ color: "var(--primary)" }}>
-              See all rankings →
-            </Link>
+        <section className="noir-section">
+          <div className="noir-section-head">
+            <div>
+              <div className="noir-kicker">Curated</div>
+              <h2 className="noir-title">Best Picks by Category</h2>
+              <div className="noir-title-sub">Expert cuts — not just highest-rated.</div>
+            </div>
+            <Link href="/search?sort=rating" className="noir-viewall">See all rankings →</Link>
           </div>
           <div className="grid md:grid-cols-2 xl:grid-cols-3 gap-6">
             {guides.map((g) => (
@@ -547,9 +562,13 @@ export default function Home() {
         </section>
 
         {/* Top 10 */}
-        <section>
-          <div className="flex items-center justify-between mb-4">
-            <h2 className="text-xl font-bold">Top 10</h2>
+        <section className="noir-section">
+          <div className="noir-section-head">
+            <div>
+              <div className="noir-kicker">Rankings</div>
+              <h2 className="noir-title">Top 10</h2>
+              <div className="noir-title-sub">Fast shortcuts to the best lists.</div>
+            </div>
           </div>
           <div className="grid md:grid-cols-2 gap-6">
             <div className="bg-base-200 border border-base-300 rounded-xl p-5 space-y-3">
@@ -591,8 +610,9 @@ export default function Home() {
           </div>
         </section>
 
+        <div className="noir-divider" style={{ marginTop: 44 }} />
         {/* Methodology — Noir editorial trust */}
-        <section className="noir-method">
+        <section className="noir-section noir-method">
           <div>
             <div style={{ fontWeight: 900, color: "var(--text)" }}>How PhoneHub beats a spec dump</div>
             <div style={{ fontSize: 13, color: "var(--muted)", marginTop: 6, lineHeight: 1.6 }}>

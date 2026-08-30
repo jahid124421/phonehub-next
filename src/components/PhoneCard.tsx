@@ -59,11 +59,11 @@ function StarRating({ rating, reviewCount }: { rating: number; reviewCount: numb
   );
 }
 
-function editorialBadge(p: Product, score: PhoneHubScore | null | undefined): { label: string; cls: string } | null {
+function editorialBadge(p: Product, score: PhoneHubScore | null | undefined): { label: string; bg: string } | null {
   if (!score) return null;
-  if (score.total >= 88) return { label: "Editor's choice", cls: "background:#5B8CFF;color:#fff" };
-  if (score.value >= 85) return { label: "Best value", cls: "background:#0EA5E9;color:#fff" };
-  if (score.battery >= 85) return { label: "Battery pick", cls: "background:#10B981;color:#fff" };
+  if (score.total >= 88) return { label: "Editor's choice", bg: "#5B8CFF" };
+  if (score.value >= 85) return { label: "Best value", bg: "#0EA5E9" };
+  if (score.battery >= 85) return { label: "Battery pick", bg: "#10B981" };
   return null;
 }
 
@@ -86,58 +86,40 @@ export default function PhoneCard({ product, score = null }: { product: Product;
   const chips = specChips(product);
 
   return (
-    <div className="card card-compact bg-base-200 border border-base-300 hover:border-primary transition-all hover:-translate-y-1 duration-200 overflow-hidden">
+    <div className="card card-compact bg-base-200 border border-base-300 overflow-hidden" style={{ borderRadius: 14 }}>
       <Link href={`/phone/${product.id}`} className="block">
         <figure className="relative aspect-square bg-base-300 overflow-hidden">
           <ProductImage src={product.image} alt={product.name} fallback={fallback} />
-          {/* Editorial badge top-left */}
           {badge && (
             <span
-              style={{ ...(Object.fromEntries(badge.cls.split(";").filter(Boolean).map((kv) => kv.split(":").map((s) => s.trim())) ) as any) }}
+              style={{ background: badge.bg, color: "#fff" }}
               className="absolute left-2 top-2 z-10 px-2 py-0.5 rounded-full text-[10px] font-black tracking-wide uppercase"
             >
               {badge.label}
             </span>
           )}
-          {/* Score pill top-right */}
           {score && (
             <div className="absolute top-2 right-2 z-10">
               <ScoreBadge score={score} size="compact" />
             </div>
           )}
         </figure>
-
-        <div className="card-body p-4 pb-2 gap-1.5">
-          <h3 className="text-sm font-semibold line-clamp-2 leading-snug">{product.name}</h3>
+        <div className="card-body p-4 pb-2 gap-1">
+          <h3 className="text-[13px] font-bold leading-snug line-clamp-2" style={{ minHeight: 36 }}>{product.name}</h3>
           <StarRating rating={product.rating} reviewCount={product.reviewCount} />
-          {/* Spec chips — Noir editorial affordance */}
           {chips.length > 0 && (
-            <div className="flex flex-wrap gap-1.5 mt-1">
+            <div className="flex flex-wrap gap-1 mt-1">
               {chips.map((c) => (
-                <span
-                  key={c}
-                  className="text-[11px] px-2 py-0.5 rounded-full bg-base-100 border border-base-300 text-base-content/60"
-                  style={{
-                    display: "inline-block",
-                    maxWidth: "100%",
-                    overflow: "hidden",
-                    textOverflow: "ellipsis",
-                    whiteSpace: "nowrap",
-                  }}
-                >
+                <span key={c} className="text-[11px] px-2 py-0.5 rounded-full bg-base-100 border border-base-300 text-base-content/60" style={{ maxWidth: "100%", overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>
                   {c}
                 </span>
               ))}
             </div>
           )}
-          <div className="flex items-center justify-between mt-1">
-            <div>
-              {price ? <span className="text-base font-bold text-primary">{price}</span> : <span className="text-sm text-base-content/60 italic">Check price</span>}
-            </div>
-          </div>
+          <div className="mt-1.5">{price ? <span className="text-[14px] font-extrabold" style={{ color: "var(--primary)" }}>{price}</span> : <span className="text-sm text-base-content/60 italic">Check price</span>}</div>
         </div>
       </Link>
-      <div className="flex justify-end px-4 pb-4">
+      <div className="flex justify-end px-4 pb-3">
         <CompareButton productId={product.id} />
       </div>
     </div>
