@@ -46,6 +46,8 @@ const nextConfig: NextConfig = {
       { protocol: 'https', hostname: 'cdn2.gsmarena.com' },
       { protocol: 'https', hostname: 'cdn.simpleicons.org' },
       { protocol: 'https', hostname: 'cdn.brandfetch.io' },
+      { protocol: 'https', hostname: 'm.media-amazon.com' },
+      { protocol: 'https', hostname: 'images-na.ssl-images-amazon.com' },
     ],
     formats: ['image/avif', 'image/webp'],
   },

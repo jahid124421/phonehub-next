@@ -30,6 +30,9 @@ export interface Product {
   prices: Array<{ store: string; price: number | null; url: string }>;
   pros: string[];
   cons: string[];
+  /** Optional Amazon linkage — when present, enables real price + image via /api/amazon?asin= */
+  asin?: string;
+  amazonUrl?: string;
 }
 
 export interface Brand {

@@ -459,53 +459,49 @@ export default function Home() {
             );
           })()}
 
-        {/* Brands */}
+        {/* Brands — curated: top 24 by product count, full atlas on /brands */}
         <section>
           <div className="flex items-center justify-between mb-4">
             <h2 className="text-xl font-bold">Browse by Brand</h2>
             <Link href="/brands" className="text-sm hover:underline" style={{ color: "var(--primary)" }}>
-              All brands →
+              All {brands.length} brands →
             </Link>
           </div>
-          <div className="space-y-8">
-            {BRAND_CATEGORY_ORDER.map((category) => {
-              const catBrands = brandsByCategory[category];
-              if (!catBrands || catBrands.length === 0) return null;
-              return (
-                <div key={category}>
-                  <h3 className="text-lg font-semibold mb-3 text-base-content/80">{category}</h3>
-                  <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-6 lg:grid-cols-8 gap-3">
-                    {catBrands.map((b) => {
-                      const count = brandProductCount[b.id] || 0;
-                      const isAuto = b.category === "Auto";
-                      const href = isAuto ? `/search?brand=${b.id}&cat=auto` : `/search?brand=${b.id}`;
-                      const isEmojiLogo = b.logo && (b.logo.startsWith("📱") || b.logo.length <= 4);
-                      return (
-                        <Link
-                          key={b.id}
-                          href={href}
-                          className="flex flex-col items-center gap-2 p-3 rounded-xl bg-base-200 border border-base-300 hover:border-primary hover:-translate-y-0.5 transition-all"
-                        >
-                          {!isEmojiLogo && b.logo ? (
-                            <div className="w-10 h-10 rounded-full overflow-hidden bg-white ring-1 ring-base-300 p-1.5 flex items-center justify-center">
-                              <img src={b.logo} alt={b.name} className="w-full h-full object-contain" loading="lazy" />
-                            </div>
-                          ) : (
-                            <div className="w-10 h-10 rounded-full flex items-center justify-center text-lg font-bold text-white" style={{ backgroundColor: b.color || "#5b8cff" }}>
-                              {b.name.charAt(0)}
-                            </div>
-                          )}
-                          <span className="text-sm font-medium text-center line-clamp-1">{b.name}</span>
-                          <span className="text-sm text-base-content/50">
-                            {count} {count === 1 ? "product" : "products"}
-                          </span>
-                        </Link>
-                      );
-                    })}
-                  </div>
-                </div>
-              );
-            })}
+          <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-6 lg:grid-cols-8 gap-3">
+            {[...brands]
+              .sort((a, b) => (brandProductCount[b.id] || 0) - (brandProductCount[a.id] || 0))
+              .slice(0, 24)
+              .map((b) => {
+                const count = brandProductCount[b.id] || 0;
+                const isAuto = b.category === "Auto";
+                const href = isAuto ? `/search?brand=${b.id}&cat=auto` : `/search?brand=${b.id}`;
+                const isEmojiLogo = b.logo && (b.logo.startsWith("📱") || b.logo.length <= 4);
+                return (
+                  <Link
+                    key={b.id}
+                    href={href}
+                    className="flex flex-col items-center gap-2 p-3 rounded-xl bg-base-200 border border-base-300 hover:border-primary hover:-translate-y-0.5 transition-all"
+                    title={`${b.name} — ${count} products`}
+                  >
+                    {!isEmojiLogo && b.logo ? (
+                      <div className="w-10 h-10 rounded-full overflow-hidden bg-white ring-1 ring-base-300 p-1.5 flex items-center justify-center shrink-0">
+                        <img src={b.logo} alt={b.name} className="w-full h-full object-contain" loading="lazy" style={{ filter: "none" }} />
+                      </div>
+                    ) : (
+                      <div className="w-10 h-10 rounded-full flex items-center justify-center text-lg font-bold text-white shrink-0" style={{ backgroundColor: b.color || "#5b8cff" }}>
+                        {b.name.charAt(0)}
+                      </div>
+                    )}
+                    <span className="text-sm font-medium text-center line-clamp-1 w-full" style={{ overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>{b.name}</span>
+                    <span className="text-xs text-base-content/50">{count} products</span>
+                  </Link>
+                );
+              })}
+          </div>
+          <div className="text-center mt-3">
+            <Link href="/brands" className="text-xs font-semibold px-3 py-1.5 rounded-full border border-base-300 hover:border-primary transition-colors" style={{ color: "var(--muted)" }}>
+              View full brand atlas — {brands.length} brands by category →
+            </Link>
           </div>
         </section>
 

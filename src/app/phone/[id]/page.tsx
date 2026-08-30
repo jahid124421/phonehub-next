@@ -20,6 +20,7 @@ import GiscusDiscussion from "@/components/GiscusDiscussion";
 import PhoneCard from "@/components/PhoneCard";
 import ScoreBadge from "@/components/ScoreBadge";
 import UserReviews from "@/components/UserReviews";
+import AmazonPrice from "@/components/AmazonPrice";
 import { SITE_URL } from "@/lib/config";
 import { productSchema, breadcrumbSchema } from "@/lib/schema";
 import { scoreColor } from "@/lib/score-color";
@@ -204,6 +205,7 @@ export default async function PhoneDetailPage({
       {/* 1. Breadcrumb */}
       <Breadcrumb items={breadcrumbItems} />
 
+
       {/* 2. Phone Top */}
       <div className="grid grid-cols-1 lg:grid-cols-[320px_1fr] gap-8">
         {/* Gallery */}
@@ -249,9 +251,10 @@ export default async function PhoneDetailPage({
             )}
           </div>
 
-          <div className="flex items-center gap-3">
+          <div className="flex items-center gap-3 flex-wrap">
             <CompareButton productId={product.id} />
             <WatchlistButton productId={product.id} />
+            <AmazonPrice asin={product.asin} keyword={product.name} />
           </div>
 
           {/* PhoneHub Score */}
