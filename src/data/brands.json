@@ -218,14 +218,14 @@
   {
     "id": "tandy",
     "name": "Tandy",
-    "logo": "https://cdn.brandfetch.io/radioshack.com/w/400/h/400",
+    "logo": "https://cdn.brandfetch.io/tandy.com/w/400/h/400",
     "color": "#CC0000",
     "category": "Other"
   },
   {
     "id": "data",
     "name": "Data",
-    "logo": "https://cdn.brandfetch.io/tata.com/w/400/h/400",
+    "logo": "https://cdn.brandfetch.io/data.com/w/400/h/400",
     "color": "#4860A0",
     "category": "Other"
   },
